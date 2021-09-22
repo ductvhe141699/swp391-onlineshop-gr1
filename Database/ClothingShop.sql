@@ -142,7 +142,12 @@ insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) va
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('astyan2p', 'Styan', 'bstyan2p@va.gov', 3, 1);
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('dgillford2q', 'Gillford', 'bgillford2q@noaa.gov', 3, 1);
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('nknappen2r', 'Knappen', 'kknappen2r@usa.gov', 3, 1);
-
+INSERT INTO Users VALUES(N'Nguyễn Duy Mạnh','nguyenduymanh','ManhNDHE141170@fpt.edu.vn',1,1);
+INSERT INTO Users VALUES(N'	Trần Văn Đức','tranvanduc','DucTVHE141699@fpt.edu.vn',2,1);
+INSERT INTO Users VALUES(N'Nguyễn Gia Phú','nguyengiaphu','PhuNGHE150108@fpt.edu.vn',2,1);
+INSERT INTO Users VALUES(N'	Ngô Thị Ngọc Mai','ngothingocmai','MaiNTNHE151402@fpt.edu.vn',3,1);
+INSERT INTO Users VALUES(N'	Bạch Ngọc Minh Châu','bachngocminhchau','ChauBNMHE153019@fpt.edu.vn',3,1);
+INSERT INTO Users VALUES(N'	Đinh Tiến Lâm','dinhtienlam','LamDTHE153097@fpt.edu.vn',3,1);
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE Ship (
@@ -151,107 +156,69 @@ CREATE TABLE Ship (
 	ShipPrice int
 ) ON [PRIMARY]
 GO
-
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Anshun', 63);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Kachug', 62);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Xing’an', 60);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Youkaichi', 60);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Xiaosong', 94);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Kovylkino', 71);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Chaoyang', 87);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Miragoâne', 69);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Ongjin', 77);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Chengbei', 72);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Pervomayskoye', 75);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Caracol', 84);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Węgierska Górka', 94);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Tangdukou', 62);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Aldeia da Piedade', 70);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Changfeng', 80);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Ancasti', 65);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Santo Domingo', 100);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Villaguay', 50);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Huangkeng', 72);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Suzuka', 85);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Marina', 82);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Tuchlovice', 76);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Feilaixia', 57);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Nonghe', 82);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Kumanovo', 57);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Yylanly', 55);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Moutas', 73);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Diyarb Najm', 56);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Cergy-Pontoise', 83);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Maastricht', 89);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Iktābah', 93);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Hengshui', 91);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Moscavide', 53);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Makale', 55);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Konobeyevo', 79);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Cibinong', 99);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Dajabón', 63);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Linamon', 68);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Xingyuan', 57);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Yabluniv', 67);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'‘Awartā', 93);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Berlin', 93);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Doibang', 74);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Momil', 68);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Valence', 70);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Magrath', 91);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Soukkouma', 73);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Banjar Tengah', 93);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Bu‘eina', 63);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Atakpamé', 89);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Malindi', 69);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Obsharovka', 60);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Zhenping Chengguanzhen', 88);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Cashel', 68);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Shuizhai', 59);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Ōdate', 86);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Anse Boileau', 64);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Yuxin', 63);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Charqueadas', 84);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Jorf', 69);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Kovilj', 99);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Cariamanga', 80);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Niños Heroes', 58);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Poykovskiy', 90);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Taiqing', 97);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Opatowiec', 97);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Bouaké', 85);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Artashat', 57);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Stockholm', 80);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Davao', 67);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Stoney Ground', 99);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Kefar Tavor', 86);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Las Palmas', 54);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Bergen', 96);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Mbala', 100);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Lipu', 100);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Rancakuya', 71);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Bielawy', 51);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Czerniejewo', 63);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Miracema', 82);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Springfield', 70);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Shahrīār', 95);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Gulonggang', 87);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Jixiang', 64);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Cergy-Pontoise', 60);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Al Qurayn', 63);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Jixi', 82);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Atlanta', 83);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Xiashihao', 52);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Podporozh’ye', 59);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Shuangxi', 96);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Cisiec', 71);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Liupai', 87);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Kangping', 87);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Ko Chan', 94);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Horní Štěpánov', 83);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Malindi', 71);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Ресен', 90);
-insert into dbo.[Ship] ([CityName], [ShipPrice]) values (N'Delta del Tigre', 78);
+INSERT INTO Ship VALUES (N'An Giang', 30000);
+INSERT INTO Ship VALUES (N'Bà Rịa-Vũng Tàu', 30000);
+INSERT INTO Ship VALUES (N'Bạc Liêu', 30000);
+INSERT INTO Ship VALUES (N'Bắc Kạn', 30000);
+INSERT INTO Ship VALUES (N'Bắc Giang', 30000);
+INSERT INTO Ship VALUES (N'Bắc Ninh', 30000);
+INSERT INTO Ship VALUES (N'Bến Tre', 30000);
+INSERT INTO Ship VALUES (N'Bình Dương', 30000);
+INSERT INTO Ship VALUES (N'Bình Định', 30000);
+INSERT INTO Ship VALUES (N'Bình Phước', 30000);
+INSERT INTO Ship VALUES (N'Bình Thuận', 30000);
+INSERT INTO Ship VALUES (N'Cà Mau', 30000);
+INSERT INTO Ship VALUES (N'Cao Bằng', 30000);
+INSERT INTO Ship VALUES (N'Cần Thơ', 30000);
+INSERT INTO Ship VALUES (N'Đà Nẵng', 30000);
+INSERT INTO Ship VALUES (N'Đắk Lắk', 30000);
+INSERT INTO Ship VALUES (N'Đắk Nông', 30000);
+INSERT INTO Ship VALUES (N'Điện Biên', 30000);
+INSERT INTO Ship VALUES (N'Đồng Nai', 30000);
+INSERT INTO Ship VALUES (N'Đồng Tháp', 30000);
+INSERT INTO Ship VALUES (N'Gia Lai', 30000);
+INSERT INTO Ship VALUES (N'Hà Giang', 30000);
+INSERT INTO Ship VALUES (N'Hà Nam', 30000);
+INSERT INTO Ship VALUES (N'Hà Nội', 20000);
+INSERT INTO Ship VALUES (N'Hà Tĩnh', 30000);
+INSERT INTO Ship VALUES (N'Hải Dương', 30000);
+INSERT INTO Ship VALUES (N'Hải Phòng', 30000);
+INSERT INTO Ship VALUES (N'Hòa Bình', 30000);
+INSERT INTO Ship VALUES (N'Hồ Chí Minh', 30000);
+INSERT INTO Ship VALUES (N'Hậu Giang', 30000);
+INSERT INTO Ship VALUES (N'Hưng Yên', 30000);
+INSERT INTO Ship VALUES (N'Khánh Hòa', 30000);
+INSERT INTO Ship VALUES (N'Kiên Giang', 30000);
+INSERT INTO Ship VALUES (N'Kon Tum', 30000);
+INSERT INTO Ship VALUES (N'Lai Châu', 30000);
+INSERT INTO Ship VALUES (N'Lào Cai', 30000);
+INSERT INTO Ship VALUES (N'Lạng Sơn', 30000);
+INSERT INTO Ship VALUES (N'Lâm Đồng', 30000);
+INSERT INTO Ship VALUES (N'Long An', 30000);
+INSERT INTO Ship VALUES (N'Nam Định', 30000);
+INSERT INTO Ship VALUES (N'Nghệ An', 30000);
+INSERT INTO Ship VALUES (N'Ninh Bình', 30000);
+INSERT INTO Ship VALUES (N'Ninh Thuận', 30000);
+INSERT INTO Ship VALUES (N'Phú Thọ', 30000);
+INSERT INTO Ship VALUES (N'Phú Yên', 30000);
+INSERT INTO Ship VALUES (N'Quảng Bình', 30000);
+INSERT INTO Ship VALUES (N'Quảng Nam', 30000);
+INSERT INTO Ship VALUES (N'Quảng Ngãi', 30000);
+INSERT INTO Ship VALUES (N'Quảng Ninh', 30000);
+INSERT INTO Ship VALUES (N'Quảng Trị', 30000);
+INSERT INTO Ship VALUES (N'Sóc Trăng', 30000);
+INSERT INTO Ship VALUES (N'Sơn La', 30000);
+INSERT INTO Ship VALUES (N'Tây Ninh', 30000);
+INSERT INTO Ship VALUES (N'Thái Bình', 30000);
+INSERT INTO Ship VALUES (N'Thái Nguyên', 30000);
+INSERT INTO Ship VALUES (N'Thanh Hóa', 30000);
+INSERT INTO Ship VALUES (N'Thừa Thiên - Huế', 30000);
+INSERT INTO Ship VALUES (N'Tiền Giang', 30000);
+INSERT INTO Ship VALUES (N'Trà Vinh', 30000);
+INSERT INTO Ship VALUES (N'Tuyên Quang', 30000);
+INSERT INTO Ship VALUES (N'Vĩnh Long', 30000);
+INSERT INTO Ship VALUES (N'Vĩnh Phúc', 30000);
+INSERT INTO Ship VALUES (N'Yên Bái', 30000);
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -379,11 +346,14 @@ INSERT INTO dbo.Category(CategoryName)VALUES(N'Pant')
 INSERT INTO dbo.Category(CategoryName)VALUES(N'Shirt')
 INSERT INTO dbo.Category(CategoryName)VALUES(N'Hat')
 INSERT INTO dbo.Category(CategoryName)VALUES(N'Jacket')
+INSERT INTO Category VALUES ( N'Accessories');
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE [dbo].[SubCategory](
-	[SubCategoryID] [int] PRIMARY KEY  IDENTITY(1,1) NOT NULL,
-	[SubCategoryName] [nvarchar](255) NULL,
-	[CategoryID] [int] NULL,)
+	[SubCategoryID] [int] PRIMARY KEY  IDENTITY(1,1) ,
+	[SubCategoryName] [nvarchar](255),
+	[CategoryID] [int] ,
+	constraint CategoryID FOREIGN KEY (CategoryID)  REFERENCES Category(CategoryID)
+	)
 GO
 INSERT INTO dbo.SubCategory(SubCategoryName,CategoryID)VALUES(N'Sport Shoe',1)
 INSERT INTO dbo.SubCategory(SubCategoryName,CategoryID)VALUES(N'Formal Shoe',1)
@@ -395,6 +365,10 @@ INSERT INTO dbo.SubCategory(SubCategoryName,CategoryID)VALUES(N'T-Shirt',4)
 INSERT INTO dbo.SubCategory(SubCategoryName,CategoryID)VALUES(N'Casual',4)
 INSERT INTO dbo.SubCategory(SubCategoryName,CategoryID)VALUES(N'Fedora',5)
 INSERT INTO dbo.SubCategory(SubCategoryName,CategoryID)VALUES(N'Leather Jacket',6)
+INSERT INTO SubCategory VALUES (N'Backpacks',7);
+INSERT INTO SubCategory VALUES (N'Hats',7);
+INSERT INTO SubCategory VALUES (N'Rings and Chains',7);
+INSERT INTO SubCategory VALUES (N'Watches',7);
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE ProductStatus (
@@ -443,6 +417,8 @@ CREATE TABLE Product (
 	constraint BrandID_in_Brand FOREIGN KEY(BrandID) REFERENCES Brand(BrandID)
 ) ON [PRIMARY]
 GO
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 INSERT INTO dbo.Product
 (
     ProductName,
@@ -607,7 +583,21 @@ VALUES
     30.0, -- width - float
     0.2  -- weight - float
     )
+INSERT INTO Product VALUES (N'Balo Vans',N'Balo Vans Marvel Head Backpack được sản xuất với chất liệu 100% polyester bền đẹp, dẻo dai, chống thấm nước nhẹ.',300000,270000,10,10,2,100,1,2,45,32,0.5);
+INSERT INTO Product VALUES (N'Mũ lưỡi trai thêu chữ',N'Kiểu dáng: phù hợp cả nam và nữ. Đa phong cách, gọn nhẹ, năng động',100000,90000,10,11,2,100,1,1,45,32,0.2);
+INSERT INTO Product VALUES (N'Đồng hồ Curnon',N'Đồng hồ nữ Curnon Melissani Haze dây kim loại chính hãng, đeo tay thời trang nữ tính',1300000,127000,10,13,2,100,1,1,20,3,0.5);
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CREATE TABLE [dbo].[ProductImg](
+	[ProductID] [int] primary key ,
+	[ProductImg] [varchar](255) ,
+	constraint ProductImg_ID FOREIGN KEY([ProductID])
+REFERENCES [dbo].[Product] ([ProductID])
+	)
+INSERT dbo.ProductImg(ProductID,ProductImgURL)VALUES(1,'v8sho001l.jpg')
+INSERT dbo.ProductImg(ProductID,ProductImgURL)VALUES(2,'i3sok606d.jpg')
+INSERT dbo.ProductImg(ProductID,ProductImgURL)VALUES(3,'i7tsh545i.jpg')
+INSERT dbo.ProductImg(ProductID,ProductImgURL)VALUES(4,'i9tsh553i.jpg')
+INSERT dbo.ProductImg(ProductID,ProductImgURL)VALUES(5,'waffleone-shoe.jfif')
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -621,6 +611,11 @@ CREATE TABLE Cart (
 ) ON [PRIMARY]
 GO
 
+INSERT INTO Cart VALUES (4, 1, 1);
+INSERT INTO Cart VALUES (4, 3, 1);
+INSERT INTO Cart VALUES (5, 1, 1);
+INSERT INTO Cart VALUES (5, 2, 1);
+INSERT INTO Cart VALUES (6, 2, 2);
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -650,6 +645,10 @@ CREATE TABLE [dbo].[Orders](
 ) ON [PRIMARY]
 GO
 
+INSERT INTO Orders VALUES (4, 270000, null, 3, '2021/06/06 04:17');
+INSERT INTO Orders VALUES (5, 90000, null, 3, '2021/06/16 12:36');
+INSERT INTO Orders VALUES (5, 1270000, null, 3, '2021/06/12 10:18');
+INSERT INTO Orders VALUES (6, 1270000, null, 1, '2021/09/11 01:30');
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -712,6 +711,11 @@ CREATE TABLE Feedback (
 	constraint valid_star CHECK (Star < 6 AND Star > 0)
 ) ON [PRIMARY]
 GO
+INSERT INTO Feedback VALUES (4, 1, 1, 5, N'Very good');
+INSERT INTO Feedback VALUES (5, 2, 2, 4, N'Good');
+INSERT INTO Feedback VALUES (5, 1, 3, N'Sản phẩm rất tốt');
+INSERT INTO Feedback VALUES (6, 1, 4,1, N'Gửi sai sản phẩm');
+
 
 
 
@@ -729,7 +733,9 @@ CREATE TABLE Feedback_Replies (
 	constraint feedbackID_in_feedback FOREIGN KEY(FeedbackID) REFERENCES Feedback(ID),
 ) ON [PRIMARY]
 GO
-
+INSERT INTO Feedback_Replies VALUES (1, 5, N'Xin Cám Ơn!');
+INSERT INTO Feedback_Replies VALUES (2, 4, N'Xin Cám Ơn!');
+INSERT INTO Feedback_Replies VALUES (3, 6, N'Xin Cám Ơn!');
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -747,27 +753,10 @@ INSERT INTO dbo.Blog(Title,Content,imageLink)VALUES(   N'Review',N'Good',N'i7tsh
 INSERT INTO dbo.Blog(Title,Content,imageLink)VALUES(   N'Review',N'Good',N'i9tsh553i.jpg')
 INSERT INTO dbo.Blog(Title,Content,imageLink)VALUES(   N'Review',N'Good',N'waffleone-shoe.jfif')
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-CREATE TABLE [dbo].[ProductImg](
-	[ProductID] [int] primary key  NOT NULL,
-	[ProductImgURL] [varchar](255) ,
-	)
-GO
-
-INSERT dbo.ProductImg(ProductID,ProductImgURL)VALUES(1,'v8sho001l.jpg')
-INSERT dbo.ProductImg(ProductID,ProductImgURL)VALUES(2,'i3sok606d.jpg')
-INSERT dbo.ProductImg(ProductID,ProductImgURL)VALUES(3,'i7tsh545i.jpg')
-INSERT dbo.ProductImg(ProductID,ProductImgURL)VALUES(4,'i9tsh553i.jpg')
-INSERT dbo.ProductImg(ProductID,ProductImgURL)VALUES(5,'waffleone-shoe.jfif')
 
 
-ALTER TABLE [dbo].[Product]  WITH CHECK ADD FOREIGN KEY([SubCategoryID])
-REFERENCES [dbo].[SubCategory] ([SubCategoryID])
-GO
-ALTER TABLE [dbo].[SubCategory]  WITH CHECK ADD FOREIGN KEY([CategoryID])
-REFERENCES [dbo].[Category] ([CategoryID])
-GO
-ALTER TABLE [dbo].[ProductImg]  WITH CHECK ADD FOREIGN KEY([ProductID])
-REFERENCES [dbo].[Product] ([ProductID])
+
+
 
 
 
