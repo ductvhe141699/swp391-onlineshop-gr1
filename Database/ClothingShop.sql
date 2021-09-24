@@ -665,6 +665,7 @@ INSERT INTO Orders VALUES (6, 1270000, null, 1, '2021/09/11 01:30');
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE [dbo].[Order_Detail](
+	ID int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
 	[Order_ID] [int] NOT NULL ,
 	[ProductID] [int] NOT NULL,
 	[ProductName] [nvarchar](1000) NOT NULL,
