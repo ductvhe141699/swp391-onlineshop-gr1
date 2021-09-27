@@ -32,9 +32,8 @@ public class HomeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String context=request.getContextPath();
-        getServletContext().getRequestDispatcher("/WEB-INF/Homepage.jsp").forward(request, response);
-
+        String JSP="/WEB-INF/"+"Homepage"+".jsp";
+        getServletContext().getRequestDispatcher(JSP).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
