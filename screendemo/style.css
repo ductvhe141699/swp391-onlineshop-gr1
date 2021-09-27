@@ -1,0 +1,12 @@
+.table1{
+    background-color: lightblue ;
+    font-size: 20px;
+}
+.table{
+    text-align: center;
+    background-color: lightgoldenrodyellow;
+}
+body {
+    background-image: url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2xvdGhpbmclMjBzdG9yZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80");
+    background-color: #cccccc;
+   }
