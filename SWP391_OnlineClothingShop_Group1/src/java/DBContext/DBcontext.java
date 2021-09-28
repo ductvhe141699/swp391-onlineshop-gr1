@@ -22,7 +22,7 @@ public class DBcontext {
         {
             try {
                 String server="localhost";
-                String databasename="htshop";
+                String databasename="OnlineShop";
                 String username="sa";
                 String password="123456";
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
