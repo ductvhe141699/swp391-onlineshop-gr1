@@ -1,0 +1,6 @@
+header + navbar : #45aaf2 (high blue)   hoặc #2bcbba (max blue green)
+footer : màu  trắng hoặc màu nhạt hơn 
+subnav + details : #0fb9b1
+fonts : <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+có thể pick màu và ib ý kiến lại với cả nhóm : https://flatuicolors.com/palette/de
