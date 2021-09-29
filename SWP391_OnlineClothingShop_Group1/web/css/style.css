@@ -71,6 +71,14 @@ body{
 }
 
 /*-------------------- NAVBAR --------------------*/
+.navbar
+{
+  font-size: 20px;
+}
+.navbar .fas 
+{
+  font-size: 100%;
+}
 .searchbar
 {
   margin-top: 10px;

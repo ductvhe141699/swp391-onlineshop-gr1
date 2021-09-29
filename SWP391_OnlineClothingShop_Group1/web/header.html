@@ -29,27 +29,22 @@
         
         <div class="container-fluid">
             <!-- LOGO -->
-          <a class="navbar-brand col-lg-2 offset-lg-2" href="#">Shope</a>
+          <a class="navbar-brand col-lg-2 offset-lg-2" href="#"><img height="50px" src="resources/img/logo.png"> </a>
             
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- SEARCHBAR -->
             <form class="d-flex searchbar">
               <input class="form-control me-2" type="search" placeholder="Search entire store here..." aria-label="Search">
               <button class="btn btn-danger" type="submit"><i class="fas fa-search"></i></button>
             </form>
-            <ul class="navbar-nav me-auto ms-auto">
-              <!-- COLLAPSED -->
-                <li class="nav-item d-block d-lg-none">
-                  <a class="nav-link" href="#">
-                    test
-                  </a>
-              </li>
-              <!-- LG -->
+            <ul class="navbar-nav me-auto ms-auto">                
+              <!-- EXPANDED -->
               <li class="nav-item d-none d-lg-block">
                   <a class="nav-link" href="#"><i class="fas fa-bell"></i>
-                    <span class="position-relative bottom-50 start-99 translate-middle badge rounded-pill bg-danger">
+                    <span class="position-relative translate-middle badge rounded-pill bg-danger">
                       0
                       <span class="visually-hidden">unread notifications</span>
                     </span>
@@ -58,7 +53,7 @@
               <li class="nav-item d-none d-lg-block">
                   <a class="nav-link" href="#">
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="position-relative bottom-50 start-99 translate-middle badge rounded-pill bg-danger">
+                    <span class="position-relative translate-middle badge rounded-pill bg-danger">
                       0
                       <span class="visually-hidden">cart items</span>
                   </span>
@@ -77,32 +72,37 @@
               </li>
               <!-- COLLAPSED -->
               <li class="nav-item d-block d-lg-none">
+                <a class="nav-link" href="#">
+                  test
+                </a>
+              </li>
+              <li class="nav-item d-block d-lg-none">
                 <a class="nav-link d-inline-block" href="#"><i class="fas fa-bell"></i>
-                  <span class="position-relative bottom-50 start-99 translate-middle badge rounded-pill bg-dark">
+                  <span class="position-relative translate-middle badge rounded-pill bg-dark">
                     0
                     <span class="visually-hidden">unread notifications</span>
                   </span>
                 </a> 
                 <a class="nav-link d-inline-block" href="#">
                   <i class="fas fa-shopping-cart"></i>
-                  <span class="position-relative bottom-50 start-99 translate-middle badge rounded-pill bg-dark">
+                  <span class="position-relative translate-middle badge rounded-pill bg-dark">
                     0
                     <span class="visually-hidden">cart items</span>
                 </span>
                 </a>
               </li>
-              <!-- END COLLAPSED -->
             </ul>
           </div>
         </div>
       </nav>
+      <!-- SECONDARY NAVBAR -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-none d-lg-block">
         <div class="container-fluid">
           <ul class="navbar-nav offset-2 me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
+            <li class="nav-item me-4">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown me-4">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Shop
               </a>
@@ -113,7 +113,7 @@
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown me-4">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Blog
               </a>
@@ -124,7 +124,7 @@
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown me-4">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Pages
               </a>
@@ -135,10 +135,10 @@
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </li>
-            <li class="nav-item">
+            <li class="nav-item me-4">
               <a class="nav-link" href="#">About Us</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item me-4">
               <a class="nav-link" href="#footer">Contacts Us</a>
             </li>
           </ul>
