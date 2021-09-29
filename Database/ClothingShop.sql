@@ -347,7 +347,7 @@ INSERT INTO dbo.Category(CategoryName)VALUES(N'Pant')
 INSERT INTO dbo.Category(CategoryName)VALUES(N'Shirt')
 INSERT INTO dbo.Category(CategoryName)VALUES(N'Hat')
 INSERT INTO dbo.Category(CategoryName)VALUES(N'Jacket')
-INSERT INTO Category VALUES ( N'Accessories');
+INSERT INTO dbo.Category(CategoryName) VALUES ( N'Accessories');
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE [dbo].[SubCategory](
 	[SubCategoryID] [int] PRIMARY KEY  IDENTITY(1,1) ,
@@ -366,10 +366,10 @@ INSERT INTO dbo.SubCategory(SubCategoryName,CategoryID)VALUES(N'T-Shirt',4)
 INSERT INTO dbo.SubCategory(SubCategoryName,CategoryID)VALUES(N'Casual',4)
 INSERT INTO dbo.SubCategory(SubCategoryName,CategoryID)VALUES(N'Fedora',5)
 INSERT INTO dbo.SubCategory(SubCategoryName,CategoryID)VALUES(N'Leather Jacket',6)
-INSERT INTO SubCategory VALUES (N'Backpacks',7);
-INSERT INTO SubCategory VALUES (N'Hats',7);
-INSERT INTO SubCategory VALUES (N'Rings and Chains',7);
-INSERT INTO SubCategory VALUES (N'Watches',7);
+INSERT INTO dbo.SubCategory(SubCategoryName,CategoryID) VALUES (N'Backpacks',7);
+INSERT INTO dbo.SubCategory(SubCategoryName,CategoryID) VALUES (N'Hats',7);
+INSERT INTO dbo.SubCategory(SubCategoryName,CategoryID) VALUES (N'Rings and Chains',7);
+INSERT INTO dbo.SubCategory(SubCategoryName,CategoryID) VALUES (N'Watches',7);
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE ProductStatus (
@@ -395,6 +395,7 @@ INSERT INTO dbo.Brand(BrandName)VALUES(N'Tokyo Life')
 INSERT INTO dbo.Brand(BrandName)VALUES(N'Levi s')
 INSERT INTO dbo.Brand(BrandName)VALUES(N'MARVEL')
 INSERT INTO dbo.Brand(BrandName)VALUES(N'Hermès')
+INSERT INTO dbo.Brand(BrandName)VALUES(N'Curnon')
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE Product (
@@ -586,7 +587,7 @@ VALUES
     )
 INSERT INTO Product VALUES (N'Balo Vans',N'Balo Vans Marvel Head Backpack được sản xuất với chất liệu 100% polyester bền đẹp, dẻo dai, chống thấm nước nhẹ.',300000,270000,10,10,2,100,1,2,45,32,0.5);
 INSERT INTO Product VALUES (N'Mũ lưỡi trai thêu chữ',N'Kiểu dáng: phù hợp cả nam và nữ. Đa phong cách, gọn nhẹ, năng động',100000,90000,10,11,2,100,1,1,45,32,0.2);
-INSERT INTO Product VALUES (N'Đồng hồ Curnon',N'Đồng hồ nữ Curnon Melissani Haze dây kim loại chính hãng, đeo tay thời trang nữ tính',1300000,127000,10,13,2,100,1,1,20,3,0.5);
+INSERT INTO Product VALUES (N'Đồng hồ Curnon',N'Đồng hồ nữ Curnon Melissani Haze dây kim loại chính hãng, đeo tay thời trang nữ tính',1300000,127000,10,13,2,100,1,8,20,3,0.5);
 INSERT INTO Product VALUES (N'Nhẫn RAC001',N'Kiểu dáng sang trọng, tinh tế. Được chế tác từ hợp kim bền bỉ ',170000,163000,10,12,2,100,1,1,20,3,0.5);
 INSERT INTO Product VALUES (N'Quần Button Cargo Pant kaki ',N'Form được Fit size theo form và tiêu chuẩn tương đối của người Việt Nam.',170000,163000,10,6,2,100,1,1,80,45,0.5);
 
@@ -598,6 +599,8 @@ CREATE TABLE [dbo].[ProductImg](
 	constraint ProductImg_ID FOREIGN KEY([ProductID])
 REFERENCES [dbo].[Product] ([ProductID])
 	)
+	go
+	alter table ProductImg 
 INSERT dbo.ProductImg(ProductID,ProductImgURL)VALUES(1,'v8sho001l.jpg')
 INSERT dbo.ProductImg(ProductID,ProductImgURL)VALUES(2,'i3sok606d.jpg')
 INSERT dbo.ProductImg(ProductID,ProductImgURL)VALUES(3,'i7tsh545i.jpg')
