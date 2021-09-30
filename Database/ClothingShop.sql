@@ -600,7 +600,7 @@ CREATE TABLE [dbo].[ProductImg](
 REFERENCES [dbo].[Product] ([ProductID])
 	)
 	go
-	alter table ProductImg 
+
 INSERT dbo.ProductImg(ProductID,ProductImgURL)VALUES(1,'v8sho001l.jpg')
 INSERT dbo.ProductImg(ProductID,ProductImgURL)VALUES(2,'i3sok606d.jpg')
 INSERT dbo.ProductImg(ProductID,ProductImgURL)VALUES(3,'i7tsh545i.jpg')
@@ -757,16 +757,17 @@ INSERT INTO Feedback_Replies VALUES (3, 6, N'Xin Cám Ơn!');
 
 Create TABLE Blog(
 ID int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+Author nvarchar(100),
 Title nvarchar(2500),
 Content nvarchar(2500),
 imageLink nvarchar(1000),
 )ON [PRIMARY]
 GO
-INSERT INTO dbo.Blog(Title,Content,imageLink)VALUES(   N'Review',N'Good',N'v8sho001l.jpg')
-INSERT INTO dbo.Blog(Title,Content,imageLink)VALUES(   N'Review',N'Good',N'i3sok606d.jpg')
-INSERT INTO dbo.Blog(Title,Content,imageLink)VALUES(   N'Review',N'Good',N'i7tsh545i.jpg')
-INSERT INTO dbo.Blog(Title,Content,imageLink)VALUES(   N'Review',N'Good',N'i9tsh553i.jpg')
-INSERT INTO dbo.Blog(Title,Content,imageLink)VALUES(   N'Review',N'Good',N'waffleone-shoe.jfif')
+INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'hienht',   N'Review',N'Good',N'v8sho001l.jpg')
+INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'ngoc12',   N'Review',N'Good',N'i3sok606d.jpg')
+INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'minh123',  N'Review',N'Good',N'i7tsh545i.jpg')
+INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'author_1',   N'Review',N'Good',N'i9tsh553i.jpg')
+INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'author_2',  N'Review',N'Good',N'waffleone-shoe.jfif')
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
