@@ -69,8 +69,22 @@ html{
 body{
     font-family: var(--body-font)
 }
-
+/*-------------------- REUSEABLE------------------*/
+.sticky {
+  position: fixed !important;
+  top: 0 !important;
+  width: 100% !important;
+  z-index: 2000;
+}
 /*-------------------- NAVBAR --------------------*/
+.nav-item
+{
+  margin-left: 10px;
+}
+.logo img
+{
+  height: 75px;
+}
 .navbar
 {
   font-size: 20px;
