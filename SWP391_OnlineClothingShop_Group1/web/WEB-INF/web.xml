@@ -16,6 +16,14 @@
         <servlet-name>HomeServlet</servlet-name>
         <servlet-class>view.HomeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BlogList</servlet-name>
+        <servlet-class>controller.BlogList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BlogManage</servlet-name>
+        <servlet-class>controller.BlogManage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -31,6 +39,14 @@
         <error-code>404</error-code>
         <location>/error.html</location>
     </error-page>
+    <servlet-mapping>
+        <servlet-name>BlogList</servlet-name>
+        <url-pattern>/BlogList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BlogManage</servlet-name>
+        <url-pattern>/BlogManage</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
