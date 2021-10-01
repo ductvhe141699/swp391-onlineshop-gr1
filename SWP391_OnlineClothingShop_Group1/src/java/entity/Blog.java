@@ -11,17 +11,22 @@ package entity;
  */
 public class Blog {
     private int ID;
+    private String Author;
     private String title;
     private String imageLink;
-
+    private String content;
     public Blog() {
     }
 
-    public Blog(int ID, String title, String imageLink) {
+    public Blog(int ID, String Author, String title, String imageLink, String content) {
         this.ID = ID;
+        this.Author = Author;
         this.title = title;
         this.imageLink = imageLink;
+        this.content = content;
     }
+
+  
 
     public int getID() {
         return ID;
@@ -47,9 +52,26 @@ public class Blog {
         this.imageLink = imageLink;
     }
 
+    public String getAuthor() {
+        return Author;
+    }
+
+    public void setAuthor(String Author) {
+        this.Author = Author;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    
     @Override
     public String toString() {
-        return "Blog{" + "ID=" + ID + ", title=" + title + ", imageLink=" + imageLink + '}';
+        return "Blog{" + "ID=" + ID +",Author="+Author + ",title"+ title+ ",imagelink= "+imageLink+ ",content: "+ content+'}' ;
     }
     
     
