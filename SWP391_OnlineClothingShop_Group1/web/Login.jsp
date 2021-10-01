@@ -11,46 +11,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link href="css/login.css" rel="stylesheet" type="text/css"/>
+    <title>Printd T-Shirt - RedStore</title>
+ 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/login.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
     
-    <!-- ------------Login-page------------------- -->
+    <!-- ------------Account-page------------------- -->
     <div class="account-page">
         <div class="container">
             <div class="row">
                 <div class="col-2">
-                    <img src="https://lh3.googleusercontent.com/proxy/AStRj2wGTABI3NfrD-k7N-sJ8XFVKNTiP1EjC6u5hh162JLihQT_mee55KNELWKih4_Y6GCenUI82T9Uv4NL7O1tf2jjHk2uUZNg-2926OWQ1niRQJgTpzp7eNp61lEU0fJeNZwPCaeIrO1bQRtAu64zYy_GIjZyxi7_tWvnkxA04CJSfAI" width="100%">
+                    <img src="images/image1.png" width="80%">
                 </div>
 
                 <div class="col-2">
                     <div class="form-container">
                         <div class="form-btn">
                             <span onclick="login()">Login</span>
+                           
                             <span onclick="register()">Register</span>
-                            <hr id="Indicator">
+
+                            <hr style="width: 50%; margin-right: -5%;"  id="Indicator">
+                            
                         </div>
 
-                        <form id="LoginForm" action="login" method="post">
-                           
-                           
-                           
-                            <input name ="user" type="text" placeholder="Username">
+                        <form id="LoginForm" action="login" method ="post">
+                            
+                            <input name="user" type="text" placeholder="Username">
                             <input name ="pass" type="password" placeholder="Password">
                             <button type="submit" class="btn">Login</button>
-                            <p class="text-daneger">${mess}</p>
+                            <p class="text-danger">${mess}</p>
                             <a href="">Forgot password</a>
                         </form>
 
-                        <form id="RegForm" action="register" method="post">
-                            <input type="text" placeholder="Username">
-                            <input type="email" placeholder="Email">
-                            <input type="password" placeholder="Password">
+                        <form id="RegForm" action ="register" method="post">
+                            <input name="user" type="text" placeholder="Username">
+                            <input name="email" type="email" placeholder="Email">
+                            <input name="pass" type="password" placeholder="Password">
+                            <input name="repass" type="password" placeholder="Repeat Password">
                             <button type="submit" class="btn">Register</button>
                         </form>
 
@@ -59,9 +62,8 @@
             </div>
         </div>
     </div>
-   
+    <!-- ------------footer----------- -->
 
-        </script>
         <!-- ------------------- js for Account form-------------- -->
 
         <script>
@@ -70,14 +72,14 @@
             var Indicator = document.getElementById("Indicator");
 
             function register() {
-                RegForm.style.transform = "translateX(0px)";
-                LoginForm.style.transform = "translateX(0px)";
-                Indicator.style.transform = "translateX(100px)";
+                RegForm.style.transform = "translateX(-300px)";
+                LoginForm.style.transform = "translateX(-300px)";
+                Indicator.style.transform = "translateX(75px)";
 
             }
             function login() {
-                RegForm.style.transform = "translateX(300px)";
-                LoginForm.style.transform = "translateX(300px)";
+                RegForm.style.transform = "translateX(0px)";
+                LoginForm.style.transform = "translateX(0px)";
                 Indicator.style.transform = "translateX(0px)";
             }
 

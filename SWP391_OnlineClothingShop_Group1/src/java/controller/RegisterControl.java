@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
-public class LoginControl extends HttpServlet {
+@WebServlet(name = "RegisterControl", urlPatterns = {"/register"})
+public class RegisterControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,24 +34,26 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       String username = request.getParameter("user");
-       String password = request.getParameter("pass");
-       LoginDAO dao = new LoginDAO();
-       Users u = dao.login(username, password);
-       if(u==null){
-           request.setAttribute("mess", "Username or password was incorrect. Please try again!");
-           request.getRequestDispatcher("Login.jsp").forward(request, response);
-           
-      }
-          else{
-           //request.getRequestDispatcher("home").forward(request, response);
-           response.sendRedirect("home");
-           
-       }
+        String user = request.getParameter("user");
+        String pass = request.getParameter("pass");
+        String re_pass = request.getParameter("repass");
+        String email = request.getParameter("email");
        
-       
-   }
-
+        if(!pass.equals(re_pass)){
+            response.sendRedirect("Login.jsp");
+        }
+        else{
+            LoginDAO dao = new LoginDAO();
+            Users u = dao.checkUserExist(user);
+            if(u == null){
+                //dc register
+                dao.register(user, pass, email);
+                response.sendRedirect("home");
+            }else
+            //day ve login
+                response.sendRedirect("Login.jsp");
+        }
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -90,5 +92,5 @@ public class LoginControl extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    }
 
-}
