@@ -19,7 +19,7 @@
 <%-- NAV --%>
 <nav class="navbar navbar-expand-xl navbar-light "  style="z-index:100;height: 100px; background-color:#2bcbba;">
     <div class="container-fluid bg-light pb-3 pb-xl-0" style="z-index: 10;">
-      <a class="navbar-brand" href="HomeServlet"><img style="height: 40px;" src="resource/img/logo.png"/></a>
+        <a class="navbar-brand" href="HomeServlet"><img style="height: 40px;" src="resources/img/products/HCA001.jpg"/></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

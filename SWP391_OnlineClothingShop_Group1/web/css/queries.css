@@ -1,0 +1,28 @@
+/* SM */
+@media all and (min-width: 576px) {  
+
+}
+/* MD */
+@media all and (min-width: 768px) {
+    .searchbar{
+        width: 75%;
+    }
+}
+/* LG */
+@media all and (min-width: 992px) {
+    .searchbar{
+        margin-top: 0px;
+        width: 50%;
+    }
+    .main-navbar{
+        height: 100px;
+    }
+}
+/* XL */
+@media all and (min-width: 1200px) { 
+
+}
+/* XXL */
+@media all and (min-width: 1400px) { 
+
+}
