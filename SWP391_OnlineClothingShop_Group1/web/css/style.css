@@ -1,10 +1,10 @@
 /*---------------------- GOOGLE FONTS ----------------------*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 /*---------------------- VARIABLES CSS ----------------------*/
-/*:root {
+:root {
   --header-height: 120px ;
 
-  -------------------- Colors --------------------
+  /*-------------------- Colors --------------------*/
 
   --first-color: ;
   --first-color-second: ;
@@ -17,10 +17,10 @@
   --body-color: ;
   --container-color: ;
 
-  -------------------- Font and typography --------------------
+  /*-------------------- Font and typography --------------------*/
   --body-font: font-family: 'Poppins', sans-serif; ;
 
-   font size  
+   /*font size  */
   --big-font-size: ;
   --h1-font-size: ;
   --h2-font-size: ;
@@ -29,19 +29,19 @@
   --small-font-size: ;
   --smaller-font-size: ;
 
-  -------------------- Font weight --------------------
+  /*-------------------- Font weight --------------------*/
   --font-medium: ;
   --font-semi-bold: ;
 
 
 
-  -------------------- z index --------------------
+  /*-------------------- z index --------------------*/
   --z-tooltip: 1 ;
   --z-fixed: 2;
   --z-modal: 99 ;
 }
 
- Font size for large devices 
+ /*Font size for large devices*/ 
 @media screen and (min-width: 968px) {
   :root {
     --big-font-size: ;
@@ -55,7 +55,7 @@
 }
 
 
--------------------- BASE --------------------
+/*-------------------- BASE --------------------*/
 *{
     box-sizing: border-box;
     padding: 0;
@@ -69,14 +69,14 @@ html{
 body{
     font-family: var(--body-font)
 }
--------------------- REUSEABLE------------------
+/*-------------------- REUSEABLE------------------*/
 .sticky {
   position: fixed !important;
   top: 0 !important;
   width: 100% !important;
   z-index: 2000;
 }
--------------------- NAVBAR --------------------
+/*-------------------- NAVBAR --------------------*/
 .nav-item
 {
   margin-left: 10px;
@@ -97,4 +97,4 @@ body{
 {
   margin-top: 10px;
   width: 100%;
-}*/
+}
