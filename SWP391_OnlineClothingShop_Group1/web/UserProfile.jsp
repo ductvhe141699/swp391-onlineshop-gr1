@@ -14,20 +14,13 @@
         <title>User's Profile</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">;
+        <link href="css/UserProfile.css" rel="stylesheet" type="text/css"/>  
     </head>
     <body>
         <div class="container">
-            
             <div class="row">
-                <br><br>
-            </div>
-            
-            <div class="row">
-                
                 <div class="col-md-3"></div>
-                
                 <div class="col-md-6" id="form">
-                    <br><br>
                     <i class="fa user" id="profileIcon"></i>
                     <!--NAME OF USER-->
                     <h4 style="text-align: center">DINH TIEN LAM</h4>
@@ -54,10 +47,10 @@
                     <a href="productList" id="back">Back to Product List page</a>
                     <br><br>
                 </div>
-                    
+
                 <div class="col-md-3"></div>
-                
             </div>      
         </div>
+        
     </body>
 </html>
