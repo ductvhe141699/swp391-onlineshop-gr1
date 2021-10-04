@@ -40,6 +40,7 @@ public class RegisterControl extends HttpServlet {
         String email = request.getParameter("email");
        
         if(!pass.equals(re_pass)){
+            //request.setAttribute("mess1", "password and repeat password must be same!");
             response.sendRedirect("Login.jsp");
         }
         else{

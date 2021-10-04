@@ -34,12 +34,19 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        //Lấy dữ liệu từ jsp
        String username = request.getParameter("user");
        String password = request.getParameter("pass");
+       //Kết nối vs DB
        LoginDAO dao = new LoginDAO();
        Users u = dao.login(username, password);
+       //Kiểm tra
        if(u==null){
-           request.setAttribute("mess", "Username or password was incorrect. Please try again!");
+            //login fail -> Đẩy về trang Login.jsp (nhập lại)
+            //Message thông báo Login sai: thay đổi giá trị của biến mess
+           request.setAttribute("mess", "login fail!");
+           //ko thì quay trở lại trang login.jsp
+           //Yêu cầu người dùng Login lại
            request.getRequestDispatcher("Login.jsp").forward(request, response);
            
       }
