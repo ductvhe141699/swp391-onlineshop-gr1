@@ -28,12 +28,9 @@
                     <br>
                     <h1>Change Your Password</h1>
 
-<!--                    <c:if test="${requestScope.message ne null}">
-    <p>${requestScope.message}</p>
-</c:if>       -->
                     <br><br>
                     <!-- Password change form -->
-                    <%--<c:if test="${requestScope.compare ne null}">--%>
+
                     <form action="change-password" method="POST">
                         <input type="password" id="pass" name="pass" placeholder="Old Password" class="form-control">
                         <br><br>
@@ -43,7 +40,7 @@
                         <button class="btn btn-primary btn-block" type="submit" style="width: 200px"><i class="fa fa-check-circle"></i>Confirm</button>
                     </form>
                     <br>
-                    <%--</c:if>--%>
+
                 </div>
                 <div class="col-md-3"></div>
             </div>
