@@ -12,7 +12,6 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
         <!-- link Fonts -->
         <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
@@ -36,7 +35,7 @@
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/queries.css" />
-        <title>Blog</title>
+        <title>${blog.title}</title>
         <style>
             .gallery-wrap .img-big-wrap img {
                 height: 450px;
@@ -87,7 +86,7 @@
                         <div class="col-sm-5 border-right">
                             <article class="gallery-wrap"> 
                                 <div class="img-big-wrap">
-                                    <div> <a href="#"><img src="resource/img/product/${blog.imageLink}"></a></div>
+                                    <div> <a href="#"><img src="./resources/img/products/${blog.imageLink}"></a></div>
                                 </div> <!-- slider-product.// -->
                                 <div class="img-small-wrap">
                                 </div> <!-- slider-nav.// -->
@@ -95,8 +94,8 @@
                         </div>
                         <div class="col-sm-7">
                             <article class="card-body p-5">
-                                <h3 class="title mb-3">${blog.title}</h3>
-                                <%--       <h5>${blog.Author}</h5> --%>
+                               <h3 class="title mb-3">${blog.title}</h3> 
+                                 <h5 class="item-property">${blog.author}</h5> 
                                 <br>
                                 <dl class="item-property">
                                     <dd><p>
