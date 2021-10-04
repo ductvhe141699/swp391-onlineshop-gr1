@@ -32,7 +32,7 @@
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/queries.css" />
         <title>Home Page</title>
     </head>
-    <body style="min-height: 2000px">
+    <body>
         <%@include file="model/header.jsp" %>
 
         <!-- SLIDER -->
