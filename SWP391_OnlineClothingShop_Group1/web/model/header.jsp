@@ -11,7 +11,7 @@
           <marquee behavior="scroll" direction="left">BLACK FRIDAY! SALE 0%</marquee>
       </span>
     </div>
-    <nav class="navbar main-navbar navbar-expand-lg navbar-light bg-light ">
+    <nav class="navbar main-navbar navbar-expand-lg navbar-light bg-light" id="navbar1">
         
         <div class="container-fluid">
             <!-- LOGO -->
