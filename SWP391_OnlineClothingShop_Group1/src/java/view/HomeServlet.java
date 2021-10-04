@@ -5,8 +5,11 @@
  */
 package view;
 
+import DBContext.ProductDAO;
+import eltity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,7 +50,10 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       ProductDAO dao = new ProductDAO(); 
+       ArrayList<Product> listProduct = dao.getAllProduct();
+       request.setAttribute("listProduct", listProduct);
+       request.getRequestDispatcher("Homepage.jsp").forward(request, response);
     }
 
     /**

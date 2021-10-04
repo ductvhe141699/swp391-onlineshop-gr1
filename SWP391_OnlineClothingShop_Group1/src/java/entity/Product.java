@@ -24,11 +24,12 @@ public class Product {
     double height ;
     double width ;
     double weight  ;
+    String url ;
 
     public Product() {
     }
 
-    public Product(int productID, String productName, String desc, double originPrice, double sellPrice, double salePersent, int subCateID, int sellerID, int amount, int statusID, int brandID, double height, double width, double weight) {
+    public Product(int productID, String productName, String desc, double originPrice, double sellPrice, double salePersent, int subCateID, int sellerID, int amount, int statusID, int brandID, double height, double width, double weight, String url) {
         this.productID = productID;
         this.productName = productName;
         this.desc = desc;
@@ -43,6 +44,7 @@ public class Product {
         this.height = height;
         this.width = width;
         this.weight = weight;
+        this.url = url;
     }
 
     public int getProductID() {
@@ -156,8 +158,16 @@ public class Product {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+   
     
     
-    
-    
+
 }
