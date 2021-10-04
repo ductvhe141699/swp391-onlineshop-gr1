@@ -15,7 +15,7 @@
         
         <div class="container-fluid">
             <!-- LOGO -->
-            <a class="navbar-brand col-lg-2 offset-lg-2 logo" href="#"><img src="resources/img/SHOPE-logos_transparent.png"> </a>
+            <a class="navbar-brand col-lg-2 offset-lg-2 logo" href="${pageContext.request.contextPath}/home"><img src="resources/img/SHOPE-logos_transparent.png"> </a>
             
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -50,10 +50,8 @@
                   <i class="fas fa-user-circle"></i>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Login</a></li>
+                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/register">Register</a></li>
                 </ul>
               </li>
               <!-- COLLAPSED -->
@@ -114,6 +112,12 @@
                 </span>
                 </a>
                 <i class="fas fa-user-circle"></i>
+              </li>
+              <li class="nav-item d-block d-lg-none">
+                <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
+              </li>
+              <li class="nav-item d-block d-lg-none">
+                <a class="nav-link" href="${pageContext.request.contextPath}/register">Register</a>
               </li>
             </ul>
           </div>
