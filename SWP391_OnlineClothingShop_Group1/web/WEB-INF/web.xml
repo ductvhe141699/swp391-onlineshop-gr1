@@ -24,6 +24,10 @@
         <servlet-name>BlogManage</servlet-name>
         <servlet-class>controller.BlogManage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>error</servlet-name>
+        <servlet-class>view.error</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -37,7 +41,7 @@
     </welcome-file-list>
     <error-page>
         <error-code>404</error-code>
-        <location>/error.html</location>
+        <location>/error</location>
     </error-page>
     <servlet-mapping>
         <servlet-name>BlogList</servlet-name>
@@ -46,6 +50,10 @@
     <servlet-mapping>
         <servlet-name>BlogManage</servlet-name>
         <url-pattern>/BlogManage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>error</servlet-name>
+        <url-pattern>/error</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
