@@ -7,7 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <div class="row m-0 p-0" style="background-color:lightgrey;">
-      <span id="promo">
+    <span id="promo" class="d-lg-block d-none">
           <marquee behavior="scroll" direction="left">BLACK FRIDAY! SALE 0%</marquee>
       </span>
     </div>
