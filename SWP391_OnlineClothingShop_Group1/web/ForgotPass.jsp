@@ -19,26 +19,26 @@
     </head>
     <body>
         <div class="container">
-        <div class="row">
-            <br><br>
-        </div>
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6" id="text">
-                <br>
-                <form action="forgetPassword">
-                    <h5 name="wrongEmail">${wrongEmail}</h5>
-                    <h5><i class="fas fa-exclamation-triangle"></i>Please enter your Username and Email to receive Verification Code:</h5>
-                    <br>
-                    <input type="text" name="username" placeholder="Your Username" id="username" class="form-control"> <br>
-                    <input type="text" name="email" placeholder="Your Email" id="email" class="form-control"> <br><hr>
-                    <button class="btn btn-primary btn-block" type="submit" value="OK" id="confirm"><i class="fa fa-envelope-open-text"></i>Confirm</button>
-
-                </form>
-                    <br>
+            <div class="row">
+                <br><br>
             </div>
-            <div class="col-md-3"></div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" id="text">
+                    <br>
+                    <form action="forgetPassword">
+                        <h5 name="wrongEmail">${wrongEmail}</h5>
+                        <h5><i class="fas fa-exclamation-triangle"></i>Please enter your Username and Email to receive Verification Code:</h5>
+                        <br>
+                        <input type="text" name="username" placeholder="Your Username" id="username" class="form-control"> <br>
+                        <input type="text" name="email" placeholder="Your Email" id="email" class="form-control"> <br><hr>
+                        <button class="btn btn-primary btn-block" type="submit" value="OK" id="confirm"><i class="fa fa-envelope-open-text"></i>Confirm</button>
+
+                    </form>
+                    <br>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
         </div>
-    </div>
     </body>
 </html>

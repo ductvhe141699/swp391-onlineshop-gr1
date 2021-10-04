@@ -13,20 +13,10 @@ public class Blog {
     private int ID;
     private String Author;
     private String title;
-    private String imageLink;
     private String content;
+    private String imageLink;  
     public Blog() {
     }
-
-    public Blog(int ID, String Author, String title, String imageLink, String content) {
-        this.ID = ID;
-        this.Author = Author;
-        this.title = title;
-        this.imageLink = imageLink;
-        this.content = content;
-    }
-
-  
 
     public int getID() {
         return ID;
@@ -34,22 +24,6 @@ public class Blog {
 
     public void setID(int ID) {
         this.ID = ID;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getImageLink() {
-        return imageLink;
-    }
-
-    public void setImageLink(String imageLink) {
-        this.imageLink = imageLink;
     }
 
     public String getAuthor() {
@@ -60,6 +34,14 @@ public class Blog {
         this.Author = Author;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getContent() {
         return content;
     }
@@ -68,10 +50,25 @@ public class Blog {
         this.content = content;
     }
 
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
+    }
+    public Blog(int ID, String Author, String title, String content, String imageLink) {
+        this.ID = ID;
+        this.Author = Author;
+        this.title = title;
+        this.content = content;
+        this.imageLink = imageLink;
+    }
+
     
     @Override
     public String toString() {
-        return "Blog{" + "ID=" + ID +",Author="+Author + ",title"+ title+ ",imagelink= "+imageLink+ ",content: "+ content+'}' ;
+        return "Blog{" + "ID=" + ID +",Author="+Author + ",title"+ title+",content: "+ content+ ",imagelink= "+imageLink+ '}' ;
     }
     
     

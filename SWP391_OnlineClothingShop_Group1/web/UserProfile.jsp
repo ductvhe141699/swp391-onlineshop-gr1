@@ -27,65 +27,42 @@
                 <div class="col-md-6" id="form">
                     <br><br>
                     <%-- Display username --%>
-                    <!--<h4 style="text-align: center">${sessionScope.acc.user}</h4>-->
-                    <i class="fa fa-user-circle" id="profileIcon"></i><h4 style="text-align: center">Đinh Tiến Lâm</h4>
-                    <!-- Message for notification -->
-<!--                    <c:if test="${requestScope.message ne null}">
-                        <h5>${requestScope.message}</h5>
-                    </c:if>       -->
 
-                    <%-- Display user email --%>
-                    <!--<h5>Email: ${acc.email}</h5>-->
+                    <i class="fa fa-user-circle" id="profileIcon"></i><h4 style="text-align: center">Đinh Tiến Lâm</h4>
+
                     <h5>Email: lam@gmail.com</h5>
                     <%-- Display user role --%>
                     <h5 style="display: inline-block">Role: </h5>
-                    <!--                    <c:choose>
-                                            <c:when test="${acc.isSell==1}">-->
+
                     <input type="checkbox" checked="checked" disabled="disabled" style="display: inline-block">
                     <label>Seller</label>
                     <input type="checkbox" disabled="disabled" style="display: inline-block">
                     <label>Customer</label>
-                    <!--                        </c:when>           
-                                            <c:otherwise>
-                                                <input type="checkbox" disabled="disabled" style="display: inline-block">
-                                                <label>Seller</label>
-                                                <input type="checkbox" checked="checked" disabled="disabled" style="display: inline-block">
-                                                <label>Customer</label>
-                                            </c:otherwise>
-                                        </c:choose>-->
 
-                    <%-- Display user status --%>
                     <br>
                     <h5 style="display: inline-block">Status: </h5>
-                    <!--<c:choose>-->
-                        <c:when test="${acc.status == 1}">
-                            <span class="active">Active</span>
-<!--                        </c:when> 
-                        <c:when test="${acc.status == 3}">
-                            <span class="login-facebook">Login with Facebook</span>
-                        </c:when>
-                        <c:when test="${acc.status == 4}">
-                            <span class="unverified">Unverified</span>
-                        </c:when>
-                    </c:choose>      -->
-                    <br><br>
 
-                    <%-- Link to change user password --%>
-                    <a class="btn btn-primary btn-block" href="confirm-change-password" id="link">Change password</a>
+                    <c:when test="${acc.status == 1}">
+                        <span class="active">Active</span>
 
-                    <br><br>
+                        <br><br>
 
-                    <%-- Link to view order history --%>
-                    <a class="btn btn-primary btn-block" href="viewOrder?id=${acc.id}" id="link">Your orders</a>
-                    <br><br>
+                        <%-- Link to change user password --%>
+                        <a class="btn btn-primary btn-block" href="confirm-change-password" id="link">Change password</a>
 
-                    <%-- Link to return to home page --%>
-                    <a href="productList" id="back">Back to Product List page</a>
-                    <br><br>
+                        <br><br>
+
+                        <%-- Link to view order history --%>
+                        <a class="btn btn-primary btn-block" href="viewOrder?id=${acc.id}" id="link">Your orders</a>
+                        <br><br>
+
+                        <%-- Link to return to home page --%>
+                        <a href="productList" id="back">Back to Product List page</a>
+                        <br><br>
+                        </div>
+                        <div class="col-md-3"></div>
                 </div>
-                <div class="col-md-3"></div>
             </div>
-        </div>
 
     </body>
 </html>
