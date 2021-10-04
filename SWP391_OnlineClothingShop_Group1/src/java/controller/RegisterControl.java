@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
-public class LoginControl extends HttpServlet {
+@WebServlet(name = "RegisterControl", urlPatterns = {"/register"})
+public class RegisterControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,31 +34,27 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //Lấy dữ liệu từ jsp
-       String username = request.getParameter("user");
-       String password = request.getParameter("pass");
-       //Kết nối vs DB
-       LoginDAO dao = new LoginDAO();
-       Users u = dao.login(username, password);
-       //Kiểm tra
-       if(u==null){
-            //login fail -> Đẩy về trang Login.jsp (nhập lại)
-            //Message thông báo Login sai: thay đổi giá trị của biến mess
-           request.setAttribute("mess", "login fail!");
-           //ko thì quay trở lại trang login.jsp
-           //Yêu cầu người dùng Login lại
-           request.getRequestDispatcher("Login.jsp").forward(request, response);
-           
-      }
-          else{
-           //request.getRequestDispatcher("home").forward(request, response);
-           response.sendRedirect("home");
-           
-       }
+        String user = request.getParameter("user");
+        String pass = request.getParameter("pass");
+        String re_pass = request.getParameter("repass");
+        String email = request.getParameter("email");
        
-       
-   }
-
+        if(!pass.equals(re_pass)){
+            //request.setAttribute("mess1", "password and repeat password must be same!");
+            response.sendRedirect("Login.jsp");
+        }
+        else{
+            LoginDAO dao = new LoginDAO();
+            Users u = dao.checkUserExist(user);
+            if(u == null){
+                //dc register
+                dao.register(user, pass, email);
+                response.sendRedirect("home");
+            }else
+            //day ve login
+                response.sendRedirect("Login.jsp");
+        }
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -97,5 +93,5 @@ public class LoginControl extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    }
 
-}

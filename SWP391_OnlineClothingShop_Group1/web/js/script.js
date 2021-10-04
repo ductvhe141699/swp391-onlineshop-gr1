@@ -14,3 +14,16 @@ function mySticky() {
     navbar.classList.remove("sticky");
   }
 }
+
+$(window).resize(function(){
+ 
+    // Lấy thông số
+    var width = $(window).width();
+    var height = $(window).height();
+    if (width <= 768){
+        $('.left, .right').addClass('responsive_768');
+    }
+    else{
+        $('.left, .right').removeClass('responsive_768');
+    }
+});
