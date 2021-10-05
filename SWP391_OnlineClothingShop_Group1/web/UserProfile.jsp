@@ -28,54 +28,27 @@
                     <br><br>
                     <%-- Display username --%>
 
-                    <i class="fa fa-user-circle" id="profileIcon"></i>
-  
-                    <h4 style="text-align: center">${sessionScope.acc.UserName}</h4>
+                    <i class="fa fa-user-circle" id="profileIcon"></i><h4 style="text-align: center">Đinh Tiến Lâm</h4>
 
-                     <!--Message for notification--> 
-                    <c:if test="${requestScope.message ne null}">
-                        <h5>${requestScope.message}</h5>
-                    </c:if>
-                   
-                    <h5>Email: ${acc.email}</h5>
+                    <h5>Email: lam@gmail.com</h5>
                     <%-- Display user role --%>
-                     <h5 style="display: inline-block">Role: </h5>
-                    <c:choose>
-                        <c:when test="${acc.RoleID==1}">
-                            <input type="checkbox" checked="checked" disabled="disabled" style="display: inline-block">
-                            <label>Seller</label>
-                            <input type="checkbox" disabled="disabled" style="display: inline-block">
-                            <label>Customer</label>
-                        </c:when>           
-                        <c:otherwise>
-                            <input type="checkbox" disabled="disabled" style="display: inline-block">
-                            <label>Seller</label>
-                            <input type="checkbox" checked="checked" disabled="disabled" style="display: inline-block">
-                            <label>Customer</label>
-                        </c:otherwise>
-                    </c:choose>
+                    <h5 style="display: inline-block">Role: </h5>
 
-                    <%-- Display user status --%>
+                    <input type="checkbox" checked="checked" disabled="disabled" style="display: inline-block">
+                    <label>Seller</label>
+                    <input type="checkbox" disabled="disabled" style="display: inline-block">
+                    <label>Customer</label>
+
                     <br>
                     <h5 style="display: inline-block">Status: </h5>
-                    <c:choose>
-                        <c:when test="${acc.StatusID == 1}">
-                            <span class="active">Active</span>
-                        </c:when> 
-                        <c:when test="${acc.StatusID == 2}">
-                            <span class="login-facebook">Locked</span>
-                        </c:when>
-                        <c:when test="${acc.StatusID == 3}">
-                            <span class="unverified">Gmail Login</span>
-                        </c:when>
-                        <c:when test="${acc.StatusID == 4}">
-                            <span class="unverified">Unverified</span>
-                        </c:when>
-                    </c:choose>      
-                    <br><br>
+
+                    <c:when test="${acc.status == 1}">
+                        <span class="active">Active</span>
+
+                        <br><br>
 
                         <%-- Link to change user password --%>
-                        <a class="btn btn-primary btn-block" href="ConfirmChangePassword" id="link">Change password</a>
+                        <a class="btn btn-primary btn-block" href="confirm-change-password" id="link">Change password</a>
 
                         <br><br>
 
@@ -84,7 +57,7 @@
                         <br><br>
 
                         <%-- Link to return to home page --%>
-                        <a href="" id="back">Back to Product List page</a>
+                        <a href="productList" id="back">Back to Product List page</a>
                         <br><br>
                         </div>
                         <div class="col-md-3"></div>

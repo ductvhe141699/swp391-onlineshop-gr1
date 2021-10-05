@@ -26,7 +26,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-6" id="text">
                     <br>
-                    <form action="ForgotPasswordControl">
+                    <form action="forgetPassword">
                         <h5 name="wrongEmail">${wrongEmail}</h5>
                         <h5><i class="fas fa-exclamation-triangle"></i>Please enter your Username and Email to receive Verification Code:</h5>
                         <br>
@@ -35,7 +35,7 @@
                         <button class="btn btn-primary btn-block" type="submit" value="OK" id="confirm"><i class="fa fa-envelope-open-text"></i>Confirm</button>
 
                     </form>
-                        <br><br><br><br><br><br><br><br>
+                    <br>
                 </div>
                 <div class="col-md-3"></div>
             </div>
