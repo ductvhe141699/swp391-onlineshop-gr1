@@ -1,7 +1,7 @@
 /*---------------------- GOOGLE FONTS ----------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-/*---------------------- VARIABLES CSS ----------------------*/
-:root {
+/*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+---------------------- VARIABLES CSS ----------------------
+:root {*/
 /*  --header-height: 120px ;*/
 
   /*-------------------- Colors --------------------*/
@@ -18,7 +18,7 @@
   --container-color: ;*/
 
   /*-------------------- Font and typography --------------------*/
-  --body-font: font-family: 'Poppins', sans-serif; ;
+  /*--body-font: font-family: 'Poppins', sans-serif; ;*/
 
 /*   font size  
   --big-font-size: ;
@@ -30,20 +30,20 @@
   --smaller-font-size: ;*/
 
   /*-------------------- Font weight --------------------*/
-  --font-medium: ;
-  --font-semi-bold: ;
+/*  --font-medium: ;
+  --font-semi-bold: ;*/
 
 
 
   /*-------------------- z index --------------------*/
-  --z-tooltip: 1 ;
+/*  --z-tooltip: 1 ;
   --z-fixed: 2;
-  --z-modal: 99 ;
-}
+  --z-modal: 99 ;*/
+/*}*/
 
  /*Font size for large devices*/ 
-@media screen and (min-width: 968px) {
-  :root {
+/*@media screen and (min-width: 968px) {
+  :root {*/
 /*    --big-font-size: ;
     --h1-font-size: ;
     --h2-font-size: ;
@@ -51,8 +51,8 @@
     --normal-font-size: ;
     --small-font-size: ;
     --smaller-font-size: ;*/
-  }
-}
+/*  }
+}*/
 
 
 /*-------------------- BASE --------------------*/
@@ -67,7 +67,7 @@ html{
 }
 
 body{
-    font-family: var(--body-font);
+    /*font-family: var(--body-font);*/
     padding-top: 100px;
 }
 

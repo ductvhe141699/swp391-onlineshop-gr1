@@ -185,7 +185,7 @@ footer {
     margin-bottom: 50px;
 }
 .cartegory-top p {
-    font-family: var(--main-text-font);
+    /*font-family: var(--main-text-font);*/
     margin: 0 12px;
 }
 /*----------------------------------------------- Product ----------------------------------------------*/
@@ -196,7 +196,7 @@ footer {
     margin-top: 30px;
 }
 .product-top p {
-    font-family: var(--main-text-font);
+    /*font-family: var(--main-text-font);*/
     margin: 0 12px;
     font-size: 12px;
 }
@@ -224,7 +224,7 @@ footer {
     padding-left: 20px;
 }
 .product-content-right-product-name h1 {
-    font-family: var(--main-text-font);
+    /*font-family: var(--main-text-font);*/
     font-size: 16px;
 }
 .product-content-right-product-name p {
@@ -235,7 +235,7 @@ footer {
     margin: 12px 0;
     font-size: 20px;
     font-weight: bold;
-    font-family: var(--main-text-font);
+    /*font-family: var(--main-text-font);*/
 }
 .product-content-right-product-color img {
     width: 30px;

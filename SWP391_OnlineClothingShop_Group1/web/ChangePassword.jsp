@@ -27,11 +27,13 @@
                 <div class="col-md-6" id="text">
                     <br>
                     <h1>Change Your Password</h1>
-
+<!--                    <c:if test="${requestScope.message ne null}">
+                        <p>${requestScope.message}</p>
+                    </c:if>-->
                     <br><br>
                     <!-- Password change form -->
 
-                    <form action="change-password" method="POST">
+                    <form action="ChangedPasswordControl" method="POST">
                         <input type="password" id="pass" name="pass" placeholder="Old Password" class="form-control">
                         <br><br>
                         <input type="password" id="new-pass" name="new-pass" placeholder="Enter new Password" class="form-control">

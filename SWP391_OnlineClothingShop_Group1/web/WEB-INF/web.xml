@@ -28,6 +28,18 @@
         <servlet-name>error</servlet-name>
         <servlet-class>view.error</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangedPasswordControl</servlet-name>
+        <servlet-class>controller.ChangedPasswordControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConfirmChangePassword</servlet-name>
+        <servlet-class>controller.ConfirmChangePassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfileControl</servlet-name>
+        <servlet-class>controller.ProfileControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -54,6 +66,18 @@
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangedPasswordControl</servlet-name>
+        <url-pattern>/ChangedPasswordControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmChangePassword</servlet-name>
+        <url-pattern>/ConfirmChangePassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfileControl</servlet-name>
+        <url-pattern>/ProfileControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

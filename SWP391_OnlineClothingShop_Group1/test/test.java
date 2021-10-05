@@ -10,14 +10,14 @@
  *
  * @author BEAN
  */
-public class test {
-    public static void main(String[] args) {
-        ProductDAO dao = new ProductDAO();
-        ArrayList<Product> list = dao.getAllProduct();
-       
-        for (Product product : list) {
-            System.out.println(product);
-        }
-        
-    }
-}
+//public class test {
+//    public static void main(String[] args) {
+//        ProductDAO dao = new ProductDAO();
+//        ArrayList<Product> list = dao.getAllProduct();
+//       
+//        for (Product product : list) {
+//            System.out.println(product);
+//        }
+//        
+//    }
+//}

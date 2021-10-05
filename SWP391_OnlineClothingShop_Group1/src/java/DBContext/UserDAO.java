@@ -9,6 +9,7 @@ import entity.Users;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,17 +69,16 @@ public class UserDAO {
         return null;
     }
       
-      public Account getAccountByUsername(String userName) {
+      public Users getUsersByUsername(String userName) {
         String query = "select * from Users where Username = ?";
         try {
-            ps = connection.prepareStatement(query);
+            ps = conn.prepareStatement(query);
             ps.setString(1, userName);
             rs = ps.executeQuery();
             while (rs.next()) {
-                return new Account(rs.getInt(1), rs.getString(2),
+                return new Users(rs.getInt(1), rs.getString(2),
                         rs.getString(3), rs.getString(4),
-                        rs.getString(5), rs.getInt(6),
-                        rs.getInt(7), rs.getInt(8));
+                        rs.getInt(5), rs.getInt(6));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,12 +87,12 @@ public class UserDAO {
     }
      
      public boolean updatePassword(String id, String newPassword) {
-        Users toChange = getAccountByID(id);
+        Users toChange = getUsersByID(id);
         String query = "UPDATE Users\n"
                 + "SET Password = ?\n"
                 + "WHERE UserID = ?";
         try {
-            ps = connection.prepareStatement(query);
+            ps = conn.prepareStatement(query);
             ps.setString(1, newPassword);
             ps.setString(2, id);
             ps.executeUpdate();
@@ -102,5 +102,55 @@ public class UserDAO {
         }
         return false;
     }
+     
+     public boolean updateStatus(int id, int status) {
+        String query = "Update Users set StatusID = ? where UserID = ?";
+        int check = 0;
+
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setObject(2, id);
+            ps.setObject(1, status);
+
+            check = ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
+        return check > 0;
+    }
+     
+     public int countAllAccount() {
+        String query = "select count(*) from Users";
+        try {
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+     
+     public int checkForgetPassword(String username, String email) {
+        String query = "select UserID from Users where Username = ? AND email = ?";
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setString(1, username);
+            ps.setString(2, email);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+     
+     
 }
+
 
