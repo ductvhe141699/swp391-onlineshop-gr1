@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- FOOTER --%>
-  <footer class="text-white text-center text-lg-start" style="background-color: #23242a;">
+  <footer class="text-white text-center text-lg-start" style="background-color: #23242a;" id="footer">
     <!-- Grid container -->
     <div class="container p-4">
       <!--Grid row-->
