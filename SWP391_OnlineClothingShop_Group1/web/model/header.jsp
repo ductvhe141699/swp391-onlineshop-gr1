@@ -128,7 +128,7 @@
         <div class="container-fluid">
           <ul class="navbar-nav offset-2 me-auto mb-2 mb-lg-0">
             <li class="nav-item me-4">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/home">Home</a>
             </li>
             <li class="nav-item dropdown me-4">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -173,3 +173,5 @@
         </div>
       </nav>
 <%-- NAV --%>
+<%-- Top Btn --%>
+<button onclick="topFunction()" id="myTBTN" title="Go to top"><i class="fas fa-arrow-up"></i></button>
