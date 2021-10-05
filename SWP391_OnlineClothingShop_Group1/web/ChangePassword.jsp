@@ -41,7 +41,7 @@
                         <hr>
                         <button class="btn btn-primary btn-block" type="submit" style="width: 200px"><i class="fa fa-check-circle"></i>Confirm</button>
                     </form>
-                    <br>
+                    <br><br><br><br><br><br><br><br><br>
                 </div>
                 <div class="col-md-3"></div>
             </div>

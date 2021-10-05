@@ -35,7 +35,7 @@
                         <button class="btn btn-primary btn-block" type="submit" value="OK" id="confirm"><i class="fa fa-envelope-open-text"></i>Confirm</button>
 
                     </form>
-                    <br>
+                        <br><br><br><br><br><br><br><br>
                 </div>
                 <div class="col-md-3"></div>
             </div>
