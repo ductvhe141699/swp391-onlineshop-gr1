@@ -30,6 +30,7 @@
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
         <link rel="stylesheet" type="text/css" href="./css/queries.css" />
+        <link rel="stylesheet" type="text/css" href="./css/homepage.css" />
         <title>Home Page</title>
     </head>
     <body>
