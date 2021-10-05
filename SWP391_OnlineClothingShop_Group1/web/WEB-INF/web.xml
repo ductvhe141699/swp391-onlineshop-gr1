@@ -40,6 +40,14 @@
         <servlet-name>ProfileControl</servlet-name>
         <servlet-class>controller.ProfileControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ForgotPasswordControl</servlet-name>
+        <servlet-class>controller.ForgotPasswordControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ForgotChangePasswordControl</servlet-name>
+        <servlet-class>controller.ForgotChangePasswordControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -78,6 +86,14 @@
     <servlet-mapping>
         <servlet-name>ProfileControl</servlet-name>
         <url-pattern>/ProfileControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgotPasswordControl</servlet-name>
+        <url-pattern>/ForgotPasswordControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgotChangePasswordControl</servlet-name>
+        <url-pattern>/ForgotChangePasswordControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -6,7 +6,6 @@
 package controller;
 
 import DBContext.UserDAO;
-import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,12 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import util.SendEmail;
 
 /**
  *
  * @author Admin
  */
-public class ChangedPasswordControl extends HttpServlet {
+public class ForgotPasswordControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,40 +34,36 @@ public class ChangedPasswordControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try{
-           // Get the account from session
-            HttpSession session = request.getSession();
-            Users accountChangePass = (Users) session.getAttribute("acc");
+            String username = request.getParameter("username");
+            String email = request.getParameter("email");
 
-            // Get old password, new password and repeat of new password           
-            String oldPassword = request.getParameter("pass");
-            String newPassword = request.getParameter("new-pass");
-            String repeatNewPassword = request.getParameter("repeat-new-pass");
-            UserDAO dao = new UserDAO();
-
-            // Get the account from database
-            Users a = dao.getUsersByID(String.valueOf(accountChangePass.getUserID()));
-
-            if (a.getPassword().equals(oldPassword)
-                    && newPassword.equals(repeatNewPassword)) {
-                // User enter old password, new password and re-enter new pasword correctly
-                // => Do update
-                dao.updatePassword(String.valueOf(accountChangePass.getUserID()), newPassword);
-                // Redirect to profile, notify successful 
-                request.setAttribute("message", "Changed password successfully!");
-                request.getRequestDispatcher("ProfileControl").forward(request, response);
-
+            //Check if user has entered correct information
+            UserDAO UserDAO = new UserDAO();
+            int checkID = UserDAO.checkForgetPassword(username, email);
+            if (checkID == 0) {
+                request.setAttribute("wrongEmail", "You have input wrong Email or wrong Username! Please try again");
+                request.getRequestDispatcher("ForgetPass.jsp").forward(request, response);
             } else {
-                // User enter old password, new password and re-enter new pasword incorrect
-                // => No update
-                request.setAttribute("message", "Fail to change password");
-                request.setAttribute("compare", "CorrectCode.");
-                // Redirect to form to do again
-                request.getRequestDispatcher("ChangePassword.jsp").forward(request, response);
-            }
+                HttpSession session = request.getSession();
 
+                //Send email with confirmation code to reset password
+                String confirmCode = util.GenerateRandomString.generateString(10);
+                String subject = "Confirmation code for account";
+                String message = "Your confirmation code is: " + confirmCode;
+                new SendEmail(email, subject, message);
+
+                //Set the confirmation code and UserID to the Session
+                session.setAttribute("userID", checkID);
+                session.setAttribute("code", confirmCode);
+                //Set email to JSP
+                request.setAttribute("email", email);
+                request.getRequestDispatcher("ResetPassword.jsp").forward(request, response);
+            }
         } catch (Exception e) {
             response.sendRedirect("error.html");
-        }    }
+        }
+
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -95,7 +91,29 @@ public class ChangedPasswordControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            // Get the confirm code from session
+            HttpSession session = request.getSession();
+            String accountConfirmCode = (String) session.getAttribute("code");
+
+            // Get the confirm code from user
+            String userEnteredCode = request.getParameter("code");
+
+            // Compare the 2 code
+            boolean compare = accountConfirmCode.equals(userEnteredCode);
+
+            if (compare) {
+                // The 2 codes are identical, forward to change password
+                request.setAttribute("compare", compare);
+            } else {
+                // The 2 codes are not identical, notify wrong code, user re-enter
+                request.setAttribute("message", "Wrong Code!");
+            }
+            request.getRequestDispatcher("ResetPassword.jsp").forward(request, response);
+        } catch (Exception e) {
+            // Redirect to error page if exception happend
+            response.sendRedirect("error.html");
+        }
     }
 
     /**

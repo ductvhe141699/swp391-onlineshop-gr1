@@ -28,16 +28,16 @@
                 <div class="col-md-6" id="text">
                     <br>
                     <h1>Reset Your Password</h1>
-                    <!-- Message for notification -->
-<!--                    <c:if test="${requestScope.message ne null}">
+                     <!--Message for notification--> 
+                    <c:if test="${requestScope.message ne null}">
                         <p>${requestScope.message}</p>
-                    </c:if> -->
+                    </c:if> 
                     <br>
                     <!-- Input code form -->
                     <c:if test="${requestScope.compare eq null}">
                         <p id="noti"><i class="fas fa-bell fa-spin fa-2x"></i>We have sent a code to your email at ${email}<br> 
                             Please enter your code down below to reset your password </p>
-                        <form action="forgetPassword" method="POST">
+                        <form action="ForgotPasswordControl" method="POST">
                             <input type="text" id="code" name="code" placeholder="Your Code" class="form-control">
                             <hr>
                             <button class="btn btn-primary btn-block" type="submit" value="OK" id="confirm"><i class="fa fa-envelope-open-text"></i>Confirm</button>
@@ -46,7 +46,7 @@
 
                     <!-- Password change form -->
                     <c:if test="${requestScope.compare ne null}">
-                        <form action="Forget_ChangePassword" method="POST">
+                        <form action="ForgotChangePasswordControl" method="POST">
                             <label for="pass">Enter new password:</label>
                             <input type="password" id="new-pass" name="new-pass" placeholder="New Password">
                             <br><br>

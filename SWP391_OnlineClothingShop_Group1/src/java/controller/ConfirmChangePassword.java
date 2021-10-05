@@ -30,17 +30,11 @@ public class ConfirmChangePassword extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try{
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ConfirmChangePassword</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ConfirmChangePassword at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+             response.sendRedirect("ChangePassword.jsp");
+        } catch (Exception e) {
+            response.sendRedirect("error.html");
         }
     }
 
@@ -70,7 +64,7 @@ public class ConfirmChangePassword extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
     }
 
     /**

@@ -27,9 +27,9 @@
                 <div class="col-md-6" id="text">
                     <br>
                     <h1>Change Your Password</h1>
-<!--                    <c:if test="${requestScope.message ne null}">
+                    <c:if test="${requestScope.message ne null}">
                         <p>${requestScope.message}</p>
-                    </c:if>-->
+                    </c:if>
                     <br><br>
                     <!-- Password change form -->
 
@@ -42,7 +42,6 @@
                         <button class="btn btn-primary btn-block" type="submit" style="width: 200px"><i class="fa fa-check-circle"></i>Confirm</button>
                     </form>
                     <br>
-
                 </div>
                 <div class="col-md-3"></div>
             </div>
