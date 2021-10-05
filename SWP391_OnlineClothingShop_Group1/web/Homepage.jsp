@@ -209,7 +209,7 @@
         </div>
     </section>
 
-    <section class="brand mt-3 text-center">
+    <section class="brand mt-3 text-center pb-5">
         <div class="title text-center">
             <h4>Brands</h4>
         </div>
