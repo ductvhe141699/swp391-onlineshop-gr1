@@ -20,7 +20,7 @@ body{
     border-radius: 20px;
 }
 #form{
-    /*background-image: linear-gradient(to bottom right, #45aaf2, #2bcbba );*/
+    background-image: linear-gradient(to bottom right, #45aaf2, #2bcbba );
     background: #fff;
     border-radius: 20px;
 }
@@ -40,7 +40,7 @@ button{
     background-color: #ff523b;
     color: white;
     border-radius: 10px;
-    border-color: #00f79c;
+    border-color: bisque;
     text-decoration: none;
     padding: 10px;
     text-align: center;
@@ -72,4 +72,7 @@ h5{
     font-size: initial;
     font-weight: 600;
     padding: 2px;
+}
+#image{
+    opacity: 0.8; filter: alpha(opacity=50);
 }
