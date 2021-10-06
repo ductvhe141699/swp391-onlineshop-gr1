@@ -40,7 +40,7 @@ public class BlogDetail extends HttpServlet {
             request.setAttribute("blog", blog);
             request.getRequestDispatcher("BlogDetail.jsp").forward(request, response);
         } catch (Exception e) {
-            response.sendRedirect("Error.jsp");
+            response.sendRedirect("error.html");
         }
     }
 

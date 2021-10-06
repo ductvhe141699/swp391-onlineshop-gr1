@@ -24,6 +24,10 @@
         <servlet-name>BlogManage</servlet-name>
         <servlet-class>controller.BlogManage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BlogDetail</servlet-name>
+        <servlet-class>controller.BlogDetail</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -46,6 +50,10 @@
     <servlet-mapping>
         <servlet-name>BlogManage</servlet-name>
         <url-pattern>/BlogManage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BlogDetail</servlet-name>
+        <url-pattern>/BlogDetail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
