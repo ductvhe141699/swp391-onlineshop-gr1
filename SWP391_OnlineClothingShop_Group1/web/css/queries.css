@@ -7,14 +7,16 @@
     .searchbar{
         width: 75%;
     }
-
-
+    .categories .categories_large_item img {
+        width: 100%; 
+        object-fit:cover ;
+    }
 }
 /* LG */
 @media all and (min-width: 992px) {
     body{
         padding-top: 0px;
-    };
+    }
     .searchbar{
         margin-top: 0px;
         width: 50%;
@@ -23,9 +25,8 @@
         height: 100px;
     }
     .categories .categories_large_item img {
-        width: 100%;
-        object-fit: cover;
-        height: 715px;
+        width: 100%; 
+        object-fit:cover ;
     }
 }
 /* XL */

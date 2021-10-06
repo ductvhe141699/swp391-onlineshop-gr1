@@ -67,7 +67,7 @@ p{
     margin: 25px 0;
 
 }
-.btn{
+.myBtn{
     display: inline-block;
     background: #ff523b;
     color: #fff;
@@ -76,7 +76,7 @@ p{
     border-radius: 30px;
     transition: background 0.5s;    
 }
-.btn:hover{
+.myBtn:hover{
     background: #563434;
 
 }
@@ -172,7 +172,7 @@ h4{
     cursor: pointer;
     display: inline;
 }
-.form-btn{
+.form-myBtn{
     display: inline-block;
 }
 .form-container form{
@@ -190,13 +190,13 @@ form input{
     padding: 0 10px;
     border: 1px solid #ccc;
 }
-form .btn{
+form .myBtn{
     width: 100%;
     border: none;
     cursor: pointer;
     margin: 10px 0;
 }
-form .btn:focus{
+form .myBtn:focus{
     outline: none;
 }
 #LoginForm{
@@ -217,3 +217,4 @@ form a{
     transform: translateX(0px);
     transition: transform 1s;
 }
+

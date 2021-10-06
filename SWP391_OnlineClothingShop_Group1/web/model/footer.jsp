@@ -7,47 +7,96 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- FOOTER --%>
-<footer class="text-center text-lg-start bg-dark text-white pt-4" id="footer">
-    <div class="container text-center text-md-start">
-      <div class="row">
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <h6 class="text-uppercase fw-bold mb-4"><i class="fas fa-gem me-3"></i>HTSHOP</h6>
-          <figure class="text-center">
-            <blockquote class="blockquote">
-              <p>We provide top-notch quality product with a great price.</p>
-            </blockquote>
-            <figcaption class="blockquote-footer">
-              Placeholder <cite title="Source Title">HTCorp. CEO</cite>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-md-5 col-lg-4 col-xl-4 mx-auto mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-comment-alt me-3"></i>Feedback
-          </h6>
-            <form action="AddFeedbackServlet" method="post">
-            <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="name" name="feedback_name" placeholder="Name">
-            </div>
-            <div class="mb-3">
-              <label for="feedback" class="form-label">Feedback</label>
-              <textarea class="form-control" id="feedback" maxlength="255" name="feedback_content" rows="3"></textarea>
-            </div>
-            <input type="submit" value="Send"/>
-          </form>
-        </div>
+  <footer class="text-white text-center text-lg-start" style="background-color: #23242a;" id="footer">
+    <!-- Grid container -->
+    <div class="container p-4">
+      <!--Grid row-->
+      <div class="row mt-4">
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-4"><i class="fas fa-tshirt"></i>&nbsp;About shop</h5>
 
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-address-book me-3"></i>Contact
-          </h6>
-          <p><i class="fas fa-home me-3"></i>Km29 Đại lộ Thăng Long, huyện Thạch Thất, Hà Nội</p>
-          <p><i class="fas fa-envelope me-3"></i>htshop@gmail.com</p>
-          <p><i class="fas fa-phone me-3"></i> +84 123456789</p>
-          <p><i class="fas fa-print me-3"></i> +84 123456789</p>
+          <p>
+            Our purpose at Shope is to empower people to lead bold and full lives. 
+          </p>
+
+          <p>
+            We believe that if you look good, you feel good. And when you feel good you can do good for others around you. Shope brings you a wide range of trendy shoes, beautiful scarves, and statement-making jewelry, all at affordable prices to make them accessible to you. 
+          </p>
+
+          <div class="mt-4">
+            <!-- Facebook -->
+            <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-facebook-f"></i></a>
+            <!-- Dribbble -->
+            <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-instagram"></i></a>
+            <!-- Twitter -->
+            <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-twitter"></i></a>
+            <!-- Google + -->
+            <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-google"></i></a>
+            <!-- Linkedin -->
+          </div>
         </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-4 pb-1"><i class="fas fa-search"></i>&nbsp;Search product</h5>
+          <form>
+            <div class="form-floating mb-4">
+              <input type="text" id="searchbarFooter" class="form-control" placeholder="Search Something">
+              <label for="searchbarFooter" style="color:black;">Search</label>
+            <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 48.8px;"></div><div class="form-notch-trailing"></div></div></div>
+          </form>
+          <ul class="fa-ul" style="margin-left: 1.65em;">
+            <li class="mb-3">
+              <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">Km29 Đại lộ Thăng Long, huyện Thạch Thất, Hà Nội</span>
+            </li>
+            <li class="mb-3">
+              <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">shope@gmail.com</span>
+            </li>
+            <li class="mb-3">
+              <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+84 123456789</span>
+            </li>
+            <li class="mb-3">
+              <span class="fa-li"><i class="fas fa-print"></i></span><span class="ms-2">+84 123456789</span>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-4"><i class="far fa-clock"></i>&nbsp;Opening hours</h5>
+
+          <table class="table text-center text-white">
+            <tbody class="font-weight-normal">
+              <tr>
+                <td>Mon - Thu:</td>
+                <td>8am - 9pm</td>
+              </tr>
+              <tr>
+                <td>Fri - Sat:</td>
+                <td>8am - 12pm</td>
+              </tr>
+              <tr>
+                <td>Sunday:</td>
+                <td>9am - 10pm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--Grid column-->
       </div>
+      <!--Grid row-->
     </div>
-</footer>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2021 Copyright:
+      <a class="text-white" href="#">SWP391 - GRP1</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+<!-- End of .container -->
 <%-- FOOTER --%>

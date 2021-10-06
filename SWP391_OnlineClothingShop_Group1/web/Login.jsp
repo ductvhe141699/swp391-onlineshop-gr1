@@ -52,12 +52,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-2">
-                    <img src="images/image1.png" width="80%">
+                    <img src="./resources/img/anhlogin.png" width="80%">
                 </div>
 
                 <div class="col-2">
                     <div class="form-container">
-                        <div class="form-btn">
+                        <div class="form-myBtn">
                             <!---click chuyen login sang register---->
                             <span onclick="login()">Login</span>
                            
@@ -71,7 +71,7 @@
                              
                             <input name="user" type="text" placeholder="Username">
                             <input name ="pass" type="password" placeholder="Password">
-                            <button type="submit" class="btn">Login</button>
+                            <button type="submit" class="myBtn">Login</button>
                             <h4 class="text-danger">${mess}</h4>
                             <a href="">Forgot password</a>
                         </form>
@@ -81,7 +81,7 @@
                             <input name="email" type="email" placeholder="Email">
                             <input name="pass" type="password" placeholder="Password">
                             <input name="repass" type="password" placeholder="Repeat Password">
-                            <button type="submit" class="btn">Register</button>
+                            <button type="submit" class="myBtn">Register</button>
                              <h4 class="text-danger">${mess1}</h4>
                         </form>
 

@@ -1,4 +1,10 @@
+<%-- 
+    Document   : error
+    Created on : Oct 4, 2021, 2:39:32 PM
+    Author     : SAKURA
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,14 +13,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+        
 	<title>404</title>
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
 
 	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="css/error.css" />
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/error.css" />
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,7 +41,7 @@
 			</div>
 			<h2>Page not found</h2>
 			<p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
-			<a href="home">home page</a>
+			<a href="${pageContext.request.contextPath}/home">home page</a>
 		</div>
 	</div>
 </body>

@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -28,11 +28,12 @@
             referrerpolicy="no-referrer"
             />
         <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/queries.css" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <link rel="stylesheet" type="text/css" href="./css/queries.css" />
+        <link rel="stylesheet" type="text/css" href="./css/homepage.css" />
         <title>Home Page</title>
     </head>
-    <body style="min-height: 2000px">
+    <body>
         <%@include file="model/header.jsp" %>
 
         <!-- SLIDER -->
@@ -49,28 +50,28 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="./resources/img/banner/nike.png" class="d-block w-100" alt="..." />
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>
-                                Some representative placeholder content for the first slide.
+                        <div class="carousel-caption d-none d-md-block text-center slider-text ">
+                            <h3 class="black-font" >NIKE</h3>
+                            <p class="black-font">
+                               Just Do It !
                             </p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="./resources/img/banner/gucci.png" class="d-block w-100" alt="..." />
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
+                        <div class="carousel-caption d-none d-md-block text-center slider-text">
+                            <h3>GUCCI</h3>
                             <p>
-                                Some representative placeholder content for the second slide.
+                              We go beyond just great !
                             </p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="./resources/img/banner/chanel.jpg" class="d-block w-100" alt="..." />
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
+                        <div class="carousel-caption d-none d-md-block text-center slider-text">
+                            <h3>Chanel</h3>
                             <p>
-                                Some representative placeholder content for the third slide.
+                               I don’t do fashion. I am fashion 
                             </p>
                         </div>
                     </div>
@@ -97,10 +98,10 @@
                 <div class="row">
                     <div class="col-lg-6 p-0">
                         <div class="categories_item categories_large_item">
-                            <img src="./resources/img/Categories/category-1.jpg" alt="" class="img-fluid">
+                            <img src="./resources/img/Categories/categories-1.png" alt="" class="img-fluid">
                             <div class="categories_text">
-                                <h1> fashion</h1>
-                                <p>BEAN</p>
+                                <h1> Fashion</h1>
+                                <p>in fall <span>2021</span></p>
                                 <a href="#">Buy now</a>
                             </div>
                         </div>
@@ -110,40 +111,37 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12 p-0">
                                 <div class="categories_item">
-                                    <img src="./resources/img/Categories/category-2.jpg" alt="" class="img-fluid">
+                                    <img src="./resources/img/Categories/categories-2.png" alt="" class="img-fluid">
                                     <div class="categories_text">
-                                        <h4> fashion</h4>
-                                        <p>358 items</p>
+                                        <h4> Fashion</h4>
                                         <a href="#">Buy now</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12 p-0">
                                 <div class="categories_item">
-                                    <img src="./resources/img/Categories/category-2.jpg" alt="" class="img-fluid">
+                                    <img src="./resources/img/Categories/categories-3.png" alt="" class="img-fluid">
                                     <div class="categories_text">
-                                        <h4> fashion</h4>
-                                        <p>358 items</p>
+                                        <h4> Fashion</h4>
                                         <a href="#">Buy now</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12 p-0">
                                 <div class="categories_item">
-                                    <img src="./resources/img/Categories/category-1.jpg" alt="" class="img-fluid">
+                                    <img src="./resources/img/Categories/categories-4.png" alt="" class="img-fluid">
                                     <div class="categories_text">
-                                        <h4> fashion</h4>
-                                        <p>358 items</p>
+                                        <h4> Fashion</h4>
                                         <a href="#">Buy now</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12 p-0">
                                 <div class="categories_item">
-                                    <img src="./resources/img/Categories/category-2.jpg" alt="" class="img-fluid">
+                                    <img src="./resources/img/Categories/categories-5.png" alt="" class="img-fluid">
                                     <div class="categories_text">
-                                        <h4> fashion</h4>
-                                        <p>358 items</p>
+                                        <h4> Fashion</h4>
+                                      
                                         <a href="#">Buy now</a>
                                     </div>
                                 </div>
@@ -167,8 +165,8 @@
                                 <c:forEach var="o" items="${listProduct}">
                                     <div class="col-lg-3 col-md-4 col-sm-6">
                                         <div class="product_item">
-                                            <div class="product_item_pic">
-                                                <img src="${o.url}" alt="">
+                                            <div class="product_item_pic text-center">
+                                                <img src="./resources/img/products/${o.url}" alt="" class="product-img">
                                                 <ul class="product_hover">
                                                     <li><a href="#"><i class="fa fa-arrows-alt"></i></a></li>
                                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -212,7 +210,7 @@
         </div>
     </section>
 
-    <section class="brand mt-3 text-center">
+    <section class="brand mt-3 text-center pb-5">
         <div class="title text-center">
             <h4>Brands</h4>
         </div>
