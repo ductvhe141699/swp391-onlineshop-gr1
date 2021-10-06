@@ -30,7 +30,7 @@
     </servlet>
     <servlet>
         <servlet-name>error</servlet-name>
-        <servlet-class>view.error</servlet-class>
+        <servlet-class>controller.error</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
