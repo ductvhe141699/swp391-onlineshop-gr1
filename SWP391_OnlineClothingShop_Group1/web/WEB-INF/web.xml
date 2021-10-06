@@ -25,14 +25,17 @@
         <servlet-class>controller.BlogManage</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
         <servlet-name>BlogDetail</servlet-name>
         <servlet-class>controller.BlogDetail</servlet-class>
-=======
-        <servlet-name>error</servlet-name>
-        <servlet-class>controller.error</servlet-class>
->>>>>>> 75d75cb5fcc6141a62f1972f3c9abe8f79aa4a50
     </servlet>
+    <servlet>
+        <servlet-name>error</servlet-name>
+        <servlet-class>view.error</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>error</servlet-name>
+        <url-pattern>/error</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -57,13 +60,8 @@
         <url-pattern>/BlogManage</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< HEAD
         <servlet-name>BlogDetail</servlet-name>
         <url-pattern>/BlogDetail</url-pattern>
-=======
-        <servlet-name>error</servlet-name>
-        <url-pattern>/error</url-pattern>
->>>>>>> 75d75cb5fcc6141a62f1972f3c9abe8f79aa4a50
     </servlet-mapping>
     <session-config>
         <session-timeout>
