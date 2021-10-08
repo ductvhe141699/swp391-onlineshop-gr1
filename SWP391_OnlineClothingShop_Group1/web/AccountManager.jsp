@@ -40,8 +40,8 @@
                                     <tbody>
                                     <c:forEach items="${list}" var="o">
                                         <tr>
-                                            <td class="text-center">o.UserID</td>
-                                            <td class="text-center">o.UserName</td>
+                                            <td class="text-center">${o.userID}</td>
+                                            <td class="text-center">${o.userName}</td>
                                             <td class="text-center">
                                         <c:if test="${o.RoleID==1}">
                                         <span class="label label-default">Seller</span>

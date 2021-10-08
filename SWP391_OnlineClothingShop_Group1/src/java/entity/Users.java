@@ -10,39 +10,40 @@ package entity;
  * @author Duy Manh
  */
 public class Users {
-    private int UserID;
-    private String UserName;
+
+    private int userID;
+    private String userName;
     private String password;
     private String email;
-    private int RoleID;
-    private int StatusID;
+    private int roleID;
+    private int statusID;
 
     public Users() {
     }
 
-    public Users(int UserID, String UserName, String password, String email, int RoleID, int StatusID) {
-        this.UserID = UserID;
-        this.UserName = UserName;
+    public Users(int userID, String userName, String password, String email, int roleID, int statusID) {
+        this.userID = userID;
+        this.userName = userName;
         this.password = password;
         this.email = email;
-        this.RoleID = RoleID;
-        this.StatusID = StatusID;
+        this.roleID = roleID;
+        this.statusID = statusID;
     }
 
     public int getUserID() {
-        return UserID;
+        return userID;
     }
 
-    public void setUserID(int UserID) {
-        this.UserID = UserID;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
-    public void setUserName(String UserName) {
-        this.UserName = UserName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -62,25 +63,25 @@ public class Users {
     }
 
     public int getRoleID() {
-        return RoleID;
+        return roleID;
     }
 
-    public void setRoleID(int RoleID) {
-        this.RoleID = RoleID;
+    public void setRoleID(int roleID) {
+        this.roleID = roleID;
     }
 
     public int getStatusID() {
-        return StatusID;
+        return statusID;
     }
 
-    public void setStatusID(int StatusID) {
-        this.StatusID = StatusID;
+    public void setStatusID(int statusID) {
+        this.statusID = statusID;
     }
 
     @Override
     public String toString() {
-        return "Users{" + "UserID=" + UserID + ", UserName=" + UserName + ", password=" + password + ", email=" + email + ", RoleID=" + RoleID + ", StatusID=" + StatusID + '}';
+        return "Users{" + "userID=" + userID + ", userName=" + userName + ", password=" + password + ", email=" + email + ", roleID=" + roleID + ", statusID=" + statusID + '}';
     }
     
-    
+
 }
