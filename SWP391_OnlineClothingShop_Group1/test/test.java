@@ -2,6 +2,7 @@
 import DBContext.UserDAO;
 import SMTP.GmailAPI;
 import entity.Users;
+import java.util.List;
 import javax.mail.MessagingException;
 
 /*
@@ -9,23 +10,19 @@ import javax.mail.MessagingException;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author BEAN
  */
 public class test {
+
     public static void main(String[] args) throws MessagingException {
-        UserDAO d= new UserDAO();
-//        int i = d.checkExitsEmail("kcurromj@mayoclinic.com");
-//        System.out.println(i);
-        int i = 1 ; 
-        if(i!=0){
-            System.out.println(i);
+        UserDAO userDAO = new UserDAO();
+        List<Users> listAccount = userDAO.getAllUsers();
+        for (Users users : listAccount) {
+            System.out.println(users);
         }
-                
-        
-        
+
     }
-    
+
 }

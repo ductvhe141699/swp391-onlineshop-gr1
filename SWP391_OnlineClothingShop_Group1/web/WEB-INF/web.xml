@@ -32,6 +32,10 @@
         <servlet-name>error</servlet-name>
         <servlet-class>controller.error</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AccountManagerControl</servlet-name>
+        <servlet-class>controller.AccountManagerControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -62,6 +66,10 @@
     <servlet-mapping>
         <servlet-name>BlogDetail</servlet-name>
         <url-pattern>/BlogDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccountManagerControl</servlet-name>
+        <url-pattern>/AccountManagerControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
