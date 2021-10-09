@@ -37,7 +37,7 @@
                 <form method="GET" action="${pageContext.request.contextPath}/product">
                 <input value="0" type="hidden" name="page">
                 <div class="form-floating mb-2">
-                    <input type="text" id="searchbarProduct" class="form-control" placeholder="Search Something" name="query">
+                    <input type="text" id="searchbarProduct" class="form-control" placeholder="Search Something" name="query" value="${query}">
                     <label for="searchbarProduct" style="color:black;">Product name</label>
                 </div>
                 <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -52,7 +52,7 @@
                         <div class="accordion-body">
                             <ul class="list-group-flush">
                                 <li class="list-group-item ps-4">
-                                  <input class="form-check-input" type="radio" name="subcategory" id="subcategory0" value="0" checked>
+                                  <input class="form-check-input" type="radio" name="subcategory" id="subcategory0" value="0" ${subcategory==0?'checked':''}>
                                   <label class="form-check-label" for="subcategory0">
                                     All category 
                                   </label>
@@ -88,7 +88,7 @@
                         <div class="accordion-body">
                           <ul class="list-group-flush">
                               <li class="list-group-item">
-                                <input class="form-check-input" type="radio" name="brand" id="brand0" value="0" checked>
+                                <input class="form-check-input" type="radio" name="brand" id="brand0" value="0" ${brand==0?'checked':''}>
                                 <label class="form-check-label" for="brand0">
                                   All brand
                                 </label>
@@ -123,37 +123,37 @@
                         <div class="accordion-body">
                           <ul class="list-group-flush">
                             <li class="list-group-item">
-                              <input class="form-check-input" type="radio" name="price" id="price0" value="0" checked>
+                              <input class="form-check-input" type="radio" name="price" id="price0" value="0" ${price==0?'checked':''}>
                               <label class="form-check-label" for="price0">
                                 All price range
                               </label>
                             </li>
                             <li class="list-group-item">
-                              <input class="form-check-input" type="radio" name="price" value="1" id="price1">
+                              <input class="form-check-input" type="radio" name="price" value="1" id="price1" ${price==1?'checked':''}>
                               <label class="form-check-label" for="price1">
                                 0-100.000
                               </label>
                             </li>
                             <li class="list-group-item">
-                              <input class="form-check-input" type="radio" name="price" value="2" id="price2">
+                              <input class="form-check-input" type="radio" name="price" value="2" id="price2" ${price==2?'checked':''}>
                               <label class="form-check-label" for="price2">
                                 100.000-500.000
                               </label>
                             </li>
                             <li class="list-group-item">
-                              <input class="form-check-input" type="radio" name="price" value="3" id="price3">
+                              <input class="form-check-input" type="radio" name="price" value="3" id="price3" ${price==3?'checked':''}>
                               <label class="form-check-label" for="price3">
                                 500.000-1.000.000
                               </label>
                             </li>
                             <li class="list-group-item">
-                              <input class="form-check-input" type="radio" name="price" value="4" id="price4">
+                              <input class="form-check-input" type="radio" name="price" value="4" id="price4" ${price==4?'checked':''}>
                               <label class="form-check-label" for="price4">
                                 1.000.000-5.000.000
                               </label>
                             </li>
                             <li class="list-group-item">
-                              <input class="form-check-input" type="radio" name="price" value="5" id="price5">
+                              <input class="form-check-input" type="radio" name="price" value="5" id="price5" ${price==5?'checked':''}>
                               <label class="form-check-label" for="price5">
                                 >5.000.000
                               </label>
@@ -165,8 +165,8 @@
                   </div>
                   <!-- PRICE -->
                   <!-- SUBMIT PARA -->
-                  <input value="0" type="hidden" name="sort-type">
-                  <input value="0" type="hidden" name="sort-mode">
+                  <input value="0" type="hidden" name="sortType">
+                  <input value="0" type="hidden" name="sortMode">
                   <div class="d-grid gap-2 my-2">
                     <input class="btn btn-primary-custom" type="submit" value="Find product"/>
                   </div>

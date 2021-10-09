@@ -67,7 +67,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                    <li><h6 class="dropdown-header">Category 1</h6></li>
-                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=0&price=0&sort-type=0&sort-mode=0">Subcategory</a></li>
+                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Subcategory</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown d-block d-lg-none">
@@ -75,7 +75,7 @@
                   Brand
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=1&price=0&sort-type=0&sort-mode=0">Brand 1</a></li>
+                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Brand 1</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown d-block d-lg-none">
@@ -126,7 +126,7 @@
               <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/home">Home</a>
             </li>
             <li class="nav-item me-4">
-              <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=0&price=0&sort-type=0&sort-mode=0">Product</a>
+              <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Product</a>
             </li>
             <li class="nav-item dropdown me-4">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -134,7 +134,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><h6 class="dropdown-header">Category 1</h6></li>
-                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=0&price=0&sort-type=0&sort-mode=0">Subcategory</a></li>
+                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Subcategory</a></li>
                </ul>
             </li>
             <li class="nav-item dropdown me-4">
@@ -142,7 +142,7 @@
                 Brand
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=1&price=0&sort-type=0&sort-mode=0">Brand</a></li>
+                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Brand</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown me-4">
