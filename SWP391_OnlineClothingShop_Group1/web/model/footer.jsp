@@ -24,7 +24,7 @@
             We believe that if you look good, you feel good. And when you feel good you can do good for others around you. Shope brings you a wide range of trendy shoes, beautiful scarves, and statement-making jewelry, all at affordable prices to make them accessible to you. 
           </p>
 
-          <div class="mt-4">
+          <div class="my-4">
             <!-- Facebook -->
             <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-facebook-f"></i></a>
             <!-- Dribbble -->

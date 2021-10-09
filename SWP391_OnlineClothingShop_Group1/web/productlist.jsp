@@ -30,13 +30,14 @@
 </head>
 <body style="font-family: 'Poppins',sans-serif">
     <%@include file="model/header.jsp" %>
-    <div class="container-fluid bg-transparent p-3 content-width mh-750" style="position: relative;">
+    <div class="container-fluid bg-transparent p-3 content-width mh-1000" style="position: relative;">
         <div class="row">
           <!-- FILTER -->
             <div class="col-12 col-lg-3 float-start">
-              <form>
+                <form method="GET" action="${pageContext.request.contextPath}/product">
+                <input value="0" type="hidden" name="page">
                 <div class="form-floating mb-2">
-                    <input type="text" id="searchbarProduct" class="form-control" placeholder="Search Something">
+                    <input type="text" id="searchbarProduct" class="form-control" placeholder="Search Something" name="query">
                     <label for="searchbarProduct" style="color:black;">Product name</label>
                 </div>
                 <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -51,21 +52,21 @@
                         <div class="accordion-body">
                             <ul class="list-group-flush">
                                 <li class="list-group-item ps-4">
-                                  <input class="form-check-input" type="radio" name="subcategory" id="subcategory0">
+                                  <input class="form-check-input" type="radio" name="subcategory" id="subcategory0" value="0" checked>
                                   <label class="form-check-label" for="subcategory0">
                                     All category 
                                   </label>
                                 </li>
                                 <li class="list-group-item"><strong>Category </strong></li>
                                 <li class="list-group-item ps-4">
-                                  <input class="form-check-input" type="radio" name="subcategory" id="subcategory1">
+                                  <input class="form-check-input" type="radio" name="subcategory" id="subcategory1" value="1">
                                   <label class="form-check-label" for="subcategory1">
                                     Sub 1 
                                   </label>
                                   <div class="float-end"><span class="badge rounded-pill bg-secondary">0</span></div>
                                 </li>
                                 <li class="list-group-item ps-4">
-                                  <input class="form-check-input" type="radio" name="subcategory" id="subcategory2">
+                                  <input class="form-check-input" type="radio" name="subcategory" id="subcategory2" value="2">
                                   <label class="form-check-label" for="subcategory2">
                                     Sub 2
                                   </label>
@@ -87,20 +88,20 @@
                         <div class="accordion-body">
                           <ul class="list-group-flush">
                               <li class="list-group-item">
-                                <input class="form-check-input" type="radio" name="brand" id="brand0" checked>
+                                <input class="form-check-input" type="radio" name="brand" id="brand0" value="0" checked>
                                 <label class="form-check-label" for="brand0">
                                   All brand
                                 </label>
                               </li>
                               <li class="list-group-item">
-                                <input class="form-check-input" type="radio" name="brand" id="brand1">
+                                <input class="form-check-input" type="radio" name="brand" id="brand1" value="1">
                                 <label class="form-check-label" for="brand1">
                                   Brand 1
                                 </label>
                                 <div class="float-end"><span class="badge rounded-pill bg-secondary">0</span></div>
                               </li>
                               <li class="list-group-item">
-                                <input class="form-check-input" type="radio" name="brand" id="brand2">
+                                <input class="form-check-input" type="radio" name="brand" id="brand2" value="2">
                                 <label class="form-check-label" for="brand2">
                                   Brand 2
                                 </label>
@@ -122,37 +123,37 @@
                         <div class="accordion-body">
                           <ul class="list-group-flush">
                             <li class="list-group-item">
-                              <input class="form-check-input" type="radio" name="price" id="price0" checked>
+                              <input class="form-check-input" type="radio" name="price" id="price0" value="0" checked>
                               <label class="form-check-label" for="price0">
                                 All price range
                               </label>
                             </li>
                             <li class="list-group-item">
-                              <input class="form-check-input" type="radio" name="price" id="price1">
+                              <input class="form-check-input" type="radio" name="price" value="1" id="price1">
                               <label class="form-check-label" for="price1">
                                 0-100.000
                               </label>
                             </li>
                             <li class="list-group-item">
-                              <input class="form-check-input" type="radio" name="price" id="price2">
+                              <input class="form-check-input" type="radio" name="price" value="2" id="price2">
                               <label class="form-check-label" for="price2">
                                 100.000-500.000
                               </label>
                             </li>
                             <li class="list-group-item">
-                              <input class="form-check-input" type="radio" name="price" id="price3">
+                              <input class="form-check-input" type="radio" name="price" value="3" id="price3">
                               <label class="form-check-label" for="price3">
                                 500.000-1.000.000
                               </label>
                             </li>
                             <li class="list-group-item">
-                              <input class="form-check-input" type="radio" name="price" id="price4">
+                              <input class="form-check-input" type="radio" name="price" value="4" id="price4">
                               <label class="form-check-label" for="price4">
                                 1.000.000-5.000.000
                               </label>
                             </li>
                             <li class="list-group-item">
-                              <input class="form-check-input" type="radio" name="price" id="price5">
+                              <input class="form-check-input" type="radio" name="price" value="5" id="price5">
                               <label class="form-check-label" for="price5">
                                 >5.000.000
                               </label>
@@ -164,8 +165,10 @@
                   </div>
                   <!-- PRICE -->
                   <!-- SUBMIT PARA -->
+                  <input value="0" type="hidden" name="sort-type">
+                  <input value="0" type="hidden" name="sort-mode">
                   <div class="d-grid gap-2 my-2">
-                    <button class="btn btn-primary-custom" type="button">Find product</button>
+                    <input class="btn btn-primary-custom" type="submit" value="Find product"/>
                   </div>
                   <!-- SUBMIT PARA -->
                 </form>
@@ -205,10 +208,10 @@
                   </div>
                 <!-- SORT BUTTON -->
                 <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-3 g-3">
-
+                    
                     <div class="col">
                         <div class="card h-100 shadow-sm"> <img src="https://www.freepnglogos.com/uploads/notebook-png/download-laptop-notebook-png-image-png-image-pngimg-2.png" class="card-img-top" alt="...">
-                            <div class="label-top shadow-sm">Asus Rog</div>
+                            <div class="label-top shadow-sm">-10%</div>
                             <div class="card-body">
                                 <div class="clearfix mb-3"> <span class="float-start badge rounded-pill bg-primary">ASUS Rog</span> <span class="float-end price-hp">12354.00€</span> </div>
                                 <h5 class="card-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.</h5>
@@ -217,7 +220,7 @@
                             </div>
                         </div>
                     </div>
-                    
+                        
                     <div class="col">
                       <div class="card h-100 shadow-sm"> <img src="https://www.freepnglogos.com/uploads/notebook-png/download-laptop-notebook-png-image-png-image-pngimg-2.png" class="card-img-top" alt="...">
                           <div class="label-top shadow-sm">Asus Rog</div>

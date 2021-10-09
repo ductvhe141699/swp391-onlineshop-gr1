@@ -7,7 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <div class="row m-0 p-0" style="background-color:lightgrey;">
-    <span id="promo" class="d-lg-inline d-none">
+    <span id="promo" class="d-lg-block d-none">
           <marquee behavior="scroll" direction="left">BLACK FRIDAY! SALE 0%</marquee>
       </span>
     </div>
@@ -56,17 +56,26 @@
               </li>
               <!-- COLLAPSED -->
               <li class="nav-item d-block d-lg-none">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item d-block d-lg-none">
+                <a class="nav-link" aria-current="page" href="#">Product</a>
               </li>
               <li class="nav-item dropdown d-block d-lg-none">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Shop
+                  Category
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                   <li><h6 class="dropdown-header">Category 1</h6></li>
+                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=0&price=0&sort-type=0&sort-mode=0">Subcategory</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown d-block d-lg-none">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Brand
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=1&price=0&sort-type=0&sort-mode=0">Brand 1</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown d-block d-lg-none">
@@ -74,25 +83,11 @@
                   Blog
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">All blog</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="#">Spotlight</a></li>
+                  <li><a class="dropdown-item" href="#">Spotlight</a></li>
                 </ul>
-              </li>
-              <li class="nav-item dropdown d-block d-lg-none">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Pages
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-              <li class="nav-item d-block d-lg-none">
-                <a class="nav-link" href="#">About Us</a>
               </li>
               <li class="nav-item d-block d-lg-none">
                 <a class="nav-link" href="#footer">Contacts Us</a>
@@ -128,17 +123,26 @@
         <div class="container-fluid">
           <ul class="navbar-nav offset-2 me-auto mb-2 mb-lg-0">
             <li class="nav-item me-4">
-              <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/home">Home</a>
+              <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/home">Home</a>
+            </li>
+            <li class="nav-item me-4">
+              <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=0&price=0&sort-type=0&sort-mode=0">Product</a>
             </li>
             <li class="nav-item dropdown me-4">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Shop
+                Category
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><h6 class="dropdown-header">Category 1</h6></li>
+                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=0&price=0&sort-type=0&sort-mode=0">Subcategory</a></li>
+               </ul>
+            </li>
+            <li class="nav-item dropdown me-4">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Brand
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=1&price=0&sort-type=0&sort-mode=0">Brand</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown me-4">
@@ -146,25 +150,11 @@
                 Blog
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">All blog</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Spotlight</a></li>
+                <li><a class="dropdown-item" href="#">Spotlight</a></li>
               </ul>
-            </li>
-            <li class="nav-item dropdown me-4">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Pages
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            <li class="nav-item me-4">
-              <a class="nav-link" href="#">About Us</a>
             </li>
             <li class="nav-item me-4">
               <a class="nav-link" href="#footer">Contacts Us</a>

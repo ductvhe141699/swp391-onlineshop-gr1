@@ -50,7 +50,7 @@ h2 {
 
 .label-top {
     position: absolute;
-    background-color: #fc5c65;
+    background-color: #20bf6b;
     color: #fff;
     top: 8px;
     right: 8px;
@@ -196,9 +196,9 @@ ul{
 {
     padding: 3px;
 }
-.mh-750
+.mh-1000
 {
-    min-height: 750px;
+    min-height: 1000px;
 }
 .btn-primary-custom{
     background: none #3867d6;
@@ -211,3 +211,4 @@ ul{
     background: none #4b7bec;
     color: #ffffff;
 }
+

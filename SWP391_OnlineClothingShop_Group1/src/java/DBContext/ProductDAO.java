@@ -5,7 +5,7 @@
  */
 package DBContext;
 
-import eltity.Product;
+import entity.Product;
 import entity.Blog;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
