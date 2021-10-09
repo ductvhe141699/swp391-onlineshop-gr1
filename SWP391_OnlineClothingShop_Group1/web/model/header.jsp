@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <div class="row m-0 p-0" style="background-color:lightgrey;">
     <span id="promo" class="d-lg-block d-none">
-          <marquee behavior="scroll" direction="left">BLACK FRIDAY! SALE 0%</marquee>
+          <marquee behavior="scroll" direction="left">Get 10% SALE by using special discount code "CHEERSLUV"</marquee>
       </span>
     </div>
     <nav class="navbar main-navbar navbar-expand-lg navbar-light bg-light" id="navbar1">
@@ -22,8 +22,14 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- SEARCHBAR -->
-            <form class="d-flex searchbar">
-              <input class="form-control me-2" type="search" placeholder="Search entire store here..." aria-label="Search">
+            <form class="d-flex searchbar" method="get" action="${pageContext.request.contextPath}/product">
+              <input type="hidden" name="page" value="1"/>
+              <input name="query" class="form-control me-2" type="search" placeholder="Search entire store here..." aria-label="Search">
+              <input type="hidden" name="subcategory" value="0"/>
+              <input type="hidden" name="brand" value="0"/>
+              <input type="hidden" name="price" value="0"/>
+              <input type="hidden" name="sortType" value="0"/>
+              <input type="hidden" name="sortMode" value="0"/>
               <button class="btn btn-danger" type="submit"><i class="fas fa-search" style="font-size: 100%;"></i></button>
             </form>
             <ul class="navbar-nav me-auto ms-auto">                
@@ -66,8 +72,14 @@
                   Category
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                   <li><h6 class="dropdown-header">Category 1</h6></li>
-                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Subcategory</a></li>
+                   <c:forEach items="${categorys}" var="icategory">
+                    <li><h6 class="dropdown-header">${icategory.getCategoryName()}</h6></li>
+                    <c:forEach items="${subcategorys}" var="isubcategory">
+                        <c:if test="${isubcategory.getCateID()==icategory.getCategoryID()}">
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=${isubcategory.getSubCateID()}&brand=0&price=0&sortType=0&sortMode=0">${isubcategory.getSubCateName()}</a></li>
+                        </c:if>
+                    </c:forEach>
+                  </c:forEach>
                 </ul>
               </li>
               <li class="nav-item dropdown d-block d-lg-none">
@@ -75,7 +87,9 @@
                   Brand
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Brand 1</a></li>
+                    <c:forEach items="${brands}" var="ibrand">
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=${ibrand.getBrandID()}&price=0&sortType=0&sortMode=0">${ibrand.getBrandName()}</a></li>
+                    </c:forEach>
                 </ul>
               </li>
               <li class="nav-item dropdown d-block d-lg-none">
@@ -126,15 +140,21 @@
               <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/home">Home</a>
             </li>
             <li class="nav-item me-4">
-              <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Product</a>
+              <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Product</a>
             </li>
             <li class="nav-item dropdown me-4">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Category
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><h6 class="dropdown-header">Category 1</h6></li>
-                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Subcategory</a></li>
+                  <c:forEach items="${categorys}" var="icategory">
+                    <li><h6 class="dropdown-header">${icategory.getCategoryName()}</h6></li>
+                    <c:forEach items="${subcategorys}" var="isubcategory">
+                        <c:if test="${isubcategory.getCateID()==icategory.getCategoryID()}">
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=${isubcategory.getSubCateID()}&brand=0&price=0&sortType=0&sortMode=0">${isubcategory.getSubCateName()}</a></li>
+                        </c:if>
+                    </c:forEach>
+                  </c:forEach>
                </ul>
             </li>
             <li class="nav-item dropdown me-4">
@@ -142,7 +162,9 @@
                 Brand
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?query=&page=0&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Brand</a></li>
+                <c:forEach items="${brands}" var="ibrand">
+                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=${ibrand.getBrandID()}&price=0&sortType=0&sortMode=0">${ibrand.getBrandName()}</a></li>
+                </c:forEach>
               </ul>
             </li>
             <li class="nav-item dropdown me-4">

@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="css/queries.css">
     <link rel="stylesheet" href="css/productlist.css">
     <link rel="stylesheet" href="css/productlistqueries.css">
-    <title>Document</title>
+    <title>Product</title>
 </head>
 <body style="font-family: 'Poppins',sans-serif">
     <%@include file="model/header.jsp" %>
@@ -35,9 +35,9 @@
           <!-- FILTER -->
             <div class="col-12 col-lg-3 float-start">
                 <form method="GET" action="${pageContext.request.contextPath}/product">
-                <input value="0" type="hidden" name="page">
+                <input value="1" type="hidden" name="page">
                 <div class="form-floating mb-2">
-                    <input type="text" id="searchbarProduct" class="form-control" placeholder="Search Something" name="query" value="${query}">
+                    <input type="text" id="searchbarProduct" class="form-control" placeholder="Search Something" name="query" value="${query.replace('+', ' ')}">
                     <label for="searchbarProduct" style="color:black;">Product name</label>
                 </div>
                 <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -57,21 +57,20 @@
                                     All category 
                                   </label>
                                 </li>
-                                <li class="list-group-item"><strong>Category </strong></li>
-                                <li class="list-group-item ps-4">
-                                  <input class="form-check-input" type="radio" name="subcategory" id="subcategory1" value="1">
-                                  <label class="form-check-label" for="subcategory1">
-                                    Sub 1 
-                                  </label>
-                                  <div class="float-end"><span class="badge rounded-pill bg-secondary">0</span></div>
-                                </li>
-                                <li class="list-group-item ps-4">
-                                  <input class="form-check-input" type="radio" name="subcategory" id="subcategory2" value="2">
-                                  <label class="form-check-label" for="subcategory2">
-                                    Sub 2
-                                  </label>
-                                  <div class="float-end"><span class="badge rounded-pill bg-secondary">0</span></div>
-                                </li>
+                                <c:forEach items="${categorys}" var="icategory">
+                                <li class="list-group-item"><strong>${icategory.getCategoryName()}</strong></li>
+                                    <c:forEach items="${subcategorys}" var="isubcategory">
+                                        <c:if test="${isubcategory.getCateID()==icategory.getCategoryID()}">
+                                            <li class="list-group-item ps-4">
+                                              <input class="form-check-input" type="radio" name="subcategory" id="subcategory${isubcategory.getSubCateID()}" value="${isubcategory.getSubCateID()}" ${subcategory==isubcategory.getSubCateID()?'checked':''}>
+                                              <label class="form-check-label" for="subcategory${isubcategory.getSubCateID()}">
+                                                ${isubcategory.getSubCateName()} 
+                                              </label>
+                                              <div class="float-end"><span class="badge rounded-pill bg-secondary">0</span></div>
+                                            </li>
+                                        </c:if>
+                                    </c:forEach>
+                                </c:forEach>
                               </ul>
                         </div>
                       </div>
@@ -93,20 +92,15 @@
                                   All brand
                                 </label>
                               </li>
+                              <c:forEach items="${brands}" var="ibrand">
                               <li class="list-group-item">
-                                <input class="form-check-input" type="radio" name="brand" id="brand1" value="1">
-                                <label class="form-check-label" for="brand1">
-                                  Brand 1
+                                <input class="form-check-input" type="radio" name="brand" id="brand${ibrand.getBrandID()}" value="${ibrand.getBrandID()}" ${brand==ibrand.getBrandID()?'checked':''}>
+                                <label class="form-check-label" for="brand${ibrand.getBrandID()}">
+                                  ${ibrand.getBrandName()}
                                 </label>
                                 <div class="float-end"><span class="badge rounded-pill bg-secondary">0</span></div>
                               </li>
-                              <li class="list-group-item">
-                                <input class="form-check-input" type="radio" name="brand" id="brand2" value="2">
-                                <label class="form-check-label" for="brand2">
-                                  Brand 2
-                                </label>
-                                <div class="float-end"><span class="badge rounded-pill bg-secondary">0</span></div>
-                              </li>
+                              </c:forEach>
                           </ul>  
                         </div>
                       </div>

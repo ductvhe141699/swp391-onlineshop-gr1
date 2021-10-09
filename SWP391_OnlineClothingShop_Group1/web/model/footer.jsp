@@ -41,9 +41,15 @@
         <!--Grid column-->
         <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase mb-4 pb-1"><i class="fas fa-search"></i>&nbsp;Search product</h5>
-          <form>
+          <form method="get" action="${pageContext.request.contextPath}/product">
             <div class="form-floating mb-4">
-              <input type="text" id="searchbarFooter" class="form-control" placeholder="Search Something">
+              <input type="hidden" name="page" value="1"/>
+              <input type="search" name="query" id="searchbarFooter" class="form-control" placeholder="Search Something">
+              <input type="hidden" name="subcategory" value="0"/>
+              <input type="hidden" name="brand" value="0"/>
+              <input type="hidden" name="price" value="0"/>
+              <input type="hidden" name="sortType" value="0"/>
+              <input type="hidden" name="sortMode" value="0"/>
               <label for="searchbarFooter" style="color:black;">Search</label>
             <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 48.8px;"></div><div class="form-notch-trailing"></div></div></div>
           </form>

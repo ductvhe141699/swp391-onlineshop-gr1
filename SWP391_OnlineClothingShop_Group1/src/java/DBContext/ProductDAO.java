@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -59,6 +60,10 @@ public class ProductDAO {
         }
 
         return list;
+    }
+
+    public List<Product> getProductQuery(String query, int subcategory, int brand, int price, int sortType, int sortMode) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
