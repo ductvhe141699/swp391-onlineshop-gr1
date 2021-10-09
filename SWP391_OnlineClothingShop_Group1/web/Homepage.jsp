@@ -33,7 +33,7 @@
         <link rel="stylesheet" type="text/css" href="./css/homepage.css" />
         <title>Home Page</title>
     </head>
-    <body>
+    <body style="font-family: 'Poppins',sans-serif">
         <%@include file="model/header.jsp" %>
 
         <!-- SLIDER -->

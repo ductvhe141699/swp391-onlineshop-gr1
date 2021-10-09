@@ -1,3 +1,11 @@
+<%-- 
+    Document   : productlist
+    Created on : Oct 9, 2021, 5:09:16 PM
+    Author     : SAKURA
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,8 +28,9 @@
     <link rel="stylesheet" href="css/productlistqueries.css">
     <title>Document</title>
 </head>
-<body>
-    <div class="container-fluid bg-transparent p-3 content-width mh-2000" style="position: relative;">
+<body style="font-family: 'Poppins',sans-serif">
+    <%@include file="model/header.jsp" %>
+    <div class="container-fluid bg-transparent p-3 content-width mh-750" style="position: relative;">
         <div class="row">
           <!-- FILTER -->
             <div class="col-12 col-lg-3 float-start">
@@ -62,7 +71,6 @@
                                   </label>
                                   <div class="float-end"><span class="badge rounded-pill bg-secondary">0</span></div>
                                 </li>
-                                <li class="list-group-item"><strong>Category</strong></li>
                               </ul>
                         </div>
                       </div>
@@ -157,7 +165,7 @@
                   <!-- PRICE -->
                   <!-- SUBMIT PARA -->
                   <div class="d-grid gap-2 my-2">
-                    <button class="btn btn-warning-custom" type="button">Find product</button>
+                    <button class="btn btn-primary-custom" type="button">Find product</button>
                   </div>
                   <!-- SUBMIT PARA -->
                 </form>
@@ -248,6 +256,7 @@
             <!-- PRODUCT LIST -->
         </div>
     </div>
+    <%@include file="model/footer.jsp" %>
     <!-- BOOTSTRAP5-->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
