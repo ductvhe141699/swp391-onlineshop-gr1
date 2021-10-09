@@ -5,6 +5,8 @@
  */
 package controller;
 
+import entity.Brand;
+import entity.Category;
 import entity.Product;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -31,22 +33,22 @@ public class ProductListServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        CategoryDAO cdao = new CategoryDAO();
-        List<Category> categorys = cdao.list();
-        request.setAttribute("categorys", categorys);
-        BrandDAO bdao= new BrandDAO();
-        List<Brand> brands = bdao.list();
-        request.setAttribute("brands", brands);
+        //CategoryDAO cdao = new CategoryDAO();
+        //List<Category> categorys = cdao.list();
+        //request.setAttribute("categorys", categorys);
+        //BrandDAO bdao= new BrandDAO();
+        //List<Brand> brands = bdao.list();
+        //request.setAttribute("brands", brands);
 //        NAV
-        ProductDAO pdao=new ProductDAO();
+        // Query parameter
         int page=Integer.parseInt(request.getParameter("page"));
         String query=request.getParameter("query");
-        int subcategory=Integer.parseInt(request.getParameter("sibcategory"));
+        int subcategory=Integer.parseInt(request.getParameter("subcategory"));
         int brand=Integer.parseInt(request.getParameter("brand"));
         int price=Integer.parseInt(request.getParameter("price"));
         int sortType=Integer.parseInt(request.getParameter("sortType"));
         int sortMode=Integer.parseInt(request.getParameter("sortMode"));
-        
+        // Send back parameter to page
         request.setAttribute("page",page);
         request.setAttribute("query", query.replace(' ', '+'));
         request.setAttribute("subcategory", subcategory);
@@ -55,14 +57,15 @@ public class ProductListServlet extends HttpServlet {
         request.setAttribute("sortType", sortType);
         request.setAttribute("sortMode", sortMode);
         
-        List<Product> products=pdao.listQuery(st, sm, c, b,search);
-        int maxp= (int) Math.ceil( (products.size()*1.0 )/8);
-        request.setAttribute("maxp", maxp);
-        List<Product> display = new ArrayList<>();
-        for(int i=8*(p-1);i<8*p ;i++)
-            if(i<products.size())
-                display.add(products.get(i));
-        request.setAttribute("products", display);
+//        //ProductDAO pdao=new ProductDAO();
+//        //List<Product> products=pdao.listQuery(st, sm, c, b,search);
+//        int maxp= (int) Math.ceil( (products.size()*1.0 )/8);
+//        request.setAttribute("maxPage", maxp);
+//        //List<Product> display = new ArrayList<>();
+//        for(int i=8*(p-1);i<8*p ;i++)
+//            if(i<products.size())
+//                display.add(products.get(i));
+        //request.setAttribute("products", display);
         request.getRequestDispatcher("productlist.jsp").forward(request, response);
     }
 
