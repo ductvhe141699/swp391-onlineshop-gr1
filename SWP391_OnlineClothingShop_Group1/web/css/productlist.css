@@ -10,7 +10,11 @@
 
 body {
     font-family: var(--font3);
-    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)
+    /* background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); */
+    background-image: linear-gradient(45deg,rgba(209, 216, 224,0.4) 55%,rgba(209, 216, 224,0.45)) ,url(../resources/img/background.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 h2 {
@@ -18,7 +22,7 @@ h2 {
 }
 
 .container-fluid {
-    max-width: 1200px
+    max-width: 1440px
 }
 
 .card {
@@ -60,7 +64,7 @@ h2 {
 
 .label-top {
     position: absolute;
-    background-color: #8bc34a;
+    background-color: #fc5c65;
     color: #fff;
     top: 8px;
     right: 8px;
@@ -91,11 +95,7 @@ h2 {
     vertical-align: middle
 }
 
-@media (max-width: 768px) {
-    .card-img-top {
-        max-height: 250px
-    }
-}
+
 
 .over-bg {
     background: rgba(53, 53, 53, 0.85);
@@ -105,31 +105,19 @@ h2 {
     border-radius: 10px
 }
 
-.btn {
+.btn-custom {
     font-size: 1rem;
     font-weight: 500;
     text-transform: uppercase;
     padding: 5px 50px 5px 50px
 }
 
-.box .btn {
+.box .btn-custom {
     font-size: 1.5rem
 }
 
-@media (max-width: 1025px) {
-    .btn {
-        padding: 5px 40px 5px 40px
-    }
-}
-
-@media (max-width: 250px) {
-    .btn {
-        padding: 5px 30px 5px 30px
-    }
-}
-
-.btn-warning {
-    background: none #f7810a;
+.btn-warning-custom {
+    background: none #fa8231;
     color: #ffffff;
     fill: #ffffff;
     border: none;
@@ -139,18 +127,18 @@ h2 {
     border-radius: 100px
 }
 
-.btn-warning:hover {
-    background: none #ff962b;
+.btn-warning-custom:hover {
+    background: none #fd9644;
     color: #ffffff;
     box-shadow: -1px 6px 13px rgba(255, 150, 43, 0.35)
 }
 
-.bg-success {
+.bg-success-custom {
     font-size: 1rem;
     background-color: #f7810a !important
 }
 
-.bg-danger {
+.bg-danger-custom {
     font-size: 1rem
 }
 
@@ -189,15 +177,6 @@ h2 {
     max-width: 300px
 }
 
-@media (max-width: 576px) {
-    .box-img {
-        max-width: 200px
-    }
-
-    .thumb-sec {
-        max-width: 200px
-    }
-}
 
 .inner-gallery {
     width: 60px;
@@ -211,24 +190,29 @@ h2 {
     object-fit: cover
 }
 
-@media (max-width: 370px) {
-    .box .btn {
-        padding: 5px 40px 5px 40px;
-        font-size: 1rem
-    }
-}
 
 .disclaimer {
     font-size: .9rem;
     color: darkgray
 }
-
+ul{
+    padding-left: 0;
+}
 .related h3 {
     font-weight: 900
 }
-
-footer {
-    background: #212529;
-    height: 80px;
-    color: #fff
+.content-width
+{
+    width: 100%;
+}
+.accordion-body
+{
+    padding: 3px;
+}
+.mh-2000
+{
+    min-height: 750px;
+}
+.bg-primary-custom{
+    background-color: #3867d6;
 }
