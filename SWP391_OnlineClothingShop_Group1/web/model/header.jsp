@@ -50,7 +50,11 @@
                   <i class="fas fa-user-circle"></i>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Login</a></li>
+                    <c:if test ="${sessionScope.acc !=  null}">
+                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Logout</a></li>
+                    </c:if>
+                   <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Login</a></li>
+                 
                   <li><a class="dropdown-item" href="${pageContext.request.contextPath}/register">Register</a></li>
                 </ul>
               </li>

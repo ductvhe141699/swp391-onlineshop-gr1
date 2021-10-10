@@ -63,7 +63,7 @@ public class LoginDAO {
     }
     public void register(String user, String pass , String email){
         String query = "insert into Users\n"
-                + "Values('?','?','?',0,0)";
+                + "Values('?','?','?',3,1)";
         try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);

@@ -72,9 +72,10 @@
                             <input name="user" type="text" placeholder="Username">
                             <input name ="pass" type="password" placeholder="Password">
                             <button type="submit" class="myBtn">Login</button>
-                            <h4 class="text-danger">${mess}</h4>
+                            
                             <a href="">Forgot password</a>
                         </form>
+                         <h4 class="text-danger">${mess1}</h4>
                         <!--- Register--->
                         <form id="RegForm" action ="register" method="post">
                             <input name="user" type="text" placeholder="Username">
@@ -82,7 +83,7 @@
                             <input name="pass" type="password" placeholder="Password">
                             <input name="repass" type="password" placeholder="Repeat Password">
                             <button type="submit" class="myBtn">Register</button>
-                             <h4 class="text-danger">${mess1}</h4>
+                             
                         </form>
 
                     </div>

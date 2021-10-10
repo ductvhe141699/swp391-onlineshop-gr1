@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,22 +40,25 @@ public class LoginControl extends HttpServlet {
        String password = request.getParameter("pass");
        //Kết nối vs DB
        LoginDAO dao = new LoginDAO();
-       Users u = dao.login(username, password);
-       //Kiểm tra
-       if(u==null){
-            //login fail -> Đẩy về trang Login.jsp (nhập lại)
-            //Message thông báo Login sai: thay đổi giá trị của biến mess
-           request.setAttribute("mess", "login fail!");
-           //ko thì quay trở lại trang login.jsp
-           //Yêu cầu người dùng Login lại
-           request.getRequestDispatcher("Login.jsp").forward(request, response);
-           
-      }
-          else{
-           //request.getRequestDispatcher("home").forward(request, response);
-           response.sendRedirect("home");
-           
-       }
+//       Users u = dao.login(username, password);
+//       //Kiểm tra
+////       if (!username.equals("user") && !password.equals("pass")) {
+//       if(u==null){
+//            //login fail -> Đẩy về trang Login.jsp (nhập lại)
+//            //Message thông báo Login sai: thay đổi giá trị của biến mess
+//           request.setAttribute("mess", "login fail!");
+//           //ko thì quay trở lại trang login.jsp
+//           //Yêu cầu người dùng Login lại
+//           request.getRequestDispatcher("Login.jsp").forward(request, response);
+//           
+//      }
+//          else{
+//           HttpSession session = request.getSession();
+//           session.setAttribute("acc", u);
+//           //request.getRequestDispatcher("home").forward(request, response);
+//           response.sendRedirect("Homepage.jsp");
+//           
+//       }
        
        
    }
@@ -85,7 +89,26 @@ public class LoginControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       String username = request.getParameter("user");
+       String password = request.getParameter("pass");
+       //Kết nối vs DB
+       LoginDAO dao = new LoginDAO();  
+      if (!username.equals("user") && !password.equals("pass")) {
+            Users u = dao.login(username, password);
+            if (u != null) {
+                HttpSession ss = request.getSession();
+                ss.setAttribute("acc", u); 
+                request.getRequestDispatcher("home").forward(request, response);
+            } else {
+                //login fail -> Đẩy về trang Login.jsp (nhập lại)
+//            //Message thông báo Login sai: thay đổi giá trị của biến mess
+                request.setAttribute("mess1", "Login Fail");
+                request.getRequestDispatcher("Login.jsp").forward(request, response);
+            }
+        } else {
+            request.setAttribute("mess1", "Login Fail");
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
+        }
     }
 
     /**
