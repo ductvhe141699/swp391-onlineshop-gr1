@@ -3,38 +3,40 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eltity;
+package entity;
 
 /**
  *
  * @author BEAN
  */
 public class Category {
-    int cateID ; 
-    int cateName ; 
+    int CategoryID ; 
+    String CategoryName ; 
 
     public Category() {
+        
     }
 
-    public Category(int cateID, int cateName) {
-        this.cateID = cateID;
-        this.cateName = cateName;
+    public Category(int CategoryID, String CategoryName) {
+        this.CategoryID = CategoryID;
+        this.CategoryName = CategoryName;
     }
 
-    public int getCateID() {
-        return cateID;
+    public int getCategoryID() {
+        return CategoryID;
     }
 
-    public void setCateID(int cateID) {
-        this.cateID = cateID;
+    public void setCategoryID(int CategoryID) {
+        this.CategoryID = CategoryID;
     }
 
-    public int getCateName() {
-        return cateName;
+    public String getCategoryName() {
+        return CategoryName;
     }
 
-    public void setCateName(int cateName) {
-        this.cateName = cateName;
+    public void setCategoryName(String CategoryName) {
+        this.CategoryName = CategoryName;
     }
     
+
 }

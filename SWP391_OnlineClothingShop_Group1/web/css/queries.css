@@ -28,6 +28,9 @@
         width: 100%; 
         object-fit:cover ;
     }
+    #navbar1{
+        border-bottom: 3px solid #dc3545;
+    }
 }
 /* XL */
 @media all and (min-width: 1200px) { 

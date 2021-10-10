@@ -38,6 +38,7 @@ public class LoginDAO {
             }
         } catch (Exception e) {
         }
+        DBcontext.close(conn, ps, rs);
         return null;
     }
      public Users checkUserExist(String user){
@@ -59,6 +60,7 @@ public class LoginDAO {
             }
         } catch (Exception e) {
         }
+        DBcontext.close(conn, ps, rs);
         return null;
     }
     public void register(String user, String pass , String email){
@@ -73,5 +75,6 @@ public class LoginDAO {
             ps.executeUpdate();
         } catch (Exception e) {
         }
+        DBcontext.close(conn, ps, rs);
     }
 }

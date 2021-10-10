@@ -6,7 +6,8 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <!-- icon -->
+        <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
         <!-- link Fonts -->
         <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
@@ -31,9 +32,9 @@
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
         <link rel="stylesheet" type="text/css" href="./css/queries.css" />
         <link rel="stylesheet" type="text/css" href="./css/homepage.css" />
-        <title>Home Page</title>
+        <title>Shope</title>
     </head>
-    <body>
+    <body style="font-family: 'Poppins',sans-serif">
         <%@include file="model/header.jsp" %>
 
         <!-- SLIDER -->

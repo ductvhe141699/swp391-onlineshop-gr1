@@ -36,6 +36,7 @@ public class UserDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        DBcontext.close(conn, ps, rs);
         return list;
     }
 
@@ -54,6 +55,7 @@ public class UserDAO {
             }
         } catch (Exception e) {
         }
+        DBcontext.close(conn, ps, rs);
         return null;
     }
 
@@ -71,6 +73,7 @@ public class UserDAO {
             }
         } catch (Exception e) {
         }
+        DBcontext.close(conn, ps, rs);
         return null;
     }
 
@@ -95,6 +98,7 @@ public class UserDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        DBcontext.close(conn, ps, rs);
         return null;
     }
 
@@ -113,6 +117,7 @@ public class UserDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        DBcontext.close(conn, ps, rs);
         return false;
     }
 
@@ -130,6 +135,7 @@ public class UserDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        DBcontext.close(conn, ps, rs);
         return -1;
     }
 
@@ -163,7 +169,7 @@ public class UserDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+        DBcontext.close(conn, ps, rs);
         
     }
    
