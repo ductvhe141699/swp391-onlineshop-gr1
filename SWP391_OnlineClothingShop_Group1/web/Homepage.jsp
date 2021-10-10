@@ -32,7 +32,7 @@
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
         <link rel="stylesheet" type="text/css" href="./css/queries.css" />
         <link rel="stylesheet" type="text/css" href="./css/homepage.css" />
-        <title>Home Page</title>
+        <title>Shope</title>
     </head>
     <body style="font-family: 'Poppins',sans-serif">
         <%@include file="model/header.jsp" %>
