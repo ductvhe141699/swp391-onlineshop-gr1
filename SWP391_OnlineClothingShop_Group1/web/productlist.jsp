@@ -227,17 +227,27 @@
                      </c:forEach>   
                 </div>
                 <!-- PRODUCT GRID -->
-                <!-- PAGE NAV -->
+                <!-- PAGINATION -->
                 <nav class="my-3" aria-label="Page navigation">
                   <ul class="pagination justify-content-center">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    <li class="page-item ${page-1>1?'':'disabled'}"  ><a class="page-link" href="${pageContext.request.contextPath}/product?page=${page-1}&query=${query}&subcategory=${subcategory}&brand=${brand}&price=${price}&sortType=${sortType}&sortMode=${sortMode}">Previous</a></li>
+                    <c:if test="${page-2>0}">
+                        <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/product?page=${page-2}&query=${query}&subcategory=${subcategory}&brand=${brand}&price=${price}&sortType=${sortType}&sortMode=${sortMode}">${page-2}</a></li>
+                    </c:if>
+                    <c:if test="${page-1>0}">
+                        <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/product?page=${page-1}&query=${query}&subcategory=${subcategory}&brand=${brand}&price=${price}&sortType=${sortType}&sortMode=${sortMode}">${page-1}</a></li>
+                    </c:if>
+                    <li class="page-item active"><a class="page-link" href="#">${page}</a></li>
+                    <c:if test="${page+1<=maxPage}">
+                        <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/product?page=${page+1}&query=${query}&subcategory=${subcategory}&brand=${brand}&price=${price}&sortType=${sortType}&sortMode=${sortMode}">${page+1}</a></li>
+                    </c:if>
+                    <c:if test="${page+2<=maxPage}">
+                        <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/product?page=${page+2}&query=${query}&subcategory=${subcategory}&brand=${brand}&price=${price}&sortType=${sortType}&sortMode=${sortMode}">${page+2}</a></li>
+                    </c:if>
+                    <li class="page-item ${page+1<=maxPage?'':'disabled'}"><a class="page-link" href="${pageContext.request.contextPath}/product?page=${page+1}&query=${query}&subcategory=${subcategory}&brand=${brand}&price=${price}&sortType=${sortType}&sortMode=${sortMode}">Next</a></li>
                   </ul>
                 </nav>
-                <!-- PAGE NAV -->
+                <!-- PAGINATION -->
             </div>
             <!-- PRODUCT LIST -->
         </div>
