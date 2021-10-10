@@ -66,7 +66,11 @@
                                               <label class="form-check-label" for="subcategory${isubcategory.getSubCateID()}">
                                                 ${isubcategory.getSubCateName()} 
                                               </label>
-                                              <div class="float-end"><span class="badge rounded-pill bg-secondary">0</span></div>
+                                              <div class="float-end">
+                                                  <span class="badge rounded-pill bg-secondary">
+                                                      ${subCategoryCount.get(isubcategory.getSubCateID())==null?0:subCategoryCount.get(isubcategory.getSubCateID())}
+                                                  </span>
+                                              </div>
                                             </li>
                                         </c:if>
                                     </c:forEach>
@@ -98,7 +102,11 @@
                                 <label class="form-check-label" for="brand${ibrand.getBrandID()}">
                                   ${ibrand.getBrandName()}
                                 </label>
-                                <div class="float-end"><span class="badge rounded-pill bg-secondary">0</span></div>
+                                <div class="float-end">
+                                    <span class="badge rounded-pill bg-secondary">
+                                        ${brandCount.get(ibrand.getBrandID())==null?0:brandCount.get(ibrand.getBrandID())}
+                                    </span>
+                                </div>
                               </li>
                               </c:forEach>
                           </ul>  
@@ -211,11 +219,7 @@
                                 </c:if>
                                 <div class="card-body">
                                     <div class="clearfix mb-3"> 
-                                        <c:forEach items="${brands}" var="ibrand">
-                                            <c:if test="${ibrand.getBrandID()==iproduct.getBrandID()}">
-                                                <span class="float-start badge rounded-pill bg-primary">${ibrand.getBrandName()}</span>
-                                            </c:if>
-                                        </c:forEach>
+                                        <c:forEach items="${brands}" var="ibrand"><c:if test="${ibrand.getBrandID()==iproduct.getBrandID()}"><span class="float-start badge rounded-pill bg-primary">${ibrand.getBrandName()}</span></c:if></c:forEach>
                                         <span class="float-end price-hp">${iproduct.getSellPrice()}$</span> </div>
                                     <h5 class="card-title">${iproduct.getProductName()}</h5>
                                     <p class="card-text overflow-auto" style="height: 100px;text-overflow: ellipsis;">${iproduct.getDesc()}</p>

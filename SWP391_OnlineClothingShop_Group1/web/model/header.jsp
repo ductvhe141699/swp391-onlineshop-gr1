@@ -74,11 +74,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                    <c:forEach items="${categorys}" var="icategory">
                     <li><h6 class="dropdown-header">${icategory.getCategoryName()}</h6></li>
-                    <c:forEach items="${subcategorys}" var="isubcategory">
-                        <c:if test="${isubcategory.getCateID()==icategory.getCategoryID()}">
-                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=${isubcategory.getSubCateID()}&brand=0&price=0&sortType=0&sortMode=0">${isubcategory.getSubCateName()}</a></li>
-                        </c:if>
-                    </c:forEach>
+                    <c:forEach items="${subcategorys}" var="isubcategory"><c:if test="${isubcategory.getCateID()==icategory.getCategoryID()}"><li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=${isubcategory.getSubCateID()}&brand=0&price=0&sortType=0&sortMode=0">${isubcategory.getSubCateName()}</a></li></c:if></c:forEach>
                   </c:forEach>
                 </ul>
               </li>
@@ -149,11 +145,7 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <c:forEach items="${categorys}" var="icategory">
                     <li><h6 class="dropdown-header">${icategory.getCategoryName()}</h6></li>
-                    <c:forEach items="${subcategorys}" var="isubcategory">
-                        <c:if test="${isubcategory.getCateID()==icategory.getCategoryID()}">
-                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=${isubcategory.getSubCateID()}&brand=0&price=0&sortType=0&sortMode=0">${isubcategory.getSubCateName()}</a></li>
-                        </c:if>
-                    </c:forEach>
+                    <c:forEach items="${subcategorys}" var="isubcategory"><c:if test="${isubcategory.getCateID()==icategory.getCategoryID()}"><li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=${isubcategory.getSubCateID()}&brand=0&price=0&sortType=0&sortMode=0">${isubcategory.getSubCateName()}</a></li></c:if></c:forEach>
                   </c:forEach>
                </ul>
             </li>
