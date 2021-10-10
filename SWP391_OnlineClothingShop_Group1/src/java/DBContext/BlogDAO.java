@@ -36,7 +36,7 @@ public class BlogDAO {
             }
         } catch (SQLException e) {
         }
-
+        DBcontext.close(conn, ps, rs);
         return null;
     }
 
@@ -52,6 +52,7 @@ public class BlogDAO {
             }
         } catch (SQLException e) {
         }
+        DBcontext.close(conn, ps, rs);
         return null;
     }
     public void add(String author,String title, String content, String imageLink ) {
@@ -65,6 +66,7 @@ public class BlogDAO {
             ps.executeUpdate();
         } catch (SQLException e) {
         }
+        DBcontext.close(conn, ps, rs);
     }
         public void update(String author,String title, String content, String imageLink, String id) {
         query = "Update Blog\n"
@@ -93,5 +95,6 @@ public class BlogDAO {
             ps.executeUpdate();
         } catch (SQLException e) {
         }
+        DBcontext.close(conn, ps, rs);
     }
 }

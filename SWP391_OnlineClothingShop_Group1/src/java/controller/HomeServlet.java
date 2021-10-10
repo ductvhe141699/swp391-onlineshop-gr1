@@ -5,10 +5,17 @@
  */
 package controller;
 
+import DBContext.BrandDAO;
+import DBContext.CategoryDAO;
 import DBContext.ProductDAO;
+import DBContext.SubCategoryDAO;
+import entity.Brand;
+import entity.Category;
 import entity.Product;
+import entity.SubCategory;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +40,16 @@ public class HomeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        CategoryDAO cdao = new CategoryDAO();
+        List<Category> categorys = cdao.getAllCategory();
+        request.setAttribute("categorys", categorys);
+        BrandDAO bdao= new BrandDAO();
+        List<Brand> brands = bdao.getAllBrand();
+        request.setAttribute("brands", brands);
+        SubCategoryDAO scdao = new SubCategoryDAO();
+        List<SubCategory> subcategorys = scdao.getAllSubCategory();
+        request.setAttribute("subcategorys", subcategorys);
+        
         request.getRequestDispatcher("Homepage.jsp").forward(request, response);
     }
 
