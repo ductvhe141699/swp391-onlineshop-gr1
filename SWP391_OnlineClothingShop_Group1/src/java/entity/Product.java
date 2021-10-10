@@ -15,7 +15,7 @@ public class Product {
     String  desc ;
     double originPrice ; 
     double sellPrice ; 
-    double  salePersent ; 
+    double  salePercent ; 
     int subCateID ; 
     int sellerID ; 
     int amount ; 
@@ -29,13 +29,13 @@ public class Product {
     public Product() {
     }
 
-    public Product(int productID, String productName, String desc, double originPrice, double sellPrice, double salePersent, int subCateID, int sellerID, int amount, int statusID, int brandID, double height, double width, double weight, String url) {
+    public Product(int productID, String productName, String desc, double originPrice, double sellPrice, double salePercent, int subCateID, int sellerID, int amount, int statusID, int brandID, double height, double width, double weight, String url) {
         this.productID = productID;
         this.productName = productName;
         this.desc = desc;
         this.originPrice = originPrice;
         this.sellPrice = sellPrice;
-        this.salePersent = salePersent;
+        this.salePercent = salePercent;
         this.subCateID = subCateID;
         this.sellerID = sellerID;
         this.amount = amount;
@@ -87,12 +87,12 @@ public class Product {
         this.sellPrice = sellPrice;
     }
 
-    public double getSalePersent() {
-        return salePersent;
+    public double getSalePercent() {
+        return salePercent;
     }
 
-    public void setSalePersent(double salePersent) {
-        this.salePersent = salePersent;
+    public void setSalePercent(double salePercent) {
+        this.salePercent = salePercent;
     }
 
     public int getSubCateID() {
@@ -166,7 +166,7 @@ public class Product {
     public void setUrl(String url) {
         this.url = url;
     }
-   
+
     
     
 

@@ -173,73 +173,61 @@
                 <!-- SORT BUTTON -->
                   <div class="btn-group flex-wrap pb-3" role="group" aria-label="Basic example">
                     <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-light dropdown-toggle ${st==1?'active':''}" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-light dropdown-toggle ${sortType==1?'active':''}" data-bs-toggle="dropdown" aria-expanded="false">
                             Sort by price
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <li><a class="dropdown-item" href="ProductServlet?p=1&st=${st==1&&sm==1?'0':'1'}&sm=${st==1&&sm==1?'0':'1'}&c=${c}&b=${b}&search=${search}">Ascend&nbsp;${st==1&&sm==1?'<i class="fas fa-check"></i>':''}</a></li>
-                            <li><a class="dropdown-item" href="ProductServlet?p=1&st=${st==1&&sm==2?'0':'1'}&sm=${st==1&&sm==2?'0':'2'}&c=${c}&b=${b}&search=${search}">Descend&nbsp;${st==1&&sm==2?'<i class="fas fa-check"></i>':''}</a></li>
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?page=1&query=${query}&subcategory=${subcategory}&brand=${brand}&price=${price}&sortType=${sortType==1&&sortMode==1?'0':'1'}&sortMode=${sortType==1&&sortMode==1?'0':'1'}">Ascend&nbsp;${sortType==1&&sortMode==1?'<i class="fas fa-check"></i>':''}</a></li>
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?page=1&query=${query}&subcategory=${subcategory}&brand=${brand}&price=${price}&sortType=${sortType==1&&sortMode==2?'0':'1'}&sortMode=${sortType==1&&sortMode==2?'0':'2'}">Descend&nbsp;${sortType==1&&sortMode==2?'<i class="fas fa-check"></i>':''}</a></li>
                         </ul>
                     </div>
                     <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-light dropdown-toggle ${st==2?'active':''}" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-light dropdown-toggle ${sortType==2?'active':''}" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sort by sale
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?page=1&query=${query}&subcategory=${subcategory}&brand=${brand}&price=${price}&sortType=${sortType==2&&sortMode==1?'0':'2'}&sortMode=${sortType==2&&sortMode==1?'0':'1'}">Ascend&nbsp;${sortType==2&&sortMode==1?'<i class="fas fa-check"></i>':''}</a></li>
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?page=1&query=${query}&subcategory=${subcategory}&brand=${brand}&price=${price}&sortType=${sortType==2&&sortMode==2?'0':'2'}&sortMode=${sortType==2&&sortMode==2?'0':'2'}">Descend&nbsp;${sortType==2&&sortMode==2?'<i class="fas fa-check"></i>':''}</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-light dropdown-toggle ${sortType==3?'active':''}" data-bs-toggle="dropdown" aria-expanded="false">
                             Sort by name
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <li><a class="dropdown-item" href="ProductServlet?p=1&st=${st==2&&sm==1?'0':'2'}&sm=${st==2&&sm==1?'0':'1'}&c=${c}&b=${b}&search=${search}">Ascend&nbsp;${st==2&&sm==1?'<i class="fas fa-check"></i>':''}</a></li>
-                            <li><a class="dropdown-item" href="ProductServlet?p=1&st=${st==2&&sm==2?'0':'2'}&sm=${st==2&&sm==2?'0':'2'}&c=${c}&b=${b}&search=${search}">Descend&nbsp;${st==2&&sm==2?'<i class="fas fa-check"></i>':''}</a></li>
-                        </ul>
-                    </div>
-                    <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-light dropdown-toggle ${st==3?'active':''}" data-bs-toggle="dropdown" aria-expanded="false">
-                            Sort by date
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <li><a class="dropdown-item" href="ProductServlet?p=1&st=${st==3&&sm==1?'0':'3'}&sm=${st==3&&sm==1?'0':'1'}&c=${c}&b=${b}&search=${search}">Ascend&nbsp;${st==3&&sm==1?'<i class="fas fa-check"></i>':''}</a></li>
-                            <li><a class="dropdown-item" href="ProductServlet?p=1&st=${st==3&&sm==2?'0':'3'}&sm=${st==3&&sm==2?'0':'2'}&c=${c}&b=${b}&search=${search}">Descend&nbsp;${st==3&&sm==2?'<i class="fas fa-check"></i>':''}</a></li>
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?page=1&query=${query}&subcategory=${subcategory}&brand=${brand}&price=${price}&sortType=${sortType==3&&sortMode==1?'0':'3'}&sortMode=${sortType==3&&sortMode==1?'0':'1'}">Ascend&nbsp;${sortType==3&&sortMode==1?'<i class="fas fa-check"></i>':''}</a></li>
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?page=1&query=${query}&subcategory=${subcategory}&brand=${brand}&price=${price}&sortType=${sortType==3&&sortMode==2?'0':'3'}&sortMode=${sortType==3&&sortMode==2?'0':'2'}">Descend&nbsp;${sortType==3&&sortMode==2?'<i class="fas fa-check"></i>':''}</a></li>
                         </ul>
                     </div>
                   </div>
                 <!-- SORT BUTTON -->
+                <!-- PRODUCT GRID -->
                 <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-3 g-3">
-                    
-                    <div class="col">
-                        <div class="card h-100 shadow-sm"> <img src="https://www.freepnglogos.com/uploads/notebook-png/download-laptop-notebook-png-image-png-image-pngimg-2.png" class="card-img-top" alt="...">
-                            <div class="label-top shadow-sm">-10%</div>
-                            <div class="card-body">
-                                <div class="clearfix mb-3"> <span class="float-start badge rounded-pill bg-primary">ASUS Rog</span> <span class="float-end price-hp">12354.00€</span> </div>
-                                <h5 class="card-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.</h5>
-                                <div class="text-center my-4"> <a href="#" class="btn-custom btn-warning-custom">Check offer</a> </div>
-                                <!-- <div class="clearfix mb-1"> <span class="float-start"><i class="far fa-question-circle"></i></span> <span class="float-end"><i class="fas fa-plus"></i></span> </div> -->
+                    <c:forEach items="${products}" var="iproduct">
+                        <div class="col" >
+                            <div class="card h-100 shadow-sm"> <img src="${pageContext.request.contextPath}/resources/img/products/${iproduct.getUrl()}" class="card-img-top" alt="...">
+                                <c:if test="${iproduct.getSalePercent()>0}">
+                                    <div class="label-top shadow-sm">-${iproduct.getSalePercent()}%</div>
+                                </c:if>
+                                <div class="card-body">
+                                    <div class="clearfix mb-3"> 
+                                        <c:forEach items="${brands}" var="ibrand">
+                                            <c:if test="${ibrand.getBrandID()==iproduct.getBrandID()}">
+                                                <span class="float-start badge rounded-pill bg-primary">${ibrand.getBrandName()}</span>
+                                            </c:if>
+                                        </c:forEach>
+                                        <span class="float-end price-hp">${iproduct.getSellPrice()}$</span> </div>
+                                    <h5 class="card-title">${iproduct.getProductName()}</h5>
+                                    <p class="card-text overflow-auto" style="height: 100px;text-overflow: ellipsis;">${iproduct.getDesc()}</p>
+                                    <div class="text-center my-4"> <a href="#" class="btn-custom btn-warning-custom">Check offer</a> </div>
+                                    <!-- <div class="clearfix mb-1"> <span class="float-start"><i class="far fa-question-circle"></i></span> <span class="float-end"><i class="fas fa-plus"></i></span> </div> -->
+                                </div>
                             </div>
                         </div>
-                    </div>
-                        
-                    <div class="col">
-                      <div class="card h-100 shadow-sm"> <img src="https://www.freepnglogos.com/uploads/notebook-png/download-laptop-notebook-png-image-png-image-pngimg-2.png" class="card-img-top" alt="...">
-                          <div class="label-top shadow-sm">Asus Rog</div>
-                          <div class="card-body">
-                              <div class="clearfix mb-3"> <span class="float-start badge rounded-pill bg-success-custom">12354.00€</span> <span class="float-end"><a href="#" class="small text-muted">Reviews</a></span> </div>
-                              <h5 class="card-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.</h5>
-                              <div class="text-center my-4"> <a href="#" class="btn-custom btn-warning-custom">Check offer</a> </div>
-                              <div class="clearfix mb-1"> <span class="float-start"><i class="far fa-question-circle"></i></span> <span class="float-end"><i class="fas fa-plus"></i></span> </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col">
-                    <div class="card h-100 shadow-sm"> <img src="https://www.freepnglogos.com/uploads/notebook-png/download-laptop-notebook-png-image-png-image-pngimg-2.png" class="card-img-top" alt="...">
-                        <div class="label-top shadow-sm">Asus Rog</div>
-                        <div class="card-body">
-                            <div class="clearfix mb-3"> <span class="float-start badge rounded-pill bg-success-custom">12354.00€</span> <span class="float-end"><a href="#" class="small text-muted">Reviews</a></span> </div>
-                            <h5 class="card-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.</h5>
-                            <div class="text-center my-4"> <a href="#" class="btn-custom btn-warning-custom">Check offer</a> </div>
-                            <div class="clearfix mb-1"> <span class="float-start"><i class="far fa-question-circle"></i></span> <span class="float-end"><i class="fas fa-plus"></i></span> </div>
-                        </div>
-                    </div>
+                     </c:forEach>   
                 </div>
-
-                </div>
+                <!-- PRODUCT GRID -->
+                <!-- PAGE NAV -->
                 <nav class="my-3" aria-label="Page navigation">
                   <ul class="pagination justify-content-center">
                     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -249,6 +237,7 @@
                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
                   </ul>
                 </nav>
+                <!-- PAGE NAV -->
             </div>
             <!-- PRODUCT LIST -->
         </div>

@@ -65,15 +65,15 @@ public class ProductListServlet extends HttpServlet {
         request.setAttribute("sortType", sortType);
         request.setAttribute("sortMode", sortMode);
         
-//        ProductDAO pdao=new ProductDAO();
-//        List<Product> products=pdao.getProductQuery(query,subcategory,brand,price,sortType,sortMode);
-//        int maxPage= (int) Math.ceil( (products.size()*1.0 )/12);
-//        request.setAttribute("maxPage", maxPage);
-//        List<Product> display = new ArrayList<>();
-//        for(int i=8*(page-1);i<12*page ;i++)
-//            if(i<products.size())
-//                display.add(products.get(i));
-//        request.setAttribute("products", display);
+        ProductDAO pdao=new ProductDAO();
+        List<Product> products=pdao.getProductQuery(query,subcategory,brand,price,sortType,sortMode);
+        int maxPage= (int) Math.ceil( (products.size()*1.0 )/12);
+        request.setAttribute("maxPage", maxPage);
+        List<Product> display = new ArrayList<>();
+        for(int i=12*(page-1);i<12*page ;i++)
+           if(i<products.size())
+                display.add(products.get(i));
+        request.setAttribute("products", display);
         request.getRequestDispatcher("productlist.jsp").forward(request, response);
     }
 
