@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
+import util.StringDecode;
 /**
  *
  * @author SAKURA
@@ -51,7 +52,7 @@ public class ProductListServlet extends HttpServlet {
         request.setAttribute("subcategorys", subcategorys);
         // Query parameter
         int page=Integer.parseInt(request.getParameter("page"));
-        String query=request.getParameter("query");
+        String query=StringDecode.decode(request.getParameter("query"));
         int subcategory=Integer.parseInt(request.getParameter("subcategory"));
         int brand=Integer.parseInt(request.getParameter("brand"));
         int price=Integer.parseInt(request.getParameter("price"));

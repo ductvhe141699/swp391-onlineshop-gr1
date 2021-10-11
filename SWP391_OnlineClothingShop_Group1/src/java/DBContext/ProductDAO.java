@@ -122,7 +122,7 @@ public class ProductDAO {
             }
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
-            ps.setString(count++, "%"+Query+"%");
+            ps.setNString(count++, "%"+Query+"%");
             if(subcategory!=0)
             {
                 ps.setInt(count++, subcategory);
