@@ -9,7 +9,6 @@ import DBContext.UserDAO;
 import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class AccountManagerControl extends HttpServlet {
+public class editAccount extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,15 +32,17 @@ public class AccountManagerControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
-           UserDAO userDAO = new UserDAO();
-            List<Users> listAccount = userDAO.getAllUsers();
-
-            //Set data to JSP
-            request.setAttribute("list", listAccount);
-            request.getRequestDispatcher("AccountManager.jsp").forward(request, response);
-        } catch (Exception e) {
-            response.sendRedirect("error.jsp");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet editAccount</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet editAccount at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -57,7 +58,26 @@ public class AccountManagerControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+         try {
+            //Get ID from jsp
+            String id = request.getParameter("userID");
+            UserDAO dao = new UserDAO();
+            //UserAddressDAO UserAddressDAO = new UserAddressDAO();
+            
+            Users x = dao.getUsersByID(id);
+            
+            //Push
+            request.setAttribute("id", x.getUserID());
+            request.setAttribute("user", x.getUserName());
+            request.setAttribute("pass", x.getPassword());
+            request.setAttribute("email", x.getEmail());
+            request.setAttribute("role", x.getRoleID());
+
+            request.getRequestDispatcher("EditAccount.jsp").forward(request, response);
+        } catch (Exception e) {
+            response.sendRedirect("error.jsp");
+        }
     }
 
     /**
@@ -71,7 +91,23 @@ public class AccountManagerControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+         try {
+            //Step 1: get data from jsp
+            String id = request.getParameter("id");
+            String user = request.getParameter("user"); //Get by name
+            String password = request.getParameter("pass");
+            String email = request.getParameter("email");
+            String roleID = request.getParameter("role");
+           
+            //Step 2: set data to ProductDAO
+            UserDAO dao = new UserDAO();
+            dao.editAccount(id, user, password, email, roleID);
+            //dao.editAccount(id, user, password, isSell, imin);
+            response.sendRedirect("AccountManagerControl");
+        } catch (Exception e) {
+            response.sendRedirect("error.jsp");
+        }
     }
 
     /**

@@ -6,10 +6,8 @@
 package controller;
 
 import DBContext.UserDAO;
-import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class AccountManagerControl extends HttpServlet {
+public class deleteAccount extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,15 +31,17 @@ public class AccountManagerControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
-           UserDAO userDAO = new UserDAO();
-            List<Users> listAccount = userDAO.getAllUsers();
-
-            //Set data to JSP
-            request.setAttribute("list", listAccount);
-            request.getRequestDispatcher("AccountManager.jsp").forward(request, response);
-        } catch (Exception e) {
-            response.sendRedirect("error.jsp");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet deleteAccount</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet deleteAccount at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -57,7 +57,15 @@ public class AccountManagerControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        try{
+        String id=request.getParameter("UserID");
+        UserDAO dao = new UserDAO();
+        dao.deleteAccount(id);
+        response.sendRedirect("AccountManagerControl");}
+   catch (Exception e) {
+            response.sendRedirect("error.jsp");
+        }    
     }
 
     /**

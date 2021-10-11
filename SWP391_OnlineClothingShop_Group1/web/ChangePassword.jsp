@@ -22,11 +22,15 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">;
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <link href="css/ChangePassword.css" rel="stylesheet" type="text/css"/> 
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <link rel="stylesheet" type="text/css" href="./css/queries.css" />
+        <link rel="stylesheet" type="text/css" href="./css/homepage.css" /> 
     </head>
     <body>
-        <div class="container">
+        <%@include file="model/header.jsp" %>
+        <div class="container mt-3">
             <div class="row">
-                <br>
+                <br><br>
             </div>
             <div class="row">
                 <div class="col-md-1"></div>
@@ -45,7 +49,7 @@
                         <button class="btn btn-primary btn-block" type="submit" style="width: 200px" id='link2'><i class="fa fa-check-circle"></i>Confirm</button>
                     </form>
                     <br><br>
-                    <a href="productList" id="back">Back to Product List page</a>
+                    <!--<a href="productList" id="back">Back to Product List page</a>-->
                     <br><br>
                 </div>
                 
@@ -55,5 +59,9 @@
                 <div class="col-md-2"></div>
             </div>
         </div>
+          <div class="row">
+                <br><br>
+            </div>
+        <%@include file="model/footer.jsp" %>
     </body>
 </html>

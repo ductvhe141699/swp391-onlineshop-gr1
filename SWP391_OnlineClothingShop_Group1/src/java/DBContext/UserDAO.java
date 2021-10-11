@@ -9,6 +9,7 @@ import entity.Users;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -172,5 +173,32 @@ public class UserDAO {
         DBcontext.close(conn, ps, rs);
         
     }
-   
+     public void editAccount(String id, String user, String pass, String email, String role) {
+        String query = "UPDATE Users\n"
+                + "SET Username = ?,\n"
+                + "Password = ?,\n"
+                + "email = ?"
+                + "RoleID = ?,\n"
+                + "WHERE UserID = ?";
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setString(1, user);
+            ps.setString(2, pass);
+            ps.setString(3, email);
+            ps.setString(4, role);
+            ps.setString(5, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+      public void deleteAccount(String id) {
+        String query = "delete from Users where UserID = ?";
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setString(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        return;
+    }
 }

@@ -62,16 +62,28 @@ public class Users {
         this.email = email;
     }
 
-    public int getRoleID() {
-        return roleID;
+    public String getRoleID() {
+        if (roleID == 1) {
+            return "Seller";
+        } else {
+            return "Customer";
+        }
     }
 
     public void setRoleID(int roleID) {
         this.roleID = roleID;
     }
 
-    public int getStatusID() {
-        return statusID;
+    public String getStatusID() {
+        if (statusID == 1) {
+            return "Active";
+        } else if (statusID == 2) {
+            return "Locked";
+        } else if (statusID == 3) {
+            return "Gmail Login";
+        } else {
+            return "Unverified";
+        }
     }
 
     public void setStatusID(int statusID) {
@@ -82,6 +94,5 @@ public class Users {
     public String toString() {
         return "Users{" + "userID=" + userID + ", userName=" + userName + ", password=" + password + ", email=" + email + ", roleID=" + roleID + ", statusID=" + statusID + '}';
     }
-    
 
 }

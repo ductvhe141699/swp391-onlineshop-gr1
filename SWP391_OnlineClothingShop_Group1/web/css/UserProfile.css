@@ -9,10 +9,10 @@ and open the template in the editor.
 */
 body{
     background: radial-gradient(#fff,#ffd6d6);
-    height: auto;
+    height: 100%;
     background-position: center;
-    background-repeat: repeat;
-    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: auto;
 }
 .col-md-4{
     /*background-color: white;*/

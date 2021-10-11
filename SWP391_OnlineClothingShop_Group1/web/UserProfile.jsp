@@ -16,11 +16,15 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">;
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <link href="css/UserProfile.css" rel="stylesheet" type="text/css"/> 
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <link rel="stylesheet" type="text/css" href="./css/queries.css" />
+        <link rel="stylesheet" type="text/css" href="./css/homepage.css" /> 
     </head>
     <body>
+        <%@include file="model/header.jsp" %>
         <div class="container">
             <div class="row">
-                <br>
+                <br><br>
             </div>
             <div class="row">
                 <div class="col-md-1"></div>
@@ -29,11 +33,6 @@
                     <%-- Display username --%>
                     <i class="fas fa-user-circle fa-pulse fa-spin fa-3x" id="profileIcon"></i>
                     <h4 style="text-align: center">${sessionScope.acc.UserName}</h4>
-
-                    <!-- Message for notification -->
-<!--                    <c:if test="${requestScope.message ne null}">
-                        <h5>${requestScope.message}</h5>
-                    </c:if>       -->
 
                     <%-- Display user email --%>
                     <h5>Email: ${acc.email}</h5>
@@ -80,19 +79,22 @@
                     <br><br>
 
                     <%-- Link to view order history --%>
-                    <a style="background-color: #ff523b" class="btn btn-primary btn-block" href="viewOrder?id=${acc.id}" id="link">Your orders</a>
+                    <a style="background-color: #ff523b" class="btn btn-primary btn-block" href="?id=${acc.userID}" id="link">My orders</a>
                     <br><br>
 
                     <%-- Link to return to home page --%>
-                    <a href="productList" id="back">Back to Product List page</a>
+                    <!--                    <a href="productList" id="back">Back to Product List page</a>-->
                     <br><br>
                 </div>
                 <div class="col-md-4" id="image">
-                    <img style="height: 570px; width: 600px; border-radius: 20px;" src="resources/profile.jpg" alt=""/>
+                    <img style="height: 550px; width: 600px; border-radius: 20px;" src="resources/profile.jpg" alt=""/>
                 </div>
                 <div class="col-md-2"></div>
             </div>
         </div>
-
+                    <div class="row">
+                        <br><br>
+            </div>
+        <%@include file="model/footer.jsp" %>
     </body>
 </html>

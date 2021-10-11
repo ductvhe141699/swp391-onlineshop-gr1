@@ -41,7 +41,7 @@ public class ProfileControl extends HttpServlet {
 
             request.getRequestDispatcher("UserProfile.jsp").forward(request, response);
         } catch (Exception e) {
-            response.sendRedirect("error.html");
+            response.sendRedirect("error.jsp");
         }
     }
 
