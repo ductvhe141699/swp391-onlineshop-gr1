@@ -48,6 +48,10 @@
         <servlet-name>deleteAccount</servlet-name>
         <servlet-class>controller.deleteAccount</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>viewOrder</servlet-name>
+        <servlet-class>controller.viewOrder</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -94,6 +98,10 @@
     <servlet-mapping>
         <servlet-name>deleteAccount</servlet-name>
         <url-pattern>/deleteAccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>viewOrder</servlet-name>
+        <url-pattern>/viewOrder</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
