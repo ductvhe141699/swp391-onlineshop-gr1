@@ -3,11 +3,17 @@
     .thankyou{
         width:80%;
     }
+    .thankyou-div{
+        width: 85%;
+    }
 }
 /* MD */
 @media all and (min-width: 768px) {
     .thankyou{
         width:60%;
+    }
+    .thankyou-div{
+        width: 70%;
     }
 }
 /* LG */
@@ -20,6 +26,9 @@
     }
     .thankyou{
         width:40%;
+    }
+    .thankyou-div{
+        width: 55%;
     }
 }
 /* XL */
