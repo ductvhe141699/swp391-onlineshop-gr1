@@ -265,14 +265,21 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>1</td>
+                        <td>01</td>
                         <td>quan ao</td>
                         <td>100000</td>
                         <td>1</td>
                         <td></td>
                      
                       </tr>
-                      
+                      <tr>
+                        <td>02</td>
+                        <td>quan ao</td>
+                        <td>100000</td>
+                        <td>2</td>
+                        <td></td>
+                     
+                      </tr>
                     </tbody>
                     <tfoot>
                       <tr>
