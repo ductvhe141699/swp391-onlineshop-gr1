@@ -1,3 +1,11 @@
+<%-- 
+    Document   : cart
+    Created on : Oct 14, 2021, 7:41:44 PM
+    Author     : SAKURA
+--%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page trimDirectiveWhitespaces="true" %> 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- icon -->
-    <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/favicon.ico" type="image/x-icon">
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
@@ -16,14 +24,15 @@
     <!--FONTAWESOME-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--CSS-->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/queries.css">
-    <link rel="stylesheet" href="../css/cart.css">
-    <link rel="stylesheet" href="../css/cartqueries.css">
-    <title>Form Project</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/queries.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cartqueries.css">
+    <title>Cart</title>
   </head>
 
   <body>
+    <%@include file="model/header.jsp" %>
     <!-- PROGRESS -->
     <section id="progress" style="background-color: whitesmoke;">
             <div class="row container-fluid justify-content-center text-center align-content-center m-0 p-0" style="height: 50px;">
@@ -62,8 +71,15 @@
               <tr>
                 <th scope="row">1</th>
                 <td>Image</td>
-                <td>Name</td>
-                <td>Amount</td>
+                <td>Name SOLONGGGGGGGGGGGGGGGGGG</td>
+                <td>
+                    <div class="btn-group">
+                        <span class="btn btn-light">42</span>
+                        <a href="AddToCartServlet?page=CartServlet&id=${product.getId()}" class="btn btn-success"><i class="fas fa-plus"></i></a>
+                        <a href="RemoveFromCartServlet?page=CartServlet&id=${product.getId()}" class="btn btn-warning"><i class="fas fa-minus"></i></a>
+                        <a href="DeleteFromCartServlet?page=CartServlet&id=${product.getId()}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                    </div>
+                </td>
                 <td>Price</td>
               </tr>
             </tbody>
@@ -132,15 +148,17 @@
                                 <td>Total Price</td>
                             </tr>
                         </tfoot>
-                    </table>
+                    </table>      
                     <button type="submit" class="btn btn-success float-end">Checkout</button>
+                    <a href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=0&price=0&sortType=0&sortMode=0" type="button" class="btn btn-light float-end me-2">Back to shop</a>
                 </div>       
             </div>
         </form>
     </div> 
+    <%@include file="model/footer.jsp" %>
     <!-- BOOTSTRAP5-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- SCRIPT -->
-    <script src="js/script.js"></script>      
+    <script src="${pageContext.request.contextPath}/js/script.js"></script>      
   </body>
 </html>
