@@ -1,0 +1,25 @@
+/* SM */
+@media all and (min-width: 576px) {  
+
+}
+/* MD */
+@media all and (min-width: 768px) {
+
+}
+/* LG */
+@media all and (min-width: 992px) {
+    .content-width{
+        width: 80%;
+    }
+    .progress-bar{
+        width: 35%;
+    }
+}
+/* XL */
+@media all and (min-width: 1200px) { 
+
+}
+/* XXL */
+@media all and (min-width: 1400px) { 
+
+}
