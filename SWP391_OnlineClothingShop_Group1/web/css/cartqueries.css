@@ -1,10 +1,14 @@
 /* SM */
 @media all and (min-width: 576px) {  
-
+    .thankyou{
+        width:80%;
+    }
 }
 /* MD */
 @media all and (min-width: 768px) {
-
+    .thankyou{
+        width:60%;
+    }
 }
 /* LG */
 @media all and (min-width: 992px) {
@@ -13,6 +17,9 @@
     }
     .progress-bar{
         width: 35%;
+    }
+    .thankyou{
+        width:40%;
     }
 }
 /* XL */
