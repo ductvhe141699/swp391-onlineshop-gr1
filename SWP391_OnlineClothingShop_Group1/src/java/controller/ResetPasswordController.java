@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author BEAN
  */
-@WebServlet(name = "ResetPasswordController", urlPatterns = {"/ResetPassword"})
+@WebServlet(name = "ResetPasswordController", urlPatterns = {"/ResetPasswordController"})
 public class ResetPasswordController extends HttpServlet {
 
     /**
