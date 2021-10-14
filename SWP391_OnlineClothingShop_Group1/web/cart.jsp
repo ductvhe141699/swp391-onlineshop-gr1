@@ -71,8 +71,15 @@
               <tr>
                 <th scope="row">1</th>
                 <td>Image</td>
-                <td>Name</td>
-                <td>Amount</td>
+                <td>Name SOLONGGGGGGGGGGGGGGGGGG</td>
+                <td>
+                    <div class="btn-group">
+                        <span class="btn btn-light">42</span>
+                        <a href="AddToCartServlet?page=CartServlet&id=${product.getId()}" class="btn btn-success"><i class="fas fa-plus"></i></a>
+                        <a href="RemoveFromCartServlet?page=CartServlet&id=${product.getId()}" class="btn btn-warning"><i class="fas fa-minus"></i></a>
+                        <a href="DeleteFromCartServlet?page=CartServlet&id=${product.getId()}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                    </div>
+                </td>
                 <td>Price</td>
               </tr>
             </tbody>

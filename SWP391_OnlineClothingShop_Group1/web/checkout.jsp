@@ -73,7 +73,11 @@
                 <th scope="row">1</th>
                 <td>Image</td>
                 <td>Name</td>
-                <td>Amount</td>
+                <td>
+                    <div class="btn-group">
+                        <span class="btn btn-light">42</span>
+                    </div>
+                </td>
                 <td>Price</td>
               </tr>
             </tbody>
@@ -91,26 +95,23 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label for="inputName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="inputName" required>
+                            <input type="text" class="form-control" id="inputName" disabled required>
                         </div>
                         <div class="col-md-6">
                             <label for="inputPhone" class="form-label">Phone</label>
-                            <input type="tel" class="form-control" id="inputPhone" required>
+                            <input type="tel" class="form-control" id="inputPhone" disabled required>
                         </div>
                         <div class="col-md-8">
                             <label for="inputAddress" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                            <input type="text" class="form-control" id="inputAddress" disabled>
                         </div>
                         <div class="col-md-4">
                             <label for="inputCity" class="form-label">City</label>
-                            <select id="inputCity" class="form-select" required>
-                                <option value="" disabled selected>Choose a city</option>
-                                <option value="1">...</option>
-                            </select>
+                            <input type="text" class="form-control" id="inputCity" disabled>
                         </div>
                         <div class="col-12">
-                            <label for="inputNote" class="form-label">Note</label>
-                            <input type="text" class="form-control" id="inputNote">
+                            <label for="inputNote"  class="form-label">Note</label>
+                            <input type="text" class="form-control" id="inputNote" disabled>
                         </div>
                     </div>
                 </div>
