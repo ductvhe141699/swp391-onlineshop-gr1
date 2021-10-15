@@ -58,13 +58,13 @@
                                                     </c:if>
                                                 </td>
                                                 <td style="width: 20%;" class="text-center">
-                                                    <a target="blank" href="editAccount?UserID=${o.userID}" class="table-link text-info">
+                                                    <a href="editAccount?UserID=${o.userID}" class="table-link text-info">
                                                         <span class="fa-stack">
                                                             <i class="fa fa-square fa-stack-2x"></i>
                                                             <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                                         </span>
                                                     </a>
-                                                        <a target="blank" href="#" onclick="showMess(${o.userID})" class="table-link danger">
+                                                        <a href="#" onclick="showMess(${o.userID})" class="table-link danger">
                                                         <span class="fa-stack">
                                                             <i class="fa fa-square fa-stack-2x"></i>
                                                             <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -75,7 +75,7 @@
                                         </c:forEach>
                                     </tbody>
                                 </table>
-                                <!--<a href="productList" id="back">Back to Product List page</a>-->
+                               
                                 <br><br>
                             </div>
                         </div>
@@ -86,6 +86,7 @@
          <div class="row">
                 <br><br>
             </div>
+
         <%@include file="model/footer.jsp" %>
     </body>
     <script>

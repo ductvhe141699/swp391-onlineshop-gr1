@@ -38,6 +38,9 @@
                     <br><br><br>
                     <!--<i class="fa fa-refresh fa-spin" style="font-size:24px"></i>-->
                     <h1>Change Your Password</h1>
+                     <c:if test="${requestScope.message ne null}">
+                        <p>${requestScope.message}</p>
+                    </c:if>
                     <br><br>
                     <form action="ChangedPasswordControl" method="POST">
                         <input type="password" id="pass" name="pass" placeholder="Old Password" class="form-control">
@@ -49,7 +52,7 @@
                         <button class="btn btn-primary btn-block" type="submit" style="width: 200px" id='link2'><i class="fa fa-check-circle"></i>Confirm</button>
                     </form>
                     <br><br>
-                    <!--<a href="productList" id="back">Back to Product List page</a>-->
+                    <a href="ProfileControl" id="back">Back to My Profile</a>
                     <br><br>
                 </div>
                 

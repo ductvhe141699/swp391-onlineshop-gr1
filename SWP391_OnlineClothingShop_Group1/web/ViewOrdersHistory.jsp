@@ -49,7 +49,7 @@
                     }
                     
                 </style>
-                <table id="customers" style="margin-left:3em; border: 1px solid;">
+                <table id="customers" style="margin-left:3em; border: 1px solid;text-align: center">
                     <thead >
                         <tr >
                             <th>Order ID</th>
@@ -71,11 +71,6 @@
                                 <td>${item.status}</td>
                                 <td>${item.date}</td>
                                 <td><a  style="cursor: pointer ">View</a></td>
-<!--                        <form style="display:none;" id="${item.id}" action="viewOrderDetail">
-                            <input type="hidden" value="${item.status}" name="status">
-                            <input type="hidden" value="${item.id}" name="id">
-                        </form>-->
-
 
                         <c:set var="total" value="${total + item.totalPrice}" />
                         </tr>
@@ -91,6 +86,9 @@
                     VNĐ</h3>
             </div>
         </div>
+         <a href="ProfileControl" id="back">Back to My Profile</a>
+         <br>
+         <br>
          <%@include file="model/footer.jsp" %>
     </body>
 </html>
