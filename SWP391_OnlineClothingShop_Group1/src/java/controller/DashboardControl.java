@@ -5,12 +5,11 @@
  */
 package controller;
 
-import DBContext.UserDAO;
-import entity.Users;
+import DBContext.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class AccountManagerControl extends HttpServlet {
+@WebServlet(name = "DashboardControl", urlPatterns = {"/dashBoard"})
+public class DashboardControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,14 +34,10 @@ public class AccountManagerControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-           UserDAO userDAO = new UserDAO();
-            List<Users> listAccount = userDAO.getAllUsers();
-
-            //Set data to JSP
-            request.setAttribute("list", listAccount);
-            request.getRequestDispatcher("AccountManager.jsp").forward(request, response);
+            ProductDAO ProductDAO = new ProductDAO();
+            
         } catch (Exception e) {
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("Error.jsp");
         }
     }
 

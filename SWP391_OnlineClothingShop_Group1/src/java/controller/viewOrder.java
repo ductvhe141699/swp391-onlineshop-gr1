@@ -5,8 +5,8 @@
  */
 package controller;
 
-import DBContext.UserDAO;
-import entity.Users;
+import DBContext.OrderDAO;
+import entity.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class AccountManagerControl extends HttpServlet {
+public class viewOrder extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,13 +34,15 @@ public class AccountManagerControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-           UserDAO userDAO = new UserDAO();
-            List<Users> listAccount = userDAO.getAllUsers();
+            int id = Integer.parseInt(request.getParameter("id"));
+            OrderDAO orderDAO = new OrderDAO();
 
-            //Set data to JSP
-            request.setAttribute("list", listAccount);
-            request.getRequestDispatcher("AccountManager.jsp").forward(request, response);
-        } catch (Exception e) {
+            List<Order> orders = orderDAO.getOrderByUserID(id);
+
+            request.setAttribute("orders", orders);
+            
+            request.getRequestDispatcher("ViewOrdersHistory.jsp").forward(request, response);
+        } catch (Exception ex) {
             response.sendRedirect("error.jsp");
         }
     }

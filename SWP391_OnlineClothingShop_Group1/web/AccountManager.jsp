@@ -17,8 +17,15 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <link href="css/AccountManage.css" rel="stylesheet" type="text/css"/> 
         <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <link rel="stylesheet" type="text/css" href="./css/queries.css" />
+        <link rel="stylesheet" type="text/css" href="./css/homepage.css" /> 
     </head>
     <body>
+        <%@include file="model/header.jsp" %>
+         <div class="row">
+                <br><br>
+            </div>
         <h2 style="font-family: Brush Script MT; text-align: center; font-size: 60px">Account manager</h2>
         <hr>
         <div class="container bootstrap snippets bootdey">
@@ -38,37 +45,37 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${list}" var="o">
-                                        <tr>
-                                            <td class="text-center">${o.userID}</td>
-                                            <td class="text-center">${o.userName}</td>
-                                            <td class="text-center">
-                                        <c:if test="${o.RoleID==1}">
-                                        <span class="label label-default">Seller</span>
-                                        </c:if>
-                                        <c:if test="${o.RoldID==2}">
-                                        <span class="label label-default">Cutomer</span>
-                                        </c:if>
-                                        </td>
-                                        <td style="width: 20%;" class="text-center">
-                                            <a target="blank" href="editAccount?UserID=${o.UserID}" class="table-link text-info">
-                                                <span class="fa-stack">
-                                                    <i class="fa fa-square fa-stack-2x"></i>
-                                                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                                </span>
-                                            </a>
-                                            <a target="blank" href="deleteAccount?UserID=${o.UserID}" class="table-link danger">
-                                                <span class="fa-stack">
-                                                    <i class="fa fa-square fa-stack-2x"></i>
-                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                                </span>
-                                            </a>
-                                        </td>
-                                        </tr>
-                                    </c:forEach>
+                                        <c:forEach items="${list}" var="o">
+                                            <tr>
+                                                <td class="text-center">${o.userID}</td>
+                                                <td class="text-center">${o.userName}</td>
+                                                <td class="text-center">
+                                                    <c:if test="${o.RoleID==1}">
+                                                        <span class="label label-default">Seller</span>
+                                                    </c:if>
+                                                    <c:if test="${o.RoldID==2}">
+                                                        <span class="label label-default">Cutomer</span>
+                                                    </c:if>
+                                                </td>
+                                                <td style="width: 20%;" class="text-center">
+                                                    <a href="editAccount?UserID=${o.userID}" class="table-link text-info">
+                                                        <span class="fa-stack">
+                                                            <i class="fa fa-square fa-stack-2x"></i>
+                                                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                        </span>
+                                                    </a>
+                                                        <a href="#" onclick="showMess(${o.userID})" class="table-link danger">
+                                                        <span class="fa-stack">
+                                                            <i class="fa fa-square fa-stack-2x"></i>
+                                                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                        </span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
-                                <a href="productList" id="back">Back to Product List page</a>
+                               
                                 <br><br>
                             </div>
                         </div>
@@ -76,5 +83,18 @@
                 </div>
             </div>
         </div>
+         <div class="row">
+                <br><br>
+            </div>
+
+        <%@include file="model/footer.jsp" %>
     </body>
+    <script>
+        function showMess(userID){
+            var option=confirm('Are you sure to delete this Account?');
+            if(option===true){
+                window.location.href = 'deleteAccount?userID='+userID;
+            }
+        }
+    </script>
 </html>

@@ -58,19 +58,18 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <c:if test ="${sessionScope.acc !=  null}">
-                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Logout</a></li>
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Logout</a></li>
                     </c:if>
-                   <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Login</a></li>
-                 
-                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/register">Register</a></li>
+                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Login</a></li>
+                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/register">Register</a></li>
                 </ul>
               </li>
               <!-- COLLAPSED -->
               <li class="nav-item d-block d-lg-none">
-                <a class="nav-link" aria-current="page" href="#">Home</a>
+                <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/home">Home</a>
               </li>
               <li class="nav-item d-block d-lg-none">
-                <a class="nav-link" aria-current="page" href="#">Product</a>
+                <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Product</a>
               </li>
               <li class="nav-item dropdown d-block d-lg-none">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
+import util.StringDecode;
 /**
  *
  * @author SAKURA
@@ -38,7 +39,7 @@ public class ProductListServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Basic For nav
+        // For Nav ( Category , Sub Category , Brand )
         response.setContentType("text/html;charset=UTF-8");
         CategoryDAO cdao = new CategoryDAO();
         List<Category> categorys = cdao.getAllCategory();
@@ -49,15 +50,15 @@ public class ProductListServlet extends HttpServlet {
         SubCategoryDAO scdao = new SubCategoryDAO();
         List<SubCategory> subcategorys = scdao.getAllSubCategory();
         request.setAttribute("subcategorys", subcategorys);
-        // Query parameter
+        // Query Parameter
         int page=Integer.parseInt(request.getParameter("page"));
-        String query=request.getParameter("query");
+        String query=StringDecode.decode(request.getParameter("query"));
         int subcategory=Integer.parseInt(request.getParameter("subcategory"));
         int brand=Integer.parseInt(request.getParameter("brand"));
         int price=Integer.parseInt(request.getParameter("price"));
         int sortType=Integer.parseInt(request.getParameter("sortType"));
         int sortMode=Integer.parseInt(request.getParameter("sortMode"));
-        // Send back parameter to page
+        // Return Parameter Back
         request.setAttribute("page",page);
         request.setAttribute("query", query.replace(' ', '+'));
         request.setAttribute("subcategory", subcategory);
@@ -65,24 +66,25 @@ public class ProductListServlet extends HttpServlet {
         request.setAttribute("price", price);
         request.setAttribute("sortType", sortType);
         request.setAttribute("sortMode", sortMode);
-        // Product counter
+        // Product Counter
         ProductDAO pdao=new ProductDAO();
         List<Product> products=pdao.getProductQuery("",0,0,0,0,0); 
-        HashMap<Integer,Integer> subcategorycount = new HashMap<Integer,Integer>(); 
-        HashMap<Integer,Integer> brandcount = new HashMap<Integer,Integer>(); 
-        for (Product product: products)
-        {
+        HashMap<Integer,Integer> subcategorycount = new HashMap<>(); 
+        HashMap<Integer,Integer> brandcount = new HashMap<>(); 
+        for (Product product: products){
             brandcount.put(product.getBrandID(), (brandcount.get(product.getBrandID())==null?0:brandcount.get(product.getBrandID()) ) +1 );
             subcategorycount.put(product.getSubCateID(),(subcategorycount.get(product.getSubCateID())==null?0:subcategorycount.get(product.getSubCateID())) + 1 );
         }
         request.setAttribute("brandCount", brandcount);
         request.setAttribute("subCategoryCount", subcategorycount);
-        // Display Product
+        // Display Product ( Max = 12 )
+        int maxProductDisplay = 12;
+        // Query Product from db
         products=pdao.getProductQuery(query,subcategory,brand,price,sortType,sortMode);
-        int maxPage= (int) Math.ceil( (products.size()*1.0 )/12);
+        int maxPage= (int) Math.ceil( (products.size()*1.0 )/ maxProductDisplay );
         request.setAttribute("maxPage", maxPage);
         List<Product> display = new ArrayList<>();
-        for(int i=12*(page-1);i<12*page ;i++)
+        for(int i= maxProductDisplay * (page-1);i< maxProductDisplay * page ;i++)
            if(i<products.size())
                 display.add(products.get(i));
         request.setAttribute("products", display);
