@@ -588,7 +588,7 @@ VALUES
     )
 INSERT INTO Product VALUES (N'Balo Vans',N'Balo Vans Marvel Head Backpack được sản xuất với chất liệu 100% polyester bền đẹp, dẻo dai, chống thấm nước nhẹ.',300000,270000,10,10,2,100,1,2,45,32,0.5);
 INSERT INTO Product VALUES (N'Mũ lưỡi trai thêu chữ',N'Kiểu dáng: phù hợp cả nam và nữ. Đa phong cách, gọn nhẹ, năng động',100000,90000,10,11,2,100,1,1,45,32,0.2);
-INSERT INTO Product VALUES (N'Đồng hồ Curnon',N'Đồng hồ nữ Curnon Melissani Haze dây kim loại chính hãng, đeo tay thời trang nữ tính',1300000,127000,10,13,2,100,1,8,20,3,0.5);
+INSERT INTO Product VALUES (N'Đồng hồ Curnon',N'Đồng hồ nữ Curnon Melissani Haze dây kim loại chính hãng, đeo tay thời trang nữ tính',1300000,1270000,10,13,2,100,1,8,20,3,0.5);
 INSERT INTO Product VALUES (N'Nhẫn RAC001',N'Kiểu dáng sang trọng, tinh tế. Được chế tác từ hợp kim bền bỉ ',170000,163000,10,12,2,100,1,1,20,3,0.5);
 INSERT INTO Product VALUES (N'Quần Button Cargo Pant kaki ',N'Form được Fit size theo form và tiêu chuẩn tương đối của người Việt Nam.',170000,163000,10,6,2,100,1,1,80,45,0.5);
 
@@ -659,12 +659,16 @@ CREATE TABLE [dbo].[Orders](
 ) ON [PRIMARY]
 GO
 
-INSERT INTO Orders VALUES (4, 270000, null, 3, '2021/06/06 04:17');
-INSERT INTO Orders VALUES (5, 90000, null, 3, '2021/06/16 12:36');
+INSERT INTO Orders VALUES (4, 21, null, 3, '2021/06/06 04:17');
+INSERT INTO Orders VALUES (5, 10, null, 3, '2021/06/16 12:36');
 INSERT INTO Orders VALUES (5, 1270000, null, 3, '2021/06/12 10:18');
-INSERT INTO Orders VALUES (6, 1270000, null, 1, '2021/09/11 01:30');
-
-
+INSERT INTO Orders VALUES (6, 143000, null, 1, '2021/09/11 01:30');
+INSERT INTO Orders VALUES (7, 2580000, null, 1, '2021/05/14 02:30');
+INSERT INTO Orders VALUES (8, 4560000, null, 1, '2021/05/18 04:30');
+INSERT INTO Orders VALUES (9, 900000, null, 1, '2021/07/23 05:30');
+INSERT INTO Orders VALUES (9, 1240000, null, 1, '2021/04/09 09:30');
+INSERT INTO Orders VALUES (10, 1230000, null, 1, '2021/10/11 11:30');
+INSERT INTO Orders VALUES (11,1470000, null, 1, '2021/09/11 03:30');
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE [dbo].[Order_Detail](
@@ -678,6 +682,29 @@ CREATE TABLE [dbo].[Order_Detail](
 	constraint productID_in_order_detail FOREIGN KEY(ProductID) REFERENCES Product(ProductID)	
 ) ON [PRIMARY]
 GO
+INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES (1, 1, 1, N'Giày chống thấm nước thông minh V8SHO001I', 15, 1)
+GO
+INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES (2, 1, 2, N'Tất chân trẻ em cổ cao I3SOK606D', 2, 3)
+GO
+INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES (3, 2, 3, N'Áo T-Shirt Nam cổ tròn I7TSH545I', 5, 2)
+GO
+INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES (4, 3, 4, N'Áo T-Shirt Nữ cổ tròn I9TSH553I', 6, 3)
+GO
+INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES (5, 4, 5, N'Nike Waffle One', 150, 1)
+GO
+INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES (6, 5, 6, N'Balo Vans', 270000, 1)
+GO
+INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES (7, 6, 7, N'Mũ lưỡi trai thêu chữ', 90000, 2)
+GO
+INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES (8, 7, 8, N'Đồng hồ Curnon', 1270000, 1)
+GO
+INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES (9, 8, 9, N'Nhẫn RAC001', 163000, 2)
+GO
+INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES (10, 9, 10, N'Quần Button Cargo Pant kaki ', 163000, 1)
+GO
+SET IDENTITY_INSERT [dbo].[Order_Detail] OFF
+GO
+
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
