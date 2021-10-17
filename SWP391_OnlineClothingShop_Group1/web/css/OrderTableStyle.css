@@ -40,8 +40,8 @@ body{
     color: white;
 }
 
-.compare thead{
-    /*background-color: #eee;*/
+/*.compare thead{
+    background-color: #eee;
 }
 .compare{
     text-align: center;
@@ -50,13 +50,13 @@ body{
 .compare-container{
     margin-bottom:50px;
     
-}
+}*/
 .action{
     line-height: 350%;
 }
-.action a{
+/*.action a{
     cursor:pointer;
-    transition: transform .2s; /* Animation */
+    transition: transform .2s;  Animation 
     color:black;
     text-align: center;
 }
@@ -72,7 +72,7 @@ body{
 .action>.but>a:hover {
     text-decoration: none;
     color:black;
-}
+}*/
 table,
 th,
 td {
@@ -81,17 +81,17 @@ td {
     border-collapse: collapse;
     background-color: white;
 }
-.productLink :hover{
+/*.productLink :hover{
     color:red;
     cursor:pointer;
-}
+}*/
 
-.compare img{
+/*.compare img{
     width: 300px;
     height: 100%;
     object-fit: contain;
     max-height: 25em;
-}
+}*/
 #back {
   border-bottom: 3px solid #ff8cbc;
   font-size: 1em;
