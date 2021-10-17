@@ -39,7 +39,7 @@ public class BlogList extends HttpServlet {
             request.setAttribute("blogList", blogList);
             request.getRequestDispatcher("BlogList.jsp").forward(request, response);
         } catch (Exception e) {
-            response.sendRedirect("error.html");
+            response.sendRedirect("error.jsp");
         }
         
     }
