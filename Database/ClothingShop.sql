@@ -32,7 +32,6 @@ INSERT INTO Role VALUES (N'Seller');
 INSERT INTO Role VALUES (N'Customer');
 INSERT INTO Role VALUES (N'Marketing');
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 CREATE TABLE [Users] (
 	UserID int PRIMARY KEY identity(1,1),
 	Username nvarchar(500),
@@ -240,7 +239,7 @@ insert into dbo.[UserAddress] ([UserID], [ShipName], [ShipAddress], [ShipCityID]
 insert into dbo.[UserAddress] ([UserID], [ShipName], [ShipAddress], [ShipCityID]) values (2, 'Shellysheldon', '80 Homewood Pass', 45);
 insert into dbo.[UserAddress] ([UserID], [ShipName], [ShipAddress], [ShipCityID]) values (3, 'Joletta', '180 Evergreen Circle', 61);
 insert into dbo.[UserAddress] ([UserID], [ShipName], [ShipAddress], [ShipCityID]) values (4, 'Tammi', '920 Melby Trail', 1);
-insert into dbo.[UserAddress] ([UserID], [ShipName], [ShipAddress], [ShipCityID]) values (5, 'Gabey', '20 Mitchell Alley', 62);
+insert into dbo.[UserAddress] ([UserID], [ShipName], [ShipAddress], [ShipCityID]) values (5, N'Bạch Ngọc Minh Châu', N'Đại Học FPT', 24);
 insert into dbo.[UserAddress] ([UserID], [ShipName], [ShipAddress], [ShipCityID]) values (6, 'Eba', '0 Dovetail Park', 38);
 insert into dbo.[UserAddress] ([UserID], [ShipName], [ShipAddress], [ShipCityID]) values (7, 'Farica', '39269 Calypso Place', 20);
 insert into dbo.[UserAddress] ([UserID], [ShipName], [ShipAddress], [ShipCityID]) values (8, 'Vevay', '730 Walton Crossing', 6);
