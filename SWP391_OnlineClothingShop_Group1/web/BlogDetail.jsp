@@ -43,34 +43,15 @@
                 display: inline-block;
                 cursor: zoom-in;
             }
-
-
-            .gallery-wrap .img-small-wrap .item-gallery {
-                width: 60px;
-                height: 60px;
-                border: 1px solid #ddd;
-                margin: 7px 2px;
-                display: inline-block;
-                overflow: hidden;
-            }
-
-            .gallery-wrap .img-small-wrap {
-                text-align: center;
-            }
-            .gallery-wrap .img-small-wrap img {
-                max-width: 100%;
-                max-height: 100%;
-                object-fit: cover;
-                border-radius: 4px;
-                cursor: zoom-in;
-            }
             .img-big-wrap img{
                 width: 100% !important;
                 height: auto !important;
             }
-            .checked {
-                color: orange;
+            p {
+                font-size: 20px;
+                text-align: left;
             }
+
         </style>
     </head>
 
@@ -87,21 +68,19 @@
                             <article class="gallery-wrap"> 
                                 <div class="img-big-wrap">
                                     <div> <a href="#"><img src="./resources/img/products/${blog.imageLink}"></a></div>
-                                </div> <!-- slider-product.// -->
-                                <div class="img-small-wrap">
-                                </div> <!-- slider-nav.// -->
-                            </article> <!-- gallery-wrap .end// -->
+                                </div>                            
+                            </article> 
                         </div>
                         <div class="col-sm-7">
                             <article class="card-body p-5">
-                               <h3 class="title mb-3">${blog.title}</h3> 
-                                 <h5 class="item-property">${blog.author}</h5> 
-                                <br>
+                               <h3 class="title">${blog.title}</h3> 
+                                 <h5 class="item-property">${blog.author}</h5>                           
                                 <dl class="item-property">
                                     <dd><p>
                                             ${blog.content}
                                         </p></dd>
                                 </dl>
+                            </article>
                         </div>
                     </div>
                 </div>

@@ -24,21 +24,10 @@
     <body>
         <%@include file="model/header.jsp" %>
         <br>
-         <div class="col-4">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
+         <div class="col-6">
                         <div class="col-md-4">
                             <img src="resources/invoice.jpg" alt="..." width="100%" style="margin-top: 0px;">
                         </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Order History</h5>
-                                <h5 class="card-title">${totalCart}</h5>
-                                <p class="card-text"><small class="text-muted">Last updated 1 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <hr>
             <div class="row col-12">
@@ -49,7 +38,7 @@
                     }
                     
                 </style>
-                <table id="customers" style="margin-left:3em; border: 1px solid;">
+                <table id="customers" style="margin-left:3em; border: 1px solid;text-align: center">
                     <thead >
                         <tr >
                             <th>Order ID</th>
@@ -71,11 +60,6 @@
                                 <td>${item.status}</td>
                                 <td>${item.date}</td>
                                 <td><a  style="cursor: pointer ">View</a></td>
-<!--                        <form style="display:none;" id="${item.id}" action="viewOrderDetail">
-                            <input type="hidden" value="${item.status}" name="status">
-                            <input type="hidden" value="${item.id}" name="id">
-                        </form>-->
-
 
                         <c:set var="total" value="${total + item.totalPrice}" />
                         </tr>
@@ -91,6 +75,9 @@
                     VNĐ</h3>
             </div>
         </div>
+         <a href="ProfileControl" id="back">Back to My Profile</a>
+         <br>
+         <br>
          <%@include file="model/footer.jsp" %>
     </body>
 </html>

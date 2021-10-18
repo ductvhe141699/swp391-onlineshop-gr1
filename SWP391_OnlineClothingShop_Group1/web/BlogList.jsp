@@ -35,7 +35,9 @@
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/queries.css" />
+         <link href="css/BlogList.css" rel="stylesheet" type="text/css"/>
         <title>Blog List</title>
+  
     </head>
 
     <body style="min-height: 2000px">
@@ -43,35 +45,35 @@
         <div class="container">
             <c:forEach items="${blogList}" var="o">
                 <div class="row">
-                    <div class="col-sm-5 border-right">
+                    <div class="col-sm-4 border-right">
                         <article class="gallery-wrap"> 
                             <div class="img-big-wrap">
-                                <div> <a href="BlogDetail?ID=${o.id}"><img src="./resources/img/products/${o.imageLink}"></a></div>
+                                <div> <a href="BlogDetail?ID=${o.ID}"><img src="./resources/img/products/${o.imageLink}"></a></div>
                             </div> <!-- slider-product.// -->
-                            <div class="img-small-wrap">
-                            </div> <!-- slider-nav.// -->
+
                         </article> <!-- gallery-wrap .end// -->
                     </div>
-                    <div class="col-sm-7">
+                    <div class="col-sm-8">
                         <article class="card-body p-5">
-                            <h3 class="card-title show_txt"><a href="BlogDetail?ID=${o.id}" title="View Blog">${o.title}</a></h3>  
+                            <h3 class="card-title show_txt"><a href="BlogDetail?ID=${o.ID}" title="View Blog">${o.title}</a></h3>  
+                            <p class="content">${o.content}</p>
                     </div>
                 </div>
 
-            </div>
-      
-    </c:forEach>
 
-</div>
-<%@include file="model/footer.jsp" %>
-<!-- BOOTSTRAP5-->
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"
-></script>
-<!-- SCRIPT -->
-<script src="${pageContext.request.contextPath}/js/script.js"></script>
 
-</body>
+            </c:forEach>
+        </div>
+
+        <%@include file="model/footer.jsp" %>
+        <!-- BOOTSTRAP5-->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"
+        ></script>
+        <!-- SCRIPT -->
+        <script src="${pageContext.request.contextPath}/js/script.js"></script>
+
+    </body>
 </html>

@@ -7,6 +7,7 @@ package DBContext;
 
 import entity.Order;
 import entity.OrderDetail;
+import entity.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +24,7 @@ public class OrderDAO {
     PreparedStatement ps = null; //...
     ResultSet rs = null; //Get the results returned
 
-   public List<Order> getOrderByUserID(int userId) {
+    public List<Order> getOrderByUserID(int userId) {
         List<Order> list = new ArrayList<>();
         String query = "SELECT o.ID, o.UserID, "
                 + "o.TotalPrice, o.Note, os.Name, "
@@ -51,4 +52,42 @@ public class OrderDAO {
 
         return list;
     }
+
+    ArrayList<Order> getOdByProdID(ArrayList<Product> listP) {
+        String query = "select o.ID , o.UserID , o.TotalPrice , o.Note , o.Status , o.Date , d.Order_ID , d.ProductID , d.ProductName , d.ProductPrice ,d.ProductPrice , d.Quantity from Orders o\n"
+                + "join Order_Detail d on d.Order_ID = o.ID\n"
+                + "where ProductID =  ? ";
+        ArrayList<Order> order = new ArrayList<>();
+
+        conn = new DBcontext().open();
+        try {
+            ps = conn.prepareStatement(query);
+            for (Product p : listP) {
+
+                ps = conn.prepareStatement(query);
+                ps.setInt(1, p.getProductID());
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    // o.ID , o.UserID , o.TotalPrice , o.Note , o.Status , o.Date , d.Order_ID , d.ProductID , d.ProductName , d.ProductPrice ,d.ProductPrice , d.Quantity 
+                    order.add(new Order(
+                            rs.getInt(1),
+                            rs.getInt(2),
+                            rs.getDouble(3),
+                            rs.getString(4),
+                            rs.getString(5),
+                            rs.getString(6),
+                            rs.getInt(7),
+                            rs.getInt(8),
+                            rs.getString(9),
+                            rs.getDouble(10),
+                            rs.getInt(11)
+                    ));
+                }
+            }
+        } catch (Exception e) {
+        }
+
+        return order;
+    }
+
 }

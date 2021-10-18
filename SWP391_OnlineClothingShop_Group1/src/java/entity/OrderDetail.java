@@ -10,11 +10,12 @@ package entity;
  * @author BEAN
  */
 public class OrderDetail {
-    int  orderID ; 
-    int productID ; 
-    String productName ;
-    double productPrice ; 
-    int quantity ; 
+
+     int orderID;
+    int productID;
+    String productName;
+    double productPrice;
+    int quantity;
 
     public OrderDetail() {
     }
@@ -66,7 +67,6 @@ public class OrderDetail {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
-    
-            
+
+   
 }

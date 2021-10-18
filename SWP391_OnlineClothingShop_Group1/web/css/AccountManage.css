@@ -69,15 +69,15 @@ a {
 a:hover{
 text-decoration:none;
 }
-#back {
+/*#back {
   border-bottom: 3px solid #ff8cbc;
   font-size: 1em;
   transition: all 0.25s linear;
   position: relative;
   margin-left: 5px;
-}
+}*/
 
-#back:before {
+/*#back:before {
   content: "";
   display: block;
   width: 100%;
@@ -85,14 +85,14 @@ text-decoration:none;
   background-color: #61a3ff;
   position: absolute;
   left: 0;
-  bottom: -3px; /* this is to match where the border is */
+  bottom: -3px;  this is to match where the border is 
   transform-origin: left; 
   transform: scale(0);
   transition: 0.25s linear;
-/*   will-change: transform; */
+   will-change: transform; 
 }
 
 #back:hover:before {
   transform: scale(1);
-}
+}*/
 

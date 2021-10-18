@@ -23,24 +23,26 @@
     <body>
         <%@include file="model/header.jsp" %>
         <div class="container">
-            <div class="row">
+            <div class="">
                 <br><br>
             </div>
             <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-5" id="form">
+<!--                <div class="col-1"></div>-->
+                <div class="col-4" id="form">
                     <br><br>
                     <%-- Display username --%>
                     <i class="fas fa-user-circle fa-pulse fa-spin fa-3x" id="profileIcon"></i>
-                    <h4 style="text-align: center">${sessionScope.acc.UserName}</h4>
-
+                    <h4 style="text-align: center">${sessionScope.acc.userName}</h4>
+ <c:if test="${requestScope.message ne null}">
+                        <h5>${requestScope.message}</h5>
+                    </c:if>
                     <%-- Display user email --%>
                     <h5>Email: ${acc.email}</h5>
 
                     <%-- Display user role --%>
                     <h5 style="display: inline-block">Role: </h5>
                     <c:choose>
-                        <c:when test="${acc.RoldID==1}">
+                        <c:when test="${acc.roldID==1}">
                             <input type="checkbox" checked="checked" disabled="disabled" style="display: inline-block">
                             <label>Seller</label>
                             <input type="checkbox" disabled="disabled" style="display: inline-block">
@@ -58,16 +60,16 @@
                     <br>
                     <h5 style="display: inline-block">Status: </h5>
                     <c:choose>
-                        <c:when test="${acc.StatusID == 1}">
+                        <c:when test="${acc.statusID == 1}">
                             <span class="active">Active</span>
                         </c:when> 
-                        <c:when test="${acc.StatusID == 2}">
+                        <c:when test="${acc.statusID == 2}">
                             <span class="active">Locked</span>
                         </c:when>
-                        <c:when test="${acc.StatusID == 3}">
+                        <c:when test="${acc.statusID == 3}">
                             <span class="login-facebook">Gmail Login</span>
                         </c:when>
-                        <c:when test="${acc.StatusID == 4}">
+                        <c:when test="${acc.statusID == 4}">
                             <span class="unverified">Unverified</span>
                         </c:when>
                     </c:choose>      
@@ -79,20 +81,20 @@
                     <br><br>
 
                     <%-- Link to view order history --%>
-                    <a style="background-color: #ff523b" class="btn btn-primary btn-block" href="?id=${acc.userID}" id="link">My orders</a>
+                    <a style="background-color: #ff523b" class="btn btn-primary btn-block" href="viewOrder?id=${acc.userID}" id="link">My orders</a>
                     <br><br>
 
                     <%-- Link to return to home page --%>
                     <!--                    <a href="productList" id="back">Back to Product List page</a>-->
                     <br><br>
                 </div>
-                <div class="col-md-4" id="image">
-                    <img style="height: 550px; width: 600px; border-radius: 20px;" src="resources/profile.jpg" alt=""/>
+                <div class="col-4" id="image">
+                    <img style="height: 560px;border-radius: 20px;width: 750px" src="resources/profile.jpg" alt=""/>
                 </div>
-                <div class="col-md-2"></div>
+                <div class="col-2"></div>
             </div>
         </div>
-                    <div class="row">
+                    <div class="">
                         <br><br>
             </div>
         <%@include file="model/footer.jsp" %>
