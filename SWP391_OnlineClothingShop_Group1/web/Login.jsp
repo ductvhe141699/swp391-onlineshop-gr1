@@ -35,28 +35,22 @@
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/queries.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="css/login.css" rel="stylesheet" type="text/css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="css/login.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"rel="stylesheet">
+        <link href="css/login.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
     <%@include file="model/header.jsp" %>
     <!-- ------------Login-page------------------- -->
     <div class="account-page">
-        <div class="container">
+        <div class=" container container-custom">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2 col-2-custom">
                     <img src="./resources/img/anhlogin.png" width="80%">
                 </div>
 
-                <div class="col-2">
-                    <div class="form-container">
+                <div class="col-2 col-2-custom">
+                    <div class="form-container-custom">
                         <div class="form-myBtn">
                             <!---click chuyen login sang register---->
                             <span onclick="login()">Login</span>
@@ -67,25 +61,22 @@
                             
                         </div>
                          <!--- Login--->   
-                        <form id="LoginForm" action="login" method ="post">
+                        <form  id="LoginForm" action="${pageContext.request.contextPath}/login" method ="post">
                              
-                            <input name="user" type="text" placeholder="Username">
-                            <input name ="pass" type="password" placeholder="Password">
-                            <button type="submit" class="myBtn">Login</button>
-                            
+                            <input class="input-custom" name="user" type="text" placeholder="Username">
+                            <input class="input-custom" name ="pass" type="password" placeholder="Password">
+                            <input type="submit" name="action" class="myBtn" value="Login"/>
                             <a href="">Forgot password</a>
                         </form>
                          <h4 class="text-danger">${mess1}</h4>
                         <!--- Register--->
                         <form id="RegForm" action ="register" method="post">
-                            <input name="user" type="text" placeholder="Username">
-                            <input name="email" type="email" placeholder="Email">
-                            <input name="pass" type="password" placeholder="Password">
-                            <input name="repass" type="password" placeholder="Repeat Password">
-                            <button type="submit" class="myBtn">Register</button>
-                             
+                            <input class="input-custom" name="user" type="text" placeholder="Username">
+                            <input class="input-custom" name="email" type="email" placeholder="Email">
+                            <input class="input-custom" name="pass" type="password" placeholder="Password">
+                            <input class="input-custom" name="repass" type="password" placeholder="Repeat Password">
+                            <input type="submit" name="action" class="myBtn" value="Register"/>                             
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -115,6 +106,14 @@
 
         </script>
  <%@include file="model/footer.jsp" %>
+ <!-- BOOTSTRAP5-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- SCRIPT -->
+    <script src="${pageContext.request.contextPath}/js/script.js"></script>
 </body>
 
 </html>

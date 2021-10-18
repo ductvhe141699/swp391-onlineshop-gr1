@@ -55,7 +55,7 @@
         </style>
     </head>
 
-    <body style="min-height: 2000px">
+    <body>
         <%@include file="model/header.jsp" %>
 
         <%-- Content here--%>

@@ -40,7 +40,7 @@
   
     </head>
 
-    <body style="min-height: 2000px">
+    <body">
         <%@include file="model/header.jsp" %>
         <div class="container">
             <c:forEach items="${blogList}" var="o">
