@@ -158,5 +158,39 @@ public class ProductDAO {
     }
     
     
+     public ArrayList<Product> getProductIDBySellerID(int sellerID) {
+        String query = "select * from Users u\n"
+                + "JOIN Product p  on u.UserID = p.SellerID\n"
+                + "where UserID = ? ";
+        ArrayList<Product> list = new ArrayList<>();
+        try {
+            conn = new DBcontext().open() ; 
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, sellerID);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                list.add(new Product(
+                        rs.getInt("ProductID"), 
+                        rs.getString("ProductName"), 
+                        rs.getString("Description"),
+                        rs.getDouble("OriginalPrice"),
+                        rs.getDouble("SellPrice"),
+                        rs.getDouble("SalePercent"),
+                        rs.getInt("SubCategoryID"),
+                        rs.getInt("SellerID"),
+                        rs.getInt("Amount"),
+                        rs.getInt("StatusID"),
+                        rs.getInt("BrandID"),
+                        rs.getDouble("height"),
+                        rs.getDouble("width"),
+                        rs.getDouble("weight"),
+                        rs.getString("ProductImgURL")
+                ));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
     
 }

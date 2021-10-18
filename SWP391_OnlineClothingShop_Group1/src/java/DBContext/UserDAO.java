@@ -123,7 +123,7 @@ public class UserDAO {
     }
 
     public int checkExitsEmail(String mail) {
-     String  query = "select * from Users where email = ?";
+        String query = "select * from Users where email = ?";
         try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
@@ -158,10 +158,10 @@ public class UserDAO {
         }
         return sb.toString();
     }
-    
-    public void updatePasswordByEmail(String pass  , String email ){
-       String query = "UPDATE Users SET  Password = ? WHERE email = ?" ;
-          try {
+
+    public void updatePasswordByEmail(String pass, String email) {
+        String query = "UPDATE Users SET  Password = ? WHERE email = ?";
+        try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             ps.setString(1, pass);
@@ -171,9 +171,10 @@ public class UserDAO {
             e.printStackTrace();
         }
         DBcontext.close(conn, ps, rs);
-        
+
     }
-     public void editAccount(String id, String user, String pass, String email, String role) {
+
+    public void editAccount(String id, String user, String pass, String email, String role) {
         String query = "UPDATE Users\n"
                 + "SET Username = ?,\n"
                 + "Password = ?,\n"
@@ -191,7 +192,8 @@ public class UserDAO {
         } catch (Exception e) {
         }
     }
-      public void deleteAccount(String id) {
+
+    public void deleteAccount(String id) {
         String query = "delete from Users where UserID = ?";
         try {
             ps = conn.prepareStatement(query);
@@ -201,4 +203,42 @@ public class UserDAO {
         }
         return;
     }
+
+    public String getRoleByUserName(String userName) {
+        String query = "select r.RoleName from Users  u  \n"
+                + "JOIN Role   r\n"
+                + "on u.RoleID = r.RoleID\n"
+                + "where u.Username =  ? ";
+        String role = "";
+
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, userName);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return role = rs.getString(1);
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public int getUserIDByName(String username) {
+        String query = "select UserID  FROM Users\n"
+                + "where Username = ? ";
+        int id = 0 ; 
+         try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return id = rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return id ; 
+    }
+    
 }
