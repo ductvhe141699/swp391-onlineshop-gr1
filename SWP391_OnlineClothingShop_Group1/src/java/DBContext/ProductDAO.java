@@ -191,6 +191,40 @@ public class ProductDAO {
         }
         return list;
     }
+     public List<Product> getProductBySellerID(int id){
+        List<Product> list = new ArrayList<>();
+        String query ="select *from Product \n"
+                + " where SellerID = ? ";
+        try {
+            conn = new DBcontext().open() ; 
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(new Product(
+                        rs.getInt("ProductID"), 
+                        rs.getString("ProductName"), 
+                        rs.getString("Description"),
+                        rs.getDouble("OriginalPrice"),
+                        rs.getDouble("SellPrice"),
+                        rs.getDouble("SalePercent"),
+                        rs.getInt("SubCategoryID"),
+                        rs.getInt("SellerID"),
+                        rs.getInt("Amount"),
+                        rs.getInt("StatusID"),
+                        rs.getInt("BrandID"),
+                        rs.getDouble("height"),
+                        rs.getDouble("width"),
+                        rs.getDouble("weight"),
+                        rs.getString("ProductImgURL")));
+            }
+        } catch (Exception e) {
+        }
+        
+        
+        
     
-    
-}
+        return list;
+        
+      
+    }}
