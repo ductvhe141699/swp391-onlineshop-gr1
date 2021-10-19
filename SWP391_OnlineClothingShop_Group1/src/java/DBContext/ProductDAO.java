@@ -217,14 +217,14 @@ public class ProductDAO {
                         rs.getDouble("width"),
                         rs.getDouble("weight"),
                         rs.getString("ProductImgURL")));
-//            }
-//        } catch (Exception e) {
-//        }
-//        
-//        
-//        
-//    
-//        return list;
+            }
+        } catch (Exception e) {
+        }
+        
+        
+        
+    
+        return list;
         
       
     }}
