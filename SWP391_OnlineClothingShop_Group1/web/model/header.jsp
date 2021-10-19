@@ -16,7 +16,7 @@
         
         <div class="container-fluid">
             <!-- LOGO -->
-            <a class="navbar-brand col-lg-2 offset-lg-2 logo" href="${pageContext.request.contextPath}/home"><img src="resources/img/SHOPE-logos_transparent.png"> </a>
+            <a class="navbar-brand col-lg-2 offset-lg-2 logo" href="${pageContext.request.contextPath}/home"><img src="${pageContext.request.contextPath}/resources/img/SHOPE-logos_transparent.png"> </a>
             
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,19 +37,23 @@
               <!-- EXPANDED -->
               <li class="nav-item d-none d-lg-block">
                   <a class="nav-link" href="#"><i class="fas fa-bell"></i>
-                    <span class="position-relative translate-middle badge rounded-pill bg-danger">
-                      0
-                      <span class="visually-hidden">unread notifications</span>
-                    </span>
+                     <c:if test="${sessionScope.user !=null}">
+                        <span class="position-relative translate-middle badge rounded-pill bg-danger">
+                          0
+                          <span class="visually-hidden">unread notifications</span>
+                        </span>
+                    </c:if>
                   </a> 
               </li>
               <li class="nav-item d-none d-lg-block">
-                  <a class="nav-link" href="#">
+                  <a class="nav-link" href="${pageContext.request.contextPath}/user/cart">
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="position-relative translate-middle badge rounded-pill bg-danger">
-                      0
-                      <span class="visually-hidden">cart items</span>
-                  </span>
+                    <c:if test="${sessionScope.user !=null}">
+                        <span class="position-relative translate-middle badge rounded-pill bg-danger">
+                          0
+                          <span class="visually-hidden">cart items</span>
+                          </span>
+                    </c:if>
                   </a>
               </li>
               <li class="nav-item dropdown d-none d-lg-block">
@@ -111,17 +115,21 @@
               </li>
               <li class="nav-item d-block d-lg-none">
                 <a class="nav-link d-inline-block" href="#"><i class="fas fa-bell"></i>
-                  <span class="position-relative translate-middle badge rounded-pill bg-dark">
-                    0
-                    <span class="visually-hidden">unread notifications</span>
-                  </span>
+                    <c:if test="${sessionScope.user !=null}">
+                    <span class="position-relative translate-middle badge rounded-pill bg-dark">
+                      0
+                      <span class="visually-hidden">unread notifications</span>
+                    </span>
+                  </c:if>
                 </a> 
-                <a class="nav-link d-inline-block" href="#">
+                <a class="nav-link d-inline-block" href="${pageContext.request.contextPath}/user/cart">
                   <i class="fas fa-shopping-cart"></i>
-                  <span class="position-relative translate-middle badge rounded-pill bg-dark">
-                    0
-                    <span class="visually-hidden">cart items</span>
-                </span>
+                  <c:if test="${sessionScope.user !=null}">
+                    <span class="position-relative translate-middle badge rounded-pill bg-danger">
+                      0
+                      <span class="visually-hidden">cart items</span>
+                      </span>
+                  </c:if>
                 </a>
                 <i class="fas fa-user-circle"></i>
               </li>
