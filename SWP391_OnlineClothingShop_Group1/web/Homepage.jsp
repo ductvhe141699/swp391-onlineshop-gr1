@@ -34,7 +34,7 @@
         <link rel="stylesheet" type="text/css" href="./css/homepage.css" />
         <title>Shope</title>
     </head>
-    <body style="font-family: 'Poppins',sans-serif">
+    <body>
         <%@include file="model/header.jsp" %>
 
         <!-- SLIDER -->

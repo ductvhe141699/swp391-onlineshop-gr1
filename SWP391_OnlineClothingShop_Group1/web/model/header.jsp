@@ -57,11 +57,14 @@
                   <i class="fas fa-user-circle"></i>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <c:if test ="${sessionScope.acc !=  null}">
-                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Logout</a></li>
+                    <c:if test ="${sessionScope.user !=  null}">
+                        <li><span class="dropdown-item-text">Hello ${user.getUserName()}</span></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a></li>
                     </c:if>
-                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Login</a></li>
-                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/register">Register</a></li>
+                    <c:if test ="${sessionScope.user ==  null}">
+                       <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Login/Register</a></li>
+                    </c:if>
                 </ul>
               </li>
               <!-- COLLAPSED -->
@@ -97,7 +100,7 @@
                   Blog
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">All blog</a></li>
+                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/BlogList">All blog</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Spotlight</a></li>
                   <li><a class="dropdown-item" href="#">Spotlight</a></li>
@@ -122,12 +125,17 @@
                 </a>
                 <i class="fas fa-user-circle"></i>
               </li>
-              <li class="nav-item d-block d-lg-none">
-                <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
-              </li>
-              <li class="nav-item d-block d-lg-none">
-                <a class="nav-link" href="${pageContext.request.contextPath}/register">Register</a>
-              </li>
+              <c:if test ="${sessionScope.user !=  null}">
+                <li class="nav-item d-block d-lg-none">Hello ${user.getUserName()}</li>
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
+                </li>
+              </c:if>
+              <c:if test ="${sessionScope.user ==  null}">
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/login">Login/Register</a>
+                </li>
+               </c:if>
             </ul>
           </div>
         </div>
@@ -172,7 +180,7 @@
                 Blog
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">All blog</a></li>
+                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/BlogList">All blog</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Spotlight</a></li>
                 <li><a class="dropdown-item" href="#">Spotlight</a></li>

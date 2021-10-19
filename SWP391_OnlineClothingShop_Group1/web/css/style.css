@@ -69,6 +69,7 @@ html{
 body{
     font-family: var(--body-font);
     padding-top: 100px;
+    font-family: 'Poppins',sans-serif;
 }
 
 .title {

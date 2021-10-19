@@ -11,28 +11,19 @@ import java.sql.Date;
  *
  * @author BEAN
  */
-public class Order {
+public class Order extends OrderDetail {
+
     private int id;
+
     private int userId;
     private double totalPrice;
     private String note;
     private String status;
     private String date;
-    
-    private Date orderDate;
-    
-    @Override
-    public String toString() {
-        return "Order{" + "id=" + id + ", userId=" + userId + ", totalPrice=" + totalPrice + ", note=" + note + ", status=" + status + ", date=" + date + '}';
+
+    public Order() {
     }
 
-    
-    
-    public Order(){
-        
-    }
-    
-    
     public Order(int id, int userId, double totalPrice, String note, String status, String date) {
         this.id = id;
         this.userId = userId;
@@ -41,8 +32,17 @@ public class Order {
         this.status = status;
         this.date = date;
     }
-    
-    
+
+    public Order(int id, int userId, double totalPrice, String note, String status, String date, int orderID, int productID, String productName, double productPrice, int quantity) {
+        super(orderID, productID, productName, productPrice, quantity);
+        this.id = id;
+        this.userId = userId;
+        this.totalPrice = totalPrice;
+        this.note = note;
+        this.status = status;
+        this.date = date;
+    }
+
     public int getId() {
         return id;
     }
@@ -91,14 +91,44 @@ public class Order {
         this.date = date;
     }
 
-    public Date getOrderDate() {
-        return orderDate;
+    public int getOrderID() {
+        return orderID;
     }
 
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
     }
 
-    
-            
+    public int getProductID() {
+        return productID;
+    }
+
+    public void setProductID(int productID) {
+        this.productID = productID;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public double getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
 }
