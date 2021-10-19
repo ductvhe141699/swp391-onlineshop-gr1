@@ -5,22 +5,18 @@
  */
 package controller;
 
-import DBContext.LoginDAO;
-import entity.Users;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author SAKURA
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
-public class LoginControl extends HttpServlet {
+public class CartServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,36 +30,8 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //Lấy dữ liệu từ jsp
-       String action = request.getParameter("action");
-       if("Login".equals(action))
-       {
-            String username = request.getParameter("user");
-            String password = request.getParameter("pass");
-            //Kết nối vs DB
-            LoginDAO dao = new LoginDAO();
-            Users u = dao.login(username, password);
-            //Kiểm tra
-            if(u==null){
-                //login fail -> Đẩy về trang Login.jsp (nhập lại)
-                //Message thông báo Login sai: thay đổi giá trị của biến mess
-               request.setAttribute("mess1", "Login fail!");
-               //ko thì quay trở lại trang login.jsp
-               //Yêu cầu người dùng Login lại
-               request.getRequestDispatcher("Login.jsp").forward(request, response);
-            }
-            else{
-                HttpSession session = request.getSession();
-                session.setAttribute("user", u);
-                response.sendRedirect(request.getContextPath()+"/home");  
-            }
-       }
-       else
-       {
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
-       }
-       
-   }
+        request.getRequestDispatcher("/cart.jsp").forward(request, response);
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

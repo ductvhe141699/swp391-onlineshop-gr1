@@ -5,6 +5,7 @@
  */
 package filter;
 
+import entity.Users;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -15,12 +16,15 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author SAKURA
  */
-public class User implements Filter {
+public class UserFilter implements Filter {
     
     private static final boolean debug = true;
 
@@ -29,7 +33,7 @@ public class User implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
     
-    public User() {
+    public UserFilter() {
     }    
     
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
@@ -94,6 +98,7 @@ public class User implements Filter {
      * @exception IOException if an input/output error occurs
      * @exception ServletException if a servlet error occurs
      */
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
@@ -103,10 +108,16 @@ public class User implements Filter {
         }
         
         doBeforeProcessing(request, response);
-        
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse res = (HttpServletResponse) response;
         Throwable problem = null;
         try {
-            chain.doFilter(request, response);
+            HttpSession session = req.getSession();
+            Users u=(Users) session.getAttribute("user");
+            if(u!=null)
+                chain.doFilter(request, response);
+            else 
+                res.sendRedirect(req.getContextPath()+"/login");
         } catch (Throwable t) {
             // If an exception is thrown somewhere down the filter chain,
             // we still want to execute our after processing, and then
