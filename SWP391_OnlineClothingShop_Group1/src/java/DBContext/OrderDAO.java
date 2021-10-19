@@ -53,7 +53,7 @@ public class OrderDAO {
         return list;
     }
 
-    ArrayList<Order> getOdByProdID(ArrayList<Product> listP) {
+    public ArrayList<Order> getOdByProdID(ArrayList<Product> listP) {
         String query = "select o.ID , o.UserID , o.TotalPrice , o.Note , o.Status , o.Date , d.Order_ID , d.ProductID , d.ProductName , d.ProductPrice ,d.ProductPrice , d.Quantity from Orders o\n"
                 + "join Order_Detail d on d.Order_ID = o.ID\n"
                 + "where ProductID =  ? ";
