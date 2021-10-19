@@ -209,22 +209,22 @@ public class ProductDAO {
                         rs.getDouble("SellPrice"),
                         rs.getDouble("SalePercent"),
                         rs.getInt("SubCategoryID"),
-                        rs.getInt("SellerID"),
-                        rs.getInt("Amount"),
-                        rs.getInt("StatusID"),
-                        rs.getInt("BrandID"),
-                        rs.getDouble("height"),
-                        rs.getDouble("width"),
-                        rs.getDouble("weight"),
-                        rs.getString("ProductImgURL")));
-            }
-        } catch (Exception e) {
-        }
-        
-        
-        
-    
-        return list;
+//                        rs.getInt("SellerID"),
+//                        rs.getInt("Amount"),
+//                        rs.getInt("StatusID"),
+//                        rs.getInt("BrandID"),
+//                        rs.getDouble("height"),
+//                        rs.getDouble("width"),
+//                        rs.getDouble("weight"),
+//                        rs.getString("ProductImgURL")));
+//            }
+//        } catch (Exception e) {
+//        }
+//        
+//        
+//        
+//    
+//        return list;
         
       
     }}
