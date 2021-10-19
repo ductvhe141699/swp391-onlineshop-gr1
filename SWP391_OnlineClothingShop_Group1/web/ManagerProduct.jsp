@@ -57,7 +57,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="" var="o">
+                        <c:forEach items="manager" var="o">
                             <tr>
                                 <td>
                                     <span class="custom-checkbox">
