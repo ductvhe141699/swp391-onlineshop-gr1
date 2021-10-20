@@ -3,10 +3,28 @@
     Created on : Sep 27, 2021, 1:34:43 PM
     Author     : SAKURA
 --%>
+<%@page import="entity.SubCategory"%>
+<%@page import="DBContext.SubCategoryDAO"%>
+<%@page import="entity.Category"%>
+<%@page import="entity.Brand"%>
+<%@page import="DBContext.BrandDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="DBContext.CategoryDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page trimDirectiveWhitespaces="true" %> 
 <!DOCTYPE html>
+<%
+    CategoryDAO cdao = new CategoryDAO();
+        List<Category> categorys = cdao.getAllCategory();
+        pageContext.setAttribute("categorys", categorys);
+        BrandDAO bdao= new BrandDAO();
+        List<Brand> brands = bdao.getAllBrand();
+        pageContext.setAttribute("brands", brands);
+        SubCategoryDAO scdao = new SubCategoryDAO();
+        List<SubCategory> subcategorys = scdao.getAllSubCategory();
+        pageContext.setAttribute("subcategorys", subcategorys);
+%>
 <div class="row m-0 p-0" style="background-color:lightgrey;">
     <span id="promo" class="d-lg-block d-none">
           <marquee behavior="scroll" direction="left">Get 10% SALE by using special discount code "CHEERSLUV"</marquee>

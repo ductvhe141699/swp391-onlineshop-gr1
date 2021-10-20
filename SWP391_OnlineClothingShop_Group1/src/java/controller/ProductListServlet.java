@@ -43,13 +43,10 @@ public class ProductListServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         CategoryDAO cdao = new CategoryDAO();
         List<Category> categorys = cdao.getAllCategory();
-        request.setAttribute("categorys", categorys);
         BrandDAO bdao= new BrandDAO();
         List<Brand> brands = bdao.getAllBrand();
-        request.setAttribute("brands", brands);
         SubCategoryDAO scdao = new SubCategoryDAO();
         List<SubCategory> subcategorys = scdao.getAllSubCategory();
-        request.setAttribute("subcategorys", subcategorys);
         // Query Parameter
         int page=Integer.parseInt(request.getParameter("page"));
         String query=StringDecode.decode(request.getParameter("query"));
