@@ -39,14 +39,7 @@ public class ProductListServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // For Nav ( Category , Sub Category , Brand )
         response.setContentType("text/html;charset=UTF-8");
-        CategoryDAO cdao = new CategoryDAO();
-        List<Category> categorys = cdao.getAllCategory();
-        BrandDAO bdao= new BrandDAO();
-        List<Brand> brands = bdao.getAllBrand();
-        SubCategoryDAO scdao = new SubCategoryDAO();
-        List<SubCategory> subcategorys = scdao.getAllSubCategory();
         // Query Parameter
         int page=Integer.parseInt(request.getParameter("page"));
         String query=StringDecode.decode(request.getParameter("query"));
