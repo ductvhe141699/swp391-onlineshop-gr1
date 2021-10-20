@@ -224,15 +224,15 @@
 
 <div class="offcanvas offcanvas-end sticky-notification" data-bs-scroll="true" tabindex="-1" id="notification" aria-labelledby="notification">
   <div class="offcanvas-header">
-    <h5 id="notificationLabel">Notification</h5>
+      <h5 id="notificationLabel">Notification</h5><button class="btn btn-primary">Read All</button>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body overflow-hidden">
       <%-- BODY --%>
-      <div class="card text-dark bg-info mb-3" style="max-width: 540px;font-size: 12px">
+      <div class="card text-dark bg-info shadow mb-3" style="max-width: 540px;font-size: 12px">
         <div class="card-body">
-          <h6 class="card-title"><i class="fas fa-exclamation-triangle me-1"></i>Card title</h6>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>  
+          <h6 class="card-title"><i class="fas fa-exclamation-triangle me-1"></i>Your order has been confirm</h6>
+          <p class="card-text">Order #3101 is on its ways</p>  
         </div>
         <div class="card-footer">
             <small class="text-white">Last updated 3 mins ago</small>
@@ -241,7 +241,15 @@
             <span class="visually-hidden">New alerts</span>
           </span>
         </div>
-      
+      <div class="card text-dark bg-info shadow mb-3" style="max-width: 540px;font-size: 12px">
+        <div class="card-body">
+          <h6 class="card-title"><i class="fas fa-shopping-bag me-1"></i>Welcome to shoppe</h6>
+          <p class="card-text">Join us to start receiving notification about your order, comment, promos, and more</p>  
+        </div>
+        <div class="card-footer">
+            <a class="text-decoration-none" href="${pageContext.request.contextPath}/login"><small class="text-white">Login/Register</small></a>
+          </div>
+        </div>
       <%-- BODY --%>
   </div>
 </div>
