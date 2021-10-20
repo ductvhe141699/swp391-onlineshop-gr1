@@ -76,9 +76,9 @@
                 <td>
                     <div class="btn-group flex-wrap">
                         <span class="btn btn-light">${cart.getAmount()}</span>
-                        <a href="AddToCartServlet?page=CartServlet&id=${product.getId()}" class="btn btn-success"><i class="fas fa-plus"></i></a>
-                        <a href="RemoveFromCartServlet?page=CartServlet&id=${product.getId()}" class="btn btn-warning"><i class="fas fa-minus"></i></a>
-                        <a href="DeleteFromCartServlet?page=CartServlet&id=${product.getId()}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        <a href="${pageContext.request.contextPath}/user/pluscart?productID=${cart.getProductID()}" class="btn btn-success"><i class="fas fa-plus"></i></a>
+                        <a href="${pageContext.request.contextPath}/user/minuscart?productID=${cart.getProductID()}" class="btn btn-warning"><i class="fas fa-minus"></i></a>
+                        <a href="${pageContext.request.contextPath}/user/deletecart?productID=${cart.getProductID()}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                     </div>
                 </td>
                 <td>${cart.getAmount()*cart.getSellPrice()}$</td>
@@ -153,7 +153,7 @@
                             </tr>
                         </tfoot>
                     </table>      
-                    <button type="submit" class="btn btn-success float-end">Checkout</button>
+                    <button type="submit" class="btn btn-success float-end ${cartAmount==0?'disabled':''}">Checkout</button>
                     <a href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=0&price=0&sortType=0&sortMode=0" type="button" class="btn btn-light float-end me-2">Back to shop</a>
                 </div>       
             </div>

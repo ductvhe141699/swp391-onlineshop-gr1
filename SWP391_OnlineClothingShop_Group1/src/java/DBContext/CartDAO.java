@@ -61,4 +61,66 @@ public class CartDAO {
         }
         return res;
     }
+    public void plusCart(int id,int productId) {
+        try {
+            query = "Update dbo.Cart Set Amount = Amount+1 Where UserID = ? And ProductID = ?";
+            conn = DBcontext.open(); 
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.setInt(2, productId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(CartDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
+        return;
+    }
+    public void minusCart(int id,int productId) {
+        try {
+            query = "Update dbo.Cart Set Amount = Amount-1 Where UserID = ? And ProductID = ?";
+            conn = DBcontext.open(); 
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.setInt(2, productId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(CartDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
+        return;
+    }
+    public void deleteCart(int id,int productId) {
+        try {
+            query = "DELETE from dbo.Cart Where UserID = ? And ProductID = ?";
+            conn = DBcontext.open(); 
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.setInt(2, productId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(CartDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
+        return;
+    }
+    public void validCart() {
+         try {
+            query = "DELETE FROM dbo.Cart WHERE Amount = 0";
+            conn = DBcontext.open(); 
+            ps = conn.prepareStatement(query);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(CartDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
+        return;
+    }
 }
