@@ -98,11 +98,9 @@ public class editAccount extends HttpServlet {
             String password = request.getParameter("pass");
             String email = request.getParameter("email");
             int roleID = Integer.parseInt(request.getParameter("role"));
-            System.out.println(id + " " +user+ " " +password+ " " +email+ " " +roleID);
             //Step 2: set data to ProductDAO
             UserDAO dao = new UserDAO();
             dao.editAccount(id, user, password, email, roleID);
-            //dao.editAccount(id, user, password, isSell, imin);
             response.sendRedirect("AccountManagerControl");
 //        } catch (Exception e) {
 //            response.sendRedirect("error.jsp");
