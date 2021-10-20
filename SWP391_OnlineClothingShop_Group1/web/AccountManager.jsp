@@ -50,15 +50,13 @@
                                                 <td class="text-center">${o.userID}</td>
                                                 <td class="text-center">${o.userName}</td>
                                                 <td class="text-center">
-                                                    <c:if test="${o.RoleID==2}">
-                                                        <span class="label label-default">Seller</span>
-                                                    </c:if>
-                                                    <c:if test="${o.RoldID==3}">
-                                                        <span class="label label-default">Cutomer</span>
-                                                    </c:if>
+                                                   
+                                                    
+                                                        <span class="label label-default">${o.roleID}</span>
+                                                    
                                                 </td>
                                                 <td style="width: 20%;" class="text-center">
-                                                    <a href="editAccount?UserID=${o.userID}" class="table-link text-info">
+                                                    <a href="editAccount?userID=${o.userID}" class="table-link text-info">
                                                         <span class="fa-stack">
                                                             <i class="fa fa-square fa-stack-2x"></i>
                                                             <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
@@ -93,7 +91,7 @@
         function showMess(userID){
             var option=confirm('Are you sure to delete this Account?');
             if(option===true){
-                window.location.href = 'deleteAccount?userID='+userID;
+                window.location.href = 'deleteAccount?UserID='+userID;
             }
         }
     </script>
