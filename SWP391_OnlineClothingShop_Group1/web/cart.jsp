@@ -153,12 +153,34 @@
                             </tr>
                         </tfoot>
                     </table>      
-                    <button type="submit" class="btn btn-success float-end ${cartAmount==0?'disabled':''}">Checkout</button>
-                    <a href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=0&price=0&sortType=0&sortMode=0" type="button" class="btn btn-light float-end me-2">Back to shop</a>
+                    <button type="submit" class="btn btn-success ms-2 mb-2 float-end ${cartAmount==0?'disabled':''}">Checkout</button>
+                    <a href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=0&price=0&sortType=0&sortMode=0" type="button" class="btn btn-light float-end ms-2 mb-2">Back to shop</a>
+                    <button data-bs-toggle="modal" data-bs-target="#deleteModal" type="button" class="btn btn-danger float-end ${cartAmount==0?'disabled':''}">Delete Cart</button>
                 </div>       
             </div>
         </form>
     </div> 
+     <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete cart</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure want to remove all items from cart?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="${pageContext.request.contextPath}/user/removecart" type="button" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>          
     <%@include file="model/footer.jsp" %>
     <!-- BOOTSTRAP5-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

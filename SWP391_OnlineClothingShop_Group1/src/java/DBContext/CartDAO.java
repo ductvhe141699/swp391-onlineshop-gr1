@@ -109,6 +109,21 @@ public class CartDAO {
         }
         return;
     }
+    public void removeCart(int id) {
+        try {
+            query = "DELETE from dbo.Cart Where UserID = ?";
+            conn = DBcontext.open(); 
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(CartDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
+        return;
+    }
     public void validCart() {
          try {
             query = "DELETE FROM dbo.Cart WHERE Amount = 0";

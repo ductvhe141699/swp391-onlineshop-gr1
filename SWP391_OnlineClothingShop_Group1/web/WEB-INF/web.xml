@@ -72,6 +72,10 @@
         <servlet-name>DeleteCart</servlet-name>
         <servlet-class>controller.DeleteCart</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RemoveCart</servlet-name>
+        <servlet-class>controller.RemoveCart</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -142,6 +146,10 @@
     <servlet-mapping>
         <servlet-name>DeleteCart</servlet-name>
         <url-pattern>/user/deletecart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveCart</servlet-name>
+        <url-pattern>/user/removecart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
