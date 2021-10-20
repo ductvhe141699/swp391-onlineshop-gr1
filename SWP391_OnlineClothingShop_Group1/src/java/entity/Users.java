@@ -11,12 +11,12 @@ package entity;
  */
 public class Users {
 
-    private int userID;
-    private String userName;
-    private String password;
-    private String email;
-    private int roleID;
-    private int statusID;
+    int userID;
+    String userName;
+    String password;
+    String email;
+    int roleID;
+    int statusID;
 
     public Users() {
     }

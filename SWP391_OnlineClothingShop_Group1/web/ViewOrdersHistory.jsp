@@ -52,16 +52,16 @@
                     <tbody>
                         <c:forEach var="item" items="${orders}" varStatus="x">
                             <tr style="padding:2px; border: 1px solid">
-                                <td>${item.id}</td>
+                                <td>${item.getId()}</td>
                                 <td>
-                                    <fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${item.totalPrice}"/>VNĐ
+                                    <fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${item.getTotalPrice()}"/>VNĐ
                                 </td>
-                                <td>${item.note}</td>
-                                <td>${item.status}</td>
-                                <td>${item.date}</td>
+                                <td>${item.getNote()}</td>
+                                <td>${item.getStatus()}</td>
+                                <td>${item.getDate()}</td>
                                 <td><a  style="cursor: pointer ">View</a></td>
 
-                        <c:set var="total" value="${total + item.totalPrice}" />
+                        <c:set var="total" value="${total + item.getTotalPrice()}" />
                         </tr>
                     </c:forEach>
                     </tbody>

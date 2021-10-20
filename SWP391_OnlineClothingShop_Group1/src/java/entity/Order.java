@@ -13,13 +13,13 @@ import java.sql.Date;
  */
 public class Order extends OrderDetail {
 
-    private int id;
+    int id;
 
-    private int userId;
-    private double totalPrice;
-    private String note;
-    private String status;
-    private String date;
+    int userId;
+    double totalPrice;
+    String note;
+    String status;
+    String date;
 
     public Order() {
     }
