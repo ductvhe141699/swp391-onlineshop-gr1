@@ -3,6 +3,8 @@
     Created on : Sep 27, 2021, 1:34:43 PM
     Author     : SAKURA
 --%>
+<%@page import="DBContext.CartDAO"%>
+<%@page import="entity.Users"%>
 <%@page import="entity.SubCategory"%>
 <%@page import="DBContext.SubCategoryDAO"%>
 <%@page import="entity.Category"%>
@@ -16,14 +18,21 @@
 <!DOCTYPE html>
 <%
     CategoryDAO cdao = new CategoryDAO();
-        List<Category> categorys = cdao.getAllCategory();
-        pageContext.setAttribute("categorys", categorys);
-        BrandDAO bdao= new BrandDAO();
-        List<Brand> brands = bdao.getAllBrand();
-        pageContext.setAttribute("brands", brands);
-        SubCategoryDAO scdao = new SubCategoryDAO();
-        List<SubCategory> subcategorys = scdao.getAllSubCategory();
-        pageContext.setAttribute("subcategorys", subcategorys);
+    List<Category> categorys = cdao.getAllCategory();
+    pageContext.setAttribute("categorys", categorys);
+    BrandDAO bdao= new BrandDAO();
+    List<Brand> brands = bdao.getAllBrand();
+    pageContext.setAttribute("brands", brands);
+    SubCategoryDAO scdao = new SubCategoryDAO();
+    List<SubCategory> subcategorys = scdao.getAllSubCategory();
+    pageContext.setAttribute("subcategorys", subcategorys);
+    Users user = (Users) session.getAttribute("user");
+    if(user!=null)
+    {
+        CartDAO ctdao = new CartDAO();
+        pageContext.setAttribute( "cartAmount", ctdao.getCartAmount(user.getUserID()) );
+        
+    }
 %>
 <div class="row m-0 p-0" style="background-color:lightgrey;">
     <span id="promo" class="d-lg-block d-none">
@@ -68,7 +77,7 @@
                     <i class="fas fa-shopping-cart"></i>
                     <c:if test="${sessionScope.user !=null}">
                         <span class="position-relative translate-middle badge rounded-pill bg-danger">
-                          0
+                          ${cartAmount}
                           <span class="visually-hidden">cart items</span>
                           </span>
                     </c:if>

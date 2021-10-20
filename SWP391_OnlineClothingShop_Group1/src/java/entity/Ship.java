@@ -12,12 +12,12 @@ package entity;
 public class Ship {
     int id ;
     String cityName ; 
-    double shipPrice ;
+    int shipPrice ;
 
     public Ship() {
     }
 
-    public Ship(int id, String cityName, double shipPrice) {
+    public Ship(int id, String cityName, int shipPrice) {
         this.id = id;
         this.cityName = cityName;
         this.shipPrice = shipPrice;
@@ -39,14 +39,11 @@ public class Ship {
         this.cityName = cityName;
     }
 
-    public double getShipPrice() {
+    public int getShipPrice() {
         return shipPrice;
     }
 
-    public void setShipPrice(double shipPrice) {
+    public void setShipPrice(int shipPrice) {
         this.shipPrice = shipPrice;
     }
-    
-    
-   
 }

@@ -113,7 +113,9 @@
                             <label for="inputCity" class="form-label">City</label>
                             <select id="inputCity" class="form-select" required>
                                 <option value="" disabled selected>Choose a city</option>
-                                <option value="1">...</option>
+                                <c:forEach items="${ships}" var="ship">
+                                    <option value="${ship.getId()}" ${ship.getId()==ua.getShipCityID()?'selected':''}>${ship.getCityName()}</option>
+                                </c:forEach>
                             </select>
                         </div>
                         <div class="col-12">
@@ -137,17 +139,17 @@
                             </tr>
                             <tr>
                                 <td>Shipping fees</td>
-                                <td>Price</td>
+                                <td id="sF">NaN$</td>
                             </tr>
                             <tr>
                                 <td>Sale</td>
-                                <td>Price</td>
+                                <td>0</td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th scope="row">Total</th>
-                                <td id="tP">Total Price</td>
+                                <td id="tP">NaN$</td>
                             </tr>
                         </tfoot>
                     </table>      
@@ -163,15 +165,23 @@
     <!-- SCRIPT -->
     <script src="${pageContext.request.contextPath}/js/script.js"></script>  
     <script>
-        window.onscroll = function() {updateShipPrice();};
+        //window.onscroll = function() {updateShipPrice();};
         window.onclick= function() {updateShipPrice();};
         window.onload= function() {updateShipPrice();};
-        var shipPrice=[23,2];
+        var shipPrice=[23<c:forEach items="${ships}" var="ship">,${ship.getShipPrice()}</c:forEach>];
         var totalPrice=${totalPrice};
         function updateShipPrice() {
                 var inputCity=document.getElementById("inputCity");
                 var tP=document.getElementById("tP");
-                tP.innerHTML= (shipPrice[inputCity.value]+totalPrice )+"$";
+                var sF=document.getElementById("sF");
+                if(inputCity.value===""){
+                    tP.innerHTML= "NaN$";
+                    sF.innerHTML= "NaN$";
+                }
+                else{
+                    tP.innerHTML= (shipPrice[inputCity.value]+totalPrice )+"$";
+                    sF.innerHTML= shipPrice[inputCity.value]+"$";
+                }
           }
     </script>
   </body>

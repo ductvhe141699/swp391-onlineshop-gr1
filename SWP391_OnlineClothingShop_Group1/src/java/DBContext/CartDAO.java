@@ -42,4 +42,23 @@ public class CartDAO {
         }
         return list;
     }
+    public int getCartAmount(int id) {
+        int res=0;
+        try {
+            query = "SELECT Cart.ProductID,pro.ProductName,Cart.Amount,pro.SellPrice,pro.ProductImgURL FROM dbo.Cart JOIN (select p.ProductID , ProductName , Description , OriginalPrice , SellPrice  , SalePercent , SubCategoryID , SellerID ,Amount , p.StatusID ,BrandID , height  , width ,weight , s.ProductImgURL FROM  Product p join ProductImg s on p.ProductID = s.ProductID ) pro ON pro.ProductID = Cart.ProductID WHERE Cart.UserID = ?";
+            conn = DBcontext.open(); 
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                res+= rs.getInt("Amount");
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(CartDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
+        return res;
+    }
 }

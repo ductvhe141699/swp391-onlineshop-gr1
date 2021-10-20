@@ -6,8 +6,10 @@
 package controller;
 
 import DBContext.CartDAO;
+import DBContext.ShipDAO;
 import DBContext.UserAddressDAO;
 import entity.Cart;
+import entity.Ship;
 import entity.UserAddress;
 import entity.Users;
 import java.io.IOException;
@@ -49,6 +51,9 @@ public class CartServlet extends HttpServlet {
         UserAddressDAO uadao= new UserAddressDAO();
         UserAddress ua= uadao.getUserAddress(user.getUserID());
         request.setAttribute("ua", ua);
+        ShipDAO sdao=new ShipDAO();
+        List<Ship> ships= sdao.getShip();
+        request.setAttribute("ships",ships);
         request.getRequestDispatcher("/cart.jsp").forward(request, response);
     }
 
