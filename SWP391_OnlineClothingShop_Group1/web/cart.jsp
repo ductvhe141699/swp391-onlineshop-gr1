@@ -32,7 +32,7 @@
   </head>
 
   <body>
-    <%@include file="model/header.jsp" %>
+    <%@include file="/model/header.jsp" %>
     <!-- PROGRESS -->
     <section id="progress" style="background-color: whitesmoke;">
             <div class="row container-fluid justify-content-center text-center align-content-center m-0 p-0" style="height: 50px;">
@@ -68,25 +68,27 @@
               </tr>
             </thead>
             <tbody>
+              <c:forEach items="${carts}" var="cart" varStatus="i">
               <tr>
-                <th scope="row">1</th>
-                <td>Image</td>
-                <td>Name SOLONGGGGGGGGGGGGGGGGGG</td>
+                <th scope="row">${i.count}</th>
+                <td><img class="img-thumbnail img-fluid" style="max-width: 100px" src="${pageContext.request.contextPath}/resources/img/products/${cart.getProductImg()}"></td>
+                <td>${cart.getProductName()}</td>
                 <td>
-                    <div class="btn-group">
-                        <span class="btn btn-light">42</span>
+                    <div class="btn-group flex-wrap">
+                        <span class="btn btn-light">${cart.getAmount()}</span>
                         <a href="AddToCartServlet?page=CartServlet&id=${product.getId()}" class="btn btn-success"><i class="fas fa-plus"></i></a>
                         <a href="RemoveFromCartServlet?page=CartServlet&id=${product.getId()}" class="btn btn-warning"><i class="fas fa-minus"></i></a>
                         <a href="DeleteFromCartServlet?page=CartServlet&id=${product.getId()}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                     </div>
                 </td>
-                <td>Price</td>
+                <td>${cart.getAmount()*cart.getSellPrice()}$</td>
               </tr>
+              </c:forEach>
             </tbody>
             <tfoot>
                 <tr>
                     <th scope="row" colspan="4">Total</th>
-                    <td>Total Price</td>
+                    <td>${totalPrice}$</td>
                   </tr>
             </tfoot>
           </table>
@@ -97,15 +99,15 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label for="inputName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="inputName" required>
+                            <input type="text" class="form-control" id="inputName" value="${ua.getShipName()}" required>
                         </div>
                         <div class="col-md-6">
                             <label for="inputPhone" class="form-label">Phone</label>
-                            <input type="tel" class="form-control" id="inputPhone" required>
+                            <input type="tel" class="form-control" id="inputPhone" value="${ua.getPhoneNum()}" required>
                         </div>
                         <div class="col-md-8">
                             <label for="inputAddress" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                            <input type="text" class="form-control" id="inputAddress" value="${ua.getShipAddress()}" placeholder="1234 Main St">
                         </div>
                         <div class="col-md-4">
                             <label for="inputCity" class="form-label">City</label>
@@ -131,7 +133,7 @@
                         <tbody>
                             <tr>
                                 <td>Product</td>
-                                <td>Price</td>
+                                <td>${totalPrice}$</td>
                             </tr>
                             <tr>
                                 <td>Shipping fees</td>
@@ -145,7 +147,7 @@
                         <tfoot>
                             <tr>
                                 <th scope="row">Total</th>
-                                <td>Total Price</td>
+                                <td id="tP">Total Price</td>
                             </tr>
                         </tfoot>
                     </table>      
@@ -159,6 +161,18 @@
     <!-- BOOTSTRAP5-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- SCRIPT -->
-    <script src="${pageContext.request.contextPath}/js/script.js"></script>      
+    <script src="${pageContext.request.contextPath}/js/script.js"></script>  
+    <script>
+        window.onscroll = function() {updateShipPrice();};
+        window.onclick= function() {updateShipPrice();};
+        window.onload= function() {updateShipPrice();};
+        var shipPrice=[23,2];
+        var totalPrice=${totalPrice};
+        function updateShipPrice() {
+                var inputCity=document.getElementById("inputCity");
+                var tP=document.getElementById("tP");
+                tP.innerHTML= (shipPrice[inputCity.value]+totalPrice )+"$";
+          }
+    </script>
   </body>
 </html>

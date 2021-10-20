@@ -5,11 +5,18 @@
  */
 package controller;
 
+import DBContext.CartDAO;
+import DBContext.UserAddressDAO;
+import entity.Cart;
+import entity.UserAddress;
+import entity.Users;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -29,7 +36,19 @@ public class CartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        // Query Parameter
+        HttpSession session = request.getSession();
+        Users user=(Users) session.getAttribute("user");
+        CartDAO cdao=new CartDAO();
+        List<Cart> carts = cdao.getCart(user.getUserID());
+        int totalPrice=0;
+        for(Cart cart:carts){
+            totalPrice+=cart.getSellPrice()*cart.getAmount();
+        }
+        request.setAttribute("totalPrice", totalPrice);
+        request.setAttribute("carts", carts);
+        UserAddressDAO uadao= new UserAddressDAO();
+        UserAddress ua= uadao.getUserAddress(user.getUserID());
+        request.setAttribute("ua", ua);
         request.getRequestDispatcher("/cart.jsp").forward(request, response);
     }
 

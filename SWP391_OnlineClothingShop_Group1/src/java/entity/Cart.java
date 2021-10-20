@@ -10,25 +10,21 @@ package entity;
  * @author Duy Manh
  */
 public class Cart {
-    private int UserID;
     private int ProductID;
-    private int Amount;
+    private String ProductName;
+    private int amount;
+    private int SellPrice;
+    private String ProductImg;
 
     public Cart() {
     }
 
-    public Cart(int UserID, int ProductID, int Amount) {
-        this.UserID = UserID;
+    public Cart(int ProductID, String ProductName, int amount, int SellPrice, String ProductImg) {
         this.ProductID = ProductID;
-        this.Amount = Amount;
-    }
-
-    public int getUserID() {
-        return UserID;
-    }
-
-    public void setUserID(int UserID) {
-        this.UserID = UserID;
+        this.ProductName = ProductName;
+        this.amount = amount;
+        this.SellPrice = SellPrice;
+        this.ProductImg = ProductImg;
     }
 
     public int getProductID() {
@@ -39,18 +35,36 @@ public class Cart {
         this.ProductID = ProductID;
     }
 
+    public String getProductName() {
+        return ProductName;
+    }
+
+    public void setProductName(String ProductName) {
+        this.ProductName = ProductName;
+    }
+
     public int getAmount() {
-        return Amount;
+        return amount;
     }
 
-    public void setAmount(int Amount) {
-        this.Amount = Amount;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
-    @Override
-    public String toString() {
-        return "Cart{" + "UserID=" + UserID + ", ProductID=" + ProductID + ", Amount=" + Amount + '}';
+    public int getSellPrice() {
+        return SellPrice;
     }
-    
+
+    public void setSellPrice(int SellPrice) {
+        this.SellPrice = SellPrice;
+    }
+
+    public String getProductImg() {
+        return ProductImg;
+    }
+
+    public void setProductImg(String ProductImg) {
+        this.ProductImg = ProductImg;
+    }
     
 }

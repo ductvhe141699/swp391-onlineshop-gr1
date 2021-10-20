@@ -67,10 +67,10 @@ public class ProductDAO {
             int count = 1;
             query = "select p.ProductID , ProductName , Description , OriginalPrice , \n"
                     + "SellPrice  , SalePercent , SubCategoryID , SellerID , \n"
-                    + "Amount , StatusID , StatusID ,BrandID , height  , width ,weight , s.ProductImgURL from  Product p \n"
+                    + "Amount , p.StatusID ,BrandID , height  , width ,weight , s.ProductImgURL from  Product p \n"
                     + "join ProductImg s \n"
                     + "on p.ProductID = s.ProductID "
-                    + "WHERE p.ProductName LIKE ? AND p.StatusID!= 2 ";
+                    + "WHERE p.ProductName LIKE ? AND p.StatusID!= 2 AND p.Amount > 2";
             if(subcategory != 0)
             {
                 query +=" AND SubCategoryID = ? ";
