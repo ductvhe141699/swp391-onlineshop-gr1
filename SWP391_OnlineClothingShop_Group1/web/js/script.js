@@ -40,7 +40,6 @@ function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
-
 //--------------------------------------- PRODUCT ------------------------------------
 const bigImg = document.querySelector(".product-content-left-big-img img")
 const smalImg = document.querySelectorAll(".product-content-left-small-img img")

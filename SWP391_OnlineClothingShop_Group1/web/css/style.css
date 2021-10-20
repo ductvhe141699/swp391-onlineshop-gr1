@@ -102,6 +102,11 @@ body{
     width: 100% !important;
     z-index: 2000;
 }
+.sticky-notification {
+    position: fixed !important;
+    top: 0 !important;
+    z-index: 2001;
+}
 /*-------------------- NAVBAR --------------------*/
 .nav-item
 {

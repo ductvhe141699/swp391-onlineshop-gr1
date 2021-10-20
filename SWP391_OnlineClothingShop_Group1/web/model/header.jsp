@@ -54,14 +54,14 @@
             <ul class="navbar-nav me-auto ms-auto">                
               <!-- EXPANDED -->
               <li class="nav-item d-none d-lg-block">
-                  <a class="nav-link" href="#"><i class="fas fa-bell"></i>
-                     <c:if test="${sessionScope.user !=null}">
+                  <a class="nav-link" role="button" data-bs-toggle="offcanvas" data-bs-target="#notification" aria-controls="offcanvasRight"><i class="fas fa-bell"></i>
+                      <c:if test="${sessionScope.user !=null}">
                         <span class="position-relative translate-middle badge rounded-pill bg-danger">
                           0
                           <span class="visually-hidden">unread notifications</span>
                         </span>
                     </c:if>
-                  </a> 
+                  </a>                   
               </li>
               <li class="nav-item d-none d-lg-block">
                   <a class="nav-link" href="${pageContext.request.contextPath}/user/cart">
@@ -132,14 +132,14 @@
                 <a class="nav-link" href="#footer">Contacts Us</a>
               </li>
               <li class="nav-item d-block d-lg-none">
-                <a class="nav-link d-inline-block" href="#"><i class="fas fa-bell"></i>
-                    <c:if test="${sessionScope.user !=null}">
-                    <span class="position-relative translate-middle badge rounded-pill bg-dark">
-                      0
-                      <span class="visually-hidden">unread notifications</span>
-                    </span>
-                  </c:if>
-                </a> 
+                 <a class="nav-link" role="button" data-bs-toggle="offcanvas" data-bs-target="#notification" aria-controls="offcanvasRight"><i class="fas fa-bell"></i>
+                      <c:if test="${sessionScope.user !=null}">
+                        <span class="position-relative translate-middle badge rounded-pill bg-danger">
+                          0
+                          <span class="visually-hidden">unread notifications</span>
+                        </span>
+                      </c:if>
+                  </a>
                 <a class="nav-link d-inline-block" href="${pageContext.request.contextPath}/user/cart">
                   <i class="fas fa-shopping-cart"></i>
                   <c:if test="${sessionScope.user !=null}">
@@ -177,7 +177,7 @@
               <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Product</a>
             </li>
             <li class="nav-item dropdown me-4">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle d-inline-block" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Category
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -219,5 +219,31 @@
         </div>
       </nav>
 <%-- NAV --%>
+<%-- NOTIFICATION --%>
+
+
+<div class="offcanvas offcanvas-end sticky-notification" data-bs-scroll="true" tabindex="-1" id="notification" aria-labelledby="notification">
+  <div class="offcanvas-header">
+    <h5 id="notificationLabel">Notification</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body overflow-hidden">
+      <%-- BODY --%>
+      <div class="card text-dark bg-info mb-3" style="max-width: 540px;font-size: 12px">
+        <div class="card-body">
+          <h6 class="card-title"><i class="fas fa-exclamation-triangle me-1"></i>Card title</h6>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>  
+        </div>
+        <div class="card-footer">
+            <small class="text-white">Last updated 3 mins ago</small>
+          </div>
+          <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+            <span class="visually-hidden">New alerts</span>
+          </span>
+        </div>
+      
+      <%-- BODY --%>
+  </div>
+</div>
 <%-- Top Btn --%>
 <button onclick="topFunction()" id="myTBTN" title="Go to top"><i class="fas fa-arrow-up"></i></button>
