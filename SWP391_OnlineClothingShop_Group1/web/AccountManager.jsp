@@ -50,10 +50,10 @@
                                                 <td class="text-center">${o.userID}</td>
                                                 <td class="text-center">${o.userName}</td>
                                                 <td class="text-center">
-                                                    <c:if test="${o.RoleID==1}">
+                                                    <c:if test="${o.RoleID==2}">
                                                         <span class="label label-default">Seller</span>
                                                     </c:if>
-                                                    <c:if test="${o.RoldID==2}">
+                                                    <c:if test="${o.RoldID==3}">
                                                         <span class="label label-default">Cutomer</span>
                                                     </c:if>
                                                 </td>

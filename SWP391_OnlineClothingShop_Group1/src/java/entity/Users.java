@@ -63,7 +63,7 @@ public class Users {
     }
 
     public String getRoleID() {
-        if (roleID == 1) {
+        if (roleID == 2) {
             return "Seller";
         } else {
             return "Customer";
