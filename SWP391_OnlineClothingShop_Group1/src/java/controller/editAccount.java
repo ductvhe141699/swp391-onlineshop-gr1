@@ -73,7 +73,6 @@ public class editAccount extends HttpServlet {
             request.setAttribute("pass", x.getPassword());
             request.setAttribute("email", x.getEmail());
             request.setAttribute("role", x.getRoleID());
-
             request.getRequestDispatcher("EditAccount.jsp").forward(request, response);
         } catch (Exception e) {
             response.sendRedirect("error.jsp");
@@ -92,22 +91,22 @@ public class editAccount extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-         try {
+//         try {
             //Step 1: get data from jsp
-            String id = request.getParameter("id");
+            int id = Integer.parseInt(request.getParameter("id"));
             String user = request.getParameter("user"); //Get by name
             String password = request.getParameter("pass");
             String email = request.getParameter("email");
-            String roleID = request.getParameter("role");
-           
+            int roleID = Integer.parseInt(request.getParameter("role"));
+            System.out.println(id + " " +user+ " " +password+ " " +email+ " " +roleID);
             //Step 2: set data to ProductDAO
             UserDAO dao = new UserDAO();
             dao.editAccount(id, user, password, email, roleID);
             //dao.editAccount(id, user, password, isSell, imin);
             response.sendRedirect("AccountManagerControl");
-        } catch (Exception e) {
-            response.sendRedirect("error.jsp");
-        }
+//        } catch (Exception e) {
+//            response.sendRedirect("error.jsp");
+//        }
     }
 
     /**

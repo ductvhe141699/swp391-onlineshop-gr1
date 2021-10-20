@@ -13,7 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>User's Profile</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">;
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <link href="css/UserProfile.css" rel="stylesheet" type="text/css"/> 
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
@@ -27,13 +27,13 @@
                 <br><br>
             </div>
             <div class="row">
-<!--                <div class="col-1"></div>-->
+                <!--                <div class="col-1"></div>-->
                 <div class="col-4" id="form">
                     <br><br>
                     <%-- Display username --%>
                     <i class="fas fa-user-circle fa-pulse fa-spin fa-3x" id="profileIcon"></i>
                     <h4 style="text-align: center">${sessionScope.acc.userName}</h4>
- <c:if test="${requestScope.message ne null}">
+                    <c:if test="${requestScope.message ne null}">
                         <h5>${requestScope.message}</h5>
                     </c:if>
                     <%-- Display user email --%>
@@ -94,9 +94,9 @@
                 <div class="col-2"></div>
             </div>
         </div>
-                    <div class="">
-                        <br><br>
-            </div>
+        <div class="">
+            <br><br>
+        </div>
         <%@include file="model/footer.jsp" %>
     </body>
 </html>

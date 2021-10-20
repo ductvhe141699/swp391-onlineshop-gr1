@@ -62,12 +62,8 @@ public class Users {
         this.email = email;
     }
 
-    public String getRoleID() {
-        if (roleID == 2) {
-            return "Seller";
-        } else {
-            return "Customer";
-        }
+    public int getRoleID() {
+        return roleID;
     }
 
     public void setRoleID(int roleID) {

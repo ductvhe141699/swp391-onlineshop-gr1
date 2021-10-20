@@ -42,19 +42,23 @@
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="text" class="form-control" required name="pass" value="${pass}">
+                                <input type="password" class="form-control" required name="pass" value="${pass}">
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
                                 <input type="text" class="form-control" required name="email" value="${email}">
                             </div>
+                             <div class="form-group">
+                                <label>Admin</label>
+                                <input type="checkbox" class="form-control" name="role" value="1" ${role==1?"checked":""} style="height: 30px;">
+                            </div>
                             <div class="form-group">
                                 <label>Seller</label>
-                                <input type="checkbox" class="form-control" name="Seller" value="2" ${role==2?"checked":""} style="height: 30px;">
+                                <input type="checkbox" class="form-control" name="role" value="2" ${role==2?"checked":""} style="height: 30px;">
                             </div>
                             <div class="form-group">
                                 <label>Customer</label>
-                                <input type="checkbox" class="form-control" name="Admin" value="3" ${role==3?"checked":""} style="height: 30px;">
+                                <input type="checkbox" class="form-control" name="role" value="3" ${role==3?"checked":""} style="height: 30px;">
                             </div>
                         </div>
                         <div class="modal-footer">
