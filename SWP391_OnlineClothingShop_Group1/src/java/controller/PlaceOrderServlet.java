@@ -9,10 +9,12 @@ import DBContext.CartDAO;
 import DBContext.OrderDAO;
 import DBContext.OrderDetailDAO;
 import DBContext.ShipDAO;
+import DBContext.ShipInfoDAO;
 import entity.Cart;
 import entity.Order;
 import entity.OrderDetail;
 import entity.Ship;
+import entity.ShipInfo;
 import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -57,6 +59,9 @@ public class PlaceOrderServlet extends HttpServlet {
         Order order = new Order(user.getUserID() , totalPrice+ship.getShipPrice(), StringDecode.decode(note));
         OrderDAO odao= new OrderDAO();
         int orderId=odao.addOrder(order);
+        ShipInfo shipinfo = new ShipInfo(orderId,StringDecode.decode(request.getParameter("inputName")), StringDecode.decode(request.getParameter("inputAddress")), Integer.parseInt(request.getParameter("inputCity")), request.getParameter("inputPhone"), StringDecode.decode(note));
+        ShipInfoDAO sidao = new ShipInfoDAO();
+        sidao.addShipInfo(shipinfo);
         OrderDetailDAO oddao = new OrderDetailDAO();
         for(Cart cart:carts){
             OrderDetail orderdetail=new OrderDetail(orderId, cart.getProductID(), cart.getProductName(), cart.getSellPrice(), cart.getAmount());
