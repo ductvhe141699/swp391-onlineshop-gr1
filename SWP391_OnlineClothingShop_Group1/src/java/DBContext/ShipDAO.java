@@ -41,4 +41,23 @@ public class ShipDAO {
         }
         return list;
     }
+    public Ship getShip(int id) {
+        Ship ship = null;
+        try {
+            query = "SELECT * from dbo.Ship where id=?";
+            conn = DBcontext.open(); 
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                ship = new Ship(rs.getInt("id"),rs.getString("CityName"),rs.getInt("ShipPrice"));
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(ShipDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
+        return ship;
+    }
 }

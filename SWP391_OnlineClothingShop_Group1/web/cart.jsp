@@ -92,26 +92,26 @@
                   </tr>
             </tfoot>
           </table>
-        <form>
+        <form method="post" action="${pageContext.request.contextPath}/user/checkout"> 
             <div class="row container-fluid justify-content-center p-0 p-lg-5 m-0">
                 <div class="col-12 col-lg-6 bg-white p-5">
                     <h6 class="display-6 mb-3">Shipping information</h6>
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label for="inputName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="inputName" value="${ua.getShipName()}" required>
+                            <input type="text" class="form-control" name="inputName" id="inputName" value="${ua.getShipName()}" required>
                         </div>
                         <div class="col-md-6">
                             <label for="inputPhone" class="form-label">Phone</label>
-                            <input type="tel" class="form-control" id="inputPhone" value="${ua.getPhoneNum()}" required>
+                            <input type="tel" class="form-control" name="inputPhone" id="inputPhone" value="${ua.getPhoneNum()}" required>
                         </div>
                         <div class="col-md-8">
                             <label for="inputAddress" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="inputAddress" value="${ua.getShipAddress()}" placeholder="1234 Main St">
+                            <input type="text" class="form-control" name="inputAddress" id="inputAddress" value="${ua.getShipAddress()}" placeholder="1234 Main St">
                         </div>
                         <div class="col-md-4">
                             <label for="inputCity" class="form-label">City</label>
-                            <select id="inputCity" class="form-select" required>
+                            <select id="inputCity" name="inputCity" class="form-select" required>
                                 <option value="" disabled selected>Choose a city</option>
                                 <c:forEach items="${ships}" var="ship">
                                     <option value="${ship.getId()}" ${ship.getId()==ua.getShipCityID()?'selected':''}>${ship.getCityName()}</option>
@@ -120,7 +120,7 @@
                         </div>
                         <div class="col-12">
                             <label for="inputNote" class="form-label">Note</label>
-                            <input type="text" class="form-control" id="inputNote">
+                            <input type="text" name="inputNote" class="form-control" id="inputNote">
                         </div>
                     </div>
                 </div>

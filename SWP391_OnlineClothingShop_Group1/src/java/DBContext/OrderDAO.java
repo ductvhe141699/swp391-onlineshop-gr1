@@ -11,8 +11,11 @@ import entity.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -41,7 +44,7 @@ public class OrderDAO {
                 list.add(new Order(
                         rs.getInt("ID"),
                         rs.getInt("UserId"),
-                        rs.getFloat("TotalPrice"),
+                        rs.getInt("TotalPrice"),
                         rs.getString("Note"),
                         rs.getString("Name"),
                         rs.getString("Daybuy")
@@ -72,14 +75,14 @@ public class OrderDAO {
                     order.add(new Order(
                             rs.getInt(1),
                             rs.getInt(2),
-                            rs.getDouble(3),
+                            rs.getInt(3),
                             rs.getString(4),
                             rs.getString(5),
                             rs.getString(6),
                             rs.getInt(7),
                             rs.getInt(8),
                             rs.getString(9),
-                            rs.getDouble(10),
+                            rs.getInt(10),
                             rs.getInt(11)
                     ));
                 }
@@ -88,6 +91,25 @@ public class OrderDAO {
         }
 
         return order;
+    }
+    public int addOrder(Order order){
+        try {           
+            conn= DBcontext.open();
+            ps = conn.prepareStatement("INSERT INTO dbo.Orders (UserID,TotalPrice,Note,Status,Date) VALUES(?,?,?,1,GETDATE())",PreparedStatement.RETURN_GENERATED_KEYS);
+            ps.setInt(1,order.getUserId());
+            ps.setInt(2,order.getTotalPrice());
+            ps.setNString(3, order.getNote());
+            ps.executeUpdate();
+            rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                return (int) rs.getLong(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            DBcontext.close(conn, ps,rs);
+        }
+        return 0;
     }
 
 }

@@ -64,7 +64,7 @@
     </section>
     <div class="content-width m-auto" style="width:100%;background-image: linear-gradient(45deg,rgba(165, 177, 194,0.8) 55%,rgba(165, 177, 194,0.9))">
         <div class="row justify-content-center p-0 p-lg-5 m-0">
-            <div class=" mt-5 thankyou-div img-thumbnail"><img class=" mx-auto d-block thankyou" src="resources/img/thankyou.png"/></div>
+            <div class=" mt-5 thankyou-div img-thumbnail"><img class=" mx-auto d-block thankyou" src="${pageContext.request.contextPath}/resources/img/thankyou.png"/></div>
             <div class="clearfix mb-5"></div>
             <a href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=0&price=0&sortType=0&sortMode=0" type="button" class="btn btn-light float-end me-2" style="width: 20%;max-width: 500px;min-width:200px ">Back to shop</a>   
         </div>

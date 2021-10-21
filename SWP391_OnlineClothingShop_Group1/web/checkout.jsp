@@ -69,49 +69,50 @@
               </tr>
             </thead>
             <tbody>
+              <c:forEach items="${carts}" var="cart" varStatus="i">
               <tr>
-                <th scope="row">1</th>
-                <td>Image</td>
-                <td>Name</td>
+                <th scope="row">${i.count}</th>
+                <td><img class="img-thumbnail img-fluid" style="max-width: 100px" src="${pageContext.request.contextPath}/resources/img/products/${cart.getProductImg()}"></td>
+                <td>${cart.getProductName()}</td>
                 <td>
-                    <div class="btn-group">
-                        <span class="btn btn-light">42</span>
-                    </div>
+                   <span class="btn btn-light">${cart.getAmount()}</span>
                 </td>
-                <td>Price</td>
+                <td>${cart.getAmount()*cart.getSellPrice()}$</td>
               </tr>
+              </c:forEach>
             </tbody>
             <tfoot>
                 <tr>
                     <th scope="row" colspan="4">Total</th>
-                    <td>Total Price</td>
+                    <td>${totalPrice}$</td>
                   </tr>
             </tfoot>
           </table>
-        <form>
+        <form action="${pageContext.request.contextPath}/user/placeorder" method="post">
             <div class="row container-fluid justify-content-center p-0 p-lg-5 m-0">
                 <div class="col-12 col-lg-6 bg-white p-5">
                     <h6 class="display-6 mb-3">Shipping information</h6>
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label for="inputName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="inputName" disabled required>
+                            <input type="text" class="form-control" name="inputName" value="${shipName}" id="inputName" readonly required>
                         </div>
                         <div class="col-md-6">
                             <label for="inputPhone" class="form-label">Phone</label>
-                            <input type="tel" class="form-control" id="inputPhone" disabled required>
+                            <input type="tel" class="form-control" name="inputPhone" value="${shipPhone}" id="inputPhone" readonly required>
                         </div>
                         <div class="col-md-8">
                             <label for="inputAddress" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="inputAddress" disabled>
+                            <input type="text" class="form-control" name="inputAddress" value="${shipAddress}" id="inputAddress" readonly>
                         </div>
+                        <input type="hidden" name="inputCity" value="${shipCity.getId()}" readonly/>
                         <div class="col-md-4">
                             <label for="inputCity" class="form-label">City</label>
-                            <input type="text" class="form-control" id="inputCity" disabled>
+                            <input type="text" class="form-control" value="${shipCity.getCityName()}" id="inputCity" readonly>
                         </div>
                         <div class="col-12">
                             <label for="inputNote"  class="form-label">Note</label>
-                            <input type="text" class="form-control" id="inputNote" disabled>
+                            <input type="text" class="form-control" name="inputNote" value="${shipNote}" id="inputNote" readonly>
                         </div>
                     </div>
                 </div>
@@ -126,26 +127,26 @@
                         <tbody>
                             <tr>
                                 <td>Product</td>
-                                <td>Price</td>
+                                <td>${totalPrice}$</td>
                             </tr>
                             <tr>
                                 <td>Shipping fees</td>
-                                <td>Price</td>
+                                <td>${shipCity.getShipPrice()}$</td>
                             </tr>
                             <tr>
                                 <td>Sale</td>
-                                <td>Price</td>
+                                <td>0</td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th scope="row">Total</th>
-                                <td>Total Price</td>
+                                <td>${totalPrice+shipCity.getShipPrice()}$</td>
                             </tr>
                         </tfoot>
                     </table>
                     <button type="submit" class="btn btn-success float-end">Place order</button>
-                    <button type="button" class="btn btn-light float-end me-2">Back to cart</button>
+                    <a href="${pageContext.request.contextPath}/user/cart" type="button" class="btn btn-light float-end me-2">Back to cart</a>
                 </div>       
             </div>
         </form>

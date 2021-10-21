@@ -14,9 +14,8 @@ import java.sql.Date;
 public class Order extends OrderDetail {
 
     int id;
-
     int userId;
-    double totalPrice;
+    int totalPrice;
     String note;
     String status;
     String date;
@@ -24,7 +23,13 @@ public class Order extends OrderDetail {
     public Order() {
     }
 
-    public Order(int id, int userId, double totalPrice, String note, String status, String date) {
+    public Order(int userId, int totalPrice, String note) {
+        this.userId = userId;
+        this.totalPrice = totalPrice;
+        this.note = note;
+    }
+    
+    public Order(int id, int userId, int totalPrice, String note, String status, String date) {
         this.id = id;
         this.userId = userId;
         this.totalPrice = totalPrice;
@@ -33,7 +38,7 @@ public class Order extends OrderDetail {
         this.date = date;
     }
 
-    public Order(int id, int userId, double totalPrice, String note, String status, String date, int orderID, int productID, String productName, double productPrice, int quantity) {
+    public Order(int id, int userId, int totalPrice, String note, String status, String date, int orderID, int productID, String productName, int productPrice, int quantity) {
         super(orderID, productID, productName, productPrice, quantity);
         this.id = id;
         this.userId = userId;
@@ -59,11 +64,11 @@ public class Order extends OrderDetail {
         this.userId = userId;
     }
 
-    public double getTotalPrice() {
+    public int getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -115,11 +120,11 @@ public class Order extends OrderDetail {
         this.productName = productName;
     }
 
-    public double getProductPrice() {
+    public int getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(double productPrice) {
+    public void setProductPrice(int productPrice) {
         this.productPrice = productPrice;
     }
 
