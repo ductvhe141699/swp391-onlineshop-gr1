@@ -5,7 +5,7 @@
  */
 package DBContext;
 
-import entity.Brand;
+import entity.Notification;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,23 +18,24 @@ import java.util.logging.Logger;
  *
  * @author SAKURA
  */
-public class BrandDAO {
+public class NotificationDAO {
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
     private String query;
-    public ArrayList<Brand> getAllBrand() {
-        ArrayList<Brand> list = new ArrayList<>();
+    public ArrayList<Notification> getAllNotification(int id) {
+        ArrayList<Notification> list = new ArrayList<>();
         try {
-            query = "SELECT * FROM dbo.Brand";
+            query = "SELECT * FROM dbo.[Notifications] WHERE UserID = ? ORDER BY [status] ASC, [time] DESC";
             conn = DBcontext.open();
             ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new Brand(rs.getInt("BrandID"),rs.getString("BrandName")));
+                list.add(new Notification(rs.getInt("ID"),rs.getInt("UserID"), rs.getInt("OrderID"), rs.getString("Content"), rs.getInt("status"), rs.getDate("time")));
             }
         } catch (SQLException e) {
-            Logger.getLogger(BrandDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(NotificationDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         finally{
             DBcontext.close(conn, ps, rs);

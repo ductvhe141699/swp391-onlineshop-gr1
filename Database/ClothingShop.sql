@@ -703,13 +703,14 @@ CREATE TABLE Notifications(
 	OrderID int,
 	Content char(1000),
 	status char (30),
-	time char (50),
+	time date,
 	constraint UserID_in_Users FOREIGN KEY(UserID) REFERENCES Users(userId),
 	constraint OrderID_in_Orders FOREIGN KEY(OrderID) REFERENCES Orders(ID)
 
 );
 GO
-
+INSERT INTO Notifications VALUES (5,1,N'Test Checked',1,GETDATE())
+INSERT INTO Notifications VALUES (5,1,N'Test Unchecked',0,GETDATE())
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE Feedback (

@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,9 +34,11 @@ public class CategoryDAO {
                 list.add(new Category(rs.getInt("CategoryID"),rs.getString("CategoryName")));
             }
         } catch (SQLException e) {
-            
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, e);
         }
-        DBcontext.close(conn, ps, rs);
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
         return list;
     }
 }

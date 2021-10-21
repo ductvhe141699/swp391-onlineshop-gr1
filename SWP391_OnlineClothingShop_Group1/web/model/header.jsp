@@ -3,6 +3,8 @@
     Created on : Sep 27, 2021, 1:34:43 PM
     Author     : SAKURA
 --%>
+<%@page import="entity.Notification"%>
+<%@page import="DBContext.NotificationDAO"%>
 <%@page import="DBContext.CartDAO"%>
 <%@page import="entity.Users"%>
 <%@page import="entity.SubCategory"%>
@@ -31,7 +33,13 @@
     {
         CartDAO ctdao = new CartDAO();
         pageContext.setAttribute( "cartAmount", ctdao.getCartAmount(user.getUserID()) );
-        
+        NotificationDAO ndao= new NotificationDAO();
+        int unreadnoti=0;
+        List<Notification> notifications = ndao.getAllNotification(user.getUserID());
+        for(Notification notification:notifications)
+            if(notification.getStatus()==0) unreadnoti++;
+        pageContext.setAttribute("notifications", notifications);
+        pageContext.setAttribute("unreadnoti", unreadnoti);
     }
 %>
 <div class="row m-0 p-0" style="background-color:lightgrey;">
@@ -66,7 +74,7 @@
                   <a class="nav-link" role="button" data-bs-toggle="offcanvas" data-bs-target="#notification" aria-controls="offcanvasRight"><i class="fas fa-bell"></i>
                       <c:if test="${sessionScope.user !=null}">
                         <span class="position-relative translate-middle badge rounded-pill bg-danger">
-                          0
+                          ${unreadnoti}
                           <span class="visually-hidden">unread notifications</span>
                         </span>
                     </c:if>
@@ -144,7 +152,7 @@
                  <a class="nav-link" role="button" data-bs-toggle="offcanvas" data-bs-target="#notification" aria-controls="offcanvasRight"><i class="fas fa-bell"></i>
                       <c:if test="${sessionScope.user !=null}">
                         <span class="position-relative translate-middle badge rounded-pill bg-danger">
-                          0
+                          ${unreadnoti}
                           <span class="visually-hidden">unread notifications</span>
                         </span>
                       </c:if>
@@ -233,14 +241,14 @@
 
 <div class="offcanvas offcanvas-end sticky-notification" data-bs-scroll="true" tabindex="-1" id="notification" aria-labelledby="notification">
   <div class="offcanvas-header">
-      <h5 id="notificationLabel">Notification</h5><button class="btn btn-info text-white">Read All</button>
+      <h5 id="notificationLabel">Notification</h5><button class="btn btn-info text-white <c:if test="${user==null}">disabled</c:if>">Read All</button>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body overflow-hidden">
       <%-- BODY --%>
       <div class="card text-dark border-info shadow mb-3" style="max-width: 540px;font-size: 12px">
         <div class="card-body">
-          <h6 class="card-title"><i class="fas fa-exclamation-triangle me-1"></i>Your order has been confirm</h6>
+          <h6 class="card-title"><i class="far fa-envelope me-1"></i>Your order has been confirm</h6>
           <p class="card-text">Order #3101 is on its ways</p>  
         </div>
         <div class="card-footer">
@@ -250,6 +258,7 @@
             <span class="visually-hidden">New alerts</span>
           </span>
         </div>
+      <c:if test="${user==null}">
       <div class="card text-dark bg-info shadow mb-3" style="max-width: 540px;font-size: 12px">
         <div class="card-body">
           <h6 class="card-title"><i class="fas fa-shopping-bag me-1"></i>Welcome to Shope</h6>
@@ -259,6 +268,7 @@
             <a class="text-decoration-none" href="${pageContext.request.contextPath}/login"><small class="text-white">Login/Register</small></a>
           </div>
         </div>
+       </c:if>
       <%-- BODY --%>
   </div>
 </div>
