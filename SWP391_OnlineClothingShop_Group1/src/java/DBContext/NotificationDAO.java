@@ -42,4 +42,33 @@ public class NotificationDAO {
         }
         return list;
     }
+    public void markAsRead(int id,int notiId){
+        try {
+            query = "UPDATE dbo.Notifications set status=1 where UserID = ? and ID = ?";
+            conn = DBcontext.open();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.setInt(2, notiId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(NotificationDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
+    }
+    public void readAll(int id){
+        try {
+            query = "UPDATE dbo.Notifications set status=1 where UserID = ?";
+            conn = DBcontext.open();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(NotificationDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
+    }
 }
