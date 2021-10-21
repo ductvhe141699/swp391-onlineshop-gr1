@@ -6,11 +6,13 @@
 package controller;
 
 import DBContext.CartDAO;
+import DBContext.NotificationDAO;
 import DBContext.OrderDAO;
 import DBContext.OrderDetailDAO;
 import DBContext.ShipDAO;
 import DBContext.ShipInfoDAO;
 import entity.Cart;
+import entity.Notification;
 import entity.Order;
 import entity.OrderDetail;
 import entity.Ship;
@@ -67,6 +69,9 @@ public class PlaceOrderServlet extends HttpServlet {
             OrderDetail orderdetail=new OrderDetail(orderId, cart.getProductID(), cart.getProductName(), cart.getSellPrice(), cart.getAmount());
             oddao.addOrderDetail(orderdetail);
         }
+        Notification notification= new Notification(user.getUserID(), orderId, "Đơn hàng #"+Integer.toString(orderId)+" của bạn đã được đặt!");
+        NotificationDAO ndao=new NotificationDAO();
+        ndao.addNotification(notification);
         cdao.removeCart(user.getUserID());
         request.getRequestDispatcher("/finishedorder.jsp").forward(request, response);
     }

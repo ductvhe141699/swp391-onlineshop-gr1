@@ -701,8 +701,8 @@ CREATE TABLE Notifications(
 	ID int PRIMARY KEY identity (1,1),
 	UserID int,
 	OrderID int,
-	Content char(1000),
-	status char (30),
+	Content nvarchar(1000),
+	status int,
 	time date,
 	constraint UserID_in_Users FOREIGN KEY(UserID) REFERENCES Users(userId),
 	constraint OrderID_in_Orders FOREIGN KEY(OrderID) REFERENCES Orders(ID)

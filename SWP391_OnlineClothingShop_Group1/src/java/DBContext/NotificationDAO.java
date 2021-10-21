@@ -23,6 +23,22 @@ public class NotificationDAO {
     private PreparedStatement ps;
     private ResultSet rs;
     private String query;
+    public void addNotification(Notification notification)  {
+        try {
+            query = "INSERT INTO dbo.[Notifications] VALUES (?,?,?,0,GETDATE())";
+            conn = DBcontext.open();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, notification.getUserID());
+            ps.setInt(2,notification.getOrderID());
+            ps.setNString(3, notification.getContent());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(NotificationDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
+    }
     public ArrayList<Notification> getAllNotification(int id) {
         ArrayList<Notification> list = new ArrayList<>();
         try {

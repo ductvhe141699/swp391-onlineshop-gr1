@@ -30,7 +30,11 @@ public class Notification {
         this.status = status;
         this.time = time;
     }
-
+    public Notification(int UserID, int OrderID, String content) {
+        this.UserID = UserID;
+        this.OrderID = OrderID;
+        this.content = content;
+    }
     public int getId() {
         return id;
     }
