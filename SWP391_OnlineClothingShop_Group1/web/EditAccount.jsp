@@ -23,32 +23,33 @@
     </head>
     <body>
         <%@include file="model/header.jsp" %>
-         <div id="editEmployeeModal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form action="editAccount" method="POST">
-                            <div class="modal-header">						
-                                <h4 class="modal-title">Edit Account</h4>
-                                <a type="button" class="close" href="AccountManagerControl" aria-hidden="true">&times;</a>                                                         
-                            </div>
-                            <div class="modal-body">	
-                                <div class="form-group">
-                                    <label>ID</label>
-                                    <input type="text"  class="form-control" name="id" value="${id}" readonly>
+        <div id="editEmployeeModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="editAccount" method="POST">
+                        <div class="modal-header">						
+                            <h4 class="modal-title">Edit Account</h4>
+                            <a type="button" class="close" href="AccountManagerControl" aria-hidden="true">&times;</a>                                                         
+                        </div>
+                        <div class="modal-body">	
+                            <div class="form-group">
+                                <label>ID</label>
+                                <input type="text"  class="form-control" name="id" value="${id}" readonly>
+                                <span class="show-btn"><i class="fas-fa-eye"></i></span>
                             </div>
                             <div class="form-group">
                                 <label>UserName</label>
                                 <input type="text" class="form-control" required name="user" value="${user}">
                             </div>
                             <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" class="form-control" required name="pass" value="${pass}">
+                                Password: <input type="password" value="${pass}" id="myInput" class="form-control">
+                                <input type="checkbox" onclick="myFunction()"><i>Show Password</i>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
                                 <input type="text" class="form-control" required name="email" value="${email}">
                             </div>
-                             <div class="form-group">
+                            <div class="form-group">
                                 <label>Admin</label>
                                 <input type="checkbox" class="form-control" name="role" value="1" ${role==1?"checked":""} style="height: 30px;">
                             </div>
@@ -69,6 +70,16 @@
                 </div>
             </div>
         </div>
-                            <%@include file="model/footer.jsp" %>
+        <%@include file="model/footer.jsp" %>
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myInput");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
+        </script>
     </body>
 </html>
