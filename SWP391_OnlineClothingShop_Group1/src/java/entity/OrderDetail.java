@@ -11,16 +11,16 @@ package entity;
  */
 public class OrderDetail {
 
-    int orderID;
+     int orderID;
     int productID;
     String productName;
-    int productPrice;
+    double productPrice;
     int quantity;
 
     public OrderDetail() {
     }
 
-    public OrderDetail(int orderID, int productID, String productName, int productPrice, int quantity) {
+    public OrderDetail(int orderID, int productID, String productName, double productPrice, int quantity) {
         this.orderID = orderID;
         this.productID = productID;
         this.productName = productName;
@@ -52,11 +52,11 @@ public class OrderDetail {
         this.productName = productName;
     }
 
-    public int getProductPrice() {
+    public double getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(int productPrice) {
+    public void setProductPrice(double productPrice) {
         this.productPrice = productPrice;
     }
 

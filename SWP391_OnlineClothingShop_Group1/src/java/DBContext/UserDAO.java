@@ -13,8 +13,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -176,35 +174,28 @@ public class UserDAO {
 
     }
 
-    public void editAccount(int id, String user, String pass, String email,int role) {
-        String query = "UPDATE dbo.Users\n"
-                + "SET Username = ?, \n"
-                + "Password = ?, \n"
-                + "email = ?, \n"
-                + "RoleID = ? \n"
+    public void editAccount(String id, String user, String pass, String email, String role) {
+        String query = "UPDATE Users\n"
+                + "SET Username = ?,\n"
+                + "Password = ?,\n"
+                + "email = ?"
+                + "RoleID = ?,\n"
                 + "WHERE UserID = ?";
         try {
-            conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             ps.setString(1, user);
             ps.setString(2, pass);
             ps.setString(3, email);
-            ps.setInt(4, role);
-            ps.setInt(5, id);
-            ps.executeUpdate();     
+            ps.setString(4, role);
+            ps.setString(5, id);
+            ps.executeUpdate();
         } catch (Exception e) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, e);
-        }
-        finally
-        {
-            DBcontext.close(conn, ps, rs);
         }
     }
 
     public void deleteAccount(String id) {
         String query = "delete from Users where UserID = ?";
         try {
-            conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             ps.setString(1, id);
             ps.executeUpdate();
@@ -249,5 +240,19 @@ public class UserDAO {
         }
         return id ; 
     }
-    
+    public int getTotalUser(){
+        String query = "select count (*)from Users";
+        int total = 0;
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return total = rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
 }

@@ -28,7 +28,7 @@ public class OrderDetailDAO {
             ps.setInt(1,orderdetail.getOrderID());
             ps.setInt(2,orderdetail.getProductID());
             ps.setNString(3, orderdetail.getProductName());
-            ps.setInt(4,orderdetail.getProductPrice());
+            ps.setDouble(4,orderdetail.getProductPrice());
             ps.setInt(5, orderdetail.getQuantity());
             ps.executeUpdate();
         } catch (SQLException ex) {

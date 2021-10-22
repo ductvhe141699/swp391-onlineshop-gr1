@@ -13,23 +13,18 @@ import java.sql.Date;
  */
 public class Order extends OrderDetail {
 
-    int id;
-    int userId;
-    int totalPrice;
-    String note;
-    String status;
-    String date;
+    private int id;
+
+    private int userId;
+    private double totalPrice;
+    private String note;
+    private String status;
+    private String date;
 
     public Order() {
     }
 
-    public Order(int userId, int totalPrice, String note) {
-        this.userId = userId;
-        this.totalPrice = totalPrice;
-        this.note = note;
-    }
-    
-    public Order(int id, int userId, int totalPrice, String note, String status, String date) {
+    public Order(int id, int userId, double totalPrice, String note, String status, String date) {
         this.id = id;
         this.userId = userId;
         this.totalPrice = totalPrice;
@@ -38,7 +33,7 @@ public class Order extends OrderDetail {
         this.date = date;
     }
 
-    public Order(int id, int userId, int totalPrice, String note, String status, String date, int orderID, int productID, String productName, int productPrice, int quantity) {
+    public Order(int id, int userId, double totalPrice, String note, String status, String date, int orderID, int productID, String productName, double productPrice, int quantity) {
         super(orderID, productID, productName, productPrice, quantity);
         this.id = id;
         this.userId = userId;
@@ -64,11 +59,11 @@ public class Order extends OrderDetail {
         this.userId = userId;
     }
 
-    public int getTotalPrice() {
+    public double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(int totalPrice) {
+    public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -120,11 +115,11 @@ public class Order extends OrderDetail {
         this.productName = productName;
     }
 
-    public int getProductPrice() {
+    public double getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(int productPrice) {
+    public void setProductPrice(double productPrice) {
         this.productPrice = productPrice;
     }
 
