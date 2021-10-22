@@ -33,6 +33,7 @@
                     <%-- Display username --%>
                     <i class="fas fa-user-circle fa-pulse fa-spin fa-3x" id="profileIcon"></i>
                     <h4 style="text-align: center">${sessionScope.acc.userName}</h4>
+                    
                     <c:if test="${requestScope.message ne null}">
                         <h5>${requestScope.message}</h5>
                     </c:if>
@@ -42,7 +43,7 @@
                     <%-- Display user role --%>
                     <h5 style="display: inline-block">Role: </h5>
                     <c:choose>
-                        <c:when test="${acc.roldID==1}">
+                        <c:when test="${acc.roldID==2}">
                             <input type="checkbox" checked="checked" disabled="disabled" style="display: inline-block">
                             <label>Seller</label>
                             <input type="checkbox" disabled="disabled" style="display: inline-block">

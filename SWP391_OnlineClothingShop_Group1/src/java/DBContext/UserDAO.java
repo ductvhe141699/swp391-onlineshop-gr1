@@ -196,7 +196,23 @@ public class UserDAO {
     }
 
     public void deleteAccount(String id) {
-        String query = "delete from Users where UserID = ?";
+        String query = "alter table UserAddress nocheck constraint all\n"
+                + "alter table Notifications nocheck constraint all\n"
+                + "alter table Orders nocheck constraint all\n"
+                + "alter table Feedback nocheck constraint all\n"
+                + "alter table Feedback_Replies nocheck constraint all\n"
+                + "alter table Product nocheck constraint all\n"
+                + "alter table Cart nocheck constraint all\n"
+                + "\n"
+                + "delete from Users where UserID= ? \n"
+                + "\n"
+                + "alter table UserAddress check constraint all\n"
+                + "alter table Notifications check constraint all\n"
+                + "alter table Orders check constraint all\n"
+                + "alter table Feedback check constraint all\n"
+                + "alter table Feedback_Replies check constraint all\n"
+                + "alter table Product check constraint all\n"
+                + "alter table Cart check constraint all";
         try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
@@ -230,8 +246,8 @@ public class UserDAO {
     public int getUserIDByName(String username) {
         String query = "select UserID  FROM Users\n"
                 + "where Username = ? ";
-        int id = 0 ; 
-         try {
+        int id = 0;
+        try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             ps.setString(1, username);
@@ -241,15 +257,16 @@ public class UserDAO {
             }
         } catch (Exception e) {
         }
-        return id ; 
+        return id;
     }
-    public int getTotalUser(){
+
+    public int getTotalUser() {
         String query = "select count (*)from Users";
         int total = 0;
         try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
-            
+
             rs = ps.executeQuery();
             while (rs.next()) {
                 return total = rs.getInt(1);
