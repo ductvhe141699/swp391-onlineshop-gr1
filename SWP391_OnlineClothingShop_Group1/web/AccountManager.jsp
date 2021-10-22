@@ -23,9 +23,9 @@
     </head>
     <body>
         <%@include file="model/header.jsp" %>
-         <div class="row">
-                <br><br>
-            </div>
+        <div class="row">
+            <br><br>
+        </div>
         <h2 style="font-family: Brush Script MT; text-align: center; font-size: 60px">Account manager</h2>
         <hr>
         <div class="container bootstrap snippets bootdey">
@@ -50,10 +50,16 @@
                                                 <td class="text-center">${o.userID}</td>
                                                 <td class="text-center">${o.userName}</td>
                                                 <td class="text-center">
-                                                   
-                                                    
-                                                        <span class="label label-default">${o.roleID}</span>
-                                                    
+<!--                                                    <span class="label label-default">${o.roleID}</span>-->
+                                                    <c:if test="${o.roleID==1}">
+                                                        <a href="#" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">Admin</a>
+                                                    </c:if>
+                                                    <c:if test="${o.roleID==2}">
+                                                        <a href="#" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">Seller</a>
+                                                    </c:if>
+                                                    <c:if test="${o.roleID==3}">
+                                                        <a href="#" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">Customer</a>
+                                                    </c:if>
                                                 </td>
                                                 <td style="width: 20%;" class="text-center">
                                                     <a href="editAccount?userID=${o.userID}" class="table-link text-info">
@@ -62,7 +68,7 @@
                                                             <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                                         </span>
                                                     </a>
-                                                        <a href="#" onclick="showMess(${o.userID})" class="table-link danger">
+                                                    <a href="#" onclick="showMess(${o.userID})" class="table-link danger">
                                                         <span class="fa-stack">
                                                             <i class="fa fa-square fa-stack-2x"></i>
                                                             <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -73,7 +79,7 @@
                                         </c:forEach>
                                     </tbody>
                                 </table>
-                               
+
                                 <br><br>
                             </div>
                         </div>
@@ -81,17 +87,17 @@
                 </div>
             </div>
         </div>
-         <div class="row">
-                <br><br>
-            </div>
+        <div class="row">
+            <br><br>
+        </div>
 
         <%@include file="model/footer.jsp" %>
     </body>
     <script>
-        function showMess(userID){
-            var option=confirm('Are you sure to delete this Account?');
-            if(option===true){
-                window.location.href = 'deleteAccount?UserID='+userID;
+        function showMess(userID) {
+            var option = confirm('Are you sure to delete this Account?');
+            if (option === true) {
+                window.location.href = 'deleteAccount?UserID=' + userID;
             }
         }
     </script>
