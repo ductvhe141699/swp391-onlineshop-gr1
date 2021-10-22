@@ -81,14 +81,14 @@
                         <a href="${pageContext.request.contextPath}/user/deletecart?productID=${cart.getProductID()}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                     </div>
                 </td>
-                <td>${cart.getAmount()*cart.getSellPrice()}$</td>
+                <td>${cart.getAmount()*cart.getSellPrice()}đ</td>
               </tr>
               </c:forEach>
             </tbody>
             <tfoot>
                 <tr>
                     <th scope="row" colspan="4">Total</th>
-                    <td>${totalPrice}$</td>
+                    <td>${totalPrice}đ</td>
                   </tr>
             </tfoot>
           </table>
@@ -135,21 +135,21 @@
                         <tbody>
                             <tr>
                                 <td>Product</td>
-                                <td>${totalPrice}$</td>
+                                <td>${totalPrice}đ</td>
                             </tr>
                             <tr>
                                 <td>Shipping fees</td>
-                                <td id="sF">NaN$</td>
+                                <td id="sF">NaNđ</td>
                             </tr>
                             <tr>
                                 <td>Sale</td>
-                                <td>0</td>
+                                <td>0đ</td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th scope="row">Total</th>
-                                <td id="tP">NaN$</td>
+                                <td id="tP">NaNđ</td>
                             </tr>
                         </tfoot>
                     </table>      
@@ -197,12 +197,12 @@
                 var tP=document.getElementById("tP");
                 var sF=document.getElementById("sF");
                 if(inputCity.value===""){
-                    tP.innerHTML= "NaN$";
-                    sF.innerHTML= "NaN$";
+                    tP.innerHTML= "NaNđ";
+                    sF.innerHTML= "NaNđ";
                 }
                 else{
-                    tP.innerHTML= (shipPrice[inputCity.value]+totalPrice )+"$";
-                    sF.innerHTML= shipPrice[inputCity.value]+"$";
+                    tP.innerHTML= (shipPrice[inputCity.value]+totalPrice )+"đ";
+                    sF.innerHTML= shipPrice[inputCity.value]+"đ";
                 }
           }
     </script>

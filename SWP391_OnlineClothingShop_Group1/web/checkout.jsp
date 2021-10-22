@@ -77,14 +77,14 @@
                 <td>
                    <span class="btn btn-light">${cart.getAmount()}</span>
                 </td>
-                <td>${cart.getAmount()*cart.getSellPrice()}$</td>
+                <td>${cart.getAmount()*cart.getSellPrice()}đ</td>
               </tr>
               </c:forEach>
             </tbody>
             <tfoot>
                 <tr>
                     <th scope="row" colspan="4">Total</th>
-                    <td>${totalPrice}$</td>
+                    <td>${totalPrice}đ</td>
                   </tr>
             </tfoot>
           </table>
@@ -127,11 +127,11 @@
                         <tbody>
                             <tr>
                                 <td>Product</td>
-                                <td>${totalPrice}$</td>
+                                <td>${totalPrice}đ</td>
                             </tr>
                             <tr>
                                 <td>Shipping fees</td>
-                                <td>${shipCity.getShipPrice()}$</td>
+                                <td>${shipCity.getShipPrice()}đ</td>
                             </tr>
                             <tr>
                                 <td>Sale</td>
@@ -141,7 +141,7 @@
                         <tfoot>
                             <tr>
                                 <th scope="row">Total</th>
-                                <td>${totalPrice+shipCity.getShipPrice()}$</td>
+                                <td>${totalPrice+shipCity.getShipPrice()}đ</td>
                             </tr>
                         </tfoot>
                     </table>

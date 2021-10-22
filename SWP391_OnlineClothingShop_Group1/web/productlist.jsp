@@ -135,31 +135,31 @@
                             <li class="list-group-item">
                               <input class="form-check-input" type="radio" name="price" value="1" id="price1" ${price==1?'checked':''}>
                               <label class="form-check-label" for="price1">
-                                0-100.000
+                                0đ-100.000đ
                               </label>
                             </li>
                             <li class="list-group-item">
                               <input class="form-check-input" type="radio" name="price" value="2" id="price2" ${price==2?'checked':''}>
                               <label class="form-check-label" for="price2">
-                                100.000-500.000
+                                100.000đ-500.000đ
                               </label>
                             </li>
                             <li class="list-group-item">
                               <input class="form-check-input" type="radio" name="price" value="3" id="price3" ${price==3?'checked':''}>
                               <label class="form-check-label" for="price3">
-                                500.000-1.000.000
+                                500.000đ-1.000.000đ
                               </label>
                             </li>
                             <li class="list-group-item">
                               <input class="form-check-input" type="radio" name="price" value="4" id="price4" ${price==4?'checked':''}>
                               <label class="form-check-label" for="price4">
-                                1.000.000-5.000.000
+                                1.000.000đ-5.000.000đ
                               </label>
                             </li>
                             <li class="list-group-item">
                               <input class="form-check-input" type="radio" name="price" value="5" id="price5" ${price==5?'checked':''}>
                               <label class="form-check-label" for="price5">
-                                >5.000.000
+                                >5.000.000đ
                               </label>
                             </li>
                           </ul>   
@@ -222,7 +222,7 @@
                                 <div class="card-body">
                                     <div class="clearfix mb-3"> 
                                         <c:forEach items="${brands}" var="ibrand"><c:if test="${ibrand.getBrandID()==iproduct.getBrandID()}"><span class="float-start badge rounded-pill bg-primary">${ibrand.getBrandName()}</span></c:if></c:forEach>
-                                        <span class="float-end price-hp">${iproduct.getSellPrice()}$</span> </div>
+                                        <span class="float-end price-hp">${iproduct.getSellPrice()}đ</span> </div>
                                     <h5 class="card-title">${iproduct.getProductName()}</h5>
                                     <p class="card-text overflow-auto" style="height: 100px;text-overflow: ellipsis;">${iproduct.getDesc()}</p>
                                     <div class="text-center my-4"> <a href="#" class="btn-custom btn-warning-custom">Check offer</a> </div>
