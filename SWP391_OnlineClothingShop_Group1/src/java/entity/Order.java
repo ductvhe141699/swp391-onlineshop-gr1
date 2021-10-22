@@ -24,6 +24,12 @@ public class Order extends OrderDetail {
     public Order() {
     }
 
+    public Order(int userId, double totalPrice, String note) {
+        this.userId = userId;
+        this.totalPrice = totalPrice;
+        this.note = note;
+    }
+
     public Order(int id, int userId, double totalPrice, String note, String status, String date) {
         this.id = id;
         this.userId = userId;

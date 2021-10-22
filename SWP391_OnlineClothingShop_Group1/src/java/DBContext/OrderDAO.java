@@ -6,13 +6,15 @@
 package DBContext;
 
 import entity.Order;
-import entity.OrderDetail;
 import entity.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -134,6 +136,25 @@ public class OrderDAO {
                 return total = rs.getInt(1);
             }
         } catch (Exception e) {
+        }
+        return 0;
+    }
+    public int addOrder(Order order){
+        try {           
+            conn= DBcontext.open();
+            ps = conn.prepareStatement("INSERT INTO dbo.Orders (UserID,TotalPrice,Note,Status,Date) VALUES(?,?,?,1,GETDATE())",PreparedStatement.RETURN_GENERATED_KEYS);
+            ps.setInt(1,order.getUserId());
+            ps.setDouble(2,order.getTotalPrice());
+            ps.setNString(3, order.getNote());
+            ps.executeUpdate();
+            rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                return (int) rs.getLong(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            DBcontext.close(conn, ps,rs);
         }
         return 0;
     }
