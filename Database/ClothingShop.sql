@@ -649,7 +649,7 @@ INSERT [dbo].[Order_Status] ([Name]) VALUES (N'Completed')
 CREATE TABLE [dbo].[Orders](
 	[ID] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	[UserID] [int] NULL,
-	[TotalPrice] [float] NULL,
+	[TotalPrice] [int] NULL,
 	[Note] [nvarchar](2000) NULL,
 	[Status] [int] NULL,
 	[Date] [DATETIME] NULL ,
