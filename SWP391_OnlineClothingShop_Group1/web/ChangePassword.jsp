@@ -11,7 +11,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Change Your Password</title>
+        <title>SHOPE</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -24,7 +24,9 @@
         <link href="css/ChangePassword.css" rel="stylesheet" type="text/css"/> 
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
         <link rel="stylesheet" type="text/css" href="./css/queries.css" />
-        <link rel="stylesheet" type="text/css" href="./css/homepage.css" /> 
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/queries.css">
+        <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
     </head>
     <body>
         <%@include file="model/header.jsp" %>
@@ -38,7 +40,7 @@
                     <br><br><br>
                     <!--<i class="fa fa-refresh fa-spin" style="font-size:24px"></i>-->
                     <h1>Change Your Password</h1>
-                     <c:if test="${requestScope.message ne null}">
+                    <c:if test="${requestScope.message ne null}">
                         <p>${requestScope.message}</p>
                     </c:if>
                     <br><br>
@@ -55,16 +57,24 @@
                     <a href="ProfileControl" id="back">Back to My Profile</a>
                     <br><br>
                 </div>
-                
-                 <div class="col-md-4" id="image">
+
+                <div class="col-md-4" id="image">
                     <img style="height: 570px; width: 570px; border-radius: 20px; opacity: 0.7; filter: alpha(opacity=50);" src="resources/pass.jpg" alt=""/>
                 </div>
                 <div class="col-md-2"></div>
             </div>
         </div>
-          <div class="row">
-                <br><br>
-            </div>
+        <div class="row">
+            <br><br>
+        </div>
         <%@include file="model/footer.jsp" %>
+        <!-- BOOTSTRAP5-->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"
+        ></script>
+        <!-- SCRIPT -->
+        <script src="${pageContext.request.contextPath}/js/script.js"></script>
     </body>
 </html>

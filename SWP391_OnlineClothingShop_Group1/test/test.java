@@ -17,9 +17,9 @@ import javax.mail.MessagingException;
 public class test {
 
     public static void main(String[] args) throws MessagingException {
-        UserDAO userDAO = new UserDAO();
-        List<Users> listAccount = userDAO.getAllUsers();
-        for (Users users : listAccount) {
+         UserDAO dao = new UserDAO();
+        List<Users> list = dao.getStudentByName("d");
+        for (Users users : list) {
             System.out.println(users);
         }
 

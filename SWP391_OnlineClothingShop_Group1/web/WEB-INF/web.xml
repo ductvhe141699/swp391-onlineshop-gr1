@@ -92,6 +92,10 @@
         <servlet-name>ReadAllServlet</servlet-name>
         <servlet-class>controller.ReadAllServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>searchAccount</servlet-name>
+        <servlet-class>controller.searchAccount</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -182,6 +186,10 @@
     <servlet-mapping>
         <servlet-name>ReadAllServlet</servlet-name>
         <url-pattern>/user/readall</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>searchAccount</servlet-name>
+        <url-pattern>/searchAccount</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
