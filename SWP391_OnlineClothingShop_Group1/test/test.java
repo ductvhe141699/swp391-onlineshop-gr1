@@ -1,6 +1,8 @@
 
+import DBContext.OrderDAO;
 import DBContext.UserDAO;
 import SMTP.GmailAPI;
+import entity.Order;
 import entity.Users;
 import java.util.List;
 import javax.mail.MessagingException;
@@ -17,10 +19,11 @@ import javax.mail.MessagingException;
 public class test {
 
     public static void main(String[] args) throws MessagingException {
-         UserDAO dao = new UserDAO();
-        List<Users> list = dao.getStudentByName("d");
-        for (Users users : list) {
-            System.out.println(users);
+          OrderDAO orderDAO = new OrderDAO();
+
+            List<Order> orders = orderDAO.getOrderByUserID(5);
+        for (Order o : orders ) {
+            System.out.println(o);
         }
 
     }

@@ -37,6 +37,10 @@
         <servlet-class>controller.AccountManagerControl</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name> ChangedPasswordControl</servlet-name>
+        <servlet-class>controller. ChangedPasswordControl</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ProductListServlet</servlet-name>
         <servlet-class>controller.ProductListServlet</servlet-class>
     </servlet>
