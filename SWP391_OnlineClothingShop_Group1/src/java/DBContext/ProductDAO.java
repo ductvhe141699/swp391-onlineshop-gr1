@@ -65,12 +65,12 @@ public class ProductDAO {
         ArrayList<Product> list = new ArrayList<>();
         try {
             int count = 1;
-            query = "select p.ProductID , ProductName , Description , OriginalPrice , \n"
-                    + "SellPrice  , SalePercent , SubCategoryID , SellerID , \n"
-                    + "Amount , StatusID , StatusID ,BrandID , height  , width ,weight , s.ProductImgURL from  Product p \n"
-                    + "join ProductImg s \n"
-                    + "on p.ProductID = s.ProductID "
-                    + "WHERE p.ProductName LIKE ? AND p.StatusID!= 2 ";
+            query = " SELECT p.ProductID,MIN(p.ProductName) AS ProductName,MIN(p.Description) AS Description,MIN(p.OriginalPrice) AS OriginalPrice,MIN(p.SellPrice) AS SellPrice,MIN(p.SalePercent) AS SalePercent,MIN(p.SubCategoryID) AS SubCategoryID,MIN(p.SellerID) AS SellerID,MIN(p.Amount) AS Amount,MIN(p.StatusID) AS StatusID,MIN(p.BrandID) AS BrandID,MIN(p.height) AS height,MIN(p.width) AS width,MIN(p.weight) AS weight,MIN(ProI.ProductImgURL) AS ProductImgURL FROM \n" +
+                    " dbo.Product p \n" +
+                    " JOIN \n" +
+                    " dbo.ProductImg ProI \n" +
+                    " ON ProI.ProductID = p.ProductID " +
+                    " WHERE p.ProductName LIKE ? AND p.StatusID!= 2 AND p.Amount>0 ";
             if (subcategory != 0) {
                 query += " AND SubCategoryID = ? ";
             }
@@ -117,6 +117,7 @@ public class ProductDAO {
                     query += " DESC ";
                 }
             }
+            query+=" GROUP BY p.ProductID ";
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             ps.setNString(count++, "%" + Query + "%");
