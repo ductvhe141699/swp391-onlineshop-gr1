@@ -65,7 +65,7 @@ public class ProductDAO {
         ArrayList<Product> list = new ArrayList<>();
         try {
             int count = 1;
-            query = " SELECT p.ProductID,MIN(p.ProductName) AS ProductName,MIN(p.Description) AS Description,MIN(p.OriginalPrice) AS OriginalPrice,MIN(p.SellPrice) AS SellPrice,MIN(p.SalePercent) AS SalePercent,MIN(p.SubCategoryID) AS SubCategoryID,MIN(p.SellerID) AS SellerID,MIN(p.Amount) AS Amount,MIN(p.StatusID) AS StatusID,MIN(p.BrandID) AS BrandID,MIN(p.height) AS height,MIN(p.width) AS width,MIN(p.weight) AS weight,MIN(ProI.ProductImgURL) AS ProductImgURL FROM \n" +
+            query = " SELECT* FROM (SELECT p.ProductID,MIN(p.ProductName) AS ProductName,MIN(p.Description) AS Description,MIN(p.OriginalPrice) AS OriginalPrice,MIN(p.SellPrice) AS SellPrice,MIN(p.SalePercent) AS SalePercent,MIN(p.SubCategoryID) AS SubCategoryID,MIN(p.SellerID) AS SellerID,MIN(p.Amount) AS Amount,MIN(p.StatusID) AS StatusID,MIN(p.BrandID) AS BrandID,MIN(p.height) AS height,MIN(p.width) AS width,MIN(p.weight) AS weight,MIN(ProI.ProductImgURL) AS ProductImgURL FROM \n" +
                     " dbo.Product p \n" +
                     " JOIN \n" +
                     " dbo.ProductImg ProI \n" +
@@ -96,17 +96,18 @@ public class ProductDAO {
                     query += " AND p.SellPrice>=5000000 ";
                     break;
             }
+            query+=" GROUP BY p.ProductID ) t";
             switch (sortType) {
                 case 0:
                     break;
                 case 1:
-                    query += " ORDER BY p.SellPrice ";
+                    query += " ORDER BY t.SellPrice ";
                     break;
                 case 2:
-                    query += " ORDER BY p.SalePercent ";
+                    query += " ORDER BY t.SalePercent ";
                     break;
                 case 3:
-                    query += " ORDER BY p.ProductName ";
+                    query += " ORDER BY t.ProductName ";
                     break;
             }
             if (sortType != 0) {
@@ -117,7 +118,6 @@ public class ProductDAO {
                     query += " DESC ";
                 }
             }
-            query+=" GROUP BY p.ProductID ";
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             ps.setNString(count++, "%" + Query + "%");
