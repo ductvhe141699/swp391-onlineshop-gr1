@@ -18,8 +18,10 @@
         <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
         <link rel="stylesheet" type="text/css" href="./css/queries.css" />
-        <link rel="stylesheet" type="text/css" href="./css/homepage.css" /> 
-        <title>Edit Acount</title>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/queries.css">
+        <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
+        <title>SHOPE</title>
     </head>
     <body>
         <%@include file="model/header.jsp" %>
@@ -51,15 +53,15 @@
                             </div>
                             <div class="form-group">
                                 <label>Admin</label>
-                                <input type="checkbox" class="form-control" name="role" value="1" ${role==1?"checked":""} style="height: 30px;">
+                                <input type="radio" class="form-control" name="role" value="1" ${role==1?"checked":""} style="height: 30px;">
                             </div>
                             <div class="form-group">
                                 <label>Seller</label>
-                                <input type="checkbox" class="form-control" name="role" value="2" ${role==2?"checked":""} style="height: 30px;">
+                                <input type="radio" class="form-control" name="role" value="2" ${role==2?"checked":""} style="height: 30px;">
                             </div>
                             <div class="form-group">
                                 <label>Customer</label>
-                                <input type="checkbox" class="form-control" name="role" value="3" ${role==3?"checked":""} style="height: 30px;">
+                                <input type="radio" class="form-control" name="role" value="3" ${role==3?"checked":""} style="height: 30px;">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -81,5 +83,13 @@
                 }
             }
         </script>
+        <!-- BOOTSTRAP5-->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"
+        ></script>
+        <!-- SCRIPT -->
+        <script src="${pageContext.request.contextPath}/js/script.js"></script>
     </body>
 </html>

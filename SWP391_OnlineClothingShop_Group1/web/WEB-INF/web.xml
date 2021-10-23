@@ -37,6 +37,10 @@
         <servlet-class>controller.AccountManagerControl</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name> ChangedPasswordControl</servlet-name>
+        <servlet-class>controller. ChangedPasswordControl</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ProductListServlet</servlet-name>
         <servlet-class>controller.ProductListServlet</servlet-class>
     </servlet>
@@ -91,6 +95,10 @@
     <servlet>
         <servlet-name>ReadAllServlet</servlet-name>
         <servlet-class>controller.ReadAllServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>searchAccount</servlet-name>
+        <servlet-class>controller.searchAccount</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
@@ -182,6 +190,10 @@
     <servlet-mapping>
         <servlet-name>ReadAllServlet</servlet-name>
         <url-pattern>/user/readall</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>searchAccount</servlet-name>
+        <url-pattern>/searchAccount</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

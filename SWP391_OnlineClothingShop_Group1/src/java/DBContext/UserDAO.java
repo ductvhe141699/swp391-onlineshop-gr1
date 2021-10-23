@@ -275,4 +275,25 @@ public class UserDAO {
         }
         return 0;
     }
+    
+     public ArrayList<Users> getStudentByName(String txtSearch) {
+        ArrayList<Users> list = new ArrayList<>();
+
+        String query = "SELECT * FROM Users where UserName like '" + txtSearch + "%'";
+
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                list.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
+                        rs.getInt(5), rs.getInt(6)));
+            }
+
+        } catch (Exception e) {
+        }
+
+        return list;
+    }
 }
