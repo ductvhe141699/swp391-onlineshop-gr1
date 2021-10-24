@@ -114,8 +114,8 @@
                                 <textarea name="Description" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Price</label>
-                                <input name="price" type="text" class="form-control" required>
+                                <label>OriginalPrice</label>
+                                <textarea name="OriginalPrice" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Title</label>
