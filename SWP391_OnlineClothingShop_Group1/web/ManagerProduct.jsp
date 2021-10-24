@@ -122,8 +122,8 @@
                                 <textarea name="SellPrice" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Description</label>
-                                <textarea name="description" class="form-control" required></textarea>
+                                <label>SalePercent</label>
+                                <input name="SalePercent" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Category</label>
