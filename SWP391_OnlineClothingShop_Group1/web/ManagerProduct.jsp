@@ -106,8 +106,8 @@
                         </div>
                         <div class="modal-body">					
                             <div class="form-group">
-                                <label>Name</label>
-                                <input name="name" type="text" class="form-control" required>
+                                <label>Product Name</label>
+                                <input name="pname" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Image</label>
