@@ -92,7 +92,7 @@
                     </ul>
                 </div>
             </div>
-            <a href="Dashboard.jsp"><button type="button" class="btn btn-primary">Back</button>
+            
 
         </div>
         <!-- Edit Modal HTML -->
