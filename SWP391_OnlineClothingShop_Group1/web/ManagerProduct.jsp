@@ -126,6 +126,18 @@
                                 <input name="SalePercent" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
+                                <label>Amount</label>
+                                <textarea name="Amount" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>StatusID</label>
+                                <textarea name="sttID" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>BrandID</label>
+                                <textarea name="brandID" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
                                 <label>Category</label>
                                 <select name="category" class="form-select" aria-label="Default select example">
                                     <c:forEach begin="1" end="3" var="o">
