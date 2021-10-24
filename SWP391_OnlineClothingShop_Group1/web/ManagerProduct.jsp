@@ -109,9 +109,9 @@
                                 <label>Product Name</label>
                                 <input name="pname" type="text" class="form-control" required>
                             </div>
-                            <div class="form-group">
-                                <label>Image</label>
-                                <input name="image" type="text" class="form-control" required>
+                           <div class="form-group">
+                                <label>Description</label>
+                                <textarea name="Description" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Price</label>
