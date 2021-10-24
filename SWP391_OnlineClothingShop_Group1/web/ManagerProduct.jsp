@@ -151,9 +151,9 @@
                             </div>
                             <div class="form-group">
                                 <label>Category</label>
-                                <select name="category" class="form-select" aria-label="Default select example">
-                                    <c:forEach begin="1" end="3" var="o">
-                                        <option value="1">Giày Adidas</option>
+                                <select name="Category" class="form-select" >
+                                    <c:forEach items="${listCate}" var="o">
+                                        <option value="${o.categoryID}">${o.categoryName}</option>
                                     </c:forEach>
                                 </select>
                             </div>
