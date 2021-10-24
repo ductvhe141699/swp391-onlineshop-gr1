@@ -36,7 +36,6 @@
     </head>
     <body>
         <%@include file="model/header.jsp" %>
-
         <!-- SLIDER -->
         <section class="slider">
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">

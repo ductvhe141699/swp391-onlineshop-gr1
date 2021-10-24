@@ -41,13 +41,13 @@ public class UserDAO {
         return list;
     }
 
-    public Users getUsersByID(String id) {
+    public Users getUsersByID(int id) {
         String query = "select * from Users where UserID = ? ";
         try {
 
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
-            ps.setString(1, id);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
                 return new Users(rs.getInt(1), rs.getString(2),
@@ -103,7 +103,7 @@ public class UserDAO {
         return null;
     }
 
-    public boolean updatePassword(String id, String newPassword) {
+    public boolean updatePassword(int id, String newPassword) {
         Users toChange = getUsersByID(id);
         String query = "UPDATE Users\n"
                 + "SET Password = ?\n"
@@ -112,7 +112,7 @@ public class UserDAO {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             ps.setString(1, newPassword);
-            ps.setString(2, id);
+            ps.setInt(2, id);
             ps.executeUpdate();
             return true;
         } catch (Exception e) {

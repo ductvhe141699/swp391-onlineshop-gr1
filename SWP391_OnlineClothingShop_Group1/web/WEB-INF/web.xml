@@ -100,6 +100,10 @@
         <servlet-name>searchAccount</servlet-name>
         <servlet-class>controller.searchAccount</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>changepass</servlet-name>
+        <servlet-class>controller.changepass</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -195,9 +199,13 @@
         <servlet-name>searchAccount</servlet-name>
         <url-pattern>/searchAccount</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>changepass</servlet-name>
+        <url-pattern>/changepass</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
+            60
         </session-timeout>
     </session-config>
 </web-app>

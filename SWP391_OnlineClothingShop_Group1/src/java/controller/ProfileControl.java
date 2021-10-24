@@ -5,6 +5,7 @@
  */
 package controller;
 
+import DBContext.UserDAO;
 import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -34,17 +35,7 @@ public class ProfileControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try{
-             // Get current account from session
-            HttpSession session = request.getSession();
-            Users a = (Users) session.getAttribute("acc");
-            
-            request.setAttribute("acc", a);
 
-            request.getRequestDispatcher("UserProfile.jsp").forward(request, response);
-        } catch (Exception e) {
-            response.sendRedirect("error.jsp");
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,6 +51,22 @@ public class ProfileControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        try {
+            HttpSession session = request.getSession();
+            Users user = (Users) session.getAttribute("user");
+            //System.out.println(user);
+            if(user!=null){
+                UserDAO u=new UserDAO();
+                Users a= u.getUsersByID(user.getUserID());
+            request.setAttribute("user", a);
+            
+            request.getRequestDispatcher("UserProfile.jsp").forward(request, response);
+            }else{
+                response.sendRedirect("error.jsp");
+            }
+        } catch (Exception e) {
+            
+        }
     }
 
     /**
