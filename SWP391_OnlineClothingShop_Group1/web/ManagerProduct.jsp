@@ -118,8 +118,8 @@
                                 <textarea name="OriginalPrice" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Title</label>
-                                <textarea name="title" class="form-control" required></textarea>
+                                <label>SellPrice</label>
+                                <textarea name="SellPrice" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
