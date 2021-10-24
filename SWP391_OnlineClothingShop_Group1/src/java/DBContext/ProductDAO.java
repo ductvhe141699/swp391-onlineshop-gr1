@@ -209,4 +209,19 @@ public class ProductDAO {
         }
         return 0;
     }
+     
+     public void deleteProduct(String pid) {
+        String query = "delete from ProductImg where ProductID = ? "
+                + "delete from Product where ProductID = ?";
+
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, pid);
+            ps.setString(2, pid);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+        }
+    }
 }
