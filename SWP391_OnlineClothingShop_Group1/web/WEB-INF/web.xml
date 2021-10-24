@@ -29,6 +29,18 @@
         <servlet-class>controller.BlogDetail</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>UpdateBlog</servlet-name>
+        <servlet-class>controller.UpdateBlog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddBlog</servlet-name>
+        <servlet-class>controller.AddBlog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteBlog</servlet-name>
+        <servlet-class>controller.DeleteBlog</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>error</servlet-name>
         <servlet-class>controller.error</servlet-class>
     </servlet>
@@ -134,6 +146,18 @@
     <servlet-mapping>
         <servlet-name>BlogDetail</servlet-name>
         <url-pattern>/BlogDetail</url-pattern>
+    </servlet-mapping>  
+    <servlet-mapping>
+        <servlet-name>UpdateBlog</servlet-name>
+        <url-pattern>/UpdateBlog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddBlog</servlet-name>
+        <url-pattern>/AddBlog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteBlog</servlet-name>
+        <url-pattern>/DeleteBlog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AccountManagerControl</servlet-name>

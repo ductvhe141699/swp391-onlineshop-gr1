@@ -67,7 +67,7 @@
                         <div class="col-sm-5 border-right">
                             <article class="gallery-wrap"> 
                                 <div class="img-big-wrap">
-                                    <div> <a href="#"><img src="./resources/img/products/${blog.imageLink}"></a></div>
+                                    <div> <a href="#"><img src="./resources/img/Blog/${blog.imageLink}"></a></div>
                                 </div>                            
                             </article> 
                         </div>

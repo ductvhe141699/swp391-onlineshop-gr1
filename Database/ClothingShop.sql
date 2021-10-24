@@ -42,12 +42,7 @@ CREATE TABLE [Users] (
 	constraint RoleID_in_Role FOREIGN KEY(RoleID) REFERENCES [Role](RoleID)
 );
 GO
-INSERT INTO Users VALUES(N'Nguyễn Duy Mạnh','nguyenduymanh','ManhNDHE141170@fpt.edu.vn',1,1);
-INSERT INTO Users VALUES(N'	Trần Văn Đức','tranvanduc','DucTVHE141699@fpt.edu.vn',2,1);
-INSERT INTO Users VALUES(N'Nguyễn Gia Phú','nguyengiaphu','PhuNGHE150108@fpt.edu.vn',2,1);
-INSERT INTO Users VALUES(N'	Ngô Thị Ngọc Mai','ngothingocmai','MaiNTNHE151402@fpt.edu.vn',3,1);
-INSERT INTO Users VALUES(N'bnmc','bnmc','ChauBNMHE153019@fpt.edu.vn',3,1);
-INSERT INTO Users VALUES(N'	Đinh Tiến Lâm','dinhtienlam','LamDTHE153097@fpt.edu.vn',3,1);
+
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('jjellico0', 'Jellico', 'wjellico0@npr.org', 3, 1);
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('dimpson1', 'Impson', 'simpson1@wiley.com', 3, 1);
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('cdahlen2', 'Dahlen', 'adahlen2@unblog.fr', 3, 1);
@@ -717,18 +712,20 @@ Content nvarchar(2500),
 imageLink nvarchar(1000),
 )ON [PRIMARY]
 GO
-INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'hienht',   N'Review Giày chống thấm nước thông minh',N'Giày chống thấm nước thông minh V8SHO001I.
-Màu sắc và họa tiết tạo nên sự khỏe khoắn
-Phần đế có độ đàn hồi cao mang cảm giác êm chân, thoải mái
-Kiểu dáng basic, thời trang dễ phối đồ
-Độ bền cao và rất ít phai màu qua các lần giặt',N'v8sho001l.jpg')
-INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'ngoc12',   N'Review',N'Good',N'i3sok606d.jpg')
-INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'minh123',  N'Review',N'Good',N'i7tsh545i.jpg')
-INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'author_1',   N'Review',N'Good',N'i9tsh553i.jpg')
-INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'author_2',  N'Review',N'Good',N'waffleone-shoe.jfif')
+INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'maintn',   N'ÁO PHÔNG XÁM NỮ, ITEM MIX ĐỒ THỜI THƯỢNG, PHONG CÁCH',N'Áo phông xám là một item được nhiều bạn trẻ yêu thích. Khi xu hướng thời trang thế giới đang hướng đến những thứ đơn giản, tinh tế thì gam màu xám được đánh giá rất hiện đại, trẻ trung và là một trong những gam màu hot trend thời gian gần đây. 
+
+Với áo phông xám, chị em có thể biến tấu linh hoạt trong cách phối đồ, lên đồ ấn tượng mà không lo nhạt nhòa, kém nổi bật. ',N'aophongxam.jpg')
+INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'ngoc12',   N'ÁO THUN OVERSIZE CHUẨN PHONG CÁCH, ẤN TƯỢNG',N'Áo phông oversize đang là một hot item dẫn đầu xu hướng thời trang giới trẻ hiện nay. Ngày càng nhiều các bạn trẻ yêu thích, ưa chuộng và đánh giá cao kiểu áo này. 
+
+Một item đầy mới mẻ, phá cách và tính ứng dụng thực tiễn cao như áo phông oversize quả thực sẽ thu hút sự quan tâm của rất nhiều bạn trẻ. ',N'aophongoversize.png')
+INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'minh123',  N'KẾT HỢP QUẦN SHORT VÀ ÁO SƠ MI NAM TRẺ TRUNG, PHONG CÁCH',N'Quần short là một món đồ thời trang chắc chắn không thể thiếu trong mùa hè này. Thời tiết nóng bức ngày hè không khỏi khiến mọi người cảm thấy khó chịu và gặp nhiều khó khăn trong quá trình lựa chọn và mix match đồ. Và quần short có thể nói là cứu tinh hữu ích nhất lúc này khi vừa có thể “chặt đẹp” thời tiết vừa có thể đem đến cho người mặc sự phong cách, thời trang. Những cách phối quần short cũng vì thế nhận được rất nhiều sự quan tâm, trong đó không thể thiếu cặp đôi quần short nam và áo sơ mi. ',N'pasted image 0.png')
+INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'author_1',   N'QUẦN JOGGER KAKI CHO CHÀNG TRAI PHONG CÁCH',N'Quần jogger là một trong những item “ngon-bổ-rẻ” được giới trẻ yêu thích hiện nay. Quần jogger-áo phông là một cách mix thông dụng giới trẻ ngày nay ưa chuộng. Đều là hai item của giới trẻ, không khó để hai món đồ thời trang này mix match cực ăn ý với nhau.
+
+Điểm nhấn của của quần jogger và áo phông form rộng đều là sự rộng rãi, phóng khoáng và sự thoải mái nó mang lại cho người dùng.
+
+Đa dạng nhiều mẫu mã, kích cỡ và kiểu dáng cũng là điểm cộng cho set đồ này. Với quần jogger, bạn có thể chọn những gam màu sáng như trắng, cam, be,.. để tạo sự trẻ trung, tươi mới hoặc những gam màu trầm tối như đen, nâu, xanh rêu,... vừa đem đến sự tinh tế vừa phong cách, thời trang.',N'Joggerkaki.png')
+INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'author_2',  N'ÁO SƠ MI TRẮNG CHO NÀNG CỰC TRẺ TRUNG VÀ CÁ TÍNH',N'Áo sơ mi trắng vốn là một item must-have trong tủ đồ của phái nữ bởi sự đơn giản, tinh tế; dễ phối đồ và có thể mặc trong hầu hết mọi tình huống như đi học, đi làm,đi chơi, đi phỏng vấn,...Thông dụng - dễ phối - chưa bao giờ lỗi mốt là những từ có thể dùng để miêu tả về áo sơ mi trắng. Là một item quốc dân luôn có sẵn trong tủ đồ của tất cả mọi người, những chiếc áo sơ mi trắng luôn khiến người mặc ngây ngất bởi hiệu quả thời trang mà nó mang lại: sự trẻ trung, lịch thiệp và phong cách. ',N'somitrang.png')
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 
 

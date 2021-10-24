@@ -35,32 +35,32 @@
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/queries.css" />
-         <link href="css/BlogList.css" rel="stylesheet" type="text/css"/>
+        <link href="css/BlogList.css" rel="stylesheet" type="text/css"/>
         <title>Blog List</title>
-  
+
     </head>
 
     <body">
         <%@include file="model/header.jsp" %>
         <div class="container">
+           
             <c:forEach items="${blogList}" var="o">
-                <div class="row">
-                    <div class="col-sm-4 border-right">
-                        <article class="gallery-wrap"> 
-                            <div class="img-big-wrap">
-                                <div> <a href="BlogDetail?ID=${o.ID}"><img src="./resources/img/products/${o.imageLink}"></a></div>
-                            </div> <!-- slider-product.// -->
+               
+                    <div class="row">
+                        <div class="col-sm-4 border-right">
+                            <article class="gallery-wrap"> 
+                                <div class="img-big-wrap">
+                                    <div> <a href="BlogDetail?ID=${o.id}"><img src="./resources/img/Blog/${o.imageLink}"></a></div>
+                                </div> <!-- slider-product.// -->
 
-                        </article> <!-- gallery-wrap .end// -->
-                    </div>
-                    <div class="col-sm-8">
-                        <article class="card-body p-5">
-                            <h3 class="card-title show_txt"><a href="BlogDetail?ID=${o.ID}" title="View Blog">${o.title}</a></h3>  
-                            <p class="content">${o.content}</p>
-                    </div>
-                </div>
-
-
+                            </article> <!-- gallery-wrap .end// -->
+                        </div>
+                        <div class="col-sm-8">
+                            <article class="card-body p-5">
+                                <h3 class="card-title show_txt"><a href="BlogDetail?ID=${o.id}" title="View Blog">${o.title}</a></h3>  
+                                <p class="content">${o.content}</p>
+                        </div>
+                    </div>             
 
             </c:forEach>
         </div>
