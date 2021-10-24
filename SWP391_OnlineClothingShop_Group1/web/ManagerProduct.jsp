@@ -138,6 +138,18 @@
                                 <textarea name="brandID" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
+                                <label>height</label>
+                                <textarea name="height" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>width</label>
+                                <textarea name="width" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>weight</label>
+                                <textarea name="weight" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
                                 <label>Category</label>
                                 <select name="category" class="form-select" aria-label="Default select example">
                                     <c:forEach begin="1" end="3" var="o">
