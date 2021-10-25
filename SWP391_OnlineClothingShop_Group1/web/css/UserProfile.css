@@ -1,100 +1,44 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Oct 1, 2021, 10:08:25 PM
-    Author     : Admin
-*/
-body{
-    background: radial-gradient(#fff,#ffd6d6);
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto;
-}
-/*.col-md-4{
-    height: 100px;
-    border-radius: 20px;
-}*/
-#form{
-/*    background-image: linear-gradient(to bottom right, #45aaf2, #2bcbba );
-    background: #fff;*/
-    border-radius: 20px;
-     background-color: rgba(235,232,215,255); 
+body {
+    background: pink;
 }
 
-button{
-    background-color: #ff523b; 
-    color: black; 
-    width: 5em; 
-    margin: auto;
-    margin-bottom: 10px;
-    padding: 5px; 
-    border-radius: 8px;
-    border-color: none;
-}
-#link{
-    display: block;
-    background-color: #ff523b;
-    color: white;
-    border-radius: 10px;
-    border-color: bisque;
-    text-decoration: none;
-    padding: 10px;
-    text-align: center;
-    font-weight: 600;
-    font-size: initial;
-}
-#link:hover{
-    border-color:#2b72bd;
-    background-color: #2bbd9d;
-    -webkit-box-shadow: 0 10px 30px 0 rgba(86, 245, 216,0.2);
-}
-/*#back {
-  border-bottom: 3px solid #ff8cbc;
-  font-size: 1em;
-  transition: all 0.25s linear;
-  position: relative;
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
 }
 
-#back:before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 3px;
-  background-color: #61a3ff;
-  position: absolute;
-  left: 0;
-  bottom: -3px;  this is to match where the border is 
-  transform-origin: left; 
-  transform: scale(0);
-  transition: 0.25s linear;
-  text-decoration: none;
-   will-change: transform; 
+.profile-button {
+    background: #BA68C8;
+    box-shadow: none;
+    border: none
 }
 
-#back:hover:before {
-  transform: scale(1);
-  text-decoration: none;
-}*/
-#profileIcon{
-    /*margin: 0.5em 3.9em ;*/ 
-    font-size: 50px;
-    font-weight: 300;
-}
-h5{
-    text-align: center; 
-    font-family: Arial;
-    margin-bottom: 40px;
-    font-size: initial;
-    font-weight: 600;
-    padding: 2px;
-}
-#image{
-    opacity: 0.8; filter: alpha(opacity=50);
-/*    height: 560px;
-    border-radius: 20px;*/
+.profile-button:hover {
+    background: #682773
 }
 
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}

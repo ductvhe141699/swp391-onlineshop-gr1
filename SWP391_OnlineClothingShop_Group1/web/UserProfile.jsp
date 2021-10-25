@@ -24,81 +24,70 @@
     </head>
     <body>
         <%@include file="model/header.jsp" %>
-        <div class="container">
-            <div class="">
-                <br><br>
-            </div>
+        <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">
-                <!--                <div class="col-1"></div>-->
-                <div class="col-4" id="form">
-                    <br><br>
-                    <%-- Display username --%>
-                    <i class="fas fa-user-circle fa-pulse fa-spin fa-3x" id="profileIcon"></i>
-                    <h4 style="text-align: center">${acc.userName}</h4>
-
-                    <c:if test="${requestScope.message ne null}">
-                        <h5>${requestScope.message}</h5>
-                    </c:if>
-                    <%-- Display user email --%>
-                    <h5>Email: ${acc.email}</h5>
-
-                    <%-- Display user role --%>
-                    <h5 style="display: inline-block">Role: </h5>
-                    <c:choose>
-                        <c:when test="${acc.roldID==2}">
-                            <input type="checkbox" checked="checked" disabled="disabled" style="display: inline-block">
-                            <label>Seller</label>
-                            <input type="checkbox" disabled="disabled" style="display: inline-block">
-                            <label>Customer</label>
-                        </c:when>           
-                        <c:otherwise>
-                            <input type="checkbox" disabled="disabled" style="display: inline-block">
-                            <label>Seller</label>
-                            <input type="checkbox" checked="checked" disabled="disabled" style="display: inline-block">
-                            <label>Customer</label>
-                        </c:otherwise>
-                    </c:choose>
-
-                    <%-- Display user status --%>
-                    <br>
-                    <h5 style="display: inline-block">Status: </h5>
-                    <c:choose>
-                        <c:when test="${acc.statusID == 1}">
-                            <span class="active">Active</span>
-                        </c:when> 
-                        <c:when test="${acc.statusID == 2}">
-                            <span class="active">Locked</span>
-                        </c:when>
-                        <c:when test="${acc.statusID == 3}">
-                            <span class="login-facebook">Gmail Login</span>
-                        </c:when>
-                        <c:when test="${acc.statusID == 4}">
-                            <span class="unverified">Unverified</span>
-                        </c:when>
-                    </c:choose>      
-                    <br><br>
-
-                    <%-- Link to change user password --%>
-                    <a style="background-color: #ff523b" class="btn btn-primary btn-block" href="ChangePassword.jsp" id="link">Change password</a>
-
-                    <br><br>
-
-                    <%-- Link to view order history --%>
-                    <a style="background-color: #ff523b" class="btn btn-primary btn-block" href="viewOrder?id=${acc.userID}" id="link">My orders</a>
-                    <br><br>
-
-                    <%-- Link to return to home page --%>
-                    <!--                    <a href="productList" id="back">Back to Product List page</a>-->
-                    <br><br>
+                <div class="col-md-3 border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="resources/img/user_no-frame.png" width="90"><span class="font-weight-bold">${user.userName}</span><span class="text-black-50">${user.email}</span><span>Viet Nam</span></div>
                 </div>
-                <div class="col-4" id="image">
-                    <img style="height: 560px;border-radius: 20px;width: 750px" src="resources/profile.jpg" alt=""/>
+                <div class="col-md-5 border-right">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h6 class="text-right">Your profile</h6>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value="${user.userName}" disabled></div>
+
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Your Number ID</label><input type="text" class="form-control" placeholder="headline" value="${user.userID}" disabled></div>
+                            <div class="col-md-12"><label class="labels">Your Current Password</label><input type="text" class="form-control" placeholder="headline" value="${user.password}" disabled></div>
+                                <c:choose>
+                                    <c:when test="${user.roleID==1}">
+                                    <div class="col-md-12"><label class="labels">Current Role</label><input type="text" class="form-control" placeholder="education" value="Admin" disabled></div>
+                                    </c:when>
+                                </c:choose>
+                                <c:choose>
+                                    <c:when test="${user.roleID==2}">
+                                    <div class="col-md-12"><label class="labels">Current Role</label><input type="text" class="form-control" placeholder="education" value="Seller" disabled></div>
+                                    </c:when>
+                                </c:choose>
+                                <c:choose>
+                                    <c:when test="${user.roleID==3}">
+                                    <div class="col-md-12"><label class="labels">Current Role</label><input type="text" class="form-control" placeholder="education" value="Customer" disabled></div>
+                                    </c:when>
+                                </c:choose>
+
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value="Viet Nam" disabled></div>
+
+                        </div>
+                            <a href="changepass" style="width: 300px"
+                           class="mt-5 text-center btn btn-primary profile-button" type="button">Change your password
+                        </a>
+                        <br>
+                        <a href="viewOrder?userID=${user.userID}" style="width: 300px"
+                           class="mt-5 text-center btn btn-primary profile-button" type="button">View your orders
+                        </a>
+                    </div>
                 </div>
-                <div class="col-2"></div>
+                <div class="col-md-4">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center experience"><span>About us</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Get more information</span></div>
+                        <div class="d-flex flex-row mt-3 exp-container"><img src="https://i.imgur.com/azSfBM3.png" width="45" height="45">
+                            <div class="work-experience ml-1"><span class="font-weight-bold d-block">SHOPE</span><span class="d-block text-black-50 labels">Twitter Inc.</span><span class="d-block text-black-50 labels">March,2017 - May 2020</span></div>
+                        </div>
+                        <hr>
+                        <div class="d-flex flex-row mt-3 exp-container"><img src="https://img.icons8.com/color/100/000000/facebook.png" width="45" height="45">
+                            <div class="work-experience ml-1"><span class="font-weight-bold d-block">SHOPE</span><span class="d-block text-black-50 labels">Facebook Inc.</span><span class="d-block text-black-50 labels">March,2017 - May 2020</span></div>
+                        </div>
+                        <hr>
+                        <div class="d-flex flex-row mt-3 exp-container"><img src="https://img.icons8.com/color/50/000000/google-logo.png" width="45" height="45">
+                            <div class="work-experience ml-1"><span class="font-weight-bold d-block">SHOPE</span><span class="d-block text-black-50 labels">Google Inc.</span><span class="d-block text-black-50 labels">March,2017 - May 2020</span></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="">
-            <br><br>
         </div>
         <%@include file="model/footer.jsp" %>
         <!-- BOOTSTRAP5-->

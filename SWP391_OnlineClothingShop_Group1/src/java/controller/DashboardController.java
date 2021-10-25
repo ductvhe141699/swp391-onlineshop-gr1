@@ -5,20 +5,26 @@
  */
 package controller;
 
+import DBContext.OrderDAO;
+import DBContext.ProductDAO;
 import DBContext.UserDAO;
+import entity.Order;
+import entity.Product;
 import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author BEAN
  */
-public class editAccount extends HttpServlet {
+public class DashboardController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +43,10 @@ public class editAccount extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet editAccount</title>");            
+            out.println("<title>Servlet DashboardController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet editAccount at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet DashboardController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,24 +64,31 @@ public class editAccount extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-         try {
-            //Get ID from jsp
-            int id = Integer.parseInt(request.getParameter("userID"));
-            UserDAO dao = new UserDAO();
-            //UserAddressDAO UserAddressDAO = new UserAddressDAO();
-            
-            Users x = dao.getUsersByID(id);
-            
-            //Push
-            request.setAttribute("id", x.getUserID());
-            request.setAttribute("user", x.getUserName());
-            request.setAttribute("pass", x.getPassword());
-            request.setAttribute("email", x.getEmail());
-            request.setAttribute("role", x.getRoleID());
-            request.getRequestDispatcher("EditAccount.jsp").forward(request, response);
+       HttpSession ss = request.getSession();
+        UserDAO udao = new UserDAO();
+        ProductDAO pdao = new ProductDAO();
+        OrderDAO odao = new OrderDAO();
+        ArrayList<Order> olist = new ArrayList<>();
+        try {
+            Users u = (Users) ss.getAttribute("user");
+            String role = udao.getRoleByUserName(u.getUserName());
+            if (role.equals("Admin")) {
+                olist = odao.getAllOrders();
+
+            } else if (role.equals("seller")) {
+                ArrayList<Product> plist = pdao.getProductBySellerName(u.getUserName());
+                olist = odao.getOdByListProduct(plist);
+
+            } else {
+                response.sendRedirect("home");
+
+            }
+            request.setAttribute("totalCus", udao.getTotalUser());
+            request.setAttribute("totalPro", pdao.getTotalProduct());
+            request.setAttribute("totalOrders", odao.getTotalOrders());
+            request.setAttribute("listOrder", olist);
+            request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
         } catch (Exception e) {
-            response.sendRedirect("error.jsp");
         }
     }
 
@@ -90,21 +103,7 @@ public class editAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-//         try {
-            //Step 1: get data from jsp
-            int id = Integer.parseInt(request.getParameter("id"));
-            String user = request.getParameter("user"); //Get by name
-            String password = request.getParameter("pass");
-            String email = request.getParameter("email");
-            int roleID = Integer.parseInt(request.getParameter("role"));
-            //Step 2: set data to ProductDAO
-            UserDAO dao = new UserDAO();
-            dao.editAccount(id, user, password, email, roleID);
-            response.sendRedirect("AccountManagerControl");
-//        } catch (Exception e) {
-//            response.sendRedirect("error.jsp");
-//        }
+        processRequest(request, response);
     }
 
     /**

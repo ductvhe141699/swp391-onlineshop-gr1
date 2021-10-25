@@ -21,7 +21,7 @@ public class test {
     public static void main(String[] args) throws MessagingException {
           OrderDAO orderDAO = new OrderDAO();
 
-            List<Order> orders = orderDAO.getOrderByUserID(5);
+            List<Order> orders = orderDAO.getAllOrders();
         for (Order o : orders ) {
             System.out.println(o);
         }

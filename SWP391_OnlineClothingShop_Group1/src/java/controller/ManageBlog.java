@@ -5,28 +5,21 @@
  */
 package controller;
 
-import DBContext.OrderDAO;
-import DBContext.ProductDAO;
-import DBContext.UserDAO;
-import entity.Order;
-import entity.Product;
-import entity.Users;
+import DBContext.BlogDAO;
+import entity.Blog;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author BEAN
+ * @author Ottelia
  */
-//@WebServlet(name = "DashboardController", urlPatterns = {"/DashBoard"})
-public class DashBoardController extends HttpServlet {
+public class ManageBlog extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,7 +33,16 @@ public class DashBoardController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        try (PrintWriter out = response.getWriter()) {
+            
+          BlogDAO BlogDAO = new BlogDAO();
+            ArrayList<Blog> blogList = BlogDAO.getAllBlogs();
+            request.setAttribute("blogList", blogList);
+            request.getRequestDispatcher("ManageBlog.jsp").forward(request, response);
+        }
+        catch(Exception e){
+            response.sendRedirect("error.jsp");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -55,32 +57,7 @@ public class DashBoardController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession ss = request.getSession();
-        UserDAO udao = new UserDAO();
-        ProductDAO pdao = new ProductDAO();
-        OrderDAO odao = new OrderDAO();
-        ArrayList<Order> olist = new ArrayList<>();
-        try {
-            Users u = (Users) ss.getAttribute("user");
-            String role = udao.getRoleByUserName(u.getUserName());
-            if (role.equals("Admin")) {
-                olist = odao.getAllOrders();
-
-            } else if (role.equals("seller")) {
-                ArrayList<Product> plist = pdao.getProductBySellerName(u.getUserName());
-                olist = odao.getOdByListProduct(plist);
-
-            } else {
-                response.sendRedirect("home");
-
-            }
-            request.setAttribute("totalCus", udao.getTotalUser());
-            request.setAttribute("totalPro", pdao.getTotalProduct());
-            request.setAttribute("totalOrders", odao.getTotalOrders());
-            request.setAttribute("olist", olist);
-            request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
-        } catch (Exception e) {
-        }
+        processRequest(request, response);
     }
 
     /**

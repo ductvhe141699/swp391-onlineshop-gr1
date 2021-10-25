@@ -38,13 +38,10 @@
                 <div class="col-md-1"></div>
                 <div class="col-md-5" id="text">
                     <br><br><br>
-                    <!--<i class="fa fa-refresh fa-spin" style="font-size:24px"></i>-->
                     <h1>Change Your Password</h1>
-                    <c:if test="${requestScope.message ne null}">
-                        <p>${requestScope.message}</p>
-                    </c:if>
+                    ${mess}
                     <br><br>
-                    <form action="ChangedPasswordControl" method="POST">
+                    <form action="changepass" method="POST">
                         <input type="password" id="pass" name="pass" placeholder="Old Password" class="form-control">
                         <br><br>
                         <input type="password" id="new-pass" name="new-pass" placeholder="Enter new Password" class="form-control">

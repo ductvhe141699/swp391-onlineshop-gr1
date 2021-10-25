@@ -1,120 +1,50 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Oct 12, 2021, 1:24:03 PM
-    Author     : Admin
-*/
-body{
-    background: radial-gradient(#fff,#ffd6d6);
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto;
+@import url('https://fonts.googleapis.com/css?family=Assistant');
+
+body {
+    background: #eee;
+    font-family: Assistant, sans-serif
 }
 
-#customers {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    text-align: center;
+.cell-1 {
+    border-collapse: separate;
+    border-spacing: 0 4em;
+    background: #fff;
+    border-bottom: 5px solid transparent;
+    background-clip: padding-box
 }
 
-#customers td, #customers th {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
+thead {
+    background: #dddcdc
 }
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
-
-#customers tr:hover {background-color: #ddd;}
-
-#customers th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #21aed1;
-    color: white;
+.toggle-btn {
+    width: 40px;
+    height: 21px;
+    background: grey;
+    border-radius: 50px;
+    padding: 3px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s 0.1s ease-in-out;
+    -moz-transition: all 0.3s 0.1s ease-in-out;
+    -o-transition: all 0.3s 0.1s ease-in-out;
+    transition: all 0.3s 0.1s ease-in-out
 }
 
-/*.compare thead{
-    background-color: #eee;
-}
-.compare{
-    text-align: center;
-    color:black;
-}
-.compare-container{
-    margin-bottom:50px;
-    
-}*/
-.action{
-    line-height: 350%;
-}
-/*.action a{
-    cursor:pointer;
-    transition: transform .2s;  Animation 
-    color:black;
-    text-align: center;
+.toggle-btn>.inner-circle {
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border-radius: 50%;
+    -webkit-transition: all 0.3s 0.1s ease-in-out;
+    -moz-transition: all 0.3s 0.1s ease-in-out;
+    -o-transition: all 0.3s 0.1s ease-in-out;
+    transition: all 0.3s 0.1s ease-in-out
 }
 
-.action>.but{
-    display:inline;
-    margin:30px;
-    border-radius: 15px;
-    background-color: #17a2b8;
-    padding:15px;
-    text-align: center;
-}
-.action>.but>a:hover {
-    text-decoration: none;
-    color:black;
-}*/
-table,
-th,
-td {
-    padding: 5px;
-    border: 1px solid black;
-    border-collapse: collapse;
-    background-color: white;
-}
-/*.productLink :hover{
-    color:red;
-    cursor:pointer;
-}*/
-
-/*.compare img{
-    width: 300px;
-    height: 100%;
-    object-fit: contain;
-    max-height: 25em;
-}*/
-#back {
-  border-bottom: 3px solid #ff8cbc;
-  font-size: 1em;
-  transition: all 0.25s linear;
-  position: relative;
+.toggle-btn.active {
+    background: blue !important
 }
 
-#back:before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 3px;
-  background-color: #61a3ff;
-  position: absolute;
-  left: 0;
-  bottom: -3px; /* this is to match where the border is */
-  transform-origin: left; 
-  transform: scale(0);
-  transition: 0.25s linear;
-/*   will-change: transform; */
+.toggle-btn.active>.inner-circle {
+    margin-left: 19px
 }
-
-#back:hover:before {
-  transform: scale(1);
-}
-
