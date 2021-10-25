@@ -222,7 +222,7 @@
                                 <div class="card-body">
                                     <div class="clearfix mb-3"> 
                                         <c:forEach items="${brands}" var="ibrand"><c:if test="${ibrand.getBrandID()==iproduct.getBrandID()}"><span class="float-start badge rounded-pill bg-primary">${ibrand.getBrandName()}</span></c:if></c:forEach>
-                                        <span class="float-end price-hp">${iproduct.getSellPrice()}đ</span> </div>
+                                        <span class="currency float-end price-hp">${iproduct.getSellPrice()}</span> </div>
                                     <h5 class="card-title">${iproduct.getProductName()}</h5>
                                     <p class="card-text overflow-auto" style="height: 100px;text-overflow: ellipsis;">${iproduct.getDesc()}</p>
                                     <div class="text-center my-4"> <a href="#" class="btn-custom btn-warning-custom">Check offer</a> </div>
@@ -267,5 +267,25 @@
     ></script>
     <!-- SCRIPT -->
     <script src="${pageContext.request.contextPath}/js/script.js"></script>
+    <script>
+        window.onload= function() {formatCurrency();};
+        var formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'VND',
+
+            // These options are needed to round to whole numbers if that's what you want.
+            //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+            //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+          });
+        function formatCurrency() {
+            
+            var listCurrency = document.getElementsByClassName("currency");
+            for(let i = 0; i < listCurrency.length; i++){
+                listCurrency[i].innerHTML=formatter.format(listCurrency[i].innerHTML);
+            }
+            
+        }
+         
+    </script>
 </body>
 </html>

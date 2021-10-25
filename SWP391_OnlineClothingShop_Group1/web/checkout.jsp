@@ -77,14 +77,14 @@
                 <td>
                    <span class="btn btn-light">${cart.getAmount()}</span>
                 </td>
-                <td>${cart.getAmount()*cart.getSellPrice()}đ</td>
+                <td class="currency">${cart.getAmount()*cart.getSellPrice()}</td>
               </tr>
               </c:forEach>
             </tbody>
             <tfoot>
                 <tr>
                     <th scope="row" colspan="4">Total</th>
-                    <td>${totalPrice}đ</td>
+                    <td class="currency">${totalPrice}</td>
                   </tr>
             </tfoot>
           </table>
@@ -127,21 +127,21 @@
                         <tbody>
                             <tr>
                                 <td>Product</td>
-                                <td>${totalPrice}đ</td>
+                                <td class="currency">${totalPrice}</td>
                             </tr>
                             <tr>
                                 <td>Shipping fees</td>
-                                <td>${shipCity.getShipPrice()}đ</td>
+                                <td class="currency">${shipCity.getShipPrice()}</td>
                             </tr>
                             <tr>
                                 <td>Sale</td>
-                                <td>0</td>
+                                <td>₫0</td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th scope="row">Total</th>
-                                <td>${totalPrice+shipCity.getShipPrice()}đ</td>
+                                <td class="currency">${totalPrice+shipCity.getShipPrice()}</td>
                             </tr>
                         </tfoot>
                     </table>
@@ -155,6 +155,25 @@
     <!-- BOOTSTRAP5-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- SCRIPT -->
-    <script src="${pageContext.request.contextPath}/js/script.js"></script>      
+    <script src="${pageContext.request.contextPath}/js/script.js"></script>     
+    <script>
+        window.onload= function() {formatCurrency();};
+        var formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'VND',
+
+            // These options are needed to round to whole numbers if that's what you want.
+            //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+            //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+          });
+        function formatCurrency() {
+            
+            var listCurrency = document.getElementsByClassName("currency");
+            for(let i = 0; i < listCurrency.length; i++){
+                listCurrency[i].innerHTML=formatter.format(listCurrency[i].innerHTML);
+            }
+            
+        }
+    </script>
   </body>
 </html>

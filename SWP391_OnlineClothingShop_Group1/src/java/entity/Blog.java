@@ -87,7 +87,7 @@ public class Blog {
             return false;
         }
         final Blog other = (Blog) obj;
-        if (this.ID != other.ID) {
+        if (this.id != other.id) {
             return false;
         }
         if (!Objects.equals(this.author, other.author)) {

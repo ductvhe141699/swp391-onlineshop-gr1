@@ -81,14 +81,14 @@
                         <a href="${pageContext.request.contextPath}/user/deletecart?productID=${cart.getProductID()}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                     </div>
                 </td>
-                <td>${cart.getAmount()*cart.getSellPrice()}đ</td>
+                <td class="currency">${cart.getAmount()*cart.getSellPrice()}</td>
               </tr>
               </c:forEach>
             </tbody>
             <tfoot>
                 <tr>
                     <th scope="row" colspan="4">Total</th>
-                    <td>${totalPrice}đ</td>
+                    <td class="currency">${totalPrice}</td>
                   </tr>
             </tfoot>
           </table>
@@ -135,21 +135,21 @@
                         <tbody>
                             <tr>
                                 <td>Product</td>
-                                <td>${totalPrice}đ</td>
+                                <td class="currency">${totalPrice}</td>
                             </tr>
                             <tr>
                                 <td>Shipping fees</td>
-                                <td id="sF">NaNđ</td>
+                                <td id="sF">₫NaN</td>
                             </tr>
                             <tr>
                                 <td>Sale</td>
-                                <td>0đ</td>
+                                <td>₫0</td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th scope="row">Total</th>
-                                <td id="tP">NaNđ</td>
+                                <td id="tP">₫NaN</td>
                             </tr>
                         </tfoot>
                     </table>      
@@ -189,7 +189,23 @@
     <script>
         //window.onscroll = function() {updateShipPrice();};
         window.onclick= function() {updateShipPrice();};
-        window.onload= function() {updateShipPrice();};
+        window.onload= function() {updateShipPrice();formatCurrency();};
+        var formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'VND',
+
+            // These options are needed to round to whole numbers if that's what you want.
+            //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+            //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+          });
+        function formatCurrency() {
+            
+            var listCurrency = document.getElementsByClassName("currency");
+            for(let i = 0; i < listCurrency.length; i++){
+                listCurrency[i].innerHTML=formatter.format(listCurrency[i].innerHTML);
+            }
+            
+        }
         var shipPrice=[23<c:forEach items="${ships}" var="ship">,${ship.getShipPrice()}</c:forEach>];
         var totalPrice=${totalPrice};
         function updateShipPrice() {
@@ -201,10 +217,11 @@
                     sF.innerHTML= "NaNđ";
                 }
                 else{
-                    tP.innerHTML= (shipPrice[inputCity.value]+totalPrice )+"đ";
-                    sF.innerHTML= shipPrice[inputCity.value]+"đ";
+                    tP.innerHTML= formatter.format(shipPrice[inputCity.value]+totalPrice );
+                    sF.innerHTML= formatter.format(shipPrice[inputCity.value]);
                 }
           }
+        
     </script>
   </body>
 </html>
