@@ -46,34 +46,7 @@ public class PlaceOrderServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        Users user=(Users) session.getAttribute("user");
-        CartDAO cdao=new CartDAO();
-        List<Cart> carts = cdao.getCart(user.getUserID());
-        int totalPrice=0;
-        for(Cart cart:carts){
-            totalPrice+=cart.getSellPrice()*cart.getAmount();
-        }
-        ShipDAO sdao=new ShipDAO();
-        Ship ship=sdao.getShip(Integer.parseInt(request.getParameter("inputCity")));
-        String note=request.getParameter("inputNote");
-        note= (note==null?"":note);
-        Order order = new Order(user.getUserID() , totalPrice+ship.getShipPrice(), StringDecode.decode(note));
-        OrderDAO odao= new OrderDAO();
-        int orderId=odao.addOrder(order);
-        ShipInfo shipinfo = new ShipInfo(orderId,StringDecode.decode(request.getParameter("inputName")), StringDecode.decode(request.getParameter("inputAddress")), Integer.parseInt(request.getParameter("inputCity")), request.getParameter("inputPhone"), StringDecode.decode(note));
-        ShipInfoDAO sidao = new ShipInfoDAO();
-        sidao.addShipInfo(shipinfo);
-        OrderDetailDAO oddao = new OrderDetailDAO();
-        for(Cart cart:carts){
-            OrderDetail orderdetail=new OrderDetail(orderId, cart.getProductID(), cart.getProductName(), cart.getSellPrice(), cart.getAmount());
-            oddao.addOrderDetail(orderdetail);
-        }
-        Notification notification= new Notification(user.getUserID(), orderId, "Đơn hàng #"+Integer.toString(orderId)+" của bạn đã được đặt!");
-        NotificationDAO ndao=new NotificationDAO();
-        ndao.addNotification(notification);
-        cdao.removeCart(user.getUserID());
-        request.getRequestDispatcher("/finishedorder.jsp").forward(request, response);
+        response.sendRedirect(request.getContextPath()+"/user/cart");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -102,7 +75,34 @@ public class PlaceOrderServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        Users user=(Users) session.getAttribute("user");
+        CartDAO cdao=new CartDAO();
+        List<Cart> carts = cdao.getCart(user.getUserID());
+        int totalPrice=0;
+        for(Cart cart:carts){
+            totalPrice+=cart.getSellPrice()*cart.getAmount();
+        }
+        ShipDAO sdao=new ShipDAO();
+        Ship ship=sdao.getShip(Integer.parseInt(request.getParameter("inputCity")));
+        String note=request.getParameter("inputNote");
+        note= (note==null?"":note);
+        Order order = new Order(user.getUserID() , totalPrice+ship.getShipPrice(), StringDecode.decode(note));
+        OrderDAO odao= new OrderDAO();
+        int orderId=odao.addOrder(order);
+        ShipInfo shipinfo = new ShipInfo(orderId,StringDecode.decode(request.getParameter("inputName")), StringDecode.decode(request.getParameter("inputAddress")), Integer.parseInt(request.getParameter("inputCity")), request.getParameter("inputPhone"), StringDecode.decode(note));
+        ShipInfoDAO sidao = new ShipInfoDAO();
+        sidao.addShipInfo(shipinfo);
+        OrderDetailDAO oddao = new OrderDetailDAO();
+        for(Cart cart:carts){
+            OrderDetail orderdetail=new OrderDetail(orderId, cart.getProductID(), cart.getProductName(), cart.getSellPrice(), cart.getAmount());
+            oddao.addOrderDetail(orderdetail);
+        }
+        Notification notification= new Notification(user.getUserID(), orderId, "Đơn hàng #"+Integer.toString(orderId)+" của bạn đã được đặt!");
+        NotificationDAO ndao=new NotificationDAO();
+        ndao.addNotification(notification);
+        cdao.removeCart(user.getUserID());
+        request.getRequestDispatcher("/finishedorder.jsp").forward(request, response);
     }
 
     /**
