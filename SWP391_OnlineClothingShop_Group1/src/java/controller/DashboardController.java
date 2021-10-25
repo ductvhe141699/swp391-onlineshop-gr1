@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,8 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author BEAN
  */
-//@WebServlet(name = "DashboardController", urlPatterns = {"/DashBoard"})
-public class DashBoardController extends HttpServlet {
+public class DashboardController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,7 +38,18 @@ public class DashBoardController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet DashboardController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet DashboardController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -55,7 +64,7 @@ public class DashBoardController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession ss = request.getSession();
+       HttpSession ss = request.getSession();
         UserDAO udao = new UserDAO();
         ProductDAO pdao = new ProductDAO();
         OrderDAO odao = new OrderDAO();
@@ -77,7 +86,7 @@ public class DashBoardController extends HttpServlet {
             request.setAttribute("totalCus", udao.getTotalUser());
             request.setAttribute("totalPro", pdao.getTotalProduct());
             request.setAttribute("totalOrders", odao.getTotalOrders());
-            request.setAttribute("olist", olist);
+            request.setAttribute("listOrder", olist);
             request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
         } catch (Exception e) {
         }
