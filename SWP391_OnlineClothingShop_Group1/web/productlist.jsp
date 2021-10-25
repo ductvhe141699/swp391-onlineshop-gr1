@@ -215,7 +215,7 @@
                 <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-3 g-3">
                     <c:forEach items="${products}" var="iproduct">
                         <div class="col" >
-                            <div class="card h-100 shadow-sm"> <img src="${pageContext.request.contextPath}/resources/img/products/${iproduct.getUrl()}" class="card-img-top" alt="...">
+                            <div class="card card-custom h-100 shadow-sm"> <img src="${pageContext.request.contextPath}/resources/img/products/${iproduct.getUrl()}" class="card-img-top" alt="...">
                                 <c:if test="${iproduct.getSalePercent()>0}">
                                     <div class="label-top shadow-sm">-${iproduct.getSalePercent()}%</div>
                                 </c:if>
