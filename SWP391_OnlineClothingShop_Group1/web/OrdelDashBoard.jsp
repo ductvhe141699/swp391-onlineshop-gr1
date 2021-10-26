@@ -1,7 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%-- 
-    Document   : Daskboard
+    Document   : OrderDaskboard
     Created on : 12-10-2021, 21:59:57
     Author     : BEAN
 --%>
@@ -166,22 +166,28 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <div class="card bg-primary text-white h-100">
                             <div class="card-body py-5">Total Customer : ${totalCus}</div>
 
                         </div>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <div class="card bg-warning text-dark h-100">
                             <div class="card-body py-5">Total Product : ${totalPro}</div>
 
                         </div>
                     </div>
 
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <div class="card bg-danger text-white h-100">
                             <div class="card-body py-5">Total Order : ${totalOrders}</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <div class="card bg-success text-white h-100">
+                            <div class="card-body py-5">Total Profit : ${totalProfit}</div>
                         </div>
                     </div>
                 </div>
@@ -200,7 +206,9 @@
                                                 <th>Product Name</th>
                                                 <th>Product price</th>
                                                 <th>Status</th>
-                                                <th>Date</th>>
+                                                <th>Date</th>
+                                                <th></th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -212,19 +220,26 @@
                                                     <c:if test="${o.status == 1}">
                                                         <td><span class="badge bg-dark">Waiting for Confirmation</span></td>
                                                     </c:if> 
-                                                         <c:if test="${o.status == 2}">
-                                                        <td><span class="label label-success">Packing</span></td>
+                                                    <c:if test="${o.status == 2}">
+                                                        <td><span class="label label-success">completed</span></td>
                                                     </c:if> 
-                                                         <c:if test="${o.status == 3}">
+                                                    <c:if test="${o.status == 3}">
                                                         <td><span class="badge bg-info text-dark">Delivering</span></td>
                                                     </c:if> 
-                                                         <c:if test="${o.status == 4}">
+                                                    <c:if test="${o.status == 4}">
                                                         <td><span class="badge bg-danger">Canceled</span></td>
                                                     </c:if> 
-                                                         <c:if test="${o.status == 5}">
+                                                    <c:if test="${o.status == 5}">
                                                         <td><span class="badge bg-success">completed</span></td>
                                                     </c:if> 
                                                     <td>${o.date}</td>
+
+                                                    <c:if test="${o.status == 1}">
+                                                        <td><a href="AcceptOrder"><span class="badge rounded-pill bg-success">Accept</span></a>
+                                                            <a href="RejectOrder"><span class="badge rounded-pill bg-danger">Reject</span></a> 
+                                                        </td>
+                                                    </c:if>
+
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
