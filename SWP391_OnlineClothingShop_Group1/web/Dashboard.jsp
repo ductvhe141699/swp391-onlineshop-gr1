@@ -139,7 +139,7 @@
                         </li>
 
                         <li>
-                            <a href="manager V" class="nav-link px-3">
+                            <a href="manager" class="nav-link px-3">
                                 <span class="me-2"><i class="bi bi-table"></i></span>
                                 <span>Manage Product</span>
                             </a>
