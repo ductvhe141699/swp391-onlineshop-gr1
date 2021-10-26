@@ -37,7 +37,17 @@
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/queries.css" />
         <link href="css/BlogList.css" rel="stylesheet" type="text/css"/>
         <title>Blog List</title>
-
+        <style>
+            .content{
+   font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+}
+.card-title show_txt
+{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px; 
+}
+        </style>
     </head>
 
     <body>
@@ -51,7 +61,7 @@
                 <c:choose>
                     <c:when test="${i%2==0}">
                         <div class="row">
-                            <div class="col-sm-4 border-right">
+                            <div class="col-md-4 border-right">
                                 <article class="gallery-wrap"> 
                                     <div class="img-big-wrap">
                                         <div> <a href="BlogDetail?ID=${o.id}"><img src="./resources/img/Blog/${o.imageLink}"></a></div>
@@ -59,7 +69,7 @@
 
                                 </article> <!-- gallery-wrap .end// -->
                             </div>
-                            <div class="col-sm-8">
+                            <div class="col-md-8">
                                 <article class="card-body p-5">
                                     <h3 class="card-title show_txt"><a href="BlogDetail?ID=${o.id}" title="View Blog">${o.title}</a></h3>  
                                     <p class="content">${o.content}</p>
@@ -68,12 +78,12 @@
                     </c:when>
                     <c:otherwise>
                         <div class="row">
-                            <div class="col-sm-8">
+                            <div class="col-md-8">
                                 <article class="card-body p-5">
                                     <h3 class="card-title show_txt"><a href="BlogDetail?ID=${o.id}" title="View Blog">${o.title}</a></h3>  
                                     <p class="content">${o.content}</p>
                             </div>
-                            <div class="col-sm-4 border-right">
+                            <div class="col-md-4 border-right">
                                 <article class="gallery-wrap"> 
                                     <div class="img-big-wrap">
                                         <div> <a href="BlogDetail?ID=${o.id}"><img src="./resources/img/Blog/${o.imageLink}"></a></div>
