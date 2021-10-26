@@ -116,6 +116,10 @@
         <servlet-name>changepass</servlet-name>
         <servlet-class>controller.changepass</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DashboardControler</servlet-name>
+        <servlet-class>controller.DashboardController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -146,7 +150,7 @@
     <servlet-mapping>
         <servlet-name>BlogDetail</servlet-name>
         <url-pattern>/BlogDetail</url-pattern>
-    </servlet-mapping>  
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpdateBlog</servlet-name>
         <url-pattern>/UpdateBlog</url-pattern>
@@ -226,6 +230,10 @@
     <servlet-mapping>
         <servlet-name>changepass</servlet-name>
         <url-pattern>/changepass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DashboardControler</servlet-name>
+        <url-pattern>/Dashboard</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

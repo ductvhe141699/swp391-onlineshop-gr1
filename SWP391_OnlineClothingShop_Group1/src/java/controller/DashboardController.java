@@ -5,25 +5,26 @@
  */
 package controller;
 
-import DBContext.CartDAO;
-import DBContext.ShipDAO;
-import entity.Cart;
-import entity.Ship;
+import DBContext.OrderDAO;
+import DBContext.ProductDAO;
+import DBContext.UserDAO;
+import entity.Order;
+import entity.Product;
 import entity.Users;
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import util.StringDecode;
 
 /**
  *
- * @author SAKURA
+ * @author BEAN
  */
-public class CheckOutServlet extends HttpServlet {
+public class DashboardController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,7 +38,18 @@ public class CheckOutServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet DashboardController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet DashboardController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -52,7 +64,32 @@ public class CheckOutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect(request.getContextPath()+"/user/cart");
+       HttpSession ss = request.getSession();
+        UserDAO udao = new UserDAO();
+        ProductDAO pdao = new ProductDAO();
+        OrderDAO odao = new OrderDAO();
+        ArrayList<Order> olist = new ArrayList<>();
+        try {
+            Users u = (Users) ss.getAttribute("user");
+            String role = udao.getRoleByUserName(u.getUserName());
+            if (role.equals("Admin")) {
+                olist = odao.getAllOrders();
+
+            } else if (role.equals("seller")) {
+                ArrayList<Product> plist = pdao.getProductBySellerName(u.getUserName());
+                olist = odao.getOdByListProduct(plist);
+
+            } else {
+                response.sendRedirect("home");
+
+            }
+            request.setAttribute("totalCus", udao.getTotalUser());
+            request.setAttribute("totalPro", pdao.getTotalProduct());
+            request.setAttribute("totalOrders", odao.getTotalOrders());
+            request.setAttribute("listOrder", olist);
+            request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -66,26 +103,7 @@ public class CheckOutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Users user=(Users) session.getAttribute("user");
-        CartDAO cdao=new CartDAO();
-        List<Cart> carts = cdao.getCart(user.getUserID());
-        int totalPrice=0;
-        for(Cart cart:carts){
-            totalPrice+=cart.getSellPrice()*cart.getAmount();
-        }
-        request.setAttribute("totalPrice", totalPrice);
-        request.setAttribute("carts", carts);
-        request.setAttribute("shipName", StringDecode.decode(request.getParameter("inputName")));
-        request.setAttribute("shipAddress", StringDecode.decode(request.getParameter("inputAddress")));
-        request.setAttribute("shipPhone", request.getParameter("inputPhone"));
-        String note=request.getParameter("inputNote");
-        note= (note==null?"":note);
-        request.setAttribute("shipNote", StringDecode.decode(note) );
-        ShipDAO sdao=new ShipDAO();
-        Ship ship=sdao.getShip(Integer.parseInt(request.getParameter("inputCity")));
-        request.setAttribute("shipCity", ship);
-        request.getRequestDispatcher("/checkout.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

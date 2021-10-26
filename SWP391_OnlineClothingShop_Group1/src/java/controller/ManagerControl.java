@@ -5,7 +5,9 @@
  */
 package controller;
 
+import DBContext.CategoryDAO;
 import DBContext.ProductDAO;
+import entity.Category;
 import entity.Product;
 import entity.Users;
 import java.io.IOException;
@@ -37,18 +39,7 @@ public class ManagerControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       HttpSession session = request.getSession();
-       //get user tren session ve 
-       // ep kieu vì session.getAttribute trả về string
-       Users u = (Users) session.getAttribute("user");
-       int id = u.getUserID();
-       ProductDAO dao = new ProductDAO();
-       List<Product> list = dao.getProductBySellerID(id);
-       
-       
-       request.setAttribute("ListP", list);
-       request.getRequestDispatcher("ManagerProduct.jsp").forward(request, response);
-       
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,7 +54,20 @@ public class ManagerControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        //get user tren session ve 
+        // ep kieu vì session.getAttribute trả về string
+        Users u = (Users) session.getAttribute("user");
+        int id = u.getUserID();
+        ProductDAO dao = new ProductDAO();
+        CategoryDAO cdao = new  CategoryDAO();
+       
+        List<Product> list = dao.getProductBySellerName(u.getUserName());
+        List<Category> listCate = cdao.getAllCategory();
+        
+        request.setAttribute("listCate", listCate);
+        request.setAttribute("list", list);
+        request.getRequestDispatcher("ManagerProduct.jsp").forward(request, response);
     }
 
     /**

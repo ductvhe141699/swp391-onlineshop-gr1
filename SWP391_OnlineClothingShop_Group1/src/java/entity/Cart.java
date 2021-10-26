@@ -5,6 +5,8 @@
  */
 package entity;
 
+import java.util.Objects;
+
 /**
  *
  * @author Duy Manh
@@ -65,6 +67,42 @@ public class Cart {
 
     public void setProductImg(String ProductImg) {
         this.ProductImg = ProductImg;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cart other = (Cart) obj;
+        if (this.ProductID != other.ProductID) {
+            return false;
+        }
+        if (this.amount != other.amount) {
+            return false;
+        }
+        if (this.SellPrice != other.SellPrice) {
+            return false;
+        }
+        if (!Objects.equals(this.ProductName, other.ProductName)) {
+            return false;
+        }
+        if (!Objects.equals(this.ProductImg, other.ProductImg)) {
+            return false;
+        }
+        return true;
     }
     
 }

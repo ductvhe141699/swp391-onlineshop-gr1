@@ -5,11 +5,13 @@
  */
 package entity;
 
+import java.util.Objects;
+
 /**
  *
  * @author BEAN
  */
-public class Brand {
+public class Brand{
     int brandID ;
     String brandName ;
 
@@ -35,6 +37,33 @@ public class Brand {
 
     public void setBrandName(String brandName) {
         this.brandName = brandName;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Brand other = (Brand) obj;
+        if (this.brandID != other.brandID) {
+            return false;
+        }
+        if (!Objects.equals(this.brandName, other.brandName)) {
+            return false;
+        }
+        return true;
     }
     
     
