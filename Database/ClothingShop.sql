@@ -702,7 +702,7 @@ INSERT INTO Feedback_Replies VALUES (1, 5, N'Xin Cám Ơn!');
 INSERT INTO Feedback_Replies VALUES (2, 4, N'Xin Cám Ơn!');
 INSERT INTO Feedback_Replies VALUES (3, 6, N'Xin Cám Ơn!');
 
---drop table Blog 
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Create TABLE Blog(
 ID int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
