@@ -21,8 +21,8 @@
         <servlet-class>controller.BlogList</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>BlogManage</servlet-name>
-        <servlet-class>controller.BlogManage</servlet-class>
+        <servlet-name>ManageBlog</servlet-name>
+        <servlet-class>controller.ManageBlog</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BlogDetail</servlet-name>
@@ -50,7 +50,7 @@
     </servlet>
     <servlet>
         <servlet-name> ChangedPasswordControl</servlet-name>
-        <servlet-class>controller. ChangedPasswordControl</servlet-class>
+        <servlet-class>controller.ChangedPasswordControl</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProductListServlet</servlet-name>
@@ -144,8 +144,8 @@
         <url-pattern>/BlogList</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>BlogManage</servlet-name>
-        <url-pattern>/BlogManage</url-pattern>
+        <servlet-name>ManageBlog</servlet-name>
+        <url-pattern>/ManageBlog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>BlogDetail</servlet-name>
