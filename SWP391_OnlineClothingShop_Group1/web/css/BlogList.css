@@ -22,15 +22,7 @@ a
 a:hover {
     text-decoration: underline;
 }
-.content{
-    font-family: verdana;
-    font-size: 15px;
-}
-.card-title show_txt
-{
-    font-family: verdana;
-    font-size: 20px; 
-}
+
 .row .img-big-wrap{
     margin-top: 20px;
     margin-bottom: 20px;
