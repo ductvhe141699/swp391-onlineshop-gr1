@@ -28,7 +28,7 @@ public class OrderDAO {
 
     public List<Order> getOrderByUserID(int userId) {
         List<Order> list = new ArrayList<>();
-        String query = "SELECT o.ID, o.UserID, o.TotalPrice, o.Note, os.Name, o.Date \n"
+        String query = "SELECT o.ID, os.Name, o.TotalPrice, o.Date\n"
                 + "FROM Orders o  INNER JOIN Order_Status os\n"
                 + "ON o.Status = os.ID\n"
                 + "WHERE o.UserId = ?";
@@ -39,13 +39,11 @@ public class OrderDAO {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                list.add(new Order(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), 
-                        rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8), 
-                        rs.getString(9), rs.getInt(10), rs.getInt(11)));
+                list.add(new Order(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getDate(4)));
             }
         } catch (Exception e) {
         }
-
+        DBcontext.close(conn, ps, rs);
         return list;
     }
 
@@ -71,7 +69,7 @@ public class OrderDAO {
                             rs.getInt(3),
                             rs.getString(4),
                             rs.getString(5),
-                            rs.getString(6),
+                            rs.getDate(6),
                             rs.getInt(7),
                             rs.getInt(8),
                             rs.getString(9),
@@ -103,7 +101,7 @@ public class OrderDAO {
                         rs.getInt(3),
                         rs.getString(4),
                         rs.getString(5),
-                        rs.getString(6),
+                        rs.getDate(6),
                         rs.getInt(7),
                         rs.getInt(8),
                         rs.getString(9),

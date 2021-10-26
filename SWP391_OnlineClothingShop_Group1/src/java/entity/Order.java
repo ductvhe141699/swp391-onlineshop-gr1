@@ -6,6 +6,7 @@
 package entity;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -19,7 +20,7 @@ public class Order extends OrderDetail {
     private int totalPrice;
     private String note;
     private String status;
-    private String date;
+    private Date date;
 
     public Order() {
     }
@@ -30,7 +31,7 @@ public class Order extends OrderDetail {
         this.note = note;
     }
 
-    public Order(int id, int userId, int totalPrice, String note, String status, String date) {
+    public Order(int id, int userId, int totalPrice, String note, String status, Date date) {
         this.id = id;
         this.userId = userId;
         this.totalPrice = totalPrice;
@@ -39,12 +40,19 @@ public class Order extends OrderDetail {
         this.date = date;
     }
 
-    public Order(int id, int userId, int totalPrice, String note, String status, String date, int orderID, int productID, String productName, double productPrice, int quantity) {
+    public Order(int id, int userId, int totalPrice, String note, String status, Date date, int orderID, int productID, String productName, double productPrice, int quantity) {
         super(orderID, productID, productName, productPrice, quantity);
         this.id = id;
         this.userId = userId;
         this.totalPrice = totalPrice;
         this.note = note;
+        this.status = status;
+        this.date = date;
+    }
+
+    public Order(int id, String status, int totalPrice, Date date) {
+        this.id = id;
+        this.totalPrice = totalPrice;
         this.status = status;
         this.date = date;
     }
@@ -65,7 +73,7 @@ public class Order extends OrderDetail {
         this.userId = userId;
     }
 
-    public double getTotalPrice() {
+    public int getTotalPrice() {
         return totalPrice;
     }
 
@@ -90,10 +98,11 @@ public class Order extends OrderDetail {
     }
 
     public String getDate() {
-        return date;
+        SimpleDateFormat df=new SimpleDateFormat("dd-MM-YYYY");
+        return df.format(date);
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
