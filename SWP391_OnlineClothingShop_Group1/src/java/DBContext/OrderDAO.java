@@ -148,5 +148,42 @@ public class OrderDAO {
             DBcontext.close(conn, ps, rs);
         }
         return 0;
+    } 
+        
+     public int TotalCusByListProduct(ArrayList<Product> listP) {
+        String query = "select UserID ,count(o.UserID) from Orders o\n"
+                + "join Order_Detail d on d.Order_ID = o.ID\n"
+                + "where ProductID =  ? "
+                + "group by UserID";
+        ArrayList<Order> order = new ArrayList<>();
+        int total = 0;
+        List<Integer> temp = new ArrayList<>();
+
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            for (Product p : listP) {
+
+                ps = conn.prepareStatement(query);
+                ps.setInt(1, p.getProductID());
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    if (!temp.isEmpty()) {
+                        for (Integer i : temp) {
+                            if (i == rs.getInt(1)) {
+                                total++;
+                            }
+                        }
+                    }else{
+                        total++ ;
+                    }
+                    temp.add(rs.getInt(1));
+
+                }
+            }
+        } catch (Exception e) {
+        }
+
+        return total;
     }
 }
