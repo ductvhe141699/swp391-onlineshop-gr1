@@ -27,6 +27,7 @@
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous"
             />
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <!--FONTAWESOME-->
         <link
             rel="stylesheet"
@@ -61,11 +62,6 @@
             }
             function ProductID2(PID) {
                 document.getElementById("pid2").setAttribute("value", PID);
-            }
-            function search() {
-                var searchText = document.getElementById("search_Manager").value;
-                location.href = "searchInManager?text=" + searchText;
-                return false;
             }
         </script>
     </head>
