@@ -40,12 +40,12 @@
         <style>
             .content{
    font-family: 'Poppins', sans-serif;
-    font-size: 17px;
+    font-size: 15px;
 }
 .card-title show_txt
 {
     font-family: 'Poppins', sans-serif;
-    font-size: 20px; 
+    font-size: 17px; 
 }
         </style>
     </head>
