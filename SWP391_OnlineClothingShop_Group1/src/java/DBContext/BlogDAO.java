@@ -29,6 +29,7 @@ public class BlogDAO {
         query = "select top 3 * from Blog\n"
                 + "order by id desc";
         try {
+            conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -73,8 +74,8 @@ public class BlogDAO {
     }
 
     public void add(String author, String title, String content, String imageLink) {
-        query = "INSERT INTO Blog VALUES (?,?,?,?);";
-        try {
+        query = "INSERT INTO Blog VALUES (?,?,?,?)";
+        try { conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             ps.setString(1, author);
             ps.setString(2, title);
@@ -86,20 +87,15 @@ public class BlogDAO {
         DBcontext.close(conn, ps, rs);
     }
 
-    public void update(String author, String title, String content, String imageLink, String id) {
-        query = "Update Blog\n"
-                + "SET Author= ?\n"
-                + "Title =?,\n"
-                + "Content=?,\n"
-                + "imageLink=?,\n"
-                + "Where ID =?";
-        try {
+    public void update(String author, String title, String content, String imageLink, int id) {
+          query = "update Blog set Author= ? , Title =?, Content= ?, imageLink= ?  where ID =?";
+        try { conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             ps.setString(1, author);
             ps.setString(2, title);
             ps.setString(3, content);
             ps.setString(4, imageLink);
-            ps.setString(5, id);
+            ps.setInt(5, id);
             ps.executeUpdate();
         } catch (SQLException e) {
         }
@@ -108,7 +104,7 @@ public class BlogDAO {
     public void delete(int id) {
         query = "Delete FROM Blog WHERE ID = ?";
 
-        try {
+        try { conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             ps.setInt(1, id);
             ps.executeUpdate();
