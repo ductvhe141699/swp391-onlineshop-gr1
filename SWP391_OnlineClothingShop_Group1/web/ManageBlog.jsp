@@ -54,18 +54,16 @@
             table.table td a.edit {
                 color: #FFC107;
             }
-            .btn btn-success{
+            .btn btn-success a{
                 margin-right: 0px;
+                width: 100%;
             }
         </style>
 
         <script>
             function ProductID(PID) {
                 document.getElementById("pid").setAttribute("value", PID);
-            }
-            function ProductID2(PID) {
-                document.getElementById("pid2").setAttribute("value", PID);
-            }
+            }           
         </script>
     </head>
     <body style="font-family: 'Poppins',sans-serif">
@@ -81,8 +79,8 @@
                                 <div class="col-sm-10">
                                     <h2>Manage Blog</h2>
                                 </div>
-                                <div class="col-sm-2">
-                                    <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Blog</span></a>
+                                <div class="col-sm-2">                                
+                                    <a type="button"  href="AddBlog" class="btn btn-success" ><span>Add New Blog</span></a>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +108,7 @@
                                         <td>
                                             <%--Link redirect to EditBlog page --%>
                                             <a href="UpdateBlog?BlogID=${o.id}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                            <a href="#deleteEmployeeModal" onclick="ProductID2(${o.id})" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                            <a href="#deleteEmployeeModal" onclick="ProductID(${o.id})" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -122,45 +120,7 @@
                     </div>
                 </div>        
             </div>
-            <!-- Add Product -->
-            <div id="addEmployeeModal" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form action="AddBlog" method="post">
-                            <div class="modal-header">						
-                                <h4 class="modal-title">Add Blog</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            </div>
-                            <div class="modal-body">	
-                                <div class="form-group">
-                                    <label>Author</label>
-                                    <input type="text" class="form-control" required name="author">
-                                </div>
-                                <div class="form-group">
-                                    <label>Title</label>
-                                    <input type="text" class="form-control" required name="title">
-                                </div>
-                                <div class="form-group">
-                                    <label>Content</label>
-                                    <input type="text" class="form-control" required name="content">
-                                </div>
-                                <div class="form-group">
-                                    <label>Image Link</label>
-                                    <input type="text" class="form-control" required name="imageLink">
-                                </div>
-                                <div class="form-group">
-                                    <label>Image </label>     
-                                    <img src="./resources/img/products/${o.imageLink}" style="height: 100px">
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btn btn-success" value="Add">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+
 
             <!-- Delete Blog -->
             <div id="deleteEmployeeModal" class="modal fade">
@@ -176,7 +136,7 @@
                                 <p class="text-warning"><small>This action cannot be undone.</small></p>
                             </div>
                             <div class="modal-footer">
-                                <input type="text" id="pid2" name="BlogID" visibility: hidden>
+                                <input type="text" id="pid" name="BlogID" visibility: hidden>
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                                 <input type="submit" class="btn btn-danger" value="Delete">
                             </div>

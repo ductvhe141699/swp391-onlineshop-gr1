@@ -68,8 +68,10 @@
                                 <input type="text" class="form-control" required name="title" value="${title}">
                             </div>
                             <div class="form-group">
+                                <table>
                                 <label>Content</label>
-                                <input type="text" class="form-control" required name="content" value="${content}">
+                                <td><input type="text" class="form-control" required name="content" value="${content}"></td>
+                                </table>
                             </div>
                             <div class="form-group">
                                 <label>Image Link</label>
