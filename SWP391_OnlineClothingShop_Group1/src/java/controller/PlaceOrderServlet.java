@@ -11,6 +11,7 @@ import DBContext.OrderDAO;
 import DBContext.OrderDetailDAO;
 import DBContext.ShipDAO;
 import DBContext.ShipInfoDAO;
+import SMTP.GmailAPI;
 import entity.Cart;
 import entity.Notification;
 import entity.Order;
@@ -21,6 +22,9 @@ import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -98,10 +102,22 @@ public class PlaceOrderServlet extends HttpServlet {
             OrderDetail orderdetail=new OrderDetail(orderId, cart.getProductID(), cart.getProductName(), cart.getSellPrice(), cart.getAmount());
             oddao.addOrderDetail(orderdetail);
         }
-        Notification notification= new Notification(user.getUserID(), orderId, "Đơn hàng #"+Integer.toString(orderId)+" của bạn đã được đặt!");
+//        Notification
+        Notification notification= new Notification(user.getUserID(), orderId, "Order #"+Integer.toString(orderId)+" has been placed!");
         NotificationDAO ndao=new NotificationDAO();
         ndao.addNotification(notification);
+//        Remove Cart
         cdao.removeCart(user.getUserID());
+//        GMAIL
+        String gmailFrom = "duclee028@gmail.com";
+        String passfrom = "duc25092000";
+        String subject = "Order placed";
+        String message = ("Order #"+Integer.toString(orderId)+" has been placed!");
+        try {
+            GmailAPI.send(user.getEmail(), subject, message, gmailFrom, passfrom);
+        } catch (MessagingException ex) {
+            Logger.getLogger(PlaceOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         request.getRequestDispatcher("/finishedorder.jsp").forward(request, response);
     }
 

@@ -78,7 +78,8 @@
 
 
                                 <td>
-                                    <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="LoadProduct?pid=${o.productID}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <!----Delete----> 
                                     <a href="delete?pid=${o.productID}" onclick="return confirm('Are you sure you want to delete these Product?');" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
                             </tr>
@@ -101,7 +102,7 @@
 
 
         </div>
-        <!-- Edit  HTML -->
+        <!-- Add -->
         <div id="addEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -174,31 +175,68 @@
                 </div>
             </div>
         </div>
-        <!-- Edit Modal HTML -->
+        <!-- Edit  -->
         <div id="editEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">						
-                            <h4 class="modal-title">Edit Employee</h4>
+                            <h4 class="modal-title">Edit Product</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">					
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control" required>
+                                <label>Product Name</label>
+                                <input name="pname" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" class="form-control" required>
+                                <label>Description</label>
+                                <textarea name="Description" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Address</label>
-                                <textarea class="form-control" required></textarea>
+                                <label>OriginalPrice</label>
+                                <textarea name="OriginalPrice" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Phone</label>
-                                <input type="text" class="form-control" required>
+                                <label>SellPrice</label>
+                                <textarea name="SellPrice" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>SalePercent</label>
+                                <input name="SalePercent" type="text" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Amount</label>
+                                <textarea name="Amount" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>StatusID</label>
+                                <textarea name="sttID" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>BrandID</label>
+                                <textarea name="brandID" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>height</label>
+                                <textarea name="height" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>width</label>
+                                <textarea name="width" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>weight</label>
+                                <textarea name="weight" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select name="Category" class="form-select" >
+                                    <c:forEach items="${listCate}" var="o">
+                                        <option value="${o.categoryID}">${o.categoryName}</option>
+                                    </c:forEach>
+                                </select>
                             </div>					
                         </div>
                         <div class="modal-footer">
