@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author BEAN
  */
-public class DashboardController extends HttpServlet {
+public class ManagerOrderController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +43,10 @@ public class DashboardController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DashboardController</title>");
+            out.println("<title>Servlet ManagerOrderController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DashboardController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ManagerOrderController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -70,18 +70,36 @@ public class DashboardController extends HttpServlet {
         OrderDAO odao = new OrderDAO();
         ArrayList<Order> olist = new ArrayList<>();
         try {
+
             Users u = (Users) ss.getAttribute("user");
             String role = udao.getRoleByUserName(u.getUserName());
             if (role.equals("seller")) {
                 ArrayList<Product> plist = pdao.getProductBySellerName(u.getUserName());
                 olist = odao.getOdByListProduct(plist);
+                try {
+                    String raw_orderID = request.getParameter("oid");
+                    int orderID = Integer.parseInt(raw_orderID);
+                    String action = request.getParameter("action");
+                    boolean check = odao.CheckOrderExist(orderID, olist);
+                    if (check && action.equals("accept") || (check && !action.equals("reject"))) {
+                        odao.OrderAction(orderID , action);
+                    } 
 
-                request.setAttribute("totalCus", udao.getTotalUser());
-                request.setAttribute("totalPro", pdao.getTotalProduct());
-                request.setAttribute("totalOrders", odao.getTotalOrders());
+                } catch (Exception e) {
+                }
+
+                int totalCus = pdao.TotalCusByListProduct(plist);
+                int totalOrder = odao.TotalOrdByListP(plist);
+                request.setAttribute("totalCus", totalCus);
+                request.setAttribute("totalPro", pdao.getTotalProductBySellerID(u.getUserID()));
+                request.setAttribute("totalOrders", totalOrder);
                 request.setAttribute("listOrder", olist);
-                request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
 
+                // TO FIX (CHƯA CÓ DỮ LIỆU
+                request.setAttribute("totalProfit", 1000);
+                // TO FIX 
+
+                request.getRequestDispatcher("OrderDaskboard.jsp").forward(request, response);
             } else {
                 response.sendRedirect("error.jsp");
 

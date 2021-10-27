@@ -5,26 +5,18 @@
  */
 package controller;
 
-import DBContext.OrderDAO;
-import DBContext.ProductDAO;
-import DBContext.UserDAO;
-import entity.Order;
-import entity.Product;
-import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author BEAN
  */
-public class DashboardController extends HttpServlet {
+public class ManagerOrderControler extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +35,10 @@ public class DashboardController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DashboardController</title>");
+            out.println("<title>Servlet ManagerOrderControler</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DashboardController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ManagerOrderControler at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,32 +56,7 @@ public class DashboardController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession ss = request.getSession();
-        UserDAO udao = new UserDAO();
-        ProductDAO pdao = new ProductDAO();
-        OrderDAO odao = new OrderDAO();
-        ArrayList<Order> olist = new ArrayList<>();
-        try {
-            Users u = (Users) ss.getAttribute("user");
-            String role = udao.getRoleByUserName(u.getUserName());
-            if (role.equals("seller")) {
-                ArrayList<Product> plist = pdao.getProductBySellerName(u.getUserName());
-                olist = odao.getOdByListProduct(plist);
-
-                request.setAttribute("totalCus", udao.getTotalUser());
-                request.setAttribute("totalPro", pdao.getTotalProduct());
-                request.setAttribute("totalOrders", odao.getTotalOrders());
-                request.setAttribute("listOrder", olist);
-                request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
-
-            } else {
-                response.sendRedirect("error.jsp");
-
-            }
-
-        } catch (Exception e) {
-            response.sendRedirect("error.jsp");
-        }
+        processRequest(request, response);
     }
 
     /**

@@ -120,6 +120,10 @@
         <servlet-name>DashboardControler</servlet-name>
         <servlet-class>controller.DashboardController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManagerOrderControler</servlet-name>
+        <servlet-class>controller.ManagerOrderControler</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -234,6 +238,10 @@
     <servlet-mapping>
         <servlet-name>DashboardControler</servlet-name>
         <url-pattern>/Dashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerOrderControler</servlet-name>
+        <url-pattern>/ManagerOrder</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
