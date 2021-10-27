@@ -224,7 +224,7 @@ public class OrderDAO {
         return total;
     }
 
-    public boolean CheckOrderExist(int orderID, ArrayList<Order> olist) {
+      public boolean CheckOrderExist(int orderID, ArrayList<Order> olist) {
         boolean flag = false;
         for (Order o : olist) {
             if (orderID == o.getOrderID()) {
@@ -255,4 +255,5 @@ public class OrderDAO {
         } catch (Exception e) {
         }
     }
+   
 }
