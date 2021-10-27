@@ -17,6 +17,9 @@
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
             rel="stylesheet"
             />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display&family=Poppins:wght@100;400;600&display=swap" rel="stylesheet">
         <!--BOOTSTRAP5-->
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -32,6 +35,7 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
             />
+        
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/queries.css" />
@@ -40,24 +44,58 @@
         <style>
             .content{
    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
+    font-size: 17px;
 }
-.card-title show_txt
+.card-title show_txt a
 {
-    font-family: 'Poppins', sans-serif;
+        font-family: 'Noto Serif Display', serif;
+    font-weight: 600;
     font-size: 17px; 
 }
+.spotlight h2{
+    font-family: 'Noto Serif Display', serif;
+    font-weight: 600;
+
+}
+.spotlight{
+    margin: 45px;
+}
+
+.img-big-wrap img{
+    width: 100% ;
+    height: auto ;
+}
+a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Noto Serif Display', serif;
+    font-weight: 600;
+ 
+}
+a:hover {
+    text-decoration: underline;
+}
+
+.row .img-big-wrap{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.
         </style>
     </head>
 
     <body>
         <%@include file="model/header.jsp" %>
         <div class="container">
+            <div class="col-md-12">
+                <div class="spotlight">
+                <h2 class="card-title show_txt">Những item bạn nhất định không nên bỏ lỡ:</h2>
+                <p>Với sự thay đổi liên tục, xu hướng thời trang luôn được cập nhật mới mẻ hơn, độc đáo, hiện đại và thu hút hơn. Những phong cách mới, xu thế thời trang hot luôn được mọi người quan tâm, đặc biệt là giới trẻ. Không thể phủ nhận ngành công nghiệp thời trang đang phát triển rất mạnh mẽ. Không chỉ đơn giản là cách ăn mặc, cách mix&match đồ hay diện đồ theo phong cách yêu thích, thời trang còn là sự đổi mới, phá cách và tràn đầy sức sáng tạo ấn tượng. Vậy bạn đã có ý tưởng gì cho mình chưa? Cùng Shope khám phá ngay nhé.</p>
+                </div>
+            </div>
             <c:set var="i" value="0"></c:set>
             <c:forEach items="${blogList}" var="o" >
                 <c:set var="i" value="${i+1}"></c:set>
-               
-
                 <c:choose>
                     <c:when test="${i%2==0}">
                         <div class="row">
