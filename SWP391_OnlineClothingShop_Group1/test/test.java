@@ -17,21 +17,22 @@ import javax.mail.MessagingException;
  * @author BEAN
  */
 public class test {
-
-    public static void main(String[] args) throws MessagingException {
-<<<<<<< HEAD
-        OrderDAO orderDAO = new OrderDAO();
-        List<Order> orders = orderDAO.getOrderByUserID(5);
-        for (Order order : orders) {
-            System.out.println(order);
-=======
-          OrderDAO orderDAO = new OrderDAO();
-
-            List<Order> orders = orderDAO.getAllOrders();
-        for (Order o : orders ) {
-            System.out.println(o);
->>>>>>> 5352cea26f81520573aa49703ca9266c6230c2d6
-        }
-    }
-
+    
 }
+//    public static void main(String[] args) throws MessagingException {
+//<<<<<<< HEAD
+//        OrderDAO orderDAO = new OrderDAO();
+//        List<Order> orders = orderDAO.getOrderByUserID(5);
+//        for (Order order : orders) {
+//            System.out.println(order);
+//=======
+//          OrderDAO orderDAO = new OrderDAO();
+//
+//            List<Order> orders = orderDAO.getAllOrders();
+//        for (Order o : orders ) {
+//            System.out.println(o);
+//>>>>>>> 5352cea26f81520573aa49703ca9266c6230c2d6
+//        }
+//    }
+//
+//}
