@@ -53,8 +53,8 @@ public class UpdateBlog extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            //Get ID cua Blog tu JSP
+          request.setCharacterEncoding("UTF-8"); 
+        try {  
             String id = request.getParameter("BlogID");
             BlogDAO BlogDAO = new BlogDAO();
             Blog blog=BlogDAO.getBlogByID(Integer.parseInt(id));
@@ -80,22 +80,22 @@ public class UpdateBlog extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+          request.setCharacterEncoding("UTF-8"); 
         try {
             //Step 1: get data from jsp
-            String title = request.getParameter("title"); //Get by name
+            String title = request.getParameter("title"); 
             String content = request.getParameter("content");           
             String imageLink = request.getParameter("imageLink");
             String author = request.getParameter("author");
-            String id = request.getParameter("id");
+            int id = Integer.parseInt(request.getParameter("id"));
             //Step 2: set data to ProductDAO
             BlogDAO dao = new BlogDAO();
-            dao.update(author, title, content, imageLink, id);
-            dao = new BlogDAO();
+            dao.update(author, title, content, imageLink, id);           
             ArrayList<Blog> blogList = dao.getAllBlogs();
             request.setAttribute("blogList", blogList);
             request.getRequestDispatcher("ManageBlog.jsp").forward(request, response);
         } catch (Exception e) {
-            response.sendRedirect("error.jsp");
+            //response.sendRedirect("error.jsp");
         }
     }
 
