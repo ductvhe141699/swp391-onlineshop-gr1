@@ -98,6 +98,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <c:if test ="${sessionScope.user !=  null}">
                         <li><span class="dropdown-item-text">Hello ${user.getUserName()}</span></li>
+                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/DashBoard">DashBoard</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a></li>
                     </c:if>
