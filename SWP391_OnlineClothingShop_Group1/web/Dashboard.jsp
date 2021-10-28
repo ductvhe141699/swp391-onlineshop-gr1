@@ -146,7 +146,7 @@
                         </li>
 
                         <li>
-                            <a href="#" class="nav-link px-3">
+                            <a href="ManagerOrder" class="nav-link px-3">
                                 <span class="me-2"><i class="bi bi-table"></i></span>
                                 <span>Manager Order</span>
                             </a>
@@ -210,13 +210,13 @@
                                                     <td>${o.productName}</td>
                                                     <td>${o.productPrice}</td>
                                                     <c:if test="${o.status == 1}">
-                                                        <td><span class="badge bg-dark">Waiting for Confirmation</span></td>
+                                                        <td><span class="badge rounded-pill bg-secondary">Waiting for Confirmation</span></td>
                                                     </c:if> 
                                                          <c:if test="${o.status == 2}">
-                                                        <td><span class="label label-success">Packing</span></td>
+                                                        <td><span class="badge rounded-pill bg-warning text-dark">Packing</span></td>
                                                     </c:if> 
                                                          <c:if test="${o.status == 3}">
-                                                        <td><span class="badge bg-info text-dark">Delivering</span></td>
+                                                        <td><span class="badge rounded-pill bg-primary">Delivering</span></td>
                                                     </c:if> 
                                                          <c:if test="${o.status == 4}">
                                                         <td><span class="badge bg-danger">Canceled</span></td>

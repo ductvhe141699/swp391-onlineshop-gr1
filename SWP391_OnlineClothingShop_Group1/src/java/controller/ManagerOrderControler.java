@@ -5,12 +5,20 @@
  */
 package controller;
 
+import DBContext.OrderDAO;
+import DBContext.ProductDAO;
+import DBContext.UserDAO;
+import entity.Order;
+import entity.Product;
+import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,7 +43,7 @@ public class ManagerOrderControler extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ManagerOrderControler</title>");            
+            out.println("<title>Servlet ManagerOrderControler</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ManagerOrderControler at " + request.getContextPath() + "</h1>");
@@ -56,7 +64,17 @@ public class ManagerOrderControler extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession ss = request.getSession();
+        UserDAO udao = new UserDAO();
+        ProductDAO pdao = new ProductDAO();
+        OrderDAO odao = new OrderDAO();
+        ArrayList<Order> olist = new ArrayList<>();
+       
+            }
+
+        } catch (Exception e) {
+            response.sendRedirect("error.jsp");
+        }
     }
 
     /**

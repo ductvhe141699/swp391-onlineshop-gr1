@@ -72,20 +72,23 @@ public class DashboardController extends HttpServlet {
         try {
             Users u = (Users) ss.getAttribute("user");
             String role = udao.getRoleByUserName(u.getUserName());
-            if (role.equals("seller")) {
+            if (role.equals("Admin")) {
+                olist = odao.getAllOrders();
+            } else if (role.equals("Seller")) {
                 ArrayList<Product> plist = pdao.getProductBySellerName(u.getUserName());
                 olist = odao.getOdByListProduct(plist);
-
-                request.setAttribute("totalCus", udao.getTotalUser());
-                request.setAttribute("totalPro", pdao.getTotalProduct());
-                request.setAttribute("totalOrders", odao.getTotalOrders());
-                request.setAttribute("listOrder", olist);
-                request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
 
             } else {
                 response.sendRedirect("error.jsp");
 
             }
+            
+            
+            request.setAttribute("totalCus", udao.getTotalUser());
+            request.setAttribute("totalPro", pdao.getTotalProduct());
+            request.setAttribute("totalOrders", odao.getTotalOrders());
+            request.setAttribute("listOrder", olist);
+            request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
 
         } catch (Exception e) {
             response.sendRedirect("error.jsp");

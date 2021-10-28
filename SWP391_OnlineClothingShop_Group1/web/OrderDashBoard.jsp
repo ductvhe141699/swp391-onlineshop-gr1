@@ -1,7 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%-- 
-    Document   : OrderDaskboard
+    Document   : OrderDashboard
     Created on : 12-10-2021, 21:59:57
     Author     : BEAN
 --%>
@@ -22,6 +22,8 @@
         <title>Dashboard</title>
     </head>
     <body>
+
+        ${BEAN}
         <!-- top navigation bar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
@@ -36,7 +38,7 @@
                 </button>
                 <a
                     class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold"
-                    href="#"
+                    href="home"
                     >SHOPE</a
                 >
                 <button
@@ -235,8 +237,12 @@
                                                     <td>${o.date}</td>
 
                                                     <c:if test="${o.status == 1}">
-                                                        <td><a href="AcceptOrder"><span class="badge rounded-pill bg-success">Accept</span></a>
-                                                            <a href="RejectOrder"><span class="badge rounded-pill bg-danger">Reject</span></a> 
+                                                        <td><a href="ConfirmOrder?action=accept&oid=${o.id}"><span class="badge rounded-pill bg-success">Accept</span></a>
+                                                            <a href="ConfirmOrder?action=reject&oid=${o.id}"><span class="badge rounded-pill bg-danger">Reject</span></a> 
+                                                        </td>
+                                                    </c:if>
+                                                    <c:if test="${o.status != 1}">
+                                                        <td>
                                                         </td>
                                                     </c:if>
 

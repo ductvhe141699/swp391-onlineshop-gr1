@@ -73,7 +73,7 @@ public class OrderDAO {
                             rs.getInt(7),
                             rs.getInt(8),
                             rs.getString(9),
-                            rs.getDouble(10),
+                            rs.getInt(10),
                             rs.getInt(11)
                     ));
                 }
@@ -105,7 +105,7 @@ public class OrderDAO {
                         rs.getInt(7),
                         rs.getInt(8),
                         rs.getString(9),
-                        rs.getDouble(10),
+                        rs.getInt(10),
                         rs.getInt(11)
                 ));
             }

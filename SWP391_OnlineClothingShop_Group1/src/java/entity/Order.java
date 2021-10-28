@@ -40,7 +40,7 @@ public class Order extends OrderDetail {
         this.date = date;
     }
 
-    public Order(int id, int userId, int totalPrice, String note, String status, Date date, int orderID, int productID, String productName, double productPrice, int quantity) {
+    public Order(int id, int userId, int totalPrice, String note, String status, Date date, int orderID, int productID, String productName, int  productPrice, int quantity) {
         super(orderID, productID, productName, productPrice, quantity);
         this.id = id;
         this.userId = userId;
@@ -56,6 +56,8 @@ public class Order extends OrderDetail {
         this.status = status;
         this.date = date;
     }
+
+    
 
     public int getId() {
         return id;
@@ -134,7 +136,7 @@ public class Order extends OrderDetail {
         return productPrice;
     }
 
-    public void setProductPrice(double productPrice) {
+    public void setProductPrice(int productPrice) {
         this.productPrice = productPrice;
     }
 
