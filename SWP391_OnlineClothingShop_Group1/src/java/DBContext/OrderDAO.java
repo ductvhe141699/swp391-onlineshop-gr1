@@ -148,9 +148,9 @@ public class OrderDAO {
             DBcontext.close(conn, ps, rs);
         }
         return 0;
-    } 
-        
-     public int TotalCusByListProduct(ArrayList<Product> listP) {
+    }
+
+    public int TotalCusByListProduct(ArrayList<Product> listP) {
         String query = "select UserID ,count(o.UserID) from Orders o\n"
                 + "join Order_Detail d on d.Order_ID = o.ID\n"
                 + "where ProductID =  ? "
@@ -174,8 +174,8 @@ public class OrderDAO {
                                 total++;
                             }
                         }
-                    }else{
-                        total++ ;
+                    } else {
+                        total++;
                     }
                     temp.add(rs.getInt(1));
 
@@ -186,8 +186,8 @@ public class OrderDAO {
 
         return total;
     }
-     
-     public int TotalOrdByListP(ArrayList<Product> listP) {
+
+    public int TotalOrdByListP(ArrayList<Product> listP) {
         String query = "select o.id from Orders o\n"
                 + "join Order_Detail d on d.Order_ID = o.ID\n"
                 + "where ProductID =  ? "
@@ -224,7 +224,7 @@ public class OrderDAO {
         return total;
     }
 
-      public boolean CheckOrderExist(int orderID, ArrayList<Order> olist) {
+    public boolean CheckOrderExist(int orderID, ArrayList<Order> olist) {
         boolean flag = false;
         for (Order o : olist) {
             if (orderID == o.getOrderID()) {
@@ -247,13 +247,12 @@ public class OrderDAO {
                         + "where ID =  ? ";
                 break;
         }
-        
+
         try {
-            conn = new DBcontext().open(); 
-             ps = conn.prepareStatement(query);
-             ps.executeUpdate();
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.executeUpdate();
         } catch (Exception e) {
         }
     }
-   
 }

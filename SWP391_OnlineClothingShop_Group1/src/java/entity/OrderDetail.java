@@ -9,23 +9,30 @@ package entity;
  *
  * @author BEAN
  */
-public class OrderDetail {
+public class OrderDetail extends ProductDetailImg {
 
-     int orderID;
+    int orderID;
     int productID;
     String productName;
-    double productPrice;
+    int productPrice;
     int quantity;
 
     public OrderDetail() {
     }
 
-    public OrderDetail(int orderID, int productID, String productName, double productPrice, int quantity) {
+    public OrderDetail(int orderID, int productID, String productName, int productPrice, int quantity) {
         this.orderID = orderID;
         this.productID = productID;
         this.productName = productName;
         this.productPrice = productPrice;
         this.quantity = quantity;
+    }
+
+    public OrderDetail(int productId, String productName, String productImgURL, int ProductPrice) {
+        this.productID = productID;
+        this.productName = productName;
+        this.productImgURL=productImgURL;
+        this.productPrice=ProductPrice;
     }
 
     public int getOrderID() {
@@ -56,7 +63,7 @@ public class OrderDetail {
         return productPrice;
     }
 
-    public void setProductPrice(double productPrice) {
+    public void setProductPrice(int productPrice) {
         this.productPrice = productPrice;
     }
 
@@ -68,5 +75,4 @@ public class OrderDetail {
         this.quantity = quantity;
     }
 
-   
 }

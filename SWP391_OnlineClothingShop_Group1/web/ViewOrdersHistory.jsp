@@ -53,7 +53,7 @@
                                             <td><span class="badge badge-success">${o.name}</span></td>
                                             <td>${o.getTotalPrice()} VNĐ</td>
                                             <td>${o.getDate()}</td>
-                                            <td><a  style="cursor: pointer ">View</a></td>
+                                            <td><a href="ViewOrderDetails?id=${o.getId()}" style="cursor: pointer ">View</a></td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>

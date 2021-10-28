@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/queries.css">
         <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
     </head>
-    <body>
+    <body style="background: #673AB7">
         <%@include file="model/header.jsp" %>
         <div class="row">
             <br><br>

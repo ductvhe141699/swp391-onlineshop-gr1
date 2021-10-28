@@ -124,6 +124,10 @@
         <servlet-name>ManagerOrderControler</servlet-name>
         <servlet-class>controller.ManagerOrderControler</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewOrderDetails</servlet-name>
+        <servlet-class>controller.ViewOrderDetails</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -242,6 +246,10 @@
     <servlet-mapping>
         <servlet-name>ManagerOrderControler</servlet-name>
         <url-pattern>/ManagerOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewOrderDetails</servlet-name>
+        <url-pattern>/ViewOrderDetails</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
