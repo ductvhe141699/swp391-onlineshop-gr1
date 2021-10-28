@@ -151,6 +151,12 @@
                                 <span>Manager Order</span>
                             </a>
                         </li>
+                         <li>
+                            <a href="PostList.jsp" class="nav-link px-3">
+                                <span class="me-2"><i class="bi bi-book-fill"></i></span>
+                                <span>Manage Post</span>
+                            </a>
+                        </li>
                         <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
 
                     </ul>
