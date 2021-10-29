@@ -47,7 +47,7 @@
           <marquee behavior="scroll" direction="left">Get 10% SALE by using special discount code "CHEERSLUV"</marquee>
       </span>
     </div>
-    <nav class="navbar main-navbar navbar-expand-lg navbar-light bg-light" id="navbar1">
+    <nav class="navbar main-navbar navbar-expand-lg navbar-light bg-light pt-0" id="navbar1">
         
         <div class="container-fluid bg-light">
             <!-- LOGO -->
@@ -150,7 +150,7 @@
                 <a class="nav-link" href="#footer">Contacts Us</a>
               </li>
               <li class="nav-item d-block d-lg-none">
-                 <a class="nav-link" role="button" data-bs-toggle="offcanvas" data-bs-target="#notification" aria-controls="offcanvasRight"><i class="fas fa-bell"></i>
+                 <a class="nav-link d-inline-block" role="button" data-bs-toggle="offcanvas" data-bs-target="#notification" aria-controls="offcanvasRight"><i class="fas fa-bell"></i>
                       <c:if test="${sessionScope.user !=null}">
                         <span class="position-relative translate-middle badge rounded-pill bg-danger">
                           ${unreadnoti}
