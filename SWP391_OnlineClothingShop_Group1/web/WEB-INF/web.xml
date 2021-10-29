@@ -144,6 +144,10 @@
         <servlet-name>ViewOrderDetails</servlet-name>
         <servlet-class>controller.ViewOrderDetails</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConfirmOrderController</servlet-name>
+        <servlet-class>controller.ConfirmOrderController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -266,6 +270,10 @@
     <servlet-mapping>
         <servlet-name>ViewOrderDetails</servlet-name>
         <url-pattern>/ViewOrderDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmOrderController</servlet-name>
+        <url-pattern>/ConfirmOrder</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
