@@ -37,10 +37,12 @@ public class DeleteBlog extends HttpServlet {
         try {
             int id = Integer.parseInt(request.getParameter("BlogID"));
             BlogDAO dao = new BlogDAO();
+            //delete Blog by id from database
             dao.delete(id);
             ArrayList<Blog> blogList = dao.getAllBlogs();
             request.setAttribute("blogList", blogList);
-            request.getRequestDispatcher("ManageBlog.jsp").forward(request, response);
+             // Redirect to manage Blog after delete successful
+            response.sendRedirect("ManageBlog");
         } catch (Exception e) {
             response.sendRedirect("error.jsp");
         }

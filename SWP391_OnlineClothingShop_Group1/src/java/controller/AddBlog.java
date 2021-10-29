@@ -33,21 +33,20 @@ public class AddBlog extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //Allow Vietnamese Characters
-        request.setCharacterEncoding("UTF-8"); 
-        PrintWriter out = response.getWriter();
-          String title = request.getParameter("title");
-            String content = request.getParameter("content");
-            String imageLink = request.getParameter("imageLink");
-            String author = request.getParameter("author");
+        // sử dụng tiếng việt
+        request.setCharacterEncoding("UTF-8");
+        // get data from jsp
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        String imageLink = request.getParameter("imageLink");
+        String author = request.getParameter("author");
         try {
-          
             BlogDAO dao = new BlogDAO();
-            dao.add(author, title, content, imageLink);                       
+            dao.add(author, title, content, imageLink);
             request.getRequestDispatcher("ManageBlog").forward(request, response);
         } catch (Exception e) {
-          response.sendRedirect("error.jsp");
-          
+            response.sendRedirect("error.jsp");
+
         }
     }
 
@@ -77,22 +76,22 @@ public class AddBlog extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-              response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         //Allow Vietnamese Characters
-        request.setCharacterEncoding("UTF-8"); 
+        request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-          String title = request.getParameter("title");
-            String content = request.getParameter("content");
-            String imageLink = request.getParameter("imageLink");
-            String author = request.getParameter("author");
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        String imageLink = request.getParameter("imageLink");
+        String author = request.getParameter("author");
         try {
-          
+
             BlogDAO dao = new BlogDAO();
-            dao.add(author, title, content, imageLink);                       
+            dao.add(author, title, content, imageLink);
             request.getRequestDispatcher("ManageBlog").forward(request, response);
         } catch (Exception e) {
-          response.sendRedirect("error.jsp");
-          
+            response.sendRedirect("error.jsp");
+
         }
     }
 

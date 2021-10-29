@@ -36,6 +36,7 @@ public class ManageBlog extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
           BlogDAO BlogDAO = new BlogDAO();
+          //get list of Blog to manage
             ArrayList<Blog> blogList = BlogDAO.getAllBlogs();
             request.setAttribute("blogList", blogList);
             request.getRequestDispatcher("ManageBlog.jsp").forward(request, response);
