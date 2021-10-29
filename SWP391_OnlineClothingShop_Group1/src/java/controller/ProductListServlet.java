@@ -5,14 +5,8 @@
  */
 package controller;
 
-import DBContext.BrandDAO;
-import DBContext.CategoryDAO;
 import DBContext.ProductDAO;
-import DBContext.SubCategoryDAO;
-import entity.Brand;
-import entity.Category;
 import entity.Product;
-import entity.SubCategory;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +18,7 @@ import java.util.HashMap;
 import util.StringDecode;
 /**
  *
- * @author SAKURA
+ * @author Bach Ngoc Minh Chau HE153019
  */
 public class ProductListServlet extends HttpServlet {
 

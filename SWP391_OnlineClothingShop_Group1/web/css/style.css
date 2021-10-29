@@ -67,8 +67,7 @@ html{
 }
 
 body{
-    font-family: var(--body-font);
-    padding-top: 100px;
+    padding-top: 85px;
     font-family: 'Poppins',sans-serif;
 }
 
@@ -128,6 +127,9 @@ body{
 {
     margin-top: 10px;
     width: 100%;
+}
+#navbar1{
+    height: 85px;
 }
 /*-------------------- TOP BTN --------------------*/
 #myTBTN {
