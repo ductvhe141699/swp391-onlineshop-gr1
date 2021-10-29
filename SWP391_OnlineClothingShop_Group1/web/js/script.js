@@ -7,7 +7,11 @@ window.onload= function() {mySticky();};
 // Get the offset position of the navbar
 var sticky = 300;
 var myTopBtnOffset = 500;
-
+var width = window.screen.width;
+navbar = document.getElementById("navbar1");
+if (width < 992){
+  navbar.classList.add('sticky');
+}
 // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function mySticky() {
   var navbar = document.getElementById("navbar2");
