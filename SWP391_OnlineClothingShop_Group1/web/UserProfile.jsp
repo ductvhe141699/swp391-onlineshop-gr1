@@ -66,7 +66,8 @@
                            class="mt-5 text-center btn btn-primary profile-button" type="button">Change your password
                         </a>
                         <br>
-                        <a href="viewOrder?id=${user.userID}" style="width: 300px"
+                        <a href="viewOrder?id=ViewOrdersHistory.jsp" style="width: 300px"
+                        <!--<a href="viewOrder?id=${user.userID}" style="width: 300px"-->
                            class="mt-5 text-center btn btn-primary profile-button" type="button">View your orders
                         </a>
                     </div>

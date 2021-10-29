@@ -35,13 +35,13 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body text-center">
-                            <h5 class="card-title m-b-0">Order ID: </h5>
+                            <h5 class="card-title m-b-0">Order ID: #OR898 </h5>
                         </div>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th> <label class="customcheckbox m-b-20"> <input type="checkbox" id="mainCheckbox" disabled> <span class="checkmark"></span> </label> </th>
+                                        <th> <label class="customcheckbox m-b-20"> <input type="checkbox" id="mainCheckbox" disabled><span class="checkmark"></span> </label> </th>
                                         <th scope="col">Product ID</th>
                                         <th scope="col">Product Name</th>
                                         <th scope="col">Image</th>
@@ -50,46 +50,47 @@
                                 </thead>
                                 <tbody class="customtable">
                                     <tr>
-                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" disabled> <span class="checkmark"></span> </label> </th>
-                                        <td>India</td>
-                                        <td>Chrome OS</td>
-                                        <td>MAC OS</td>
-                                        <td>76</td>
+                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" checked> <span class="checkmark"></span> </label> </th>
+                                        <td>#PD002</td>
+                                        <td>Nike</td>
+                                        <td><img onmouseover="bigImg(this)" onmouseout="normalImg(this)"  
+                                                 src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
+                                        <td>76$</td>
                                     </tr>
                                     <tr>
                                         <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" disabled> <span class="checkmark"></span> </label> </th>
-                                        <td>USA</td>
-                                        <td>Internet Explorer</td>
-                                        <td>Win 2010</td>
-                                        <td>10</td>
+                                        <td>#PD016</td>
+                                        <td>ZABA</td>
+                                        <td><img src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
+                                        <td>10$</td>
                                     </tr>
                                     <tr>
                                         <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" disabled> <span class="checkmark"></span> </label> </th>
-                                        <td>UK</td>
+                                        <td>#PD05</td>
                                         <td>Safari</td>
-                                        <td>Mac OS</td>
-                                        <td>16</td>
+                                        <td><img src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
+                                        <td>16$</td>
                                     </tr>
                                     <tr>
-                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" disabled> <span class="checkmark"></span> </label> </th>
-                                        <td>UAE</td>
+                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" checked> <span class="checkmark"></span> </label> </th>
+                                        <td>#PD08</td>
                                         <td>Google Chrome</td>
-                                        <td>Win 2013</td>
-                                        <td>76.12</td>
+                                        <td><img src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
+                                        <td>76.12$</td>
                                     </tr>
                                     <tr>
                                         <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" disabled> <span class="checkmark"></span> </label> </th>
-                                        <td>Canada</td>
+                                        <td>#PD07</td>
                                         <td>Internet Explorer</td>
-                                        <td>Win 2010</td>
-                                        <td>10</td>
+                                        <td><img src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
+                                        <td>10$</td>
                                     </tr>
                                     <tr>
-                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" disabled> <span class="checkmark"></span> </label> </th>
-                                        <td>Turkey</td>
+                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" checked> <span class="checkmark"></span> </label> </th>
+                                        <td>#PD08</td>
                                         <td>Internet Explorer 8</td>
-                                        <td>Win 2010</td>
-                                        <td>8</td>
+                                        <td><img src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
+                                        <td>8$</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -107,5 +108,16 @@
         ></script>
         <!-- SCRIPT -->
         <script src="${pageContext.request.contextPath}/js/script.js"></script>
+        <script>
+                                            function bigImg(x) {
+                                                x.style.height = "500px";
+                                                x.style.width = "500px";
+                                            }
+
+                                            function normalImg(x) {
+                                                x.style.height = "100px";
+                                                x.style.width = "100px";
+                                            }
+        </script>
     </body>
 </html>

@@ -33,11 +33,11 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-<!--                                        <th class="text-center">
-                                            <div class="toggle-btn">
-                                                <div class="inner-circle"></div>
-                                            </div>
-                                        </th>-->
+                                        <!--                                        <th class="text-center">
+                                                                                    <div class="toggle-btn">
+                                                                                        <div class="inner-circle"></div>
+                                                                                    </div>
+                                                                                </th>-->
                                         <th>Order #</th>
                                         <!--<th>Company name</th>-->
                                         <th>status</th>
@@ -47,70 +47,43 @@
                                     </tr>
                                 </thead>
                                 <tbody class="table-body">
-                                    <c:forEach var="o" items="orders">
-                                        <tr class="cell-1">
-                                            <td>${o.getId()}</td>
-                                            <td><span class="badge badge-success">${o.name}</span></td>
-                                            <td>${o.getTotalPrice()} VNĐ</td>
-                                            <td>${o.getDate()}</td>
-                                            <td><a href="ViewOrderDetails?id=${o.getId()}" style="cursor: pointer ">View</a></td>
-                                        </tr>
-                                    </c:forEach>
+                                    <tr class="cell-1">
+
+                                        <td>#SO-13487</td>
+
+                                        <td><span class="badge badge-success">Fullfilled</span></td>
+                                        <td>$2674.00</td>
+                                        <td>Today</td>
+                                        <td><a href="ViewOrderDetails.jsp" style="cursor: pointer ">View</a></td>
+                                    </tr>
+                                    <tr class="cell-1">
+
+                                        <td>#SO-13453</td>
+
+                                        <td><span class="badge badge-info">Confirmed</span></td>
+                                        <td>$3454.00</td>
+                                        <td>Yesterday</td>
+                                        <td><a href="ViewOrderDetails.jsp" style="cursor: pointer ">View</a></td>
+                                    </tr>
+                                    <tr class="cell-1">
+
+                                        <td>#SO-13498</td>
+
+                                        <td><span class="badge badge-danger">Partially shipped</span></td>
+                                        <td>$6274.00</td>
+                                        <td>May 12,2020</td>
+                                        <td><a href="ViewOrderDetails.jsp" style="cursor: pointer ">View</a></td>
+                                    </tr>
+                                    <tr class="cell-1">
+
+                                        <td>#SO-16499</td>
+
+                                        <td><span class="badge badge-success">Fullfilled</span></td>
+                                        <td>$6375.00</td>
+                                        <td>May 11,2020</td>
+                                        <td><a href="ViewOrderDetails.jsp" style="cursor: pointer ">View</a></td>
+                                    </tr>
                                 </tbody>
-                                <!--                                <tbody class="table-body">
-                                                                    <tr class="cell-1">
-                                                                        <td class="text-center">
-                                                                            <div class="toggle-btn">
-                                                                                <div class="inner-circle"></div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>#SO-13487</td>
-                                                                        <td>Gasper Antunes</td>
-                                                                        <td><span class="badge badge-success">Fullfilled</span></td>
-                                                                        <td>$2674.00</td>
-                                                                        <td>Today</td>
-                                                                        <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                                                                    </tr>
-                                                                    <tr class="cell-1">
-                                                                        <td class="text-center">
-                                                                            <div class="toggle-btn">
-                                                                                <div class="inner-circle"></div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>#SO-13453</td>
-                                                                        <td>Aartsen van</td>
-                                                                        <td><span class="badge badge-info">Confirmed</span></td>
-                                                                        <td>$3454.00</td>
-                                                                        <td>Yesterday</td>
-                                                                        <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                                                                    </tr>
-                                                                    <tr class="cell-1">
-                                                                        <td class="text-center">
-                                                                            <div class="toggle-btn">
-                                                                                <div class="inner-circle"></div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>#SO-13498</td>
-                                                                        <td>Trashes Habard</td>
-                                                                        <td><span class="badge badge-danger">Partially shipped</span></td>
-                                                                        <td>$6274.00</td>
-                                                                        <td>May 12,2020</td>
-                                                                        <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                                                                    </tr>
-                                                                    <tr class="cell-1">
-                                                                        <td class="text-center">
-                                                                            <div class="toggle-btn">
-                                                                                <div class="inner-circle"></div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>#SO-16499</td>
-                                                                        <td>Samban Hubart</td>
-                                                                        <td><span class="badge badge-success">Fullfilled</span></td>
-                                                                        <td>$6375.00</td>
-                                                                        <td>May 11,2020</td>
-                                                                        <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                                                                    </tr>
-                                                                </tbody>-->
                             </table>
                         </div>
                     </div>
