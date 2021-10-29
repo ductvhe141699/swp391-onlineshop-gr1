@@ -32,7 +32,7 @@
     <!-- Sakura -->
     <link href="${pageContext.request.contextPath}/css/jquery-sakura.css" rel="stylesheet" type="text/css">
 </head>
-<body style="font-family: 'Poppins',sans-serif">
+<body style="font-family: 'Poppins',sans-serif; overflow-x: hidden;">
     <%@include file="model/header.jsp" %>
     <div class="container-fluid bg-transparent p-3 content-width mh-1000" style="position: relative;">
         <div class="row">
@@ -272,8 +272,11 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery-sakura.min.js"></script>
     <script>
+        
         $(window).load(function () {
-            $('body').sakura();
+            var width = window.screen.width;
+            if(width>= 992)
+                $('body').sakura();
         });
     </script>
     <script>
