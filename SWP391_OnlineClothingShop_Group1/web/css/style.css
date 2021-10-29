@@ -131,6 +131,9 @@ body{
 #navbar1{
     height: 85px;
 }
+#navbar2{
+    height: 55px;
+}
 /*-------------------- TOP BTN --------------------*/
 #myTBTN {
   width:57px;

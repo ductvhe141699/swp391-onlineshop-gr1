@@ -185,7 +185,7 @@
         </div>
       </nav>
       <!-- SECONDARY NAVBAR -->
-      <nav id="navbar2" class="navbar navbar-expand-lg navbar-dark bg-dark d-none d-lg-block">
+      <nav id="navbar2" class="navbar navbar-expand-lg navbar-dark bg-dark d-none d-lg-block p-1">
         <div class="container-fluid">
           <ul class="navbar-nav offset-2 me-auto mb-2 mb-lg-0">
             <li class="nav-item me-4">
