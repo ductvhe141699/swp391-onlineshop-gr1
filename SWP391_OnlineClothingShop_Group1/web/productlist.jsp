@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1">
     <title>Product</title>
     <!-- Icon -->
     <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
@@ -270,13 +270,11 @@
     <!-- SCRIPT -->
     <script src="${pageContext.request.contextPath}/js/script.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery-sakura.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-sakura.js"></script>
     <script>
         
         $(window).load(function () {
-            var width = window.screen.width;
-            if(width>= 992)
-                $('body').sakura();
+            $('body').sakura();
         });
     </script>
     <script>

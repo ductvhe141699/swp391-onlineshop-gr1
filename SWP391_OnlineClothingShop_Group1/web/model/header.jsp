@@ -167,7 +167,7 @@
                       </span>
                   </c:if>
                 </a>
-                <i class="fas fa-user-circle"></i>
+                <i class="fas fa-user-circle" style="color:grey;"></i>
               </li>
               <c:if test ="${sessionScope.user !=  null}">
                 <li class="nav-item d-block d-lg-none">Hello ${user.getUserName()}</li>

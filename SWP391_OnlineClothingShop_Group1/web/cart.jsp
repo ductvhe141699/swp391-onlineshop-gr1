@@ -11,7 +11,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1" />
     <!-- icon -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/favicon.ico" type="image/x-icon">
     <!-- Google Fonts -->
@@ -71,7 +71,7 @@
               <c:forEach items="${carts}" var="cart" varStatus="i">
               <tr>
                 <th scope="row">${i.count}</th>
-                <td><img class="img-thumbnail img-fluid" style="max-width: 100px" src="${pageContext.request.contextPath}/resources/img/products/${cart.getProductImg()}"></td>
+                <td class="p-0 p-sm-3"><img class="d-none d-sm-block img-thumbnail img-fluid" style="max-width: 100px" src="${pageContext.request.contextPath}/resources/img/products/${cart.getProductImg()}"></td>
                 <td>${cart.getProductName()}</td>
                 <td>
                     <div class="btn-group flex-wrap">
