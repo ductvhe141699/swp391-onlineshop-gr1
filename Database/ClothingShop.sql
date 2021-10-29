@@ -731,5 +731,21 @@ INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'author_1',   N'Qu�
 Đa dạng nhiều mẫu mã, kích cỡ và kiểu dáng cũng là điểm cộng cho set đồ này. Với quần jogger, bạn có thể chọn những gam màu sáng như trắng, cam, be,.. để tạo sự trẻ trung, tươi mới hoặc những gam màu trầm tối như đen, nâu, xanh rêu,... vừa đem đến sự tinh tế vừa phong cách, thời trang.',N'Joggerkaki.png')
 INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'author_2',  N'Áo sơ mi trăngs cho nàng cực trẻ trung và cá tính',N'Áo sơ mi trắng vốn là một item must-have trong tủ đồ của phái nữ bởi sự đơn giản, tinh tế; dễ phối đồ và có thể mặc trong hầu hết mọi tình huống như đi học, đi làm,đi chơi, đi phỏng vấn,...Thông dụng - dễ phối - chưa bao giờ lỗi mốt là những từ có thể dùng để miêu tả về áo sơ mi trắng. Là một item quốc dân luôn có sẵn trong tủ đồ của tất cả mọi người, những chiếc áo sơ mi trắng luôn khiến người mặc ngây ngất bởi hiệu quả thời trang mà nó mang lại: sự trẻ trung, lịch thiệp và phong cách. ',N'somitrang.png')
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Create table PostCategory(
+ID int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+CategoryName nvarchar(1000)
+)
+ON [PRIMARY]
+GO
+Create TABLE Post(
+ID int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+Description nvarchar(2500),
+UserID int,
+date nvarchar(2500),
+CategoryID int,
+constraint userID_in_user_5 FOREIGN KEY(UserID) REFERENCES Users(UserID),
+constraint CategoryID_in_PostCategory FOREIGN KEY(CategoryID) REFERENCES PostCategory(ID)
+)ON [PRIMARY]
+go
 
 
