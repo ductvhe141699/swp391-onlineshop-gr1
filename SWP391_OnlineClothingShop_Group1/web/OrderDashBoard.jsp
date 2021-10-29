@@ -209,6 +209,8 @@
                                                 <th>Product price</th>
                                                 <th>Status</th>
                                                 <th>Date</th>
+                                                <th>Details</th>
+                                                
                                                 <th></th>
 
                                             </tr>
@@ -235,6 +237,7 @@
                                                         <td><span class="badge bg-success">completed</span></td>
                                                     </c:if> 
                                                     <td>${o.date}</td>
+                                                    <td><a href="OrderDetails?oid=${o.id}" class="badge bg-info text-dark">See details</a> </td>
 
                                                     <c:if test="${o.status == 1}">
                                                         <td><a href="ConfirmOrder?action=accept&oid=${o.id}"><span class="badge rounded-pill bg-success">Accept</span></a>
