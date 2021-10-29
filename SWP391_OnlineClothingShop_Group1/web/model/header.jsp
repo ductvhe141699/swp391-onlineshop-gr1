@@ -49,7 +49,7 @@
     </div>
     <nav class="navbar main-navbar navbar-expand-lg navbar-light bg-light" id="navbar1">
         
-        <div class="container-fluid">
+        <div class="container-fluid bg-light">
             <!-- LOGO -->
             <a class="navbar-brand col-lg-2 offset-lg-2 logo" href="${pageContext.request.contextPath}/home"><img src="${pageContext.request.contextPath}/resources/img/SHOPE-logos_transparent.png"> </a>
             
