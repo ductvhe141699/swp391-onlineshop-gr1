@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1">
     <title>Product</title>
     <!-- Icon -->
     <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
@@ -29,8 +29,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/queries.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/productlist.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/productlistqueries.css">
+    <!-- Sakura -->
+    <link href="${pageContext.request.contextPath}/css/jquery-sakura.css" rel="stylesheet" type="text/css">
 </head>
-<body style="font-family: 'Poppins',sans-serif">
+<body style="font-family: 'Poppins',sans-serif; overflow-x: hidden;">
     <%@include file="model/header.jsp" %>
     <div class="container-fluid bg-transparent p-3 content-width mh-1000" style="position: relative;">
         <div class="row">
@@ -267,6 +269,14 @@
     ></script>
     <!-- SCRIPT -->
     <script src="${pageContext.request.contextPath}/js/script.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-sakura.js"></script>
+    <script>
+        
+        $(window).load(function () {
+            $('body').sakura();
+        });
+    </script>
     <script>
         window.onload= function() {formatCurrency();};
         var formatter = new Intl.NumberFormat('en-US', {

@@ -35,6 +35,7 @@ public class BlogList extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             BlogDAO BlogDAO = new BlogDAO();
+            // get List of Blog from database
             ArrayList<Blog> blogList = BlogDAO.getAllBlogs();
             request.setAttribute("blogList", blogList);
             request.getRequestDispatcher("BlogList.jsp").forward(request, response);

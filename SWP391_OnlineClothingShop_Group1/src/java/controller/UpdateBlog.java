@@ -58,6 +58,7 @@ public class UpdateBlog extends HttpServlet {
             String id = request.getParameter("BlogID");
             BlogDAO BlogDAO = new BlogDAO();
             Blog blog=BlogDAO.getBlogByID(Integer.parseInt(id));
+            //set data to page update
             request.setAttribute("id", blog.getId());
             request.setAttribute("author", blog.getAuthor());
             request.setAttribute("title", blog.getTitle());
@@ -82,18 +83,19 @@ public class UpdateBlog extends HttpServlet {
             throws ServletException, IOException {
           request.setCharacterEncoding("UTF-8"); 
         try {
-            //Step 1: get data from jsp
+            // get data from page Update
             String title = request.getParameter("title"); 
             String content = request.getParameter("content");           
             String imageLink = request.getParameter("imageLink");
             String author = request.getParameter("author");
             int id = Integer.parseInt(request.getParameter("id"));
-            //Step 2: set data to ProductDAO
+            // set Blog data to database
             BlogDAO dao = new BlogDAO();
             dao.update(author, title, content, imageLink, id);           
             ArrayList<Blog> blogList = dao.getAllBlogs();
             request.setAttribute("blogList", blogList);
-            request.getRequestDispatcher("ManageBlog.jsp").forward(request, response);
+            // Redirect to manage Blog after update successful
+            response.sendRedirect("ManageBlog");
         } catch (Exception e) {
             //response.sendRedirect("error.jsp");
         }

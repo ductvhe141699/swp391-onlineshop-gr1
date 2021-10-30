@@ -64,17 +64,30 @@
 
 html{
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 body{
-    font-family: var(--body-font);
-    padding-top: 100px;
+    margin: 0;
+    width: 100%;
+    z-index: 0;
+    padding-top: 80px;
     font-family: 'Poppins',sans-serif;
+    overflow-x: hidden;
 }
 
 .title {
     padding-top: 80px;
     padding-bottom: 80px;
+}
+canvas{
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .title h4 {
@@ -128,6 +141,12 @@ body{
 {
     margin-top: 10px;
     width: 100%;
+}
+#navbar1{
+    height: 90px;
+}
+#navbar2{
+    height: 55px;
 }
 /*-------------------- TOP BTN --------------------*/
 #myTBTN {
