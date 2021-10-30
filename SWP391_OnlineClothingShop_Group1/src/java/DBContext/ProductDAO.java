@@ -224,4 +224,38 @@ public class ProductDAO {
         } catch (Exception e) {
         }
     }
-}
+
+    public Product getProductByID(String productId) {
+           String query = "select top 1 p.ProductID , ProductName , Description , OriginalPrice , SellPrice  , SalePercent , SubCategoryID , SellerID ,\n" +
+"                    Amount , StatusID , StatusID ,BrandID , height  , width ,weight , s.ProductImgURL from  Product p \n" +
+"                   join ProductImg s on p.ProductID = s.ProductID where p.ProductID = ?";
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, productId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+            return (new Product(
+                        rs.getInt("ProductID"),
+                        rs.getString("ProductName"),
+                        rs.getString("Description"),
+                        rs.getDouble("OriginalPrice"),
+                        rs.getDouble("SellPrice"),
+                        rs.getDouble("SalePercent"),
+                        rs.getInt("SubCategoryID"),
+                        rs.getInt("SellerID"),
+                        rs.getInt("Amount"),
+                        rs.getInt("StatusID"),
+                        rs.getInt("BrandID"),
+                        rs.getDouble("height"),
+                        rs.getDouble("width"),
+                        rs.getDouble("weight"),
+                        rs.getString("ProductImgURL")));
+            }
+        } catch (SQLException e) {
+        }
+        DBcontext.close(conn, ps, rs);
+        return null;
+    }
+    }
+

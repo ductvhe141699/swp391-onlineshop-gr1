@@ -148,6 +148,10 @@
         <servlet-name>ConfirmOrderController</servlet-name>
         <servlet-class>controller.ConfirmOrderController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetFeedback</servlet-name>
+        <servlet-class>controller.GetFeedback</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -274,6 +278,10 @@
     <servlet-mapping>
         <servlet-name>ConfirmOrderController</servlet-name>
         <url-pattern>/ConfirmOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetFeedback</servlet-name>
+        <url-pattern>/GetFeedback</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -46,18 +46,6 @@
 %>
 <div class="row m-0 p-0" style="background-color:lightgrey;">
     <span id="promo" class="d-lg-block d-none">
-<<<<<<< HEAD
-        <marquee behavior="scroll" direction="left">Get 10% SALE by using special discount code "CHEERSLUV"</marquee>
-    </span>
-</div>
-<nav class="navbar main-navbar navbar-expand-lg navbar-light bg-light" id="navbar1">
-
-    <div class="container-fluid">
-        <!-- LOGO -->
-        <a class="navbar-brand col-lg-2 offset-lg-2 logo" href="${pageContext.request.contextPath}/home"><img src="${pageContext.request.contextPath}/resources/img/SHOPE-logos_transparent.png"> </a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-=======
           <marquee behavior="scroll" direction="left">Get 10% SALE by using special discount code "CHEERSLUV"</marquee>
       </span>
     </div>
@@ -68,7 +56,6 @@
             <a class="navbar-brand col-lg-2 offset-lg-2 logo" href="${pageContext.request.contextPath}/home"><img src="${pageContext.request.contextPath}/resources/img/SHOPE-logos_transparent.png"> </a>
             
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
->>>>>>> e5dcfba22977c6b93abbd49ae7a924caf9335302
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -167,12 +154,6 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/BlogList">All blog</a></li>
                         <li><hr class="dropdown-divider"></li>
-<<<<<<< HEAD
-                        <li><a class="dropdown-item" href="#">Spotlight</a></li>
-                        <li><a class="dropdown-item" href="#">Spotlight</a></li>
-                    </ul>
-                </li>
-=======
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a></li>
                     </c:if>
                     <c:if test ="${sessionScope.user ==  null}">
@@ -244,7 +225,6 @@
               </li>
               <c:if test ="${sessionScope.user !=  null}">
                 <li class="nav-item d-block d-lg-none">Hello ${user.getUserName()}</li>
->>>>>>> e5dcfba22977c6b93abbd49ae7a924caf9335302
                 <li class="nav-item d-block d-lg-none">
                     <a class="nav-link" href="#footer">Contacts Us</a>
                 </li>
@@ -281,20 +261,11 @@
                 </c:if>
             </ul>
         </div>
-<<<<<<< HEAD
-    </div>
-</nav>
-<!-- SECONDARY NAVBAR -->
-<nav id="navbar2" class="navbar navbar-expand-lg navbar-dark bg-dark d-none d-lg-block">
-    <div class="container-fluid">
-        <ul class="navbar-nav offset-2 me-auto mb-2 mb-lg-0">
-=======
       </nav>
       <!-- SECONDARY NAVBAR -->
       <nav id="navbar2" class="navbar navbar-expand-lg navbar-dark bg-dark d-none d-lg-block p-1">
         <div class="container-fluid">
           <ul class="navbar-nav offset-2 me-auto mb-2 mb-lg-0">
->>>>>>> e5dcfba22977c6b93abbd49ae7a924caf9335302
             <li class="nav-item me-4">
                 <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/home">Home</a>
             </li>
