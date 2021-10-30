@@ -23,10 +23,10 @@ public class FeedbackDAO {
     private PreparedStatement ps;
     private ResultSet rs;
     private String query;
-    public List<Feedback> getFeedbacks() {
+    public ArrayList<Feedback> getAllFeedbacks() {
         query = "SELECT * FROM Feedback";
         try {
-            List<Feedback> lsFeedback = new ArrayList<>();
+            ArrayList<Feedback> lsFeedback = new ArrayList<>();
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
@@ -86,10 +86,10 @@ public class FeedbackDAO {
      * @param productId the id of the product
      * @return a list of feedback
      */
-    public List<Feedback> getFeedbacksByProductId(int productId) {
+    public ArrayList<Feedback> getFeedbacksByProductId(int productId) {
         String query = "SELECT * FROM Feedback WHERE ProductID = ?";
         try {
-            List<Feedback> lsFeedback = new ArrayList<>();
+            ArrayList<Feedback> lsFeedback = new ArrayList<>();
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);           
             ps.setInt(1, productId);
@@ -118,10 +118,10 @@ public class FeedbackDAO {
      * @param userId the id of the user
      * @return a list of feedback
      */
-    public List<Feedback> getFeedbacksByUserId(int userId) {
+    public ArrayList<Feedback> getFeedbacksByUserId(int userId) {
         String query = "SELECT * FROM Feedback WHERE UserID = ?";
         try {
-            List<Feedback> lsFeedback = new ArrayList<>();
+            ArrayList<Feedback> lsFeedback = new ArrayList<>();
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);      
             ps.setInt(1, userId);
@@ -151,11 +151,11 @@ public class FeedbackDAO {
      * @param productId the id of the product
      * @return list of feedback with the user id and product id
      */
-    public List<Feedback> getFeedbacksByUserIdAndProductId(int userId, int productId) {
+    public ArrayList<Feedback> getFeedbacksByUserIdAndProductId(int userId, int productId) {
         String query = "SELECT * FROM Feedback WHERE UserID = ?"
                 + " AND ProductID = ?";
         try {
-            List<Feedback> lsFeedback = new ArrayList<>();
+            ArrayList<Feedback> lsFeedback = new ArrayList<>();
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);           
             ps.setInt(1, userId);
@@ -185,10 +185,10 @@ public class FeedbackDAO {
      * @param orderId the id of the order
      * @return a list of feedback with the order id
      */
-    public List<Feedback> getFeedbacksByOrderId(int orderId) {
+    public ArrayList<Feedback> getFeedbacksByOrderId(int orderId) {
         String query = "SELECT * FROM Feedback WHERE OrderID = ? ";
         try {
-            List<Feedback> lsFeedback = new ArrayList<>();
+            ArrayList<Feedback> lsFeedback = new ArrayList<>();
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);         
             ps.setInt(1, orderId);
@@ -219,8 +219,7 @@ public class FeedbackDAO {
      * @return true if add successful, else false
      */
     public void addFeedback(Feedback feedback) {
-        String query = "INSERT INTO Feedback VALUES (?, ?, ?, ?, ?);";
-        int check = 0;
+        String query = "INSERT INTO Feedback VALUES (?, ?, ?, ?, ?);";     
         try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
@@ -231,7 +230,7 @@ public class FeedbackDAO {
             ps.setInt(3, feedback.getOrderID());
             ps.setInt(4, feedback.getStar());
             ps.setString(5, feedback.getFeedbackDetail());
-            check = ps.executeUpdate();
+            ps.executeUpdate();
         } catch (Exception e) {
 
         }
@@ -244,7 +243,7 @@ public class FeedbackDAO {
      * @return total count of all feedback
      */
     public int countTotalFeedback() {
-        return getFeedbacks().size();
+        return getAllFeedbacks().size();
     }
 
 }
