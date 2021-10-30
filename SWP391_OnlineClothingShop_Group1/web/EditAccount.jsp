@@ -24,8 +24,7 @@
         <title>SHOPE</title>
     </head>
     <body>
-        <%@include file="model/header.jsp" %>
-        <div id="editEmployeeModal">
+           <div id="editEmployeeModal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form action="editAccount" method="POST">
