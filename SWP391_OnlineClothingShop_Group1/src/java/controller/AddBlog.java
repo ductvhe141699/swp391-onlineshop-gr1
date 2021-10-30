@@ -33,7 +33,7 @@ public class AddBlog extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        // sử dụng tiếng việt
+        // Vietnamese character
         request.setCharacterEncoding("UTF-8");
         // get data from jsp
         String title = request.getParameter("title");
@@ -43,7 +43,7 @@ public class AddBlog extends HttpServlet {
         try {
             BlogDAO dao = new BlogDAO();
             dao.add(author, title, content, imageLink);
-            request.getRequestDispatcher("ManageBlog").forward(request, response);
+            response.sendRedirect("ManageBlog");
         } catch (Exception e) {
             response.sendRedirect("error.jsp");
 

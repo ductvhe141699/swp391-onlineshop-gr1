@@ -33,6 +33,7 @@ public class DeleteBlog extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        //Vietnamese character
         request.setCharacterEncoding("UTF-8");
         try {
             int id = Integer.parseInt(request.getParameter("BlogID"));

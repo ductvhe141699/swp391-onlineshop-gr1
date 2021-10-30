@@ -6,25 +6,18 @@
 package controller;
 
 import DBContext.BlogDAO;
-import DBContext.CategoryDAO;
-import DBContext.UserDAO;
-import entity.Users;
 import entity.Blog;
-import entity.Category;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author thong
+ * @author ottelia
  */
-@WebServlet(name = "UpdateBlog", urlPatterns = {"/UpdateBlog"})
 public class UpdateBlog extends HttpServlet {
 
     /**
@@ -53,6 +46,7 @@ public class UpdateBlog extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+           //Vietnamese character
           request.setCharacterEncoding("UTF-8"); 
         try {  
             String id = request.getParameter("BlogID");
@@ -81,6 +75,7 @@ public class UpdateBlog extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+           //Vietnamese character
           request.setCharacterEncoding("UTF-8"); 
         try {
             // get data from page Update
