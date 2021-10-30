@@ -152,6 +152,14 @@
         <servlet-name>GetFeedback</servlet-name>
         <servlet-class>controller.GetFeedback</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManageFeedbackByCustomer</servlet-name>
+        <servlet-class>controller.ManageFeedbackByCustomer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageFeedbackBySeller</servlet-name>
+        <servlet-class>controller.ManageFeedbackBySeller</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -282,6 +290,14 @@
     <servlet-mapping>
         <servlet-name>GetFeedback</servlet-name>
         <url-pattern>/GetFeedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageFeedbackByCustomer</servlet-name>
+        <url-pattern>/ManageFeedbackByCustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageFeedbackBySeller</servlet-name>
+        <url-pattern>/ManageFeedbackBySeller</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
