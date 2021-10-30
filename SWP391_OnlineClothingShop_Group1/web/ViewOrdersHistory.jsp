@@ -24,7 +24,6 @@
         <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
     </head>
     <body>
-        <%@include file="model/header.jsp" %>
         <div class="container mt-5">
             <div class="d-flex justify-content-center row">
                 <div class="col-md-10">

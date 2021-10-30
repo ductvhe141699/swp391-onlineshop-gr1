@@ -29,7 +29,6 @@
         <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
     </head>
     <body>
-        <%@include file="model/header.jsp" %>
         <div class="container mt-3">
             <div class="row">
                 <br><br>
