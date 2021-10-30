@@ -211,7 +211,32 @@ public class FeedbackDAO {
         }
         return null;
     }
+public ArrayList<Feedback> getFeedbacksBySellerId(int sellerId) {
+        String query = "SELECT * FROM (dbo.Feedback f JOIN dbo.Product p ON  p.ProductID=f.ProductID) JOIN dbo.Users u ON  u.UserID=p.SellerID WHERE f.UserID=?";
+        try {
+            ArrayList<Feedback> lsFeedback = new ArrayList<>();
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);         
+            ps.setInt(1, sellerId);
 
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Feedback f = new Feedback(
+                        rs.getInt("ID"),
+                        rs.getInt("UserID"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("OrderID"),
+                        rs.getInt("Star"),
+                        rs.getString("FeedbackDetail")
+                );
+                lsFeedback.add(f);
+            }
+            return lsFeedback;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     /**
      * Add a feedback to the database
      *
