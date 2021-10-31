@@ -44,13 +44,13 @@
                                     </tr>
                                 </thead>
                                 <tbody class="table-body">
-                                    <c:forEach var="o" items="orders">
+                                    <c:forEach var="o" items="${orders}">
                                         <tr class="cell-1">
-                                            <td>${o.getId()}</td>
-                                            <td><span class="badge badge-success">${o.name}</span></td>
-                                            <td>${o.getTotalPrice()} VNĐ</td>
-                                            <td>${o.getDate()}</td>
-                                            <td><a href="ViewOrderDetails?id=${o.getId()}" style="cursor: pointer ">View</a></td>
+                                            <td>${o.id}</td>
+                                            <td><span class="badge badge-success">${o.status}</span></td>
+                                            <td>${o.totalPrice}</td>
+                                            <td>${o.date}</td>
+                                            <td><a href="ViewOrderDetails?id=${o.id}" style="cursor: pointer ">View</a></td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>

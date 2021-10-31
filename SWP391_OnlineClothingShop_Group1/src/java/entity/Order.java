@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
  * @author BEAN
  */
 public class Order extends OrderDetail {
-    //Chỉnh sửa lại thuộc tính: LAMDTHE153097
+    
     private int id;
     private int userId;
     private int totalPrice;

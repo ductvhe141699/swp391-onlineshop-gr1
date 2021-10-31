@@ -17,7 +17,13 @@ import javax.mail.MessagingException;
  * @author BEAN
  */
 public class test {
-    
+    public static void main(String[] args) {
+        OrderDAO orderDAO = new OrderDAO();
+        List<Order> orders = orderDAO.getOrderByUserID(6);
+        for (Order order : orders) {
+            System.out.println(order.getOrderID()+"-"+order.getStatus());
+        }
+    }
 }
 //    public static void main(String[] args) throws MessagingException {
 //<<<<<<< HEAD
@@ -36,3 +42,4 @@ public class test {
 //    }
 //
 //}
+

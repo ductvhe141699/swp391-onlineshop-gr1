@@ -33,15 +33,7 @@ public class viewOrder extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
-            int id = Integer.parseInt(request.getParameter("id"));
-            OrderDAO orderDAO = new OrderDAO();
-            List<Order> orders = orderDAO.getOrderByUserID(id);
-            request.setAttribute("orders", orders);
-            request.getRequestDispatcher("ViewOrdersHistory.jsp").forward(request, response);
-        } catch (Exception ex) {
-            response.sendRedirect("error.jsp");
-        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -56,7 +48,16 @@ public class viewOrder extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            OrderDAO orderDAO = new OrderDAO();
+            List<Order> orders = orderDAO.getOrderByUserID(id);
+            request.setAttribute("orders", orders);
+            request.getRequestDispatcher("ViewOrdersHistory.jsp").forward(request, response);
+        } catch (Exception ex) {
+            response.sendRedirect("error.jsp");
+        }
     }
 
     /**
