@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import DBContext.UserDAO;
@@ -17,8 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author LAMDTHE153097
  */
+
 public class AccountManagerControl extends HttpServlet {
 
     /**
@@ -30,13 +26,13 @@ public class AccountManagerControl extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
            UserDAO userDAO = new UserDAO();
             List<Users> listAccount = userDAO.getAllUsers();
-
             //Set data to JSP
             request.setAttribute("list", listAccount);
             request.getRequestDispatcher("AccountManager.jsp").forward(request, response);

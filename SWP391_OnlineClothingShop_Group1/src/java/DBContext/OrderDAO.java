@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DBContext;
 
 import entity.Order;
@@ -18,14 +13,15 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Admin
+ * @author LAMDTHE153097
  */
-public class OrderDAO {
 
+public class OrderDAO {
+    
     Connection conn = null;
     PreparedStatement ps = null; //...
     ResultSet rs = null; //Get the results returned
-
+    
     public List<Order> getOrderByUserID(int userId) {
         List<Order> list = new ArrayList<>();
         String query = "SELECT o.ID, os.Name, o.TotalPrice, o.Date\n"
@@ -52,17 +48,14 @@ public class OrderDAO {
                 + "join Order_Detail d on d.Order_ID = o.ID\n"
                 + "where ProductID =  ? ";
         ArrayList<Order> order = new ArrayList<>();
-
         try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             for (Product p : listP) {
-
                 ps = conn.prepareStatement(query);
                 ps.setInt(1, p.getProductID());
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    // o.ID , o.UserID , o.TotalPrice , o.Note , o.Status , o.Date , d.Order_ID , d.ProductID , d.ProductName , d.ProductPrice ,d.ProductPrice , d.Quantity 
                     order.add(new Order(
                             rs.getInt(1),
                             rs.getInt(2),
@@ -80,7 +73,6 @@ public class OrderDAO {
             }
         } catch (Exception e) {
         }
-
         return order;
     }
 
@@ -88,11 +80,9 @@ public class OrderDAO {
         String query = "select o.ID , o.UserID , o.TotalPrice , o.Note , o.Status , o.Date , d.Order_ID , d.ProductID , d.ProductName  ,d.ProductPrice , d.Quantity from Orders o\n"
                 + "join Order_Detail d on d.Order_ID = o.ID\n";
         ArrayList<Order> list = new ArrayList<>();
-
         try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
-
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Order(
@@ -158,7 +148,6 @@ public class OrderDAO {
         ArrayList<Order> order = new ArrayList<>();
         int total = 0;
         List<Integer> temp = new ArrayList<>();
-
         try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
@@ -178,7 +167,6 @@ public class OrderDAO {
                         total++;
                     }
                     temp.add(rs.getInt(1));
-
                 }
             }
         } catch (Exception e) {
@@ -195,7 +183,6 @@ public class OrderDAO {
         ArrayList<Order> order = new ArrayList<>();
         int total = 0;
         List<Integer> temp = new ArrayList<>();
-
         try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
@@ -215,7 +202,6 @@ public class OrderDAO {
                         total++;
                     }
                     temp.add(rs.getInt(1));
-
                 }
             }
         } catch (Exception e) {
@@ -241,7 +227,6 @@ public class OrderDAO {
                 query = "update Orders set Status = '2'\n"
                         + "where ID = ? ";
                 break;
-
             case "reject":
                 query = "update Orders set Status = '4'\n"
                         + "where ID =  ? ";

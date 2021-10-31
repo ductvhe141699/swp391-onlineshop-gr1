@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author LAMDTHE153097
  */
 public class editAccount extends HttpServlet {
 
@@ -63,10 +63,7 @@ public class editAccount extends HttpServlet {
             //Get ID from jsp
             int id = Integer.parseInt(request.getParameter("userID"));
             UserDAO dao = new UserDAO();
-            //UserAddressDAO UserAddressDAO = new UserAddressDAO();
-            
             Users x = dao.getUsersByID(id);
-            
             //Push
             request.setAttribute("id", x.getUserID());
             request.setAttribute("user", x.getUserName());
@@ -90,8 +87,6 @@ public class editAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-//         try {
             //Step 1: get data from jsp
             int id = Integer.parseInt(request.getParameter("id"));
             String user = request.getParameter("user"); //Get by name
@@ -102,9 +97,6 @@ public class editAccount extends HttpServlet {
             UserDAO dao = new UserDAO();
             dao.editAccount(id, user, password, email, roleID);
             response.sendRedirect("AccountManagerControl");
-//        } catch (Exception e) {
-//            response.sendRedirect("error.jsp");
-//        }
     }
 
     /**

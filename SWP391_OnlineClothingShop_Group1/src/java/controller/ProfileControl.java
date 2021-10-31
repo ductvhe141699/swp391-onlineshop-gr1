@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author LAMDTHE153097
  */
 @WebServlet(name = "ProfileControl", urlPatterns = {"/ProfileControl"})
 public class ProfileControl extends HttpServlet {

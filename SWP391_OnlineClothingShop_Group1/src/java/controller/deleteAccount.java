@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author LAMDTHE153097
  */
 public class deleteAccount extends HttpServlet {
 
@@ -36,7 +36,7 @@ public class deleteAccount extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet deleteAccount</title>");            
+            out.println("<title>Servlet deleteAccount</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet deleteAccount at " + request.getContextPath() + "</h1>");
@@ -57,15 +57,14 @@ public class deleteAccount extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        try{
-        String id=request.getParameter("UserID");
-        UserDAO dao = new UserDAO();
-        dao.deleteAccount(id);
-        response.sendRedirect("AccountManagerControl");}
-   catch (Exception e) {
+        try {
+            String id = request.getParameter("UserID");
+            UserDAO dao = new UserDAO();
+            dao.deleteAccount(id);
+            response.sendRedirect("AccountManagerControl");
+        } catch (Exception e) {
             response.sendRedirect("error.jsp");
-        }    
+        }
     }
 
     /**

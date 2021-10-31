@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author LAMDTHE153097
  */
 public class searchAccount extends HttpServlet {
 
@@ -38,7 +38,7 @@ public class searchAccount extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet searchAccount</title>");            
+            out.println("<title>Servlet searchAccount</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet searchAccount at " + request.getContextPath() + "</h1>");
@@ -59,7 +59,6 @@ public class searchAccount extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
         request.getRequestDispatcher("SearchAccount.jsp").forward(request, response);
     }
 
@@ -74,7 +73,7 @@ public class searchAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String txt = request.getParameter("txt");
+        String txt = request.getParameter("txt");
         UserDAO dao = new UserDAO();
         List<Users> list = dao.getStudentByName(txt);
         request.setAttribute("listS", list);

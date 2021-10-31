@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author LAMDTHE153097
  */
 public class viewOrder extends HttpServlet {
 
@@ -36,11 +36,8 @@ public class viewOrder extends HttpServlet {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
             OrderDAO orderDAO = new OrderDAO();
-
             List<Order> orders = orderDAO.getOrderByUserID(id);
-
             request.setAttribute("orders", orders);
-            
             request.getRequestDispatcher("ViewOrdersHistory.jsp").forward(request, response);
         } catch (Exception ex) {
             response.sendRedirect("error.jsp");
