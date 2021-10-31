@@ -23,6 +23,8 @@ import javax.servlet.http.HttpSession;
 /**
  *
  * @author BEAN
+ * 
+ * comment dau class ten 
  */
 public class ConfirmOrderController extends HttpServlet {
 
