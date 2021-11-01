@@ -48,12 +48,7 @@
    font-family: 'Poppins', sans-serif;
     font-size: 17px;
 }
-.card-title show_txt a
-{
-        font-family: 'Noto Serif Display', serif;
-    font-weight: 600;
-    font-size: 17px; 
-}
+
 .spotlight h2{
     font-family: 'Noto Serif Display', serif;
     font-weight: 600;
@@ -66,21 +61,31 @@
 .img-big-wrap img{
     width: 100% ;
     height: auto ;
+    margin: 45px;
 }
-a{
+.card-title a{
     text-decoration: none;
     color: black;
     font-family: 'Noto Serif Display', serif;
     font-weight: 600;
  
 }
-a:hover {
+.card-title a:hover {
     text-decoration: underline;
 }
 
 .row .img-big-wrap{
     margin-top: 20px;
     margin-bottom: 20px;
+}
+.row .card-title{
+    margin-top: 45px;
+}
+body{
+    background-image: url(./resources/img/Blog/blue-abstract-gradient-wave-wallpaper.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
         </style>
     </head>
@@ -89,6 +94,10 @@ a:hover {
         <%@include file="model/header.jsp" %>
         <div class="container">
             <div class="col-md-12">
+                
+                
+                
+                <img style="width: 100%; margin: 45px;" src="./resources/img/Blog/5233122.jpg" >
                 <div class="spotlight">
                 <h2 class="card-title show_txt">Những item bạn nhất định không nên bỏ lỡ:</h2>
                 <p>Với sự thay đổi liên tục, xu hướng thời trang luôn được cập nhật mới mẻ hơn, độc đáo, hiện đại và thu hút hơn. Những phong cách mới, xu thế thời trang hot luôn được mọi người quan tâm, đặc biệt là giới trẻ. Không thể phủ nhận ngành công nghiệp thời trang đang phát triển rất mạnh mẽ. Không chỉ đơn giản là cách ăn mặc, cách mix&match đồ hay diện đồ theo phong cách yêu thích, thời trang còn là sự đổi mới, phá cách và tràn đầy sức sáng tạo ấn tượng. Vậy bạn đã có ý tưởng gì cho mình chưa? Cùng Shope khám phá ngay nhé.</p>

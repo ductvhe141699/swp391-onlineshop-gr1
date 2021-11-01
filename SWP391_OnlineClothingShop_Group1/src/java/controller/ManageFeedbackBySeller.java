@@ -5,14 +5,20 @@
  */
 package controller;
 
-
 import DBContext.FeedbackDAO;
+import DBContext.ProductDAO;
+import DBContext.UserDAO;
 import entity.Feedback;
+import entity.Product;
 import entity.Users;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +26,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Ottelia
+ * @author ottelia
  */
 public class ManageFeedbackBySeller extends HttpServlet {
 
@@ -35,21 +41,97 @@ public class ManageFeedbackBySeller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-          response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        response.setContentType("text/html;charset=UTF-8");
+        try {
+            // get current user
             HttpSession session = request.getSession();
-            Users user = (Users) session.getAttribute("user");
-            FeedbackDAO dao = new FeedbackDAO();
-            //get list of Feedback to manage
-            ArrayList<Feedback> feedbackList = dao.getFeedbacksBySellerId(user.getUserID());
-            request.setAttribute("feedbackList", feedbackList);
+            Users a = (Users) session.getAttribute("user");
+
+            // get all dao
+            ProductDAO productDao = new ProductDAO();
+            FeedbackDAO feedbackDao = new FeedbackDAO();
+            UserDAO userDao = new UserDAO();
+           
+
+            // get all feedback of product of this seller
+            List<Product> lsProduct = productDao.getProductBySellerName(a.getUserName());
+            List<Integer> lsId = lsProduct.stream().map(Product::getProductID).collect(Collectors.toList());
+            List<Feedback> lsFeedback = new ArrayList<>();
+            for (int id : lsId) {
+                lsFeedback.addAll(feedbackDao.getFeedbacksByProductId(id));
+            }
+
+            for (Feedback feedback : lsFeedback) {
+                // get all account that made feedback
+                Users accountMadeFeedback = userDao.getUsersByID(
+                        feedback.getUserID()
+                );
+                feedback.setUser(accountMadeFeedback);
+
+                // get all product of feedback
+                Product productWithFeedback
+                        = productDao.getProductByID(
+                                String.valueOf(feedback.getProductID())
+                        );
+                feedback.setProduct(productWithFeedback);
+
+            }
+
+            // allow sort by name, product, star
+            if (request.getParameter("sort-flag") != null) {
+                int sortOption = Integer.parseInt(request.getParameter("sort-order"));
+                int sortOrder = Integer.parseInt(request.getParameter("sort-by-order"));
+                switch (sortOption) {
+                    // sort by star
+                    case 1: {
+                        if (sortOrder == 1) {
+                            // sort ascending
+                            lsFeedback.sort(Comparator.comparing((Feedback::getStar)));
+                        } else {
+                            // sort descending
+                            lsFeedback.sort(Comparator.comparing((Feedback::getStar)).reversed());
+                        }
+                        break;
+                    }
+                    // sort by user
+                    case 2: {
+                        if (sortOrder == 1) {
+                            // sort ascending
+                            lsFeedback.sort(Comparator.comparing((x -> x.getUser().getUserName())));
+                        } else {
+                            // sort descending
+                            lsFeedback.sort(Comparator.comparing((x -> x.getUser().getUserName())));
+                            Collections.reverse(lsFeedback);
+                        }
+                        break;
+                    }
+                    // sort by product
+                    case 3: {
+                        if (sortOrder == 1) {
+                            // sort ascending
+                            lsFeedback.sort(Comparator.comparing((x -> x.getProduct().getProductName())));
+                        } else {
+                            // sort descending
+                            lsFeedback.sort(Comparator.comparing((x -> x.getProduct().getProductName())));
+                            Collections.reverse(lsFeedback);
+                        }
+                        break;
+                    }
+
+                }
+
+            }
+            System.out.println(a.toString());
+            for (Feedback feedback : lsFeedback) {
+                System.out.println(feedback.toString());
+            }
+            request.setAttribute("lsFeedback", lsFeedback);
             request.getRequestDispatcher("ManageFeedbackBySeller.jsp").forward(request, response);
         } catch (Exception e) {
+            e.printStackTrace();
             response.sendRedirect("error.jsp");
         }
-        }
-    
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

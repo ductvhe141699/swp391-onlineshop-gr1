@@ -248,7 +248,7 @@ public ArrayList<Feedback> getFeedbacksBySellerId(int sellerId) {
         try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
+           
             //Set data to the "?"
             ps.setInt(1, feedback.getUserID());
             ps.setInt(2, feedback.getProductID());

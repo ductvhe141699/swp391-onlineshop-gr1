@@ -62,17 +62,19 @@ public class GetFeedback extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+                response.setContentType("text/html;charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
         try {
             ProductDAO productDao = new ProductDAO();
+           
+          String orderId = request.getParameter("orderId");
+       String productId = request.getParameter("productId");
+            Product product=productDao.getProductByID(productId);
+           
 
-            String orderId = request.getParameter("orderId");
-            String productId = request.getParameter("productId");
-
-            Product p = productDao.getProductByID(productId);
-
-            request.setAttribute("product", p);
+            request.setAttribute("product", product);
             request.setAttribute("orderId", orderId);
-            request.getRequestDispatcher("FeedbackForm.jsp").forward(request, response);
+            request.getRequestDispatcher("GetFeedback.jsp").forward(request, response);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -94,8 +96,8 @@ public class GetFeedback extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         try {
-            HttpSession session = request.getSession();
-            Users user = (Users) session.getAttribute("user");
+//            HttpSession session = request.getSession();
+//            Users user = (Users) session.getAttribute("user");
  
             // get FeedbackDAO
             FeedbackDAO feedbackDAO = new FeedbackDAO();
@@ -104,26 +106,26 @@ public class GetFeedback extends HttpServlet {
             int productId = Integer.parseInt(request.getParameter("productId"));
 
             // get input rating
-            String star = request.getParameter("star-value");
+            int star = Integer.parseInt(request.getParameter("star-value"));
             String feedback = request.getParameter("feedback-text");
 
             //get order id
-            String orderId = request.getParameter("orderId");
+            int orderId =Integer.parseInt(request.getParameter("orderId"));
 
             // create feedback
             Feedback userFeedback = new Feedback();
             userFeedback.setProductID(productId);
-            userFeedback.setUserID(user.getUserID());
-            userFeedback.setStar(Integer.parseInt(star));
-            userFeedback.setOrderID(Integer.parseInt(orderId));
+            userFeedback.setUserID(1);
+            userFeedback.setStar(star);
+            userFeedback.setOrderID(orderId);
             userFeedback.setFeedbackDetail(feedback);
-            System.out.println(userFeedback);
+            System.out.println(userFeedback.toString());
 
             // add feedback to database
             feedbackDAO.addFeedback(userFeedback);
 
             // redirect to productlist
-            request.getRequestDispatcher("home").forward(request, response);
+            response.sendRedirect("home");
         } catch (Exception e) {
             response.sendRedirect("error.jsp");
         }
