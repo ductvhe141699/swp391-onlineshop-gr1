@@ -98,7 +98,7 @@
         <div class="col-12">
 
             <c:if test="${listS!=null}">
-                <table class="table user-list">
+                <table class="table user-list table-striped table-hover table-bordered">
                     <thead>
                         <tr>
                             <th class="text-center"><span>ID</span></th>

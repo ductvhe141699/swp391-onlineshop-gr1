@@ -90,7 +90,7 @@
                     <div class="main-box no-header clearfix">
                         <div class="main-box-body clearfix">
                             <div class="table-responsive">
-                                <table class="table user-list">
+                                <table class="table user-list table-striped table-hover table-bordered">
                                     <thead>
                                         <tr>
                                             <th class="text-center"><span>ID</span></th>

@@ -83,7 +83,7 @@
                     <div class="rounded">
                         <div class="table-responsive table-borderless">
 
-                            <table class="table">
+                            <table class="table table-striped table-hover table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Order #</th>
@@ -96,9 +96,11 @@
                                 <tbody class="table-body">
                                     <c:forEach var="o" items="${orders}">
                                         <tr class="cell-1">
-                                            <td>${o.id}</td>
-                                            <td><span class="badge badge-success">${o.status}</span></td>
-                                            <td>${o.totalPrice}</td>
+                                            <td>#00${o.id}</td>
+                                            <td>
+                                                <span class="badge badge-pill badge-info">${o.status}</span>
+                                            </td>
+                                            <td>${o.totalPrice} VNĐ</td>
                                             <td>${o.date}</td>
                                             <td><a href="ViewOrderDetails?id=${o.id}" style="cursor: pointer ">View</a></td>
                                         </tr>

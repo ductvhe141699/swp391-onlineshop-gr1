@@ -87,7 +87,7 @@
                             <h5 class="card-title m-b-0">Order ID: #OR898 </h5>
                         </div>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table table-striped table-hover">
                                 <thead class="thead-light">
                                     <tr>
                                         <th> <label class="customcheckbox m-b-20"> <input type="checkbox" id="mainCheckbox" disabled><span class="checkmark"></span> </label> </th>
@@ -148,7 +148,7 @@
                 </div>
             </div>
         </div>
-
+        <br><br>
         <footer class="text-white text-lg-start" style="background-color: #23242a;" id="part-1">
             <!-- Section: Social media -->
             <section
