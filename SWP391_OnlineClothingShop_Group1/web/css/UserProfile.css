@@ -4,7 +4,7 @@
 */
 
 body {
-    background: pink;
+    background: radial-gradient(#fff,#ffd6d6);;
 }
 .form-control:focus {
     box-shadow: none;

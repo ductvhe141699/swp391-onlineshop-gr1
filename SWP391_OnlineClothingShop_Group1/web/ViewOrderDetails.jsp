@@ -100,24 +100,25 @@
             </div>
         </div>
         <%@include file="model/footer.jsp" %>
-        <!-- BOOTSTRAP5-->
-<!--        <script
+
+        <script>
+            function bigImg(x) {
+                x.style.height = "500px";
+                x.style.width = "500px";
+            }
+
+            function normalImg(x) {
+                x.style.height = "100px";
+                x.style.width = "100px";
+            }
+        </script>
+        BOOTSTRAP5
+        <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"
         ></script>
-         SCRIPT 
-        <script src="${pageContext.request.contextPath}/js/script.js"></script>-->
-        <script>
-                                            function bigImg(x) {
-                                                x.style.height = "500px";
-                                                x.style.width = "500px";
-                                            }
-
-                                            function normalImg(x) {
-                                                x.style.height = "100px";
-                                                x.style.width = "100px";
-                                            }
-        </script>
+        SCRIPT 
+        <script src="${pageContext.request.contextPath}/js/script.js"></script>
     </body>
 </html>

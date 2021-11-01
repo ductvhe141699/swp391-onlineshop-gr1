@@ -27,6 +27,8 @@
         <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
     </head>
     <body>
+        <%@include file="model/header2.jsp" %>
+
         <div class="container mt-5">
             <div class="d-flex justify-content-center row">
                 <div class="col-md-10">
@@ -54,36 +56,36 @@
                                         </tr>
                                     </c:forEach>
                                 </tbody>
-                           <!--<tbody class="table-body">
-                                    <tr class="cell-1">
-                                        <td>#SO-13487</td>
-                                        <td><span class="badge badge-success">Fullfilled</span></td>
-                                        <td>$2674.00</td>
-                                        <td>Today</td>
-                                        <td><a href="ViewOrderDetails.jsp" style="cursor: pointer ">View</a></td>
-                                    </tr>
-                                    <tr class="cell-1">
-                                        <td>#SO-13453</td>
-                                        <td><span class="badge badge-info">Confirmed</span></td>
-                                        <td>$3454.00</td>
-                                        <td>Yesterday</td>
-                                        <td><a href="ViewOrderDetails.jsp" style="cursor: pointer ">View</a></td>
-                                    </tr>
-                                    <tr class="cell-1">
-                                        <td>#SO-13498</td>
-                                        <td><span class="badge badge-danger">Partially shipped</span></td>
-                                        <td>$6274.00</td>
-                                        <td>May 12,2020</td>
-                                        <td><a href="ViewOrderDetails.jsp" style="cursor: pointer ">View</a></td>
-                                    </tr>
-                                    <tr class="cell-1">
-                                        <td>#SO-16499</td>
-                                        <td><span class="badge badge-success">Fullfilled</span></td>
-                                        <td>$6375.00</td>
-                                        <td>May 11,2020</td>
-                                        <td><a href="ViewOrderDetails.jsp" style="cursor: pointer ">View</a></td>
-                                    </tr>
-                                </tbody>-->
+                                <!--<tbody class="table-body">
+                                         <tr class="cell-1">
+                                             <td>#SO-13487</td>
+                                             <td><span class="badge badge-success">Fullfilled</span></td>
+                                             <td>$2674.00</td>
+                                             <td>Today</td>
+                                             <td><a href="ViewOrderDetails.jsp" style="cursor: pointer ">View</a></td>
+                                         </tr>
+                                         <tr class="cell-1">
+                                             <td>#SO-13453</td>
+                                             <td><span class="badge badge-info">Confirmed</span></td>
+                                             <td>$3454.00</td>
+                                             <td>Yesterday</td>
+                                             <td><a href="ViewOrderDetails.jsp" style="cursor: pointer ">View</a></td>
+                                         </tr>
+                                         <tr class="cell-1">
+                                             <td>#SO-13498</td>
+                                             <td><span class="badge badge-danger">Partially shipped</span></td>
+                                             <td>$6274.00</td>
+                                             <td>May 12,2020</td>
+                                             <td><a href="ViewOrderDetails.jsp" style="cursor: pointer ">View</a></td>
+                                         </tr>
+                                         <tr class="cell-1">
+                                             <td>#SO-16499</td>
+                                             <td><span class="badge badge-success">Fullfilled</span></td>
+                                             <td>$6375.00</td>
+                                             <td>May 11,2020</td>
+                                             <td><a href="ViewOrderDetails.jsp" style="cursor: pointer ">View</a></td>
+                                         </tr>
+                                     </tbody>-->
                             </table>
 
                         </div>
@@ -94,12 +96,12 @@
 
         <%@include file="model/footer.jsp" %>
         <!-- BOOTSTRAP5-->
-        <script
+<!--        <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"
-        ></script>
+        ></script>-->
         <!-- SCRIPT -->
-        <script src="${pageContext.request.contextPath}/js/script.js"></script>
+        <!--<script src="${pageContext.request.contextPath}/js/script.js"></script>-->
     </body>
 </html>
