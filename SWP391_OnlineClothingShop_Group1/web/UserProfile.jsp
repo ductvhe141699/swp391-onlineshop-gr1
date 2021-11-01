@@ -16,6 +16,12 @@
         <title>SHOPE</title>
         <!--Boostrap-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+            />
         <!--Font-->
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
         <!--Fontawesome-->
@@ -143,96 +149,134 @@
             </div>
         </div>
 
-        <%-- FOOTER --%>
-        <footer class="text-white text-center text-lg-start" style="background-color: #23242a;" id="footer">
-            <!-- Grid container -->
-            <div class="container p-4">
-                <!--Grid row-->
-                <div class="row mt-4">
-                    <!--Grid column-->
-                    <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-                        <h5 class="text-uppercase mb-4"><i class="fas fa-tshirt"></i>&nbsp;About shop</h5>
-
-                        <p>
-                            Our purpose at Shope is to empower people to lead bold and full lives. 
-                        </p>
-
-                        <p>
-                            We believe that if you look good, you feel good. And when you feel good you can do good for others around you. Shope brings you a wide range of trendy shoes, beautiful scarves, and statement-making jewelry, all at affordable prices to make them accessible to you. 
-                        </p>
-
-                        <div class="my-4">
-                            <!-- Facebook -->
-                            <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-facebook-f"></i></a>
-                            <!-- Dribbble -->
-                            <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-instagram"></i></a>
-                            <!-- Twitter -->
-                            <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-twitter"></i></a>
-                            <!-- Google + -->
-                            <a type="button" class="btn btn-floating btn-warning btn-lg"><i class="fab fa-google"></i></a>
-                            <!-- Linkedin -->
-                        </div>
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase mb-4 pb-1"><i class="fas fa-search"></i>&nbsp;Search product</h5>
-                        <form method="get" action="${pageContext.request.contextPath}/product">
-                            <div class="form-floating mb-4">
-                                <input type="hidden" name="page" value="1"/>
-                                <input type="search" name="query" id="searchbarFooter" class="form-control" placeholder="Search Something">
-                                <input type="hidden" name="subcategory" value="0"/>
-                                <input type="hidden" name="brand" value="0"/>
-                                <input type="hidden" name="price" value="0"/>
-                                <input type="hidden" name="sortType" value="0"/>
-                                <input type="hidden" name="sortMode" value="0"/>
-                                <label for="searchbarFooter" style="color:black;">Search</label>
-                                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 48.8px;"></div><div class="form-notch-trailing"></div></div></div>
-                        </form>
-                        <ul class="fa-ul" style="margin-left: 1.65em;">
-                            <li class="mb-3">
-                                <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">Km29 Đại lộ Thăng Long, huyện Thạch Thất, Hà Nội</span>
-                            </li>
-                            <li class="mb-3">
-                                <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">shope@gmail.com</span>
-                            </li>
-                            <li class="mb-3">
-                                <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+84 123456789</span>
-                            </li>
-                            <li class="mb-3">
-                                <span class="fa-li"><i class="fas fa-print"></i></span><span class="ms-2">+84 123456789</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase mb-4"><i class="far fa-clock"></i>&nbsp;Opening hours</h5>
-
-                        <table class="table text-center text-white">
-                            <tbody class="font-weight-normal">
-                                <tr>
-                                    <td>Mon - Thu:</td>
-                                    <td>8am - 9pm</td>
-                                </tr>
-                                <tr>
-                                    <td>Fri - Sat:</td>
-                                    <td>8am - 12pm</td>
-                                </tr>
-                                <tr>
-                                    <td>Sunday:</td>
-                                    <td>9am - 10pm</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!--Grid column-->
+        <footer class="text-white text-lg-start" style="background-color: #23242a;" id="part-1">
+            <!-- Section: Social media -->
+            <section
+                class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+                >
+                <!-- Left -->
+                <div class="me-5 d-none d-lg-block">
+                    <span>Get connected with us on social networks:</span>
                 </div>
-                <!--Grid row-->
-            </div>
-            <!-- Grid container -->
+                <!-- Left -->
+
+                <!-- Right -->
+                <div>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <!-- Right -->
+            </section>
+            <!-- Section: Social media -->
+
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <!-- Content -->
+                            <h5 class="text-uppercase mb-4"><i class="fas fa-tshirt"></i>&nbsp;About shop</h5>
+                            <p>
+                                Our purpose at Shope is to empower people to lead bold and full lives. 
+                            </p>
+
+                            <p>
+                                We believe that if you look good, you feel good. And when you feel good you can do good for others around you. Shope brings you a wide range of trendy shoes, beautiful scarves, and statement-making jewelry, all at affordable prices to make them accessible to you. 
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Products
+                            </h6>
+                            <p>
+                                <a href="#!" class="text-reset">Shoe</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Sock</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Pant</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Shirt</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Hat</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Jacket</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Accessories</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Contact
+                            </h6>
+                            <p><i class="fas fa-home me-3"></i>Km29 Đại lộ Thăng Long, huyện Thạch Thất, Hà Nội</p>
+                            <p>
+                                <i class="fas fa-envelope me-3"></i>
+                                shope@gmail.com
+                            </p>
+                            <p><i class="fas fa-phone me-3"></i>+84 123456789</p>
+                            <p><i class="fas fa-print me-3"></i>+84 123456789</p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h5 class="text-uppercase mb-4"><i class="far fa-clock"></i>&nbsp;Opening hours</h5>
+                            <table class="table text-white">
+                                <tbody class="font-weight-normal">
+                                    <tr>
+                                        <td>Monday - Thurday:</td>
+                                        <td>8am - 9pm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Friday - Satủd:</td>
+                                        <td>8am - 12pm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sunday:</td>
+                                        <td>9am - 10pm</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+            </section>
+            <!-- Section: Links  -->
 
             <!-- Copyright -->
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
@@ -241,13 +285,6 @@
             </div>
             <!-- Copyright -->
         </footer>
-        <!--BOOTSTRAP5-->
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"
-        ></script>
-        <!--SCRIPT--> 
-        <script src="${pageContext.request.contextPath}/js/script.js"></script>
+
     </body>
 </html>

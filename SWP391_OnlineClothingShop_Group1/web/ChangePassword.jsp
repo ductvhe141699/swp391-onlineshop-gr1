@@ -232,7 +232,7 @@
                                         <td>8am - 9pm</td>
                                     </tr>
                                     <tr>
-                                        <td>Friday - Saturday:</td>
+                                        <td>Friday - Satủd:</td>
                                         <td>8am - 12pm</td>
                                     </tr>
                                     <tr>
@@ -256,14 +256,5 @@
             </div>
             <!-- Copyright -->
         </footer>
-        <!-- Footer -->
-        <!-- BOOTSTRAP5-->
-        <!--        <script
-                    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-                    crossorigin="anonymous"
-                ></script>-->
-        <!-- SCRIPT -->
-<!--        <script src="${pageContext.request.contextPath}/js/script.js"></script>-->
     </body>
 </html>
