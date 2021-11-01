@@ -5,9 +5,11 @@
  */
 package entity;
 
+import java.util.List;
+
 /**
  *
- * @author BEAN
+ * @author Duy Manh
  */
 public class Feedback {
     int id ; 
@@ -16,17 +18,19 @@ public class Feedback {
     int orderID ;
     int star ;
     String feedbackDetail  ;
+    List<Reply> replies;
 
     public Feedback() {
     }
 
-    public Feedback(int id, int userID, int productID, int orderID, int star, String feedbackDetail) {
+    public Feedback(int id, int userID, int productID, int orderID, int star, String feedbackDetail, List<Reply> replies) {
         this.id = id;
         this.userID = userID;
         this.productID = productID;
         this.orderID = orderID;
         this.star = star;
         this.feedbackDetail = feedbackDetail;
+        this.replies = replies;
     }
 
     public int getId() {
@@ -76,5 +80,16 @@ public class Feedback {
     public void setFeedbackDetail(String feedbackDetail) {
         this.feedbackDetail = feedbackDetail;
     }
+
+    public List<Reply> getReplies() {
+        return replies;
+    }
+
+    public void setReplies(List<Reply> replies) {
+        this.replies = replies;
+    }
+
+    
+    
      
 }
