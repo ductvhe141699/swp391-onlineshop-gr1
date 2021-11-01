@@ -3,15 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package controller;
 
+import common.DateHelper;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.Customer;
 import models.CustomerDAO;
 
 /**
@@ -35,18 +38,49 @@ public class CustomerServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-           String action = request.getParameter("action");
-           CustomerDAO cusDao = new CustomerDAO();
-           if (action == null || action.equals("")) {
-               request.getRequestDispatcher("view-customers.jsp").forward(request, response);
-               return;
-           }
-           switch(action) {
-               case "List":
-                   request.setAttribute("LIST_CUSTOMER", cusDao.getAll());
-                   request.getRequestDispatcher("view-customers.jsp").forward(request, response);
-                   break;
-           }
+            String id = null;
+            Customer cus = null;
+            String action = request.getParameter("action");
+            CustomerDAO cusDao = new CustomerDAO();
+            if (action == null || action.equals("")) {
+                request.getRequestDispatcher("view-customers.jsp").forward(request, response);
+                return;
+            }
+            switch (action) {
+                case "List":
+                    request.setAttribute("LIST_CUSTOMER", cusDao.getAll());
+                    request.getRequestDispatcher("view-customers.jsp").forward(request, response);
+                    break;
+                case "AddOrEdit":
+                    id = request.getParameter("id");
+                    if (id != null) {
+                        cus = (Customer) cusDao.findByID(Integer.parseInt(id));
+                        if (cus == null) {
+                            cus = new Customer(0, "", DateHelper.now(), true, "", "", "", "", DateHelper.now());
+                        }
+                    }
+                    request.setAttribute("CUSTOMER", cus);
+                    request.setAttribute("ACTION", "SaveOrUpdate");
+                    request.getRequestDispatcher("add-customer.jsp").forward(request, response);
+                    break;
+                case "SaveOrUpdate":
+                    id = request.getParameter("id");
+                    String name = request.getParameter("name");
+                    Date birthday = DateHelper.todate(request.getParameter("birthday"));
+                    int gender = Integer.parseInt(request.getParameter("gender"));
+                    boolean _gender = false;
+                    if (gender == 1){
+                        _gender = true;
+                    }
+                    String email = request.getParameter("email");
+                    String phone = request.getParameter("phone");
+                    String pass = request.getParameter("password");
+                    cus = new Customer(Integer.parseInt(id), name, birthday, _gender, email, phone, "1", pass, birthday);
+                    if (cusDao.findByID(Integer.parseInt(id)) == null) {
+                        cusDao.insert(cus);
+                    }
+                    
+            }
         }
     }
 
