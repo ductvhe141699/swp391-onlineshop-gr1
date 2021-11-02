@@ -5,6 +5,8 @@
  */
 package controller;
 
+import DBContext.PostDAO;
+import entity.Post;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
