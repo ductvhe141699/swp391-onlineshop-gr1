@@ -40,7 +40,6 @@ public class UserDAO {
     public Users getUsersByID(int id) {
         String query = "select * from Users where UserID = ? ";
         try {
-
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             ps.setInt(1, id);

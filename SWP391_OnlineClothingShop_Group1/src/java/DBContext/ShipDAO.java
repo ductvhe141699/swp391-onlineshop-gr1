@@ -6,6 +6,8 @@
 package DBContext;
 
 import entity.Ship;
+import entity.ShipInfo;
+import entity.Users;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,6 +25,8 @@ public class ShipDAO {
     private PreparedStatement ps;
     private ResultSet rs;
     private String query;
+    
+    
     public ArrayList<Ship> getShip() {
         ArrayList<Ship> list = new ArrayList<>();
         try {
@@ -59,5 +63,22 @@ public class ShipDAO {
             DBcontext.close(conn, ps, rs);
         }
         return ship;
+    }
+    
+    public ShipInfo getShipInfoByOdID(int orderID){
+        String query =" select * from ShipInfo where Order_ID = ? ";
+        try {
+
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, orderID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new ShipInfo(rs.getInt(2),rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7));
+            }
+        } catch (Exception e) {
+        }
+        DBcontext.close(conn, ps, rs);
+        return null;
     }
 }

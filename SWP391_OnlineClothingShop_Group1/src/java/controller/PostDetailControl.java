@@ -5,23 +5,18 @@
  */
 package controller;
 
-import DBContext.FeedbackDAO;
-import entity.Feedback;
-import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Ottelia
+ * @author phunghe150108
  */
-public class ManageFeedbackByCustomer extends HttpServlet {
+public class PostDetailControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,17 +30,7 @@ public class ManageFeedbackByCustomer extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            HttpSession session = request.getSession();
-            Users user = (Users) session.getAttribute("user");
-            FeedbackDAO dao = new FeedbackDAO();
-            //get list of Feedback to manage
-            ArrayList<Feedback> feedbackList = dao.getFeedbacksByUserId(user.getUserID());
-            request.setAttribute("lsfeedback", feedbackList);
-            request.getRequestDispatcher("ManageFeedbackBySeller.jsp").forward(request, response);
-        } catch (Exception e) {
-            response.sendRedirect("error.jsp");
-        }
+         response.sendRedirect("PostDetail.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

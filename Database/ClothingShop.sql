@@ -41,6 +41,12 @@ CREATE TABLE [Users] (
 	constraint RoleID_in_Role FOREIGN KEY(RoleID) REFERENCES [Role](RoleID)
 );
 GO
+INSERT INTO Users VALUES(N'Nguyễn Duy Mạnh','nguyenduymanh','ManhNDHE141170@fpt.edu.vn',1,1);
+INSERT INTO Users VALUES(N'bean','bean','DucTVHE141699@fpt.edu.vn',2,1);
+INSERT INTO Users VALUES(N'Nguyễn Gia Phú','nguyengiaphu','PhuNGHE150108@fpt.edu.vn',2,1);
+INSERT INTO Users VALUES(N'	Ngô Thị Ngọc Mai','ngothingocmai','MaiNTNHE151402@fpt.edu.vn',3,1);
+INSERT INTO Users VALUES(N'bnmc','bnmc','ChauBNMHE153019@fpt.edu.vn',3,1);
+INSERT INTO Users VALUES(N'	Đinh Tiến Lâm','dinhtienlam','LamDTHE153097@fpt.edu.vn',3,1);
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('jjellico0', 'Jellico', 'wjellico0@npr.org', 3, 1);
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('dimpson1', 'Impson', 'simpson1@wiley.com', 3, 1);
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('cdahlen2', 'Dahlen', 'adahlen2@unblog.fr', 3, 1);

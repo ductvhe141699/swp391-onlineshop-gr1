@@ -1,7 +1,7 @@
 <%-- 
     Document   : PostList
     Created on : Oct 28, 2021, 4:26:59 PM
-    Author     : Admin
+    Author     : phunghe150108
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,8 +11,6 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- icon -->
-        <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
         <!-- link Fonts -->
         <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
@@ -34,18 +32,12 @@
             referrerpolicy="no-referrer"
             />
         <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="./css/style.css" />
-        <link rel="stylesheet" type="text/css" href="./css/queries.css" />
-        <link rel="stylesheet" type="text/css" href="./css/homepage.css" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/queries.css" />
         <title>Post List</title>
         <!------ Include the above in your HEAD tag ---------->
         <link href="css/Postlist.css" rel="stylesheet" type="text/css"/>
-
-
-
-
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
@@ -54,74 +46,37 @@
     <body>
 
         <%@include file="model/header.jsp" %>
-        <div class="container1">
-            <div class="row1">
-                <div class="col-md-4">
-                    <div class="single-blog-item1">
-                        <div class="blog-thumnail">
-                            <a href=""><img src="https://cdn1.vectorstock.com/i/1000x1000/76/70/special-clothing-sale-social-media-post-design-vector-30327670.jpg" alt="blog-img"></a>
-                        </div>
-                        <div class="blog-content1">
-                            <h4><a href="#">Description</a></h4>
-                            <p>The Chanel sale begins Wednesday. Shoes and ready-to-wear are 40% off. .</p>
-                            <div >June 03, 2015</div>
-                           <div class="btngroup" >
-                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                    <button type="button" class="btn btn-warning">Read More</button>
-                                    <button type="button" class="btn btn-success">Hide</button>
+        <div class="container">
+            <div class="col-md-12 d-flex flex-wrap justify-content-between">
+
+
+                <c:forEach var="o" items="${postList}">
+                    <div class="col-md-4 p-3">
+                        <div class="single-blog-item1">
+                            <div class="blog-thumnail">
+                                <img src="./resources/${o.postImgURL}" alt="blog-img">
+                            </div>
+                            <div class="blog-content1">
+                                <p>post ID:${o.ID}<p>
+                                <h4>${o.description} </h4>
+                                <div value="${o.userID}" >Author: ${o.userID}</div>
+                                <div>date: ${o.date}</div>
+                                <div class="btngroup" >
+                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                        <button type="button" class="btn btn-danger">Delete</button>
+                                        <button type="button" class="btn btn-warning" ><a href="PostDetail">Detail</a></button>
+                                        <button type="button" class="btn btn-success">Hide</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="single-blog-item1">
-                        <div class="blog-thumnail">
-                            <a href=""><img src="https://lh3.googleusercontent.com/proxy/oP_73F_Zh5yiQiw4oqgZc55Y5y2veywOlObLWuVbB8DFSjIioOhxfuwVx9PHngzka3OJJCZTajqlMBy_sV03MfhGmdMYub8759vUGJosnhfx3xSiYnaqPMhjYuRq" alt="blog-img"></a>
-                        </div>
-                        <div class="blog-content1">
-                            <h4><a href="#">Description</a></h4>
-                            <p>When you know you need to work outside, come and buy clothes. </p>
-                            <div >June 03, 2015</div>
-                           <div class="btngroup" >
-                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                    <button type="button" class="btn btn-warning">Read More</button>
-                                    <button type="button" class="btn btn-success">Hide</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="single-blog-item1">
-                        <div class="blog-thumnail">
-                            <a href=""><img src="https://i.pinimg.com/originals/d2/87/b5/d287b5b4325d309acbeefff46fd09bff.png" alt="blog-img"></a>
-                        </div>
-                        <div class="blog-content1">
-                            <h4><a href="#">Description</a></h4>
-                            <p>Take up to 50% off all things home at the retailer’s Winter Clearance Sale..</p>
-                            <div >June 03, 2015</div>
-                            <div class="btngroup" >
-                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                    <button type="button" class="btn btn-warning">Read More</button>
-                                    <button type="button" class="btn btn-success">Hide</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-
+                </c:forEach>
             </div>
+
         </div>
+
 
 
     </body>

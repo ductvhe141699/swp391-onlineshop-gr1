@@ -45,18 +45,19 @@
         <div class="container d-flex justify-content-center align-items-center vh-100">
             <div class="bg-white text-center p-5 mt-3 center">
                 <div class="warn" > 
-                    <h3 style="color: red;">{warn}</h3>
+                    <h3 style="color: red;">${warn}</h3>
                 </div>
 
                 <div class="form">
                     <h3>Reset Password </h3>
                     <p>Please Enter Your Mail To Reset Password</p>
-                    <form class="pb-3" action="ResetPassword">
+                    <form class="pb-3" action="ResetPassword" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Your Mail*" name="mail" required>
                         </div>
+                          <button type="submit" class="btn mt-5">Reset Password</button> 
                     </form>
-                    <button type="button" class="btn">Reset Password</button>
+                  
                 </div>
             </div>
         </div>

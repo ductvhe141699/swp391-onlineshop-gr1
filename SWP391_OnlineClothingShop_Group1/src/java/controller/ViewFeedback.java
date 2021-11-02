@@ -5,16 +5,19 @@
  */
 package controller;
 
+import DBContext.FeedbackDAO;
+import DBContext.FeedbackRepliesDAO;
 import DBContext.OrderDAO;
 import DBContext.ProductDAO;
 import DBContext.UserDAO;
-import entity.Order;
-import entity.Product;
 import entity.Users;
+import entity.Feedback;
+import entity.FeedbackReplies;
+import entity.Reply;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,11 +25,9 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author BEAN
- *
- * comment dau class ten
+ * @author Ottelia
  */
-public class ConfirmOrderController extends HttpServlet {
+public class ViewFeedback extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,17 +41,40 @@ public class ConfirmOrderController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ConfirmOrderController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ConfirmOrderController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        try {
+
+            // get all dao
+            ProductDAO productDao = new ProductDAO();
+            FeedbackDAO feedbackDao = new FeedbackDAO();
+            UserDAO userDao = new UserDAO();
+           
+
+            // get feedback id
+            int feedbackId = Integer.parseInt(request.getParameter("id"));
+
+            // get the feedback and set data for the feedback
+            Feedback feedback = feedbackDao.getFeedbacksById(feedbackId);
+            feedback.setProduct(
+                    productDao.getProductByID(
+                            String.valueOf(feedback.getProductID())
+                    )
+            );
+            feedback.setUser(
+                    userDao.getUsersByID(feedback.getUserID())
+            );
+            
+            // send to jsp page
+            request.setAttribute("feedback", feedback);
+            FeedbackRepliesDAO replyDAO= new FeedbackRepliesDAO();
+            List<FeedbackReplies> replist= replyDAO.getFeedbacksRepliesByFeedbackId(feedbackId);
+            String rep=null;
+            if (!replist.isEmpty()){
+            rep= replyDAO.getFeedbacksRepliesByFeedbackId(feedbackId).get(0).getRepliesText();}
+            request.setAttribute("rep", rep);
+            request.getRequestDispatcher("ViewFeedback.jsp").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("error.jsp");
         }
     }
 
@@ -66,39 +90,7 @@ public class ConfirmOrderController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession ss = request.getSession();
-        UserDAO udao = new UserDAO();
-        ProductDAO pdao = new ProductDAO();
-        OrderDAO odao = new OrderDAO();
-        Users u = (Users) ss.getAttribute("user");
-        try {
-            int oid = Integer.parseInt(request.getParameter("oid"));
-            String action = request.getParameter("action");
-
-            ArrayList<Order> olist = new ArrayList<>();
-            //GET LIST PRODUCT BY SELLER
-            ArrayList<Product> plist = pdao.getProductBySellerName(u.getUserName());
-            //GET LIST ORDER BY PRODUCT
-            olist = odao.getOdByListProduct(plist);
-            boolean check = odao.CheckOrderExist(oid, olist);
-            if ((check && action.equals("accept")) || (check && action.equals("reject"))) {
-                odao.OrderAction(oid, action);
-                olist = odao.getOdByListProduct(plist);
-                
-                //UPDATE LAI TOTAL CUS , TOTAL PRO , TOTAL ORDER , TOTAL PROFIT
-                request.setAttribute("totalCus", udao.getTotalUser());
-                request.setAttribute("totalPro", pdao.getTotalProduct());
-                request.setAttribute("totalOrders", odao.getTotalOrders());
-                request.setAttribute("listOrder", olist);
-                request.getRequestDispatcher("OrderDashBoard.jsp").forward(request, response);
-            } else {
-                response.sendRedirect("error.jsp");
-            }
-
-        } catch (Exception e) {
-            response.sendRedirect("error.jsp");
-        }
-
+        processRequest(request, response);
     }
 
     /**

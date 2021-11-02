@@ -11,22 +11,22 @@ package entity;
  */
 public class ShipInfo {
     private int orderID;
-    private String CustomerName;
-    private String ShippingAddress;
-    private int ShipCityID;
-    private String PhoneNum;
-    private String Note;
+    private String customerName;
+    private String shippingAddress;
+    private int shipCityID;
+    private String phoneNum;
+    private String note;
 
     public ShipInfo() {
     }
 
-    public ShipInfo(int orderID, String CustomerName, String ShippingAddress, int ShipCityID, String PhoneNum, String Note) {
+    public ShipInfo(int orderID, String customerName, String shippingAddress, int shipCityID, String phoneNum, String note) {
         this.orderID = orderID;
-        this.CustomerName = CustomerName;
-        this.ShippingAddress = ShippingAddress;
-        this.ShipCityID = ShipCityID;
-        this.PhoneNum = PhoneNum;
-        this.Note = Note;
+        this.customerName = customerName;
+        this.shippingAddress = shippingAddress;
+        this.shipCityID = shipCityID;
+        this.phoneNum = phoneNum;
+        this.note = note;
     }
 
     public int getOrderID() {
@@ -38,43 +38,44 @@ public class ShipInfo {
     }
 
     public String getCustomerName() {
-        return CustomerName;
+        return customerName;
     }
 
-    public void setCustomerName(String CustomerName) {
-        this.CustomerName = CustomerName;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getShippingAddress() {
-        return ShippingAddress;
+        return shippingAddress;
     }
 
-    public void setShippingAddress(String ShippingAddress) {
-        this.ShippingAddress = ShippingAddress;
+    public void setShippingAddress(String shippingAddress) {
+        this.shippingAddress = shippingAddress;
     }
 
     public int getShipCityID() {
-        return ShipCityID;
+        return shipCityID;
     }
 
-    public void setShipCityID(int ShipCityID) {
-        this.ShipCityID = ShipCityID;
+    public void setShipCityID(int shipCityID) {
+        this.shipCityID = shipCityID;
     }
 
     public String getPhoneNum() {
-        return PhoneNum;
+        return phoneNum;
     }
 
-    public void setPhoneNum(String PhoneNum) {
-        this.PhoneNum = PhoneNum;
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
     }
 
     public String getNote() {
-        return Note;
+        return note;
     }
 
-    public void setNote(String Note) {
-        this.Note = Note;
+    public void setNote(String note) {
+        this.note = note;
     }
+
     
 }

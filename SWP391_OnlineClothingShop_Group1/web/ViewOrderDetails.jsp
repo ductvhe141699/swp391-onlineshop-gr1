@@ -85,9 +85,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body text-center">
-                            <h5 class="card-title m-b-0"><i class="fa fa-shopping-cart green-color" ></i>Products</h5>
+                            <h5 class="card-title m-b-0"><i class="fa fa-shopping-cart green-color" ></i>
+                                Products in ${orders.id} (${orders.status})</h5>
                         </div>
-                        <div class="table-responsive">
+                        <div class="table-responsive p-5">
                             <table class="table table-striped table-hover">
                                 <thead class="thead-light">
                                     <tr>
@@ -95,21 +96,29 @@
                                         <th scope="col">Product Name</th>
                                         <th scope="col">Image</th>
                                         <th scope="col">Price</th>
+                                        <th scope="col">Quantity</th>
                                     </tr>
                                 </thead>
                                 <tbody class="customtable">
-                                    <c:forEach var="od" items="listO">
+                                    <c:forEach var="od" items="${listO}">
                                         <tr>
-                                            <td>#PD00${od.productID}</td>
+                                            <td>#PD0${od.productID}</td>
                                             <td>${od.productName}</td>
                                             <td><img onmouseover="bigImg(this)" onmouseout="normalImg(this)"  
-                                                     src="${od.productImgURL}" alt="" 
+                                                     src="resources/img/products//${od.productImgURL}" alt="" 
                                                      style="width: 100px; height: 100px"></td>
-                                            <td>${od.productPrice}</td>
+                                            <td>${od.productPrice} VNĐ</td>
+                                            <td>${od.quantity}</td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
                             </table>
+                            <br>
+                            <br>
+                            <h3 style="color:black;">Total:                                        
+                                <fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${Total}"/> 
+                                VNĐ</h3>
+                            <br>
                         </div>
                     </div>
                 </div>

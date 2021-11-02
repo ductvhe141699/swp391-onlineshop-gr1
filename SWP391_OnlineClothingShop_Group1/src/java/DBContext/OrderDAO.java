@@ -2,6 +2,7 @@ package DBContext;
 
 import entity.Order;
 import entity.Product;
+import entity.Users;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,13 +16,12 @@ import java.util.logging.Logger;
  *
  * @author LAMDTHE153097
  */
-
 public class OrderDAO {
-    
+
     Connection conn = null;
     PreparedStatement ps = null; //...
     ResultSet rs = null; //Get the results returned
-    
+
     public List<Order> getOrderByUserID(int userId) {
         List<Order> list = new ArrayList<>();
         String query = "SELECT o.ID, os.Name, o.TotalPrice, o.Date\n"
@@ -139,6 +139,7 @@ public class OrderDAO {
         return 0;
     }
 
+
     public int TotalCusByListProduct(ArrayList<Product> listP) {
         String query = "select UserID ,count(o.UserID) from Orders o\n"
                 + "join Order_Detail d on d.Order_ID = o.ID\n"
@@ -209,6 +210,7 @@ public class OrderDAO {
         return total;
     }
 
+
     public boolean CheckOrderExist(int orderID, ArrayList<Order> olist) {
         boolean flag = false;
         for (Order o : olist) {
@@ -223,11 +225,11 @@ public class OrderDAO {
         String query = "";
         switch (action) {
             case "accept":
-                query = "update Orders set Status = '2'\n"
+                query = "update Orders set Status = 2 \n"
                         + "where ID = ? ";
                 break;
             case "reject":
-                query = "update Orders set Status = '4'\n"
+                query = "update Orders set Status = 4 \n"
                         + "where ID =  ? ";
                 break;
         }
@@ -235,8 +237,60 @@ public class OrderDAO {
         try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
+            ps.setInt(1, orderID);
             ps.executeUpdate();
         } catch (Exception e) {
         }
+    }
+
+
+    public List<Order> getOrderByOdID(int orderID) {
+        String query = "select o.ID , o.UserID , o.TotalPrice , o.Note , o.Status , o.Date , d.Order_ID , d.ProductID , d.ProductName  ,d.ProductPrice , d.Quantity from Orders o\n"
+                + "join Order_Detail d on d.Order_ID = o.ID\n"
+                + "where o.ID = ?  "; // 
+        List<Order> list = new ArrayList<>();
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1 , orderID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Order(
+                        rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getDate(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getString(9),
+                        rs.getInt(10),
+                        rs.getInt(11)
+                ));
+            }
+        } catch (Exception e) {
+        }
+        return list;}
+
+
+    public Order getAnOrderByUserID(int id) {
+        String query = "SELECT o.ID, os.Name, o.TotalPrice, o.Date\n"
+                + "FROM Orders o  INNER JOIN Order_Status os\n"
+                + "ON o.Status = os.ID\n"
+                + "WHERE o.UserId = ?";
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return (new Order(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getDate(4)));
+            }
+        } catch (Exception e) {
+        }
+        DBcontext.close(conn, ps, rs);
+        return null;
+
     }
 }

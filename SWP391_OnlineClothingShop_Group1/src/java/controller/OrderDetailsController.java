@@ -7,13 +7,16 @@ package controller;
 
 import DBContext.OrderDAO;
 import DBContext.ProductDAO;
+import DBContext.ShipDAO;
 import DBContext.UserDAO;
 import entity.Order;
 import entity.Product;
+import entity.ShipInfo;
 import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,10 +26,8 @@ import javax.servlet.http.HttpSession;
 /**
  *
  * @author BEAN
- *
- * comment dau class ten
  */
-public class ConfirmOrderController extends HttpServlet {
+public class OrderDetailsController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,10 +46,10 @@ public class ConfirmOrderController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ConfirmOrderController</title>");
+            out.println("<title>Servlet OrderDetail</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ConfirmOrderController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet OrderDetail at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -66,39 +67,39 @@ public class ConfirmOrderController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession ss = request.getSession();
+        OrderDAO odao = new OrderDAO();
         UserDAO udao = new UserDAO();
         ProductDAO pdao = new ProductDAO();
-        OrderDAO odao = new OrderDAO();
-        Users u = (Users) ss.getAttribute("user");
+        ShipDAO sdao = new ShipDAO();
+        HttpSession ss = request.getSession();
         try {
             int oid = Integer.parseInt(request.getParameter("oid"));
-            String action = request.getParameter("action");
-
+            Users u = (Users) ss.getAttribute("user");
             ArrayList<Order> olist = new ArrayList<>();
             //GET LIST PRODUCT BY SELLER
             ArrayList<Product> plist = pdao.getProductBySellerName(u.getUserName());
             //GET LIST ORDER BY PRODUCT
             olist = odao.getOdByListProduct(plist);
             boolean check = odao.CheckOrderExist(oid, olist);
-            if ((check && action.equals("accept")) || (check && action.equals("reject"))) {
-                odao.OrderAction(oid, action);
-                olist = odao.getOdByListProduct(plist);
-                
-                //UPDATE LAI TOTAL CUS , TOTAL PRO , TOTAL ORDER , TOTAL PROFIT
-                request.setAttribute("totalCus", udao.getTotalUser());
-                request.setAttribute("totalPro", pdao.getTotalProduct());
-                request.setAttribute("totalOrders", odao.getTotalOrders());
-                request.setAttribute("listOrder", olist);
-                request.getRequestDispatcher("OrderDashBoard.jsp").forward(request, response);
+            if (check) {
+                List<Order> order = odao.getOrderByOdID(oid);
+                ShipInfo ship = sdao.getShipInfoByOdID(oid);
+                ArrayList<Product> listP = pdao.getAllProduct();
+                List<Product> listProduct = pdao.getProductByListOd(listP, olist);
+
+                request.setAttribute("order", order);
+                request.setAttribute("ship", ship);
+                request.setAttribute("listProduct", listProduct);
+
+                request.getRequestDispatcher("/OrderDetail.jsp").forward(request, response);
             } else {
-                response.sendRedirect("error.jsp");
+                  response.sendRedirect("error.jsp");
             }
+
 
         } catch (Exception e) {
             response.sendRedirect("error.jsp");
         }
-
     }
 
     /**
