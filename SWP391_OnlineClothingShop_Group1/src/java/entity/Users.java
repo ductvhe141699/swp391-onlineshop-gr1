@@ -10,7 +10,7 @@ package entity;
  * @author Duy Manh
  */
 public class Users {
-
+    //Chỉnh sửa lại thuộc tính: LAMDTHE153097
     int userID;
     String userName;
     String password;

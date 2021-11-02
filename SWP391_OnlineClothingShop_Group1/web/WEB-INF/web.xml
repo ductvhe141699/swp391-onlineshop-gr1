@@ -161,8 +161,13 @@
         <servlet-class>controller.ManageFeedbackBySeller</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>OrderDetailsController</servlet-name>
         <servlet-class>controller.OrderDetailsController</servlet-class>
+=======
+        <servlet-name>ViewFeedback</servlet-name>
+        <servlet-class>controller.ViewFeedback</servlet-class>
+>>>>>>> c3454b0182e81c4e3e8b3e0e9f01c89d81f4d5b6
     </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
@@ -304,8 +309,13 @@
         <url-pattern>/ManageFeedbackBySeller</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>OrderDetailsController</servlet-name>
         <url-pattern>/OrderDetails</url-pattern>
+=======
+        <servlet-name>ViewFeedback</servlet-name>
+        <url-pattern>/ViewFeedback</url-pattern>
+>>>>>>> c3454b0182e81c4e3e8b3e0e9f01c89d81f4d5b6
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,9 +1,10 @@
 <%-- 
     Document   : ViewOrderDetails
     Created on : Oct 28, 2021, 1:34:14 PM
-    Author     : Admin
+    Author     : LAMDTHE153097
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SHOPE</title>
+        <!--Boostrap-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -19,105 +21,257 @@
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous"
             />
+        <!--Font-->
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+        <!--Fontawesome-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+        <!--CSS-->
         <link href="css/orderdetails.css" rel="stylesheet" type="text/css"/> 
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
         <link rel="stylesheet" type="text/css" href="./css/queries.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/queries.css">
+        <!--ICON-->
         <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
     </head>
     <body>
-        <%@include file="model/header.jsp" %>
+
+        <header>
+            <div class="row m-0 p-0">
+                <span id="promo" class="d-lg-block d-none">
+                    <marquee style="width: 100%" behavior="scroll" direction="left"><i style="color: white">Get 10% SALE by using special discount code "CHEERSLUV"</i></marquee>
+                </span>
+            </div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <!-- LOGO -->
+                <a class="navbar-brand col-lg-2 offset-lg-2 logo" href="${pageContext.request.contextPath}/home">
+                    <img src="${pageContext.request.contextPath}/resources/img/SHOPE-logos_transparent.png"> </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" 
+                               href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Product</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#part-1">Contacts Us</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0" method="get" action="${pageContext.request.contextPath}/product">
+                        <input type="hidden" name="page" value="1"/>
+                        <input name="query" class="form-control mr-sm-2" type="search" placeholder="Search here..." aria-label="Search">
+                        <input type="hidden" name="subcategory" value="0"/>
+                        <input type="hidden" name="brand" value="0"/>
+                        <input type="hidden" name="price" value="0"/>
+                        <input type="hidden" name="sortType" value="0"/>
+                        <input type="hidden" name="sortMode" value="0"/>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+        </header>
+
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body text-center">
-                            <h5 class="card-title m-b-0">Order ID: #OR898 </h5>
+                            <h5 class="card-title m-b-0"><i class="fa fa-shopping-cart green-color" ></i>
+                                Products in ${orders.id} (${orders.status})</h5>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table">
+                        <div class="table-responsive p-5">
+                            <table class="table table-striped table-hover">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th> <label class="customcheckbox m-b-20"> <input type="checkbox" id="mainCheckbox" disabled><span class="checkmark"></span> </label> </th>
                                         <th scope="col">Product ID</th>
                                         <th scope="col">Product Name</th>
                                         <th scope="col">Image</th>
                                         <th scope="col">Price</th>
+                                        <th scope="col">Quantity</th>
                                     </tr>
                                 </thead>
                                 <tbody class="customtable">
-                                    <tr>
-                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" checked> <span class="checkmark"></span> </label> </th>
-                                        <td>#PD002</td>
-                                        <td>Nike</td>
-                                        <td><img onmouseover="bigImg(this)" onmouseout="normalImg(this)"  
-                                                 src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
-                                        <td>76$</td>
-                                    </tr>
-                                    <tr>
-                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" disabled> <span class="checkmark"></span> </label> </th>
-                                        <td>#PD016</td>
-                                        <td>ZABA</td>
-                                        <td><img src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
-                                        <td>10$</td>
-                                    </tr>
-                                    <tr>
-                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" disabled> <span class="checkmark"></span> </label> </th>
-                                        <td>#PD05</td>
-                                        <td>Safari</td>
-                                        <td><img src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
-                                        <td>16$</td>
-                                    </tr>
-                                    <tr>
-                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" checked> <span class="checkmark"></span> </label> </th>
-                                        <td>#PD08</td>
-                                        <td>Google Chrome</td>
-                                        <td><img src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
-                                        <td>76.12$</td>
-                                    </tr>
-                                    <tr>
-                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" disabled> <span class="checkmark"></span> </label> </th>
-                                        <td>#PD07</td>
-                                        <td>Internet Explorer</td>
-                                        <td><img src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
-                                        <td>10$</td>
-                                    </tr>
-                                    <tr>
-                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" checked> <span class="checkmark"></span> </label> </th>
-                                        <td>#PD08</td>
-                                        <td>Internet Explorer 8</td>
-                                        <td><img src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
-                                        <td>8$</td>
-                                    </tr>
+                                    <c:forEach var="od" items="${listO}">
+                                        <tr>
+                                            <td>#PD0${od.productID}</td>
+                                            <td>${od.productName}</td>
+                                            <td><img onmouseover="bigImg(this)" onmouseout="normalImg(this)"  
+                                                     src="resources/img/products//${od.productImgURL}" alt="" 
+                                                     style="width: 100px; height: 100px"></td>
+                                            <td>${od.productPrice} VNĐ</td>
+                                            <td>${od.quantity}</td>
+                                        </tr>
+                                    </c:forEach>
                                 </tbody>
                             </table>
+                            <br>
+                            <br>
+                            <h3 style="color:black;">Total:                                        
+                                <fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${Total}"/> 
+                                VNĐ</h3>
+                            <br>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <%@include file="model/footer.jsp" %>
-        <!-- BOOTSTRAP5-->
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"
-        ></script>
-        <!-- SCRIPT -->
-        <script src="${pageContext.request.contextPath}/js/script.js"></script>
-        <script>
-                                            function bigImg(x) {
-                                                x.style.height = "500px";
-                                                x.style.width = "500px";
-                                            }
+        <br><br>
+        <footer class="text-white text-lg-start" style="background-color: #23242a;" id="part-1">
+            <!-- Section: Social media -->
+            <section
+                class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+                >
+                <!-- Left -->
+                <div class="me-5 d-none d-lg-block">
+                    <span>Get connected with us on social networks:</span>
+                </div>
+                <!-- Left -->
 
-                                            function normalImg(x) {
-                                                x.style.height = "100px";
-                                                x.style.width = "100px";
-                                            }
+                <!-- Right -->
+                <div>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <!-- Right -->
+            </section>
+            <!-- Section: Social media -->
+
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <!-- Content -->
+                            <h5 class="text-uppercase mb-4"><i class="fas fa-tshirt"></i>&nbsp;About shop</h5>
+                            <p>
+                                Our purpose at Shope is to empower people to lead bold and full lives. 
+                            </p>
+
+                            <p>
+                                We believe that if you look good, you feel good. And when you feel good you can do good for others around you. Shope brings you a wide range of trendy shoes, beautiful scarves, and statement-making jewelry, all at affordable prices to make them accessible to you. 
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Products
+                            </h6>
+                            <p>
+                                <a href="#!" class="text-reset">Shoe</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Sock</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Pant</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Shirt</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Hat</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Jacket</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Accessories</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Contact
+                            </h6>
+                            <p><i class="fas fa-home me-3"></i>Km29 Đại lộ Thăng Long, huyện Thạch Thất, Hà Nội</p>
+                            <p>
+                                <i class="fas fa-envelope me-3"></i>
+                                shope@gmail.com
+                            </p>
+                            <p><i class="fas fa-phone me-3"></i>+84 123456789</p>
+                            <p><i class="fas fa-print me-3"></i>+84 123456789</p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h5 class="text-uppercase mb-4"><i class="far fa-clock"></i>&nbsp;Opening hours</h5>
+                            <table class="table text-white">
+                                <tbody class="font-weight-normal">
+                                    <tr>
+                                        <td>Monday - Thurday:</td>
+                                        <td>8am - 9pm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Friday - Satủd:</td>
+                                        <td>8am - 12pm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sunday:</td>
+                                        <td>9am - 10pm</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+            </section>
+            <!-- Section: Links  -->
+
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2021 Copyright:
+                <a class="text-white" href="#">SWP391 - GRP1</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+
+        <script>
+            function bigImg(x) {
+                x.style.height = "400px";
+                x.style.width = "400px";
+            }
+
+            function normalImg(x) {
+                x.style.height = "100px";
+                x.style.width = "100px";
+            }
         </script>
     </body>
 </html>

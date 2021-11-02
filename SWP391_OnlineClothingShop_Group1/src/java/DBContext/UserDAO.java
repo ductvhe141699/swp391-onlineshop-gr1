@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DBContext;
 
 import entity.Users;
@@ -16,8 +11,9 @@ import java.util.Random;
 
 /**
  *
- * @author Admin
+ * @author LAMDTHE153097
  */
+
 public class UserDAO {
 
     Connection conn = null;
@@ -77,7 +73,6 @@ public class UserDAO {
         return null;
     }
 
-    //MOI NGUOI CHECK LAI CAI NAY 
     public Users getUserByUsername(String userName) {
         String query = "select * from Users where Username = ?";
         try {
@@ -130,7 +125,6 @@ public class UserDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 return 1;
-
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -277,22 +271,17 @@ public class UserDAO {
     
      public ArrayList<Users> getStudentByName(String txtSearch) {
         ArrayList<Users> list = new ArrayList<>();
-
         String query = "SELECT * FROM Users where UserName like '" + txtSearch + "%'";
-
         try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
-
             while (rs.next()) {
                 list.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
                         rs.getInt(5), rs.getInt(6)));
             }
-
         } catch (Exception e) {
         }
-
         return list;
     }
 }

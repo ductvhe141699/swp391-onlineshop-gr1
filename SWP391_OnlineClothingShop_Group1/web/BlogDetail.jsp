@@ -102,7 +102,12 @@
                 margin-top: 20px;
                 margin-bottom: 20px;
             }
-
+body{
+    background-image: url(./resources/img/Blog/blue-abstract-gradient-wave-wallpaper.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
         </style>
     </head>
 

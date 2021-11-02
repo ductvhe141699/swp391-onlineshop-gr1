@@ -1,7 +1,6 @@
 ﻿USE master
 DROP DATABASE IF EXISTS OnlineShop
 CREATE DATABASE OnlineShop;
-
 GO
 USE [OnlineShop]
 GO
@@ -42,12 +41,6 @@ CREATE TABLE [Users] (
 	constraint RoleID_in_Role FOREIGN KEY(RoleID) REFERENCES [Role](RoleID)
 );
 GO
-INSERT INTO Users VALUES(N'Nguyễn Duy Mạnh','nguyenduymanh','ManhNDHE141170@fpt.edu.vn',1,1);
-INSERT INTO Users VALUES(N'	Trần Văn Đức','tranvanduc','DucTVHE141699@fpt.edu.vn',2,1);
-INSERT INTO Users VALUES(N'Nguyễn Gia Phú','nguyengiaphu','PhuNGHE150108@fpt.edu.vn',2,1);
-INSERT INTO Users VALUES(N'	Ngô Thị Ngọc Mai','ngothingocmai','MaiNTNHE151402@fpt.edu.vn',3,1);
-INSERT INTO Users VALUES(N'bnmc','bnmc','ChauBNMHE153019@fpt.edu.vn',3,1);
-INSERT INTO Users VALUES(N'	Đinh Tiến Lâm','dinhtienlam','LamDTHE153097@fpt.edu.vn',3,1);
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('jjellico0', 'Jellico', 'wjellico0@npr.org', 3, 1);
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('dimpson1', 'Impson', 'simpson1@wiley.com', 3, 1);
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('cdahlen2', 'Dahlen', 'adahlen2@unblog.fr', 3, 1);
@@ -612,12 +605,17 @@ CREATE TABLE [dbo].[Orders](
 	constraint statusID_in_order_status FOREIGN KEY(Status) REFERENCES Order_Status(ID)
 ) ON [PRIMARY]
 GO
-
 INSERT INTO Orders VALUES (4, 270000, null, 3, '2021/06/06 04:17');
 INSERT INTO Orders VALUES (5, 90000, null, 3, '2021/06/16 12:36');
 INSERT INTO Orders VALUES (5, 1270000, null, 3, '2021/06/12 10:18');
 INSERT INTO Orders VALUES (6, 1270000, null, 1, '2021/09/11 01:30');
-
+INSERT INTO Orders VALUES (6, 143000, null, 1, '2021/09/11 01:30');
+INSERT INTO Orders VALUES (7, 2580000, null, 1, '2021/05/14 02:30');
+INSERT INTO Orders VALUES (8, 4560000, null, 1, '2021/05/18 04:30');
+INSERT INTO Orders VALUES (9, 900000, null, 1, '2021/07/23 05:30');
+INSERT INTO Orders VALUES (9, 1240000, null, 1, '2021/04/09 09:30');
+INSERT INTO Orders VALUES (10, 1230000, null, 1, '2021/10/11 11:30');
+INSERT INTO Orders VALUES (11,1470000, null, 1, '2021/09/11 03:30');
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -631,6 +629,28 @@ CREATE TABLE [dbo].[Order_Detail](
 	constraint orderID_in_order_detail FOREIGN KEY(Order_ID) REFERENCES Orders(ID),
 	constraint productID_in_order_detail FOREIGN KEY(ProductID) REFERENCES Product(ProductID)	
 ) ON [PRIMARY]
+
+
+GO
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 1, 1, N'Borsalino Bogart Fur Felt Fedora', 15, 1)
+GO
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 1, 2, N'Borsalino Seta Bicolore Fedora', 2, 3)
+GO
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 2, 3, N'Bailey Tate Braided Fedora', 5, 2)
+GO
+INSERT [dbo].[Order_Detail] ([Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 3, 4, N'Bailey Archer Braid Fedora', 6, 3)
+GO
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 4, 5, N'Bailey Craig Braided Fedora', 150, 1)
+GO
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 5, 6, N'Mayser Calas Panama Straw Hat', 270000, 1)
+GO
+INSERT [dbo].[Order_Detail] ([Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 6, 7, N'Mayser Piero Panama Straw Hat', 90000, 2)
+GO
+INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES (7, 8, N'Mayser Nizza Panama Straw Hat', 1270000, 1)
+GO
+INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 8, 9, N'Bailey Rockett Endura Telescope Crown Hat', 163000, 2)
+GO
+INSERT [dbo].[Order_Detail] ([Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 9, 10, N'Bailey Hanson Shantung Hat', 163000, 1)
 GO
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------

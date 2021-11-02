@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author LAMDTHE153097
  */
 public class changepass extends HttpServlet {
 
@@ -59,34 +59,6 @@ public class changepass extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-//        try {
-//            HttpSession session = request.getSession();
-//            Users user = (Users) session.getAttribute("user");
-//            if (user != null) {
-//                String oldPassword = request.getParameter("pass");
-//                String newPassword = request.getParameter("new-pass");
-//                String repeatNewPassword = request.getParameter("repeat-new-pass");
-//                
-//                UserDAO dao = new UserDAO();
-//                
-//                //Users a = dao.getUsersByID(String.valueOf(user.getUserID()));
-//                //request.setAttribute("pass", a.getPassword());
-//                
-//                if (user.getPassword().equals(oldPassword)
-//                        && newPassword.equals(repeatNewPassword)) {
-//                    dao.updatePassword(String.valueOf(user.getUserID()), newPassword);
-//                    request.getRequestDispatcher("ProfileControl").forward(request, response);
-//
-//                } else {
-//                    request.getRequestDispatcher("ChangePassword.jsp").forward(request, response);
-//                }
-//            } else {
-//                response.sendRedirect("error.jsp");
-//               
-//            }
-//        } catch (Exception e) {
-//        }
         response.sendRedirect("ChangePassword.jsp");
     }
 
@@ -101,7 +73,6 @@ public class changepass extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
         try {
             HttpSession session = request.getSession();
             Users user = (Users) session.getAttribute("user");
@@ -109,22 +80,18 @@ public class changepass extends HttpServlet {
                 String oldPassword = request.getParameter("pass");
                 String newPassword = request.getParameter("new-pass");
                 String repeatNewPassword = request.getParameter("repeat-new-pass");
-                
+              
                 UserDAO dao = new UserDAO();
 
                 if (user.getPassword().equals(oldPassword)
                         && newPassword.equals(repeatNewPassword)) {
                     dao.updatePassword(user.getUserID(), newPassword);
-                    //request.getRequestDispatcher("/ProfileControl").forward(request, response);
                     response.sendRedirect(request.getContextPath()+"/ProfileControl");
-                   
                 } else {
                     request.getRequestDispatcher("ChangePassword.jsp").forward(request, response);
-                    
                 }
             } else {
                 response.sendRedirect("error.jsp");
-                
             }
         } catch (Exception e) {
         }

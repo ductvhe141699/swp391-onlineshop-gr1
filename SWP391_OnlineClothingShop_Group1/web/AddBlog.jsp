@@ -58,6 +58,11 @@
                 .btn btn-success{
                     margin-right: 0px;
                 }
+                .modal-header{
+                background-color: #d15321;
+                color: white;
+                border: none;
+                }
             </style>
 
 
@@ -83,7 +88,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Content</label>
-                                    <input type="text" class="form-control" required name="content">
+                                   
+                                    <textarea name="blog-text" class="form-control" id="blog-text" rows="7" placeholder="Write your content here"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Image Link</label>
@@ -91,7 +97,7 @@
                                 </div>                            
                             </div>
                             <div class="modal-footer">
-                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                <a type="button" href="ManageBlog" class="btn btn-default" data-dismiss="modal" style="border:1px solid green" >Cancel</a>
                                 <input type="submit" class="btn btn-success" value="Add">
                             </div>
                         </form>
