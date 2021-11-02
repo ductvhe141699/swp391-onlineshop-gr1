@@ -18,17 +18,17 @@ import java.util.List;
  * @author Duy Manh
  */
 public class ProductDetailDAO {
-    
-     private Connection conn;
+
+    private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
     private String query;
-    
+
     public List<String> getImages(int pid) {
         ArrayList<String> list = new ArrayList<>();
         try {
 
-            query = "select pi.ProductImgUrl from [OnlineShop].[dbo].[Product] p, [OnlineShop].[dbo].[ProductImg] pi where p.ProductID = pi.ProductID and p.ProductID = ? and isHeader = 0";
+            query = "select pi.ProductImgUrl from [OnlineShop].[dbo].[Product] p, [OnlineShop].[dbo].[ProductImg] pi where p.ProductID = pi.ProductID and p.ProductID = ?";
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             ps.setInt(1, pid);
@@ -49,11 +49,9 @@ public class ProductDetailDAO {
         List<String> images = getImages(id);
         try {
 
-            query = "select p.ProductID, ProductName , Description , p.OriginalPrice ,\n" +
-"                    SellPrice  , SalePercent , SubCategoryID , SellerID ,\n" +
-"                    Amount, StatusID ,BrandID , height  , width ,weight , s.ProductImgURL from  [OnlineShop].[dbo].[Product] p\n" +
-"                    join [OnlineShop].[dbo].[ProductImg] s\n" +
-"                    on p.ProductID = s.ProductID and p.ProductID = ? and s.isHeader = 1";
+            query = " select  ProductID, ProductName , Description , OriginalPrice ,\n"
+                    + "                SellPrice  , SalePercent , SubCategoryID , SellerID , Amount, StatusID ,BrandID , height  , width ,weight from  [OnlineShop].[dbo].[Product]\n"
+                    + "				 where ProductID = ?";
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             ps.setInt(1, id);
@@ -74,7 +72,8 @@ public class ProductDetailDAO {
                         rs.getDouble("height"),
                         rs.getDouble("width"),
                         rs.getDouble("weight"),
-                        rs.getString("ProductImgURL"),
+                      
+             
                         images
                 );
             }
@@ -85,14 +84,12 @@ public class ProductDetailDAO {
 
         return null;
     }
-    
+
     public static void main(String[] args) {
         ProductDetailDAO dao = new ProductDetailDAO();
-        for(int i=0;i<dao.getProductDetail(1).getImages().size();i++)
-        {
-            System.out.println(dao.getProductDetail(1).getImages().get(i));
+        for (int i = 0; i < dao.getProductDetail(10).getImages().size(); i++) {
+            System.out.println(dao.getProductDetail(10).getImages().get(i));
         }
-                
-        
+
     }
 }
