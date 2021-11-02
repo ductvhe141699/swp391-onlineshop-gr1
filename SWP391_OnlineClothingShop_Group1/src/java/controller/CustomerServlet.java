@@ -5,7 +5,7 @@
  */
 package controller;
 
-import common.DateHelper;
+import entity.DateHelper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
@@ -14,13 +14,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-<<<<<<< HEAD
-
-=======
-import models.Customer;
-import models.CustomerDAO;
->>>>>>> c3454b0182e81c4e3e8b3e0e9f01c89d81f4d5b6
-
+import entity.Customer;
+import DBContext.CustomerDAO;
 /**
  *
  * @author Duy Manh
