@@ -18,11 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Duy Manh
+ * @author Duy Manh HE141170
  */
 @WebServlet(name = "DetailControl", urlPatterns = {"/detail"})
 public class DetailControl extends HttpServlet {
-
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
