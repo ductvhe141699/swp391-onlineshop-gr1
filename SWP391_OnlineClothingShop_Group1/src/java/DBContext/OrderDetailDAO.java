@@ -7,6 +7,7 @@ package DBContext;
 
 import entity.Order;
 import entity.OrderDetail;
+import entity.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,45 +22,48 @@ import java.util.logging.Logger;
  * @author SAKURA
  */
 public class OrderDetailDAO {
+
     Connection conn = null;
     PreparedStatement ps = null; //...
     ResultSet rs = null; //Get the results returned
-    public int addOrderDetail(OrderDetail orderdetail){
-        try {           
-            conn= DBcontext.open();
+
+    public int addOrderDetail(OrderDetail orderdetail) {
+        try {
+            conn = DBcontext.open();
             ps = conn.prepareStatement("INSERT INTO dbo.Order_Detail (Order_ID,ProductID,ProductName,ProductPrice,Quantity) VALUES(?,?,?,?,?)");
-            ps.setInt(1,orderdetail.getOrderID());
-            ps.setInt(2,orderdetail.getProductID());
+            ps.setInt(1, orderdetail.getOrderID());
+            ps.setInt(2, orderdetail.getProductID());
             ps.setNString(3, orderdetail.getProductName());
-            ps.setDouble(4,orderdetail.getProductPrice());
+            ps.setDouble(4, orderdetail.getProductPrice());
             ps.setInt(5, orderdetail.getQuantity());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(OrderDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally{
-            DBcontext.close(conn, ps,rs);
+        } finally {
+            DBcontext.close(conn, ps, rs);
         }
         return 0;
     }
-    
-//    public List<OrderDetail> getOrderDetailsByUserID(int userId) {
-//        List<Order> list = new ArrayList<>();
-//        String query = "select od.ProductID, od.ProductName, pg.ProductImgURL, od.ProductPrice\n"
-//                + "from ((Orders o inner join Order_Detail od on o.ID=od.Order_ID) inner join ProductImg pg\n"
-//                + "on od.ProductID=pg.ProductID)\n"
-//                + "where o.UserID=?";
-//        try {
-//            conn = new DBcontext().open();
-//            ps = conn.prepareStatement(query);
-//            ps.setInt(1, userId);
-//            rs = ps.executeQuery();
-//
-//            while (rs.next()) {
-//                list.add(new OrderDetail(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4)));
-//            }
-//        } catch (Exception e) {
-//        }
-//        DBcontext.close(conn, ps, rs);
-//        return list;
-//    }
+
+    //LAMDTHE153097
+    public List<OrderDetail> getOdByOrderId(int OrderId) {
+        List<OrderDetail> od = new ArrayList<>();
+        String query = "select o.ProductID, o.ProductName, p.ProductImgURL, o.ProductPrice\n"
+                + "from Order_Detail o inner join ProductImg p\n"
+                + "on o.ProductID=p.ProductID\n"
+                + "where o.Order_ID=?";
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, OrderId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                od.add(new OrderDetail(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4)));
+            }
+
+        } catch (Exception e) {
+        }
+        DBcontext.close(conn, ps, rs);
+        return od;
+    }
 }

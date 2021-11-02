@@ -1,9 +1,12 @@
 
 import DBContext.OrderDAO;
+import DBContext.OrderDetailDAO;
 import DBContext.UserDAO;
 import SMTP.GmailAPI;
 import entity.Order;
+import entity.OrderDetail;
 import entity.Users;
+import java.util.ArrayList;
 import java.util.List;
 import javax.mail.MessagingException;
 
@@ -18,10 +21,10 @@ import javax.mail.MessagingException;
  */
 public class test {
     public static void main(String[] args) {
-        OrderDAO orderDAO = new OrderDAO();
-        List<Order> orders = orderDAO.getOrderByUserID(6);
-        for (Order order : orders) {
-            System.out.println(order.getOrderID()+"-"+order.getStatus());
+        OrderDetailDAO odDAO = new OrderDetailDAO();
+        List<OrderDetail> od = odDAO.getOdByOrderId(1);
+        for (OrderDetail orderDetail : od) {
+            System.out.println(orderDetail.getProductName());
         }
     }
 }

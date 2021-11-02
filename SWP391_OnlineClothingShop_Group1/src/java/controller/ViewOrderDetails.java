@@ -5,8 +5,13 @@
  */
 package controller;
 
+import DBContext.OrderDAO;
+import DBContext.OrderDetailDAO;
+import entity.Order;
+import entity.OrderDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,7 +61,15 @@ public class ViewOrderDetails extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            OrderDetailDAO od = new OrderDetailDAO();
+            List<OrderDetail> o = od.getOdByOrderId(id);
+            request.setAttribute("listO", o);
+            request.getRequestDispatcher("ViewOrderDetails.jsp").forward(request, response);
+        } catch (Exception ex) {
+            response.sendRedirect("error.jsp");
+        }
     }
 
     /**

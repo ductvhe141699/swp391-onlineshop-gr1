@@ -96,7 +96,7 @@
                                 <tbody class="table-body">
                                     <c:forEach var="o" items="${orders}">
                                         <tr class="cell-1">
-                                            <td>#00${o.id}</td>
+                                            <td>#OR0${o.id}</td>
                                             <td>
                                                 <span class="badge badge-pill badge-info">${o.status}</span>
                                             </td>

@@ -4,6 +4,7 @@
     Author     : LAMDTHE153097
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -84,13 +85,12 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body text-center">
-                            <h5 class="card-title m-b-0">Order ID: #OR898 </h5>
+                            <h5 class="card-title m-b-0"><i class="fa fa-shopping-cart green-color" ></i>Products</h5>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th> <label class="customcheckbox m-b-20"> <input type="checkbox" id="mainCheckbox" disabled><span class="checkmark"></span> </label> </th>
                                         <th scope="col">Product ID</th>
                                         <th scope="col">Product Name</th>
                                         <th scope="col">Image</th>
@@ -98,49 +98,16 @@
                                     </tr>
                                 </thead>
                                 <tbody class="customtable">
-                                    <tr>
-                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" checked> <span class="checkmark"></span> </label> </th>
-                                        <td>#PD002</td>
-                                        <td>Nike</td>
-                                        <td><img onmouseover="bigImg(this)" onmouseout="normalImg(this)"  
-                                                 src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
-                                        <td>76$</td>
-                                    </tr>
-                                    <tr>
-                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" disabled> <span class="checkmark"></span> </label> </th>
-                                        <td>#PD016</td>
-                                        <td>ZABA</td>
-                                        <td><img src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
-                                        <td>10$</td>
-                                    </tr>
-                                    <tr>
-                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" disabled> <span class="checkmark"></span> </label> </th>
-                                        <td>#PD05</td>
-                                        <td>Safari</td>
-                                        <td><img src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
-                                        <td>16$</td>
-                                    </tr>
-                                    <tr>
-                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" checked> <span class="checkmark"></span> </label> </th>
-                                        <td>#PD08</td>
-                                        <td>Google Chrome</td>
-                                        <td><img src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
-                                        <td>76.12$</td>
-                                    </tr>
-                                    <tr>
-                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" disabled> <span class="checkmark"></span> </label> </th>
-                                        <td>#PD07</td>
-                                        <td>Internet Explorer</td>
-                                        <td><img src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
-                                        <td>10$</td>
-                                    </tr>
-                                    <tr>
-                                        <th> <label class="customcheckbox"> <input type="checkbox" class="listCheckbox" checked> <span class="checkmark"></span> </label> </th>
-                                        <td>#PD08</td>
-                                        <td>Internet Explorer 8</td>
-                                        <td><img src="./resources/img/Categories/categories-5.png" alt="" style="width: 100px; height: 100px"></td>
-                                        <td>8$</td>
-                                    </tr>
+                                    <c:forEach var="od" items="listO">
+                                        <tr>
+                                            <td>#PD00${od.productID}</td>
+                                            <td>${od.productName}</td>
+                                            <td><img onmouseover="bigImg(this)" onmouseout="normalImg(this)"  
+                                                     src="${od.productImgURL}" alt="" 
+                                                     style="width: 100px; height: 100px"></td>
+                                            <td>${od.productPrice}</td>
+                                        </tr>
+                                    </c:forEach>
                                 </tbody>
                             </table>
                         </div>

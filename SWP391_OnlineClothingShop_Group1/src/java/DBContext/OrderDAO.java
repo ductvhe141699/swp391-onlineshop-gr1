@@ -33,7 +33,6 @@ public class OrderDAO {
             ps = conn.prepareStatement(query);
             ps.setInt(1, userId);
             rs = ps.executeQuery();
-
             while (rs.next()) {
                 list.add(new Order(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getDate(4)));
             }
