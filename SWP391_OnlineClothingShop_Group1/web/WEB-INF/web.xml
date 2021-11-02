@@ -168,6 +168,10 @@
         <servlet-name>ViewFeedback</servlet-name>
         <servlet-class>controller.ViewFeedback</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PostControl</servlet-name>
+        <servlet-class>controller.PostControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -314,6 +318,10 @@
     <servlet-mapping>
         <servlet-name>ViewFeedback</servlet-name>
         <url-pattern>/ViewFeedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostControl</servlet-name>
+        <url-pattern>/PostControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
