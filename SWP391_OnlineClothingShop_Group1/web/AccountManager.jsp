@@ -89,7 +89,7 @@
                 <div class="col-lg-12">
                     <div class="main-box no-header clearfix">
                         <div class="main-box-body clearfix">
-                            <div class="table-responsive">
+                            <div class="table-responsive p-5">
                                 <table class="table user-list table-striped table-hover table-bordered">
                                     <thead>
                                         <tr>

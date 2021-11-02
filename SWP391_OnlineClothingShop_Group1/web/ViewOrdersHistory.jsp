@@ -81,7 +81,7 @@
             <div class="d-flex justify-content-center row">
                 <div class="col-md-10">
                     <div class="rounded">
-                        <div class="table-responsive table-borderless">
+                        <div class="table-responsive p-5">
 
                             <table class="table table-striped table-hover table-bordered">
                                 <thead>
@@ -104,10 +104,15 @@
                                             <td>${o.date}</td>
                                             <td><a href="ViewOrderDetails?id=${o.id}" style="cursor: pointer ">View</a></td>
                                         </tr>
+                                        <c:set var="total" value="${total + o.totalPrice}" />
                                     </c:forEach>
                                 </tbody>
                             </table>
-
+                            <br><br>
+                            <h3 style="color:black;">Total:                                        
+                                <fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${total}"/> 
+                                VNĐ</h3>
+                            <br>
                         </div>
                     </div>
                 </div>

@@ -95,7 +95,7 @@
             <br><br>
         </div>
 
-        <div class="col-12">
+        <div class="col-12 p-5">
 
             <c:if test="${listS!=null}">
                 <table class="table user-list table-striped table-hover table-bordered">

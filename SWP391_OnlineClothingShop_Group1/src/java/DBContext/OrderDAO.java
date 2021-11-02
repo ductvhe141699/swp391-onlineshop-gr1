@@ -15,13 +15,12 @@ import java.util.logging.Logger;
  *
  * @author LAMDTHE153097
  */
-
 public class OrderDAO {
-    
+
     Connection conn = null;
     PreparedStatement ps = null; //...
     ResultSet rs = null; //Get the results returned
-    
+
     public List<Order> getOrderByUserID(int userId) {
         List<Order> list = new ArrayList<>();
         String query = "SELECT o.ID, os.Name, o.TotalPrice, o.Date\n"
@@ -238,5 +237,24 @@ public class OrderDAO {
             ps.executeUpdate();
         } catch (Exception e) {
         }
+    }
+
+    public Order getAnOrderByUserID(int id) {
+        String query = "SELECT o.ID, os.Name, o.TotalPrice, o.Date\n"
+                + "FROM Orders o  INNER JOIN Order_Status os\n"
+                + "ON o.Status = os.ID\n"
+                + "WHERE o.UserId = ?";
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return (new Order(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getDate(4)));
+            }
+        } catch (Exception e) {
+        }
+        DBcontext.close(conn, ps, rs);
+        return null;
     }
 }

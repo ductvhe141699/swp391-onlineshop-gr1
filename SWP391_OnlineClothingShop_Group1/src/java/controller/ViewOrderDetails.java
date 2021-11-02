@@ -63,9 +63,22 @@ public class ViewOrderDetails extends HttpServlet {
             throws ServletException, IOException {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
+            
+            OrderDAO orderDAO = new OrderDAO();
+            Order orders = orderDAO.getAnOrderByUserID(id);
+            
             OrderDetailDAO od = new OrderDetailDAO();
-            List<OrderDetail> o = od.getOdByOrderId(id);
-            request.setAttribute("listO", o);
+            List<OrderDetail> orderList = od.getOdByOrderId(id);
+            
+            int total=0;
+            for (OrderDetail o : orderList) {
+               total+=(o.getProductPrice()*o.getQuantity()); 
+            }
+            
+            request.setAttribute("order", orders);
+            request.setAttribute("Total", total);
+            request.setAttribute("listO", orderList);
+            
             request.getRequestDispatcher("ViewOrderDetails.jsp").forward(request, response);
         } catch (Exception ex) {
             response.sendRedirect("error.jsp");

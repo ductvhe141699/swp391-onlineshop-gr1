@@ -20,14 +20,14 @@ import javax.mail.MessagingException;
  * @author BEAN
  */
 public class test {
+
     public static void main(String[] args) {
-        OrderDetailDAO odDAO = new OrderDetailDAO();
-        List<OrderDetail> od = odDAO.getOdByOrderId(1);
-        for (OrderDetail orderDetail : od) {
-            System.out.println(orderDetail.getProductName());
-        }
+        OrderDAO orderDAO = new OrderDAO();
+        Order orders = orderDAO.getAnOrderByUserID(4);
+        System.out.println(orders.getId());
     }
 }
+
 //    public static void main(String[] args) throws MessagingException {
 //<<<<<<< HEAD
 //        OrderDAO orderDAO = new OrderDAO();

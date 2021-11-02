@@ -48,7 +48,7 @@ public class OrderDetailDAO {
     //LAMDTHE153097
     public List<OrderDetail> getOdByOrderId(int OrderId) {
         List<OrderDetail> od = new ArrayList<>();
-        String query = "select o.ProductID, o.ProductName, p.ProductImgURL, o.ProductPrice\n"
+        String query = "select o.ProductID, o.ProductName, p.ProductImgURL, o.ProductPrice, o.Quantity\n"
                 + "from Order_Detail o inner join ProductImg p\n"
                 + "on o.ProductID=p.ProductID\n"
                 + "where o.Order_ID=?";
@@ -58,7 +58,7 @@ public class OrderDetailDAO {
             ps.setInt(1, OrderId);
             rs = ps.executeQuery();
             while (rs.next()) {
-                od.add(new OrderDetail(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4)));
+                od.add(new OrderDetail(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5)));
             }
 
         } catch (Exception e) {
