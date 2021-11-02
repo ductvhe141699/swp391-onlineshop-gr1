@@ -160,6 +160,10 @@
         <servlet-name>ManageFeedbackBySeller</servlet-name>
         <servlet-class>controller.ManageFeedbackBySeller</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewFeedback</servlet-name>
+        <servlet-class>controller.ViewFeedback</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -298,6 +302,10 @@
     <servlet-mapping>
         <servlet-name>ManageFeedbackBySeller</servlet-name>
         <url-pattern>/ManageFeedbackBySeller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewFeedback</servlet-name>
+        <url-pattern>/ViewFeedback</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

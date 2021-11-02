@@ -18,7 +18,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +25,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ottelia
+ * @author Ottelia
  */
 public class ManageFeedbackBySeller extends HttpServlet {
 
@@ -51,7 +50,6 @@ public class ManageFeedbackBySeller extends HttpServlet {
             ProductDAO productDao = new ProductDAO();
             FeedbackDAO feedbackDao = new FeedbackDAO();
             UserDAO userDao = new UserDAO();
-           
 
             // get all feedback of product of this seller
             List<Product> lsProduct = productDao.getProductBySellerName(a.getUserName());
@@ -114,6 +112,16 @@ public class ManageFeedbackBySeller extends HttpServlet {
                             // sort descending
                             lsFeedback.sort(Comparator.comparing((x -> x.getProduct().getProductName())));
                             Collections.reverse(lsFeedback);
+                        }
+                        break;
+                    }
+                    case 4: {
+                        if (sortOrder == 1) {
+                            // sort ascending
+                            lsFeedback.sort(Comparator.comparing((Feedback::getId)));
+                        } else {
+                            // sort descending
+                            lsFeedback.sort(Comparator.comparing((Feedback::getId)).reversed());
                         }
                         break;
                     }

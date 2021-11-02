@@ -92,25 +92,55 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-10">
-                    <hr>
-                    <div class="row">
-                        <p>Choose your sort options and order: </p>
-                        <form class="sort-form" action="ManageFeedbackBySeller" method="POST">
-                            <input type="hidden" name="sort-flag" value="true" />
-                            <input type="radio" id="sort-star" name="sort-order" value="1" checked="true">
-                            <label for="sort-star">Sort by star</label><br>
-                            <input type="radio" id="sort-name" name="sort-order" value="2">
-                            <label for="sort-name">Sort by user name</label><br>
-                            <input type="radio" id="sort-product" name="sort-order" value="3">
-                            <label for="sort-product">Sort by product</label>
-                            <br><br>
-                            <input type="radio" id="sort-order" name="sort-by-order" value="1" checked="true">
-                            <label for="sort-order">Ascending</label><br>
-                            <input type="radio" id="sort-order" name="sort-by-order" value="2">
-                            <label for="sort-order">Descending</label><br>
-                            <br>
-                            <input type="submit" value="Submit">
-                        </form>
+                    <div style="margin:3em;">
+                        <div class="btn-group" role="group">
+                            <button id="btn" type="button" class="btn btn-outline-success dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
+                                Rating
+                            </button>
+                            <ul class="dropdown-menu" >
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackBySeller?sort-flag=true&sort-order=1&sort-by-order=1">
+                                        Asc
+                                    </a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackBySeller?sort-flag=true&sort-order=1&sort-by-order=2">
+                                        Desc
+                                    </a></li>
+                            </ul>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button id="btn" type="button" class="btn btn-outline-success dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
+                                User
+                            </button>
+                            <ul class="dropdown-menu" >
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackBySeller?sort-flag=true&sort-order=2&sort-by-order=1">
+                                        Asc
+                                    </a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackBySeller?sort-flag=true&sort-order=2&sort-by-order=2">Desc</a></li>
+                            </ul>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button id="btn" type="button" class="btn btn-outline-success dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
+                                Product
+                            </button>
+                            <ul class="dropdown-menu" >
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackBySeller?sort-flag=true&sort-order=3&sort-by-order=1">
+                                        Asc
+                                    </a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackBySeller?sort-flag=true&sort-order=3&sort-by-order=2">
+                                        Desc
+                                    </a></li>
+                            </ul>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button id="btn" type="button" class="btn btn-outline-success dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
+                                Time
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackBySeller?sort-flag=true&sort-order=4&sort-by-order=1">
+                                        Oldest</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackBySeller?sort-flag=true&sort-order=4&sort-by-order=2">
+                                        Latest</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="row-fluid">
                         <div class="col-md-12">
@@ -138,7 +168,7 @@
                                             <td>
                                                 ${item.product.productName}
                                             </td>
-                                            <td><a href="view-detail-feedback?id=${item.id}">Detail</a></td>
+                                            <td><a href="ViewFeedback?id=${item.id}">Detail</a></td>
                                         </tr>
 
 

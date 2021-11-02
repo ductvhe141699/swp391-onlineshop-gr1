@@ -6,12 +6,18 @@
 package controller;
 
 import DBContext.FeedbackDAO;
-import entity.Feedback;
+import DBContext.FeedbackRepliesDAO;
+import DBContext.OrderDAO;
+import DBContext.ProductDAO;
+import DBContext.UserDAO;
 import entity.Users;
+import entity.Feedback;
+import entity.FeedbackReplies;
+import entity.Reply;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +27,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Ottelia
  */
-public class ManageFeedbackByCustomer extends HttpServlet {
+public class ViewFeedback extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,15 +41,39 @@ public class ManageFeedbackByCustomer extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            HttpSession session = request.getSession();
-            Users user = (Users) session.getAttribute("user");
-            FeedbackDAO dao = new FeedbackDAO();
-            //get list of Feedback to manage
-            ArrayList<Feedback> feedbackList = dao.getFeedbacksByUserId(user.getUserID());
-            request.setAttribute("lsfeedback", feedbackList);
-            request.getRequestDispatcher("ManageFeedbackBySeller.jsp").forward(request, response);
+        try {
+
+            // get all dao
+            ProductDAO productDao = new ProductDAO();
+            FeedbackDAO feedbackDao = new FeedbackDAO();
+            UserDAO userDao = new UserDAO();
+           
+
+            // get feedback id
+            int feedbackId = Integer.parseInt(request.getParameter("id"));
+
+            // get the feedback and set data for the feedback
+            Feedback feedback = feedbackDao.getFeedbacksById(feedbackId);
+            feedback.setProduct(
+                    productDao.getProductByID(
+                            String.valueOf(feedback.getProductID())
+                    )
+            );
+            feedback.setUser(
+                    userDao.getUsersByID(feedback.getUserID())
+            );
+            
+            // send to jsp page
+            request.setAttribute("feedback", feedback);
+            FeedbackRepliesDAO replyDAO= new FeedbackRepliesDAO();
+            List<FeedbackReplies> replist= replyDAO.getFeedbacksRepliesByFeedbackId(feedbackId);
+            String rep=null;
+            if (!replist.isEmpty()){
+            rep= replyDAO.getFeedbacksRepliesByFeedbackId(feedbackId).get(0).getRepliesText();}
+            request.setAttribute("rep", rep);
+            request.getRequestDispatcher("ViewFeedback.jsp").forward(request, response);
         } catch (Exception e) {
+            e.printStackTrace();
             response.sendRedirect("error.jsp");
         }
     }
