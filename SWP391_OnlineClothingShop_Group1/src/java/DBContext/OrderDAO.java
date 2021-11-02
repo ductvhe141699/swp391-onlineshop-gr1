@@ -7,6 +7,7 @@ package DBContext;
 
 import entity.Order;
 import entity.Product;
+import entity.Users;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -150,80 +151,6 @@ public class OrderDAO {
         return 0;
     }
 
-    public int TotalCusByListProduct(ArrayList<Product> listP) {
-        String query = "select UserID ,count(o.UserID) from Orders o\n"
-                + "join Order_Detail d on d.Order_ID = o.ID\n"
-                + "where ProductID =  ? "
-                + "group by UserID";
-        ArrayList<Order> order = new ArrayList<>();
-        int total = 0;
-        List<Integer> temp = new ArrayList<>();
-
-        try {
-            conn = new DBcontext().open();
-            ps = conn.prepareStatement(query);
-            for (Product p : listP) {
-
-                ps = conn.prepareStatement(query);
-                ps.setInt(1, p.getProductID());
-                rs = ps.executeQuery();
-                while (rs.next()) {
-                    if (!temp.isEmpty()) {
-                        for (Integer i : temp) {
-                            if (i == rs.getInt(1)) {
-                                total++;
-                            }
-                        }
-                    } else {
-                        total++;
-                    }
-                    temp.add(rs.getInt(1));
-
-                }
-            }
-        } catch (Exception e) {
-        }
-
-        return total;
-    }
-
-    public int TotalOrdByListP(ArrayList<Product> listP) {
-        String query = "select o.id from Orders o\n"
-                + "join Order_Detail d on d.Order_ID = o.ID\n"
-                + "where ProductID =  ? "
-                + "group by o.id";
-        ArrayList<Order> order = new ArrayList<>();
-        int total = 0;
-        List<Integer> temp = new ArrayList<>();
-
-        try {
-            conn = new DBcontext().open();
-            ps = conn.prepareStatement(query);
-            for (Product p : listP) {
-
-                ps = conn.prepareStatement(query);
-                ps.setInt(1, p.getProductID());
-                rs = ps.executeQuery();
-                while (rs.next()) {
-                    if (!temp.isEmpty()) {
-                        for (Integer i : temp) {
-                            if (i == rs.getInt(1)) {
-                                total++;
-                            }
-                        }
-                    } else {
-                        total++;
-                    }
-                    temp.add(rs.getInt(1));
-
-                }
-            }
-        } catch (Exception e) {
-        }
-
-        return total;
-    }
-
     public boolean CheckOrderExist(int orderID, ArrayList<Order> olist) {
         boolean flag = false;
         for (Order o : olist) {
@@ -238,12 +165,12 @@ public class OrderDAO {
         String query = "";
         switch (action) {
             case "accept":
-                query = "update Orders set Status = '2'\n"
+                query = "update Orders set Status = 2 \n"
                         + "where ID = ? ";
                 break;
 
             case "reject":
-                query = "update Orders set Status = '4'\n"
+                query = "update Orders set Status = 4 \n"
                         + "where ID =  ? ";
                 break;
         }
@@ -251,8 +178,40 @@ public class OrderDAO {
         try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
+            ps.setInt(1, orderID);
             ps.executeUpdate();
         } catch (Exception e) {
         }
+    }
+
+    public List<Order> getOrderByOdID(int orderID) {
+        String query = "select o.ID , o.UserID , o.TotalPrice , o.Note , o.Status , o.Date , d.Order_ID , d.ProductID , d.ProductName  ,d.ProductPrice , d.Quantity from Orders o\n"
+                + "join Order_Detail d on d.Order_ID = o.ID\n"
+                + "where o.ID = ?  "; // 
+        List<Order> list = new ArrayList<>();
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1 , orderID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Order(
+                        rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getDate(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getString(9),
+                        rs.getInt(10),
+                        rs.getInt(11)
+                ));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+
     }
 }

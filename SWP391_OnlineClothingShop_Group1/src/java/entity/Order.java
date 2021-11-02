@@ -15,7 +15,6 @@ import java.text.SimpleDateFormat;
 public class Order extends OrderDetail {
 
     private int id;
-
     private int userId;
     private int totalPrice;
     private String note;

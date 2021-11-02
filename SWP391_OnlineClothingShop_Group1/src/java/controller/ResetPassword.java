@@ -64,33 +64,7 @@ public class ResetPassword extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UserDAO dao = new UserDAO();
-        GmailAPI gmail = new GmailAPI();
-
-        try {
-            String mailTo = request.getParameter("mail");
-            Users u = dao.getUsersByEmail(mailTo);
-            if (u == null) {
-                request.setAttribute("warn", "The email did not exist, please try again!");
-                request.getRequestDispatcher("ResetPassword.jsp").forward(request, response);
-            } else {
-
-                int charactor = 8;
-                String gmailFrom = "duclee028@gmail.com";
-                String passfrom = "duc2509200";
-                String subject = "Reset Password";
-                String code = dao.RandomPassword(charactor);
-                String message = ("This is your code: " + code);
-                gmail.send(mailTo, subject, message, gmailFrom, passfrom);
-                
-                response.sendRedirect("Login.jsp");
-
-            }
-        } catch (MessagingException ex) {
-            request.setAttribute("warn", "The email did not exist, please try again!");
-                request.getRequestDispatcher("ResetPassword.jsp").forward(request, response);
-        }
-
+        response.sendRedirect("ResetPassword.jsp");
     }
 
     /**
@@ -104,7 +78,36 @@ public class ResetPassword extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        UserDAO dao = new UserDAO();
+        GmailAPI gmail = new GmailAPI();
+
+        try {
+            String mailTo = request.getParameter("mail");
+            Users u = dao.getUsersByEmail(mailTo);
+            if (u == null) {
+                request.setAttribute("warn", "The email did not exist, please try again!");
+                request.getRequestDispatcher("ResetPassword.jsp").forward(request, response);
+            } else {
+                //FIX DEFAULT LENGTH OF PASSWORD 8 CHARACTORS
+                int charactor = 8;
+                String gmailFrom = "duclee028@gmail.com";
+                String passfrom = "duc2509200";
+                String subject = "Reset Password";
+                String newPassword = dao.RandomPassword(charactor);
+                // TO UPDATE PASSWORD
+                dao.updatePassword(u.getUserID(), newPassword);
+
+                String message = ("This is your new password: " + newPassword);
+                //SEND NEW PASSWORD
+              
+                //ADD GMAIL API
+                response.sendRedirect("Login.jsp");
+
+            }
+        } catch (Exception ex) {
+            request.setAttribute("warn", "The email did not exist, please try again!");
+            request.getRequestDispatcher("ResetPassword.jsp").forward(request, response);
+        }
     }
 
     /**
