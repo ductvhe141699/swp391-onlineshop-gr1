@@ -161,7 +161,7 @@
                                                             <td><span class="badge bg-success">completed</span></td>
                                                         </c:if> 
                                                         <td>${o.date}</td>
-                                                        <td><a href="OrderDetails?oid=${o.id}" class="btn btn-sm btn-primary">See details</a> </td>
+                                                        <td><a href="${pageContext.request.contextPath}/OrderDetails?oid=${o.id}" class="btn btn-sm btn-primary">See details</a> </td>
 
                                                         <c:if test="${o.status == 1}">
                                                             <td><a href="ConfirmOrder?action=accept&oid=${o.id}"><span class="btn btn-sm btn-success rounded-pill">Accept</span></a>

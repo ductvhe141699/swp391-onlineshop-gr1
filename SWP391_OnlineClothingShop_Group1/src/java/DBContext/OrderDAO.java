@@ -139,8 +139,7 @@ public class OrderDAO {
         return 0;
     }
 
-<<<<<<< HEAD
-=======
+
     public int TotalCusByListProduct(ArrayList<Product> listP) {
         String query = "select UserID ,count(o.UserID) from Orders o\n"
                 + "join Order_Detail d on d.Order_ID = o.ID\n"
@@ -211,7 +210,7 @@ public class OrderDAO {
         return total;
     }
 
->>>>>>> c3454b0182e81c4e3e8b3e0e9f01c89d81f4d5b6
+
     public boolean CheckOrderExist(int orderID, ArrayList<Order> olist) {
         boolean flag = false;
         for (Order o : olist) {
@@ -244,7 +243,7 @@ public class OrderDAO {
         }
     }
 
-<<<<<<< HEAD
+
     public List<Order> getOrderByOdID(int orderID) {
         String query = "select o.ID , o.UserID , o.TotalPrice , o.Note , o.Status , o.Date , d.Order_ID , d.ProductID , d.ProductName  ,d.ProductPrice , d.Quantity from Orders o\n"
                 + "join Order_Detail d on d.Order_ID = o.ID\n"
@@ -272,9 +271,9 @@ public class OrderDAO {
             }
         } catch (Exception e) {
         }
-        return list;
+        return list;}
 
-=======
+
     public Order getAnOrderByUserID(int id) {
         String query = "SELECT o.ID, os.Name, o.TotalPrice, o.Date\n"
                 + "FROM Orders o  INNER JOIN Order_Status os\n"
@@ -292,6 +291,6 @@ public class OrderDAO {
         }
         DBcontext.close(conn, ps, rs);
         return null;
->>>>>>> c3454b0182e81c4e3e8b3e0e9f01c89d81f4d5b6
+
     }
 }
