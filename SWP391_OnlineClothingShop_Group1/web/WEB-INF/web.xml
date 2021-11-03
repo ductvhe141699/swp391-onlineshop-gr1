@@ -177,8 +177,13 @@
         <servlet-class>controller.PostDetailControl</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< Updated upstream
         <servlet-name>ReplyFeedback</servlet-name>
         <servlet-class>controller.ReplyFeedback</servlet-class>
+=======
+        <servlet-name>DeletePostControl</servlet-name>
+        <servlet-class>controller.DeletePostControl</servlet-class>
+>>>>>>> Stashed changes
     </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
@@ -336,8 +341,13 @@
         <url-pattern>/PostDetail</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< Updated upstream
         <servlet-name>ReplyFeedback</servlet-name>
         <url-pattern>/ReplyFeedback</url-pattern>
+=======
+        <servlet-name>DeletePostControl</servlet-name>
+        <url-pattern>/DeletePost</url-pattern>
+>>>>>>> Stashed changes
     </servlet-mapping>
     <session-config>
         <session-timeout>

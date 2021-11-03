@@ -158,11 +158,17 @@ public class ProductDAO {
         ArrayList<Product> list = new ArrayList<>();
         try {
 
-            query = "select p.ProductID , ProductName , Description , OriginalPrice , \n"
-                    + "SellPrice  , SalePercent , SubCategoryID , SellerID , \n"
-                    + "Amount , StatusID , StatusID ,BrandID , height  , width ,weight , s.ProductImgURL from  Product p \n"
-                    + "join ProductImg s \n"
-                    + "on p.ProductID = s.ProductID where p.SellerID = (select UserID from Users where Username =  ? ) ";
+            query = "SELECT  * FROM (SELECT p.ProductID,MIN(p.ProductName) AS ProductName,MIN(p.Description) AS Description,\n"
+                    + "                                        MIN(p.OriginalPrice) AS OriginalPrice,MIN(p.SellPrice) AS SellPrice,MIN(p.SalePercent) AS SalePercent,\n"
+                    + "                                       MIN(p.SubCategoryID) AS SubCategoryID,MIN(p.SellerID) AS SellerID,MIN(p.Amount) AS Amount,\n"
+                    + "                                       MIN(p.StatusID) AS StatusID,MIN(p.BrandID) AS BrandID,MIN(p.height) AS height,MIN(p.width) AS width,\n"
+                    + "                                       MIN(p.weight) AS weight,MIN(ProI.ProductImgURL) AS ProductImgURL FROM \n"
+                    + "                                                        dbo.Product p \n"
+                    + "                                                        JOIN  dbo.ProductImg ProI \n"
+                    + "                                                          ON ProI.ProductID = p.ProductID \n"
+                    + "														   where p.SellerID = (select UserID from Users where Username =  ? )\n"
+                    + "                                       					  GROUP BY p.ProductID ) t";
+
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             ps.setString(1, username);
@@ -257,11 +263,11 @@ public class ProductDAO {
         return null;
     }
 
-    public List<Product> getProductByListOd(ArrayList<Product>listProduct ,ArrayList<Order> listOrder ) {
+    public List<Product> getProductByListOd(ArrayList<Product> listProduct, ArrayList<Order> listOrder) {
         List<Product> list = new ArrayList<>();
         for (Product p : listProduct) {
-            for (Order  o : listOrder) {
-                if(p.getProductID() == o.getProductID()){
+            for (Order o : listOrder) {
+                if (p.getProductID() == o.getProductID()) {
                     list.add(p);
                 }
             }

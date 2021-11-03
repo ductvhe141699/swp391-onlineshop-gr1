@@ -38,4 +38,18 @@ public class PostDAO {
         DBcontext.close(conn, ps, rs);
         return postList;
     }
+   public void deletePost(String postid) {
+        String query = 
+                "delete from Post where ID = ?";
+
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, postid);
+            
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+        }
+    }
 }

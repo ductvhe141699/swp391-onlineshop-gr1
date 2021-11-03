@@ -6,7 +6,9 @@
 package controller;
 
 import DBContext.PostDAO;
+import DBContext.UserDAO;
 import entity.Post;
+import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -34,11 +36,14 @@ public class PostControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PostDAO pdao = new PostDAO();
+        UserDAO udao = new UserDAO();
            List<Post> postList = pdao.getAllPost();
+           List<Users> luser = udao.getAllUsers();
            
+           request.setAttribute("luser", luser);
            request.setAttribute("postList", postList);
            request.getRequestDispatcher("PostList.jsp").forward(request, response);
-        
+           
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
