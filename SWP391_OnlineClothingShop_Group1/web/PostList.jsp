@@ -57,8 +57,9 @@
                                 <img src="./resources/${o.postImgURL}" alt="blog-img">
                             </div>
                             <div class="blog-content1">
-                                <p>post ID:${o.ID}<p>
-                                <h4>${o.description} </h4>
+                                <div>post ID:${o.ID}</div>
+                                <div class="overflow-hidden" style="height: 20px">${o.description}</div>
+                                <div>...</div>
                                 <div  >Author: 
                                     <c:forEach var="u" items="${luser}">
                                         <c:if test="${u.userID==o.userID}">
