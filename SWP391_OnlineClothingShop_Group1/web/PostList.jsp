@@ -37,7 +37,7 @@
         <title>Post List</title>
         <!------ Include the above in your HEAD tag ---------->
         <link href="css/Postlist.css" rel="stylesheet" type="text/css"/>
-        
+
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
@@ -52,20 +52,26 @@
 
                 <c:forEach var="o" items="${postList}">
                     <div class="col-md-4 p-3">
-                        <div class="single-blog-item1">
+                        <div class="single-blog-item1" id="myDIV">
                             <div class="blog-thumnail">
                                 <img src="./resources/${o.postImgURL}" alt="blog-img">
                             </div>
                             <div class="blog-content1">
                                 <p>post ID:${o.ID}<p>
                                 <h4>${o.description} </h4>
-                                <div value="${o.userID}" >Author: ${o.userID}</div>
+                                <div  >Author: 
+                                    <c:forEach var="u" items="${luser}">
+                                        <c:if test="${u.userID==o.userID}">
+                                            ${u.userName}
+                                        </c:if>
+                                    </c:forEach>
+                                </div>
                                 <div>date: ${o.date}</div>
                                 <div class="btngroup" >
                                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                        <button type="button" class="btn btn-danger">Delete</button>
+                                        <a href="DeletePost?postid=${o.ID}" onclick="return confirm('Are you sure you want to delete these Post?');"><button type="button" class="btn btn-danger">Delete</button></a>
                                         <button type="button" class="btn btn-warning" ><a href="PostDetail">Detail</a></button>
-                                        <button type="button" class="btn btn-success">Hide</button>
+                                        <button type="button" class="btn btn-success" onclick="myFunction()">Hide</button>
                                     </div>
                                 </div>
                             </div>
@@ -78,6 +84,15 @@
         </div>
 
 
-
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myDIV");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+        </script>
     </body>
 </html>
