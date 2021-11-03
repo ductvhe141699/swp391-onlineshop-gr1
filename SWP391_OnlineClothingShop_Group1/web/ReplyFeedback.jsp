@@ -1,5 +1,6 @@
+
 <%-- 
-    Document   : UpdateBlog
+    Document   : ReplyFeedback
     Created on : Oct 18, 2021, 9:52:39 AM
     Author     : Ottelia
 --%>
@@ -43,8 +44,49 @@
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/queries.css" />
         <link href="css/UpdateBlog.css" rel="stylesheet" type="text/css"/>
-        <title>Update Blog</title>
+        <title>Reply Feedback</title>
+ <style>
+            td{
+                padding-right:3em;
+                padding:10px; border: 1px solid;
+            }
 
+            #feedback {
+                font-family: Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                text-align: center;
+            }
+
+            #feedback td, #feedback th {
+                border: 1px solid #ddd;
+                padding: 5px;
+                text-align: center;
+                border-bottom:  1px solid #ddd; 
+            }
+
+            #feedback tr:nth-child(even){background-color: #f2f2f2;}
+
+            #feedback tr:hover {background-color: #ddd;}
+
+            #feedback th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #21aed1;
+                color: white;
+            }
+
+            .checked {
+                color: orange;
+            }
+            .form-group{
+                padding:2px;
+            }
+            a{
+                text-decoration: none;
+            }
+        </style>
     </head>
     <body style="min-height: 2000px">
         <%@include file="model/header.jsp" %>
@@ -53,42 +95,47 @@
         <div id="editEmployeeModal">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="UpdateBlog" method="post">
+                    <form action="ReplyFeedback" method="post">
                         <div class="modal-header">						
-                            <h4 class="modal-title">Update Blog</h4>
-                            <a type="button" class="close" href="ManageBlog" aria-hidden="true">&times;</a>
+                            <h4 class="modal-title">Reply feedback</h4>
+                            <a type="button" class="close" href="ManageFeedbackBySeller" aria-hidden="true">&times;</a>
                         </div>
                         <div class="modal-body">	
                             <div class="form-group">
                                 <label>ID</label>
-                                <input type="text"  class="form-control" name="id" value="${id}" readonly>
+                                <input type="text"  class="form-control" name="id" value="${requestScope.feedback.id}" readonly>
                             </div>
                             <div class="form-group">
-                                <label>Title</label>
-                                <input type="text" class="form-control" required name="title" value="${title}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Content</label>
-                                <textarea name="blog-text" class="form-control" id="blog-text" rows="7">${content}</textarea>
+                                <label>OrderID</label>
+                                <input type="text" class="form-control"  name="order" value="${requestScope.feedback.orderID}" readonly>
                             </div>
                             <div class="form-group">
-                                <label>Image Link</label>
-                                <input type="text" class="form-control" required name="imageLink" value="${imageLink}">
+                                <table>
+                                    <label>User</label>
+                                    <input type="text" class="form-control"  name="username" value="${requestScope.feedback.user.userName}" readonly>
+                                </table>
                             </div>
                             <div class="form-group">
-                                <label>Image </label>
-                                <center><img src="./resources/img/Blog/${imageLink}" style="height: 200px; margin: 20px; "></center>
+                                <label>Rating     &nbsp</label>
+                                <c:forEach begin="1" end="${requestScope.feedback.star}">
+                                    <span>
+                                        <i class="fa fa-star checked" style="font-size: 12px"></i>
+                                    </span>  
+                                </c:forEach>
                             </div>
                             <div class="form-group">
-                                <label>Author</label>
-                                <input type="text" class="form-control" required name="author" value="${author}">
+                                <label>Detail</label>
+                                <textarea name="blog-text" class="form-control" id="blog-text" rows="7" readonly>${requestScope.feedback.feedbackDetail}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Reply</label>
+                                <input type="text" class="form-control"  name="rep" value="${rep}">
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <a type="button" class="btn btn-default" href="ManageBlog">Cancel</a>
+                            <a type="button" class="btn btn-default" href="ManageFeedbackBySeller">Cancel</a>
                             <input type="reset" class="btn btn" value="Clear">
-                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary">Send</button>
                         </div>
                     </form>
                 </div>

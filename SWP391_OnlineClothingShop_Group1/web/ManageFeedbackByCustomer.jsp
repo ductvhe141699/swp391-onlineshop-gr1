@@ -98,10 +98,10 @@
                                 Rating
                             </button>
                             <ul class="dropdown-menu" >
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackBySeller?sort-flag=true&sort-order=1&sort-by-order=1">
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackByCustomer?sort-flag=true&sort-order=1&sort-by-order=1">
                                         Asc
                                     </a></li>
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackBySeller?sort-flag=true&sort-order=1&sort-by-order=2">
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackByCustomer?sort-flag=true&sort-order=1&sort-by-order=2">
                                         Desc
                                     </a></li>
                             </ul>
@@ -111,10 +111,10 @@
                                 User
                             </button>
                             <ul class="dropdown-menu" >
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackBySeller?sort-flag=true&sort-order=2&sort-by-order=1">
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackByCustomer?sort-flag=true&sort-order=2&sort-by-order=1">
                                         Asc
                                     </a></li>
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackBySeller?sort-flag=true&sort-order=2&sort-by-order=2">Desc</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackByCustomer?sort-flag=true&sort-order=2&sort-by-order=2">Desc</a></li>
                             </ul>
                         </div>
                         <div class="btn-group" role="group">
@@ -122,10 +122,10 @@
                                 Product
                             </button>
                             <ul class="dropdown-menu" >
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackBySeller?sort-flag=true&sort-order=3&sort-by-order=1">
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackByCustomer?sort-flag=true&sort-order=3&sort-by-order=1">
                                         Asc
                                     </a></li>
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackBySeller?sort-flag=true&sort-order=3&sort-by-order=2">
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackByCustomer?sort-flag=true&sort-order=3&sort-by-order=2">
                                         Desc
                                     </a></li>
                             </ul>
@@ -135,57 +135,55 @@
                                 Time
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackBySeller?sort-flag=true&sort-order=4&sort-by-order=1">
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackByCustomer?sort-flag=true&sort-order=4&sort-by-order=1">
                                         Oldest</a></li>
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackBySeller?sort-flag=true&sort-order=4&sort-by-order=2">
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ManageFeedbackByCustomer?sort-flag=true&sort-order=4&sort-by-order=2">
                                         Latest</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="row-fluid">
-                  
-                            <div class="table-wrapper">
-                                <center>
-                                    <table class="table table-striped table-hover" id="feedback" style="margin-left:3em; border: 1px solid; width: 100%;">
-                                        <thead >
-                                            <tr>
-                                                <th style="text-align: center;">FeedbackID</th>
-                                                <th style="text-align: center;">User</th>
-                                                <th style="text-align: center;">Star</th>
-                                                <th style="text-align: center;">Product</th>
-                                                <th style="text-align: center;">Detail</th>
-                                                <th style="text-align: center;">Action</th>
+
+                        <div class="table-wrapper">
+                            <center>
+                                <table class="table table-striped table-hover" id="feedback" style="margin-left:3em; border: 1px solid; width: 100%;">
+                                    <thead >
+                                        <tr>
+                                            <th style="text-align: center;">FeedbackID</th>
+                                           <th style="text-align: center;">OrderID</th>
+                                            <th style="text-align: center;">Product</th>
+                                            <th style="text-align: center;">Star</th>
+                                            <th style="text-align: center;">View</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach var="item" items="${requestScope.lsFeedback}" varStatus="x">
+                                            <tr style="padding:2px; border: 1px solid">
+                                                <td>${item.id}</td>
+                                                <td>${item.orderID}</td>
+                                                <td>
+                                                    ${item.product.productName}
+                                                </td>
+                                                <td>
+                                                    <c:forEach begin="1" end="${item.star}">
+                                                        <span><i class="fa fa-star checked" style="font-size: 10px"></i></span>  
+                                                        </c:forEach>
+                                                </td>
+                                                <td><a href="ViewFeedback?id=${item.id}">Detail</a></td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            <c:forEach var="item" items="${requestScope.lsFeedback}" varStatus="x">
-                                                <tr style="padding:2px; border: 1px solid">
-                                                    <td>${item.id}</td>
-                                                    <td>${item.user.userName}</td>
-                                                    <td>
-                                                        <c:forEach begin="1" end="${item.star}">
-                                                            <span><i class="fa fa-star checked" style="font-size: 10px"></i></span>  
-                                                            </c:forEach>
-                                                    </td>
-                                                    <td>
-                                                        ${item.product.productName}
-                                                    </td>
-                                                    <td><a href="ViewFeedback?id=${item.id}">Detail</a></td>
-                                                    <td><a href="ReplyFeedback?FeedbackID=${item.id}" class="reply"><i class="material-icons" data-toggle="tooltip" title="Reply">&#xe15e;</i></a></td>
-                                                </tr>
 
-                                            </c:forEach>
-                                        </tbody>
-                                    </table>
-                                </center>
-                            </div>   
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                            </center>
+                        </div>   
 
-                        </div>
                     </div>
-
                 </div>
-            </div>      
-        
+
+            </div>
+        </div>      
+
 
         <%@include file="model/footer.jsp" %>
         <!-- BOOTSTRAP5-->

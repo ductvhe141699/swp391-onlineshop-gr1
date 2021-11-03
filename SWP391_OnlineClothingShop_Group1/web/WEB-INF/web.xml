@@ -164,6 +164,14 @@
         <servlet-name>ViewFeedback</servlet-name>
         <servlet-class>controller.ViewFeedback</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReplyFeedback</servlet-name>
+        <servlet-class>controller.ReplyFeedback</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FeedbackDetail</servlet-name>
+        <servlet-class>controller.FeedbackDetail</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -306,6 +314,14 @@
     <servlet-mapping>
         <servlet-name>ViewFeedback</servlet-name>
         <url-pattern>/ViewFeedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReplyFeedback</servlet-name>
+        <url-pattern>/ReplyFeedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FeedbackDetail</servlet-name>
+        <url-pattern>/FeedbackDetail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
