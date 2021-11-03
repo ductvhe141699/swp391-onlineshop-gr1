@@ -58,12 +58,17 @@
                 margin-right: 0px;
                 width: 100%;
             }
+             thead   th {
+                border: 1px solid #ddd;
+                padding: 5px;
+                text-align: center;
+                background: orange;
+            }
         </style>
-
         <script>
             function ProductID(PID) {
                 document.getElementById("pid").setAttribute("value", PID);
-            }           
+            }
         </script>
     </head>
     <body style="font-family: 'Poppins',sans-serif">
@@ -106,8 +111,9 @@
                                         <td><img src="./resources/img/Blog/${o.imageLink}" style="height: 100px"></td>
                                         <td>${o.content} </td>
                                         <td>
-                                            <%--Link redirect to EditBlog page --%>
+                                            <!-- Update Blog link-->
                                             <a href="UpdateBlog?BlogID=${o.id}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                            <!-- Delete blog -->
                                             <a href="#deleteEmployeeModal" onclick="ProductID(${o.id})" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                         </td>
                                     </tr>
@@ -132,8 +138,8 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">					
-                                <p>Are you sure you want to delete this Blog?</p>
-                                <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                <p>Are you sure you want to delete?</p>
+                                <p class="text-warning"><small>You cannot undo this action.</small></p>
                             </div>
                             <div class="modal-footer">
                                 <input type="text" id="pid" name="BlogID" visibility: hidden>

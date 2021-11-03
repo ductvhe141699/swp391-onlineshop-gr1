@@ -6,11 +6,17 @@
 package controller;
 
 import DBContext.FeedbackDAO;
+import DBContext.ProductDAO;
+import DBContext.UserDAO;
 import entity.Feedback;
+import entity.Product;
 import entity.Users;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,15 +41,87 @@ public class ManageFeedbackByCustomer extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try {
+            // get current user
             HttpSession session = request.getSession();
-            Users user = (Users) session.getAttribute("user");
-            FeedbackDAO dao = new FeedbackDAO();
-            //get list of Feedback to manage
-            ArrayList<Feedback> feedbackList = dao.getFeedbacksByUserId(user.getUserID());
-            request.setAttribute("lsfeedback", feedbackList);
-            request.getRequestDispatcher("ManageFeedbackBySeller.jsp").forward(request, response);
+            Users a = (Users) session.getAttribute("user");
+
+            // get all dao
+            ProductDAO productDao = new ProductDAO();
+            FeedbackDAO feedbackDao = new FeedbackDAO();
+            UserDAO userDao = new UserDAO();
+
+            // get all feedback of product of this customer
+            List<Feedback> lsFeedback = feedbackDao.getFeedbacksByUserId(a.getUserID());
+            for (Feedback feedback : lsFeedback) {
+                Product product
+                        = productDao.getProductByID(String.valueOf(feedback.getProductID()));
+                feedback.setProduct(product);
+                
+            }
+
+            // allow sort by name, product, star
+            if (request.getParameter("sort-flag") != null) {
+                int sortOption = Integer.parseInt(request.getParameter("sort-order"));
+                int sortOrder = Integer.parseInt(request.getParameter("sort-by-order"));
+                switch (sortOption) {
+                    // sort by star
+                    case 1: {
+                        if (sortOrder == 1) {
+                            // sort ascending
+                            lsFeedback.sort(Comparator.comparing((Feedback::getStar)));
+                        } else {
+                            // sort descending
+                            lsFeedback.sort(Comparator.comparing((Feedback::getStar)).reversed());
+                        }
+                        break;
+                    }
+                    // sort by user
+                    case 2: {
+                        if (sortOrder == 1) {
+                            // sort ascending
+                            lsFeedback.sort(Comparator.comparing((x -> x.getUser().getUserName())));
+                        } else {
+                            // sort descending
+                            lsFeedback.sort(Comparator.comparing((x -> x.getUser().getUserName())));
+                            Collections.reverse(lsFeedback);
+                        }
+                        break;
+                    }
+                    // sort by product
+                    case 3: {
+                        if (sortOrder == 1) {
+                            // sort ascending
+                            lsFeedback.sort(Comparator.comparing((x -> x.getProduct().getProductName())));
+                        } else {
+                            // sort descending
+                            lsFeedback.sort(Comparator.comparing((x -> x.getProduct().getProductName())));
+                            Collections.reverse(lsFeedback);
+                        }
+                        break;
+                    }
+                    case 4: {
+                        if (sortOrder == 1) {
+                            // sort ascending
+                            lsFeedback.sort(Comparator.comparing((Feedback::getId)));
+                        } else {
+                            // sort descending
+                            lsFeedback.sort(Comparator.comparing((Feedback::getId)).reversed());
+                        }
+                        break;
+                    }
+
+                }
+
+            }
+            System.out.println(a.toString());
+            for (Feedback feedback : lsFeedback) {
+                System.out.println(feedback.toString());
+            }
+            request.setAttribute("lsFeedback", lsFeedback);
+            request.getRequestDispatcher("ManageFeedbackByCustomer.jsp").forward(request, response);
         } catch (Exception e) {
+            e.printStackTrace();
             response.sendRedirect("error.jsp");
         }
     }

@@ -178,7 +178,7 @@
                                                 </ul>
                                             </div>
                                             <div class="product_item_text">
-                                                <h6><a href="#">${o.productName}</a></h6>
+                                                <h6><a href="detail?pid=${o.id}">${o.productName}</a></h6>
                                                 <div class="rating">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>

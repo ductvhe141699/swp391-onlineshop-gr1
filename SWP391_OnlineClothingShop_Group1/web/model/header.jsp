@@ -198,6 +198,9 @@
             <li class="nav-item me-4">
                 <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/home">Home</a>
             </li>
+             <li class="nav-item me-4">
+              <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/PostControl">Post</a>
+            </li>
             <li class="nav-item me-4">
                 <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Product</a>
             </li>

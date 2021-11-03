@@ -22,7 +22,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display&family=Poppins:wght@100;400;600&display=swap" rel="stylesheet">
-       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@350&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@350&display=swap" rel="stylesheet">
         <!--BOOTSTRAP5-->
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -60,12 +60,12 @@
                 text-align: left;
             }
             h5{
-             font-family:  'Poppins', sans-serif;
+                font-family:  'Poppins', sans-serif;
                 font-size: 17px;
                 text-align: right;
                 font-style: italic;
                 font-weight: 400;
-                
+
             }
             .card-title show_txt a
             {
@@ -102,12 +102,12 @@
                 margin-top: 20px;
                 margin-bottom: 20px;
             }
-body{
-    background-image: url(./resources/img/Blog/blue-abstract-gradient-wave-wallpaper.jpg);
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+            body{
+                background-image: url(./resources/img/Blog/blue-abstract-gradient-wave-wallpaper.jpg);
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
         </style>
     </head>
 
@@ -120,14 +120,14 @@ body{
             <div class="container">
                 <div class="card">
                     <div class="row">
-                        <div class="col-sm-4 border-right">
+                        <div class="col-md-4 ">
                             <article class="gallery-wrap"> 
                                 <div class="img-big-wrap">
                                     <div> <a href="#"><img src="./resources/img/Blog/${blog.imageLink}"></a></div>
                                 </div>                            
                             </article> 
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-md-8">
                             <article class="card-body p-5">
                                 <h3 class="title1">${blog.title}</h3> 
 
