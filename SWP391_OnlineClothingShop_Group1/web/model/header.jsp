@@ -99,17 +99,24 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <!--LAMDTHE153097-Thêm 'profile' & 'manager' vào dropdown-->
+                        <!-- Neu co User trong session -->
                         <c:if test ="${sessionScope.user !=  null}">
+                            <!-- Default -->
                             <li><span class="dropdown-item-text">Hello ${user.getUserName()}</span></li>
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ProfileControl">View profile</a></li>  
+                            <!-- Admin -->
                             <c:if test="${sessionScope.user.roleID ==  1}">
-                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/Dashboard">DashBoard</a></li>
-                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/AccountManagerControl">Manage Users</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/AccountManagerControl">Manage Users</a></li>
                             </c:if>
+                            <!-- Seller -->
+                            <c:if test="${sessionScope.user.roleID ==  2}">
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/Dashboard">DashBoard</a></li>
+                            </c:if>
+                            <!-- Default Logout -->
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a></li>
                         </c:if>
-                        <!-- CHAUBNMHE153019 FIX -->
+                        <!-- Neu khong co user -->
                         <c:if test ="${sessionScope.user ==  null}">
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Login/Register</a></li>
                         </c:if>
@@ -179,6 +186,15 @@
                 </li>
                 <c:if test ="${sessionScope.user !=  null}">
                     <li class="nav-item d-block d-lg-none">Hello ${user.getUserName()}</li>
+                    <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/ProfileControl">View profile</a></li>  
+                    <!-- Admin -->
+                    <c:if test="${sessionScope.user.roleID ==  1}">
+                        <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/AccountManagerControl">Manage Users</a></li>
+                    </c:if>
+                    <!-- Seller -->
+                    <c:if test="${sessionScope.user.roleID ==  2}">
+                        <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/Dashboard">DashBoard</a></li>
+                    </c:if>
                     <li class="nav-item d-block d-lg-none">
                         <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
                     </li>
