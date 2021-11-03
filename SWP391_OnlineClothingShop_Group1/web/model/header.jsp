@@ -101,17 +101,18 @@
                         <!--LAMDTHE153097-Thêm 'profile' & 'manager' vào dropdown-->
                         <c:if test ="${sessionScope.user !=  null}">
                             <li><span class="dropdown-item-text">Hello ${user.getUserName()}</span></li>
-                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ProfileControl">View profile</a></li>   
-                            </c:if>
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ProfileControl">View profile</a></li>  
                             <c:if test="${sessionScope.user.roleID ==  1}">
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/Dashboard">DashBoard</a></li>
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/AccountManagerControl">Manage Users</a></li>
                             </c:if>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a></li>
-                            <c:if test ="${sessionScope.user ==  null}">
+                        </c:if>
+                        <!-- CHAUBNMHE153019 FIX -->
+                        <c:if test ="${sessionScope.user ==  null}">
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Login/Register</a></li>
-                            </c:if>
+                        </c:if>
                     </ul>
                 </li>
                 <!-- COLLAPSED -->
