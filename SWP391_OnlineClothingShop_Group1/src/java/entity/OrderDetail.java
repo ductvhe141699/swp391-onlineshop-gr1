@@ -28,11 +28,12 @@ public class OrderDetail extends ProductDetailImg {
         this.quantity = quantity;
     }
 
-    public OrderDetail(int productId, String productName, String productImgURL, int ProductPrice) {
+    public OrderDetail(int productId, String productName, String productImgURL, int ProductPrice, int quantity) {
         this.productID = productID;
         this.productName = productName;
         this.productImgURL=productImgURL;
         this.productPrice=ProductPrice;
+        this.quantity=quantity;
     }
 
     public int getOrderID() {

@@ -23,8 +23,8 @@ import javax.servlet.http.HttpSession;
 /**
  *
  * @author BEAN
- * 
- * comment dau class ten 
+ *
+ * comment dau class ten
  */
 public class ConfirmOrderController extends HttpServlet {
 
@@ -71,36 +71,32 @@ public class ConfirmOrderController extends HttpServlet {
         ProductDAO pdao = new ProductDAO();
         OrderDAO odao = new OrderDAO();
         Users u = (Users) ss.getAttribute("user");
-        String role = udao.getRoleByUserName(u.getUserName());
+        try {
+            int oid = Integer.parseInt(request.getParameter("oid"));
+            String action = request.getParameter("action");
 
-        if (role.equals("Seller")) {
-            try {
-                int oid = Integer.parseInt(request.getParameter("oid"));
-                String action = request.getParameter("action");
-
-                ArrayList<Order> olist = new ArrayList<>();
-                ArrayList<Product> plist = pdao.getProductBySellerName(u.getUserName());
+            ArrayList<Order> olist = new ArrayList<>();
+            //GET LIST PRODUCT BY SELLER
+            ArrayList<Product> plist = pdao.getProductBySellerName(u.getUserName());
+            //GET LIST ORDER BY PRODUCT
+            olist = odao.getOdByListProduct(plist);
+            boolean check = odao.CheckOrderExist(oid, olist);
+            if ((check && action.equals("accept")) || (check && action.equals("reject"))) {
+                odao.OrderAction(oid, action);
                 olist = odao.getOdByListProduct(plist);
-                boolean check = odao.CheckOrderExist(oid, olist);
-                if ((check && action.equals("accept")) || (check && action.equals("reject")) ) {
-                    odao.OrderAction(oid, action);
-                    
-                    request.setAttribute("totalCus", udao.getTotalUser());
-                    request.setAttribute("totalPro", pdao.getTotalProduct());
-                    request.setAttribute("totalOrders", odao.getTotalOrders());
-                    request.setAttribute("listOrder", olist);
-                    request.getRequestDispatcher("OrderDashBoard.jsp").forward(request, response);
-                } else {
-                    response.sendRedirect("error.jsp");
-                }
-
-            } catch (Exception e) {
+                
+                //UPDATE LAI TOTAL CUS , TOTAL PRO , TOTAL ORDER , TOTAL PROFIT
+                request.setAttribute("totalCus", udao.getTotalUser());
+                request.setAttribute("totalPro", pdao.getTotalProduct());
+                request.setAttribute("totalOrders", odao.getTotalOrders());
+                request.setAttribute("listOrder", olist);
+                request.getRequestDispatcher("OrderDashBoard.jsp").forward(request, response);
+            } else {
                 response.sendRedirect("error.jsp");
             }
 
-        } else {
+        } catch (Exception e) {
             response.sendRedirect("error.jsp");
-
         }
 
     }

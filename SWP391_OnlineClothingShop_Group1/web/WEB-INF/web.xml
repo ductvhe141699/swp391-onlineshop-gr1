@@ -161,16 +161,20 @@
         <servlet-class>controller.ManageFeedbackBySeller</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>OrderDetailsController</servlet-name>
+        <servlet-class>controller.OrderDetailsController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ViewFeedback</servlet-name>
         <servlet-class>controller.ViewFeedback</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ReplyFeedback</servlet-name>
-        <servlet-class>controller.ReplyFeedback</servlet-class>
+        <servlet-name>PostControl</servlet-name>
+        <servlet-class>controller.PostControl</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>FeedbackDetail</servlet-name>
-        <servlet-class>controller.FeedbackDetail</servlet-class>
+        <servlet-name>PostDetailControl</servlet-name>
+        <servlet-class>controller.PostDetailControl</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
@@ -312,16 +316,20 @@
         <url-pattern>/ManageFeedbackBySeller</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>OrderDetailsController</servlet-name>
+        <url-pattern>/OrderDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ViewFeedback</servlet-name>
         <url-pattern>/ViewFeedback</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ReplyFeedback</servlet-name>
-        <url-pattern>/ReplyFeedback</url-pattern>
+        <servlet-name>PostControl</servlet-name>
+        <url-pattern>/PostControl</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>FeedbackDetail</servlet-name>
-        <url-pattern>/FeedbackDetail</url-pattern>
+        <servlet-name>PostDetailControl</servlet-name>
+        <url-pattern>/PostDetail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

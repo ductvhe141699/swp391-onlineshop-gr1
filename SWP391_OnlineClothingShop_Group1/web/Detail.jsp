@@ -4,25 +4,28 @@
     Author     : Duy Manh
 --%>
 
+<%@page import="entity.ProductDetail"%>
 <%@page import="DBContext.FeedbackDAO"%>
 <%@page import="DBContext.UserDAO"%>
 <%@page import="entity.Feedback"%>
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Product Detail</title>    
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--===============================================================================================-->
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/favicon.ico" type="image/x-icon">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/vendor/bootstrap/css/bootstrap.min.css">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="css/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" type="text/css" href="css/fonts/iconic/css/material-design-iconic-font.min.css">
         <!--===============================================================================================-->
         <!--        <link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">-->
         <!--===============================================================================================-->
@@ -36,9 +39,9 @@
         <!--===============================================================================================-->
         <!--        <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">-->
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+        <link rel="stylesheet" type="text/css" href="css/vendor/slick/slick.css">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
+        <link rel="stylesheet" type="text/css" href="css/vendor/MagnificPopup/magnific-popup.css">
         <!--===============================================================================================-->
         <!--        <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">-->
         <!--===============================================================================================-->
@@ -99,17 +102,23 @@
 
                                 <div class="slick3 gallery-lb">
 
-                                    <c:forEach items="${images}" var="image">
-                                        <div class="item-slick3" data-thumb="resources/img/products/${image}">
-                                            <div class="wrap-pic-w pos-relative">
-                                                <img src="resources/img/products/${image}" alt="IMG-PRODUCT">
+                                    <%
+                                        ProductDetail pd = (ProductDetail) request.getAttribute("detail");
+                                        List<String> images = (List<String>) request.getAttribute("images");
+                                        for (int i = 0; i < images.size(); i++) {
 
-                                                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="">
-                                                    <i class="fa fa-expand"></i>
-                                                </a>
-                                            </div>
+                                    %>
+
+                                    <div class="item-slick3" data-thumb="css/resources/img/<%=images.get(0)%>">
+                                        <div class="wrap-pic-w pos-relative">
+                                            <img src="css/resources/img/<%=images.get(i)%>" alt="IMG-PRODUCT">
+
+                                            <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="">
+                                                <i class="fa fa-expand"></i>
+                                            </a>
                                         </div>
-                                    </c:forEach>
+                                    </div>
+                                    <% } %>
 
 
                                 </div>
@@ -123,8 +132,8 @@
                                 ${detail.productName}
                             </h4>
 
-                            <span class="mtext-106 cl2">
-                                $${detail.originPrice}
+                            <span class="currency price-hp" id="pPrice">
+                                ${detail.originPrice}
                             </span>
 
                             <p class="stext-102 cl3 p-t-23">
@@ -145,13 +154,13 @@
                                             <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
                                                 <i class="fs-16 zmdi zmdi-plus"></i>
                                             </div>
-                                            
+
                                         </div>                                          
-                                            <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                                Add to cart
-                                            </button>
+                                        <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                            Add to cart
+                                        </button>
                                     </div>                                           
-                                            
+
                                 </div>	
                             </div>
 
@@ -189,7 +198,7 @@
                                             <!-- Review -->
                                             <div class="flex-w flex-t p-b-68">
                                                 <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-                                                    <img src="resources/img/avatar.jpg" alt="AVATAR">
+                                                    <img src="css/resources/img/avatar.jpg" alt="AVATAR">
                                                 </div>
 
                                                 <div class="size-207">
@@ -275,12 +284,12 @@
 
 
             <!--===============================================================================================-->
-            <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+            <script src="css/vendor/jquery/jquery-3.2.1.min.js"></script>
             <!--===============================================================================================-->
-            <script src="vendor/animsition/js/animsition.min.js"></script>
+            <script src="css/vendor/animsition/js/animsition.min.js"></script>
             <!--===============================================================================================-->
-            <script src="vendor/bootstrap/js/popper.js"></script>
-            <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+            <script src="css/vendor/bootstrap/js/popper.js"></script>
+            <script src="css/vendor/bootstrap/js/bootstrap.min.js"></script>
             <!--===============================================================================================-->
             <!--            <script src="vendor/select2/select2.min.js"></script>
                         <script>
@@ -295,15 +304,15 @@
             <!--            <script src="vendor/daterangepicker/moment.min.js"></script>-->
             <!--            <script src="vendor/daterangepicker/daterangepicker.js"></script>-->
             <!--===============================================================================================-->
-            <script src="vendor/slick/slick.min.js"></script>
-            <script src="js/slick-custom.js"></script>
+            <script src="css/vendor/slick/slick.min.js"></script>
+            <script src="css/js/slick-custom.js"></script>
             <!--===============================================================================================-->
             <!--            <script src="vendor/parallax100/parallax100.js"></script>
                         <script>
                             $('.parallax100').parallax100();
                         </script>-->
             <!--===============================================================================================-->
-            <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+            <script src="css/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
             <script>
                 $('.gallery-lb').each(function () { // the containers for all your galleries
                     $(this).magnificPopup({
@@ -319,7 +328,7 @@
             <!--===============================================================================================-->
             <!--            <script src="vendor/isotope/isotope.pkgd.min.js"></script>-->
             <!--===============================================================================================-->
-            <script src="vendor/sweetalert/sweetalert.min.js"></script>
+            <script src="css/vendor/sweetalert/sweetalert.min.js"></script>
             <script>
                 $('.js-addwish-b2').on('click', function (e) {
                     e.preventDefault();
@@ -355,6 +364,13 @@
                     });
                 });
             </script>
+            <script type="text/javascript">
+                
+                var a = document.getElementById("pPrice").innerHTML;
+                a = a.replace('.','');
+                a = a.replace(new RegExp("^(\\d{" + (a.length % 3 ? a.length % 3 : 0) + "})(\\d{2})", "g"), "$1 $2").replace(/(\d{3})+?/gi, "$1,").trim();
+                document.getElementById("pPrice").innerHTML = "₫" + a;
+            </script>
             <!--===============================================================================================-->
             <!--            <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
                         <script>
@@ -373,7 +389,8 @@
                             });
                         </script>-->
             <!--===============================================================================================-->
-            <script src="js/main.js"></script>            
+            <script src="css/js/main.js"></script>            
+
             <jsp:include page="model/footer.jsp"/>
     </body>
 

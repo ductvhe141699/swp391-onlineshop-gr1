@@ -1,10 +1,18 @@
 
 import DBContext.OrderDAO;
+<<<<<<< HEAD
+import DBContext.ShipDAO;
+import DBContext.UserDAO;
+import SMTP.GmailAPI;
+import entity.Order;
+import entity.ShipInfo;
+=======
 import DBContext.OrderDetailDAO;
 import DBContext.UserDAO;
 import SMTP.GmailAPI;
 import entity.Order;
 import entity.OrderDetail;
+>>>>>>> c3454b0182e81c4e3e8b3e0e9f01c89d81f4d5b6
 import entity.Users;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +28,30 @@ import javax.mail.MessagingException;
  * @author BEAN
  */
 public class test {
+<<<<<<< HEAD
+    
     public static void main(String[] args) {
-        OrderDetailDAO odDAO = new OrderDetailDAO();
-        List<OrderDetail> od = odDAO.getOdByOrderId(1);
-        for (OrderDetail orderDetail : od) {
-            System.out.println(orderDetail.getProductName());
-        }
+//        OrderDAO odao = new OrderDAO();
+//        List<Order> o = odao.getOrderByOdID(1);
+//
+//        for (Order order : o) {
+//            System.out.println(order.getId());
+//        }
+        ShipDAO sdao = new ShipDAO();
+        ShipInfo s = sdao.getShipInfoByOdID(1);
+        System.out.println(s.getCustomerName());
     }
+    
+=======
+
+    public static void main(String[] args) {
+        OrderDAO orderDAO = new OrderDAO();
+        Order orders = orderDAO.getAnOrderByUserID(4);
+        System.out.println(orders.getId());
+    }
+>>>>>>> c3454b0182e81c4e3e8b3e0e9f01c89d81f4d5b6
 }
+
 //    public static void main(String[] args) throws MessagingException {
 //<<<<<<< HEAD
 //        OrderDAO orderDAO = new OrderDAO();

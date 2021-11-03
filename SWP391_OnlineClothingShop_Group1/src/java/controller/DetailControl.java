@@ -40,8 +40,7 @@ public class DetailControl extends HttpServlet {
         FeedbackDAO fDAO = new FeedbackDAO();
         ProductDetail productDetail = pDAO.getProductDetail(id);
         request.setAttribute("detail", productDetail);
-        request.setAttribute("images", pDAO.getImages(id));
-        
+        request.setAttribute("images", productDetail.getImages());
         request.setAttribute("feedbacks", fDAO.getFeedbacksByProductId(id));
         request.getRequestDispatcher("Detail.jsp").forward(request, response);
     }
