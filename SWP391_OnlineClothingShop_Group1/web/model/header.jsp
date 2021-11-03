@@ -150,6 +150,9 @@
                             </c:forEach>
                     </ul>
                 </li>
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/PostControl">Post</a>
+                </li>
                 <li class="nav-item dropdown d-block d-lg-none">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Blog
@@ -215,9 +218,7 @@
             <li class="nav-item me-4">
                 <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/home">Home</a>
             </li>
-             <li class="nav-item me-4">
-              <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/PostControl">Post</a>
-            </li>
+             
             <li class="nav-item me-4">
                 <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Product</a>
             </li>
@@ -245,6 +246,9 @@
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=${ibrand.getBrandID()}&price=0&sortType=0&sortMode=0">${ibrand.getBrandName()}</a></li>
                         </c:forEach>
                 </ul>
+            </li>
+            <li class="nav-item me-4">
+              <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/PostControl">Post</a>
             </li>
             <li class="nav-item dropdown me-4">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
