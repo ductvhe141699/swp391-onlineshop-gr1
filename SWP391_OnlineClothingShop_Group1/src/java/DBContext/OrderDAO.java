@@ -279,5 +279,13 @@ public class OrderDAO {
         return total;
     }
     
+     public int getProfitByOrder(ArrayList<Order> olist) {
+
+        int profit = 0;
+        for (Order o : olist) {
+            profit += (o.getTotalPrice() - o.getQuantity() * o.getProductPrice());
+        }
+        return profit;
+    }
     
 }
