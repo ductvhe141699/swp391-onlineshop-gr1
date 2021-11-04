@@ -222,4 +222,13 @@ public class OrderDAO {
         return null;
 
     }
+    public int geTotalUserIDByListP(ArrayList<Product> listP) {
+        int total = 0;
+        String query = "select UserID from Orders o\n"
+                + "                join Order_Detail d on d.Order_ID = o.ID\n";
+
+        
+
+        return total;
+    }
 }
