@@ -250,13 +250,34 @@ public class OrderDAO {
     }
 
     
+   
     public int geTotalOrderByListP(ArrayList<Product> listP) {
         int total = 0;
         String query = "select o.ID from Orders o\n"
                 + "                join Order_Detail d on d.Order_ID = o.ID\n";
 
-       
+        int count = 0;
+        try {
+            conn = new DBcontext().open();
+
+            for (int i = 0; i < listP.size(); i++) {
+                if (i == 0) {
+                    query += "where ProductID = " + listP.get(i).getProductID();
+                } else {
+                    query += " or ProductID = " + listP.get(i).getProductID();
+                }
+            }
+            query += "group by o.ID";
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                total++;
+            }
+        } catch (Exception e) {
+        }
+
         return total;
     }
-
+    
+    
 }
