@@ -249,4 +249,14 @@ public class OrderDAO {
         return total;
     }
 
+    
+    public int geTotalOrderByListP(ArrayList<Product> listP) {
+        int total = 0;
+        String query = "select o.ID from Orders o\n"
+                + "                join Order_Detail d on d.Order_ID = o.ID\n";
+
+       
+        return total;
+    }
+
 }
