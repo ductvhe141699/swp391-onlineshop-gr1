@@ -91,7 +91,7 @@ public class ResetPassword extends HttpServlet {
                 //FIX DEFAULT LENGTH OF PASSWORD 8 CHARACTORS
                 int charactor = 8;
                 String gmailFrom = "duclee028@gmail.com";
-                String passfrom = "duc2509200";
+                String password = "duc25092000";
                 String subject = "Reset Password";
                 String newPassword = dao.RandomPassword(charactor);
                 // TO UPDATE PASSWORD
@@ -100,7 +100,9 @@ public class ResetPassword extends HttpServlet {
                 String message = ("This is your new password: " + newPassword);
                 //SEND NEW PASSWORD
               
-                //ADD GMAIL API
+                //send mail 
+                gmail.send(mailTo, subject, message, gmailFrom, password);
+                
                 response.sendRedirect("Login.jsp");
 
             }
