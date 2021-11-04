@@ -75,10 +75,13 @@ public class ManagerOrderControler extends HttpServlet {
             if (role.equals("Seller")) {
                 ArrayList<Product> plist = pdao.getProductBySellerName(u.getUserName());
                 olist = odao.getOdByListProduct(plist);
-
-                request.setAttribute("totalCus", udao.getTotalUser());
-                request.setAttribute("totalPro", pdao.getTotalProduct());
-                request.setAttribute("totalOrders", odao.getTotalOrders());
+                int totalOrder = odao.geTotalOrderByListP(plist);
+                int totalcus=  odao.geTotalUserIDByListP(plist);
+                int profit = odao.getProfitByOrder(olist);
+                request.setAttribute("totalCus", totalcus);
+                request.setAttribute("totalPro", plist.size());
+                request.setAttribute("totalOrders", totalOrder);
+                request.setAttribute("totalProfit", profit);
                 request.setAttribute("listOrder", olist);
                 request.getRequestDispatcher("OrderDashBoard.jsp").forward(request, response);
 
