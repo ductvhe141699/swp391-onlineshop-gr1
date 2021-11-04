@@ -139,7 +139,6 @@ public class OrderDAO {
         return 0;
     }
 
-
     public boolean CheckOrderExist(int orderID, ArrayList<Order> olist) {
         boolean flag = false;
         for (Order o : olist) {
@@ -172,7 +171,6 @@ public class OrderDAO {
         }
     }
 
-
     public List<Order> getOrderByOdID(int orderID) {
         String query = "select o.ID , o.UserID , o.TotalPrice , o.Note , o.Status , o.Date , d.Order_ID , d.ProductID , d.ProductName  ,d.ProductPrice , d.Quantity from Orders o\n"
                 + "join Order_Detail d on d.Order_ID = o.ID\n"
@@ -181,7 +179,7 @@ public class OrderDAO {
         try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
-            ps.setInt(1 , orderID);
+            ps.setInt(1, orderID);
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Order(
@@ -200,8 +198,8 @@ public class OrderDAO {
             }
         } catch (Exception e) {
         }
-        return list;}
-
+        return list;
+    }
 
     public Order getAnOrderByUserID(int id) {
         String query = "SELECT o.ID, os.Name, o.TotalPrice, o.Date\n"
@@ -222,13 +220,33 @@ public class OrderDAO {
         return null;
 
     }
+
     public int geTotalUserIDByListP(ArrayList<Product> listP) {
         int total = 0;
         String query = "select UserID from Orders o\n"
                 + "                join Order_Detail d on d.Order_ID = o.ID\n";
 
-        
+        int count = 0;
+        try {
+            conn = new DBcontext().open();
+
+            for (int i = 0; i < listP.size(); i++) {
+                if (i == 0) {
+                    query += "where ProductID = " + listP.get(i).getProductID();
+                } else {
+                    query += " or ProductID = " + listP.get(i).getProductID();
+                }
+            }
+            query += "group by UserID";
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                total++;
+            }
+        } catch (Exception e) {
+        }
 
         return total;
     }
+
 }
