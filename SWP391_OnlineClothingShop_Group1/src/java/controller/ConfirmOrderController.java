@@ -83,12 +83,17 @@ public class ConfirmOrderController extends HttpServlet {
             boolean check = odao.CheckOrderExist(oid, olist);
             if ((check && action.equals("accept")) || (check && action.equals("reject"))) {
                 odao.OrderAction(oid, action);
+
                 olist = odao.getOdByListProduct(plist);
-                
+
                 //UPDATE LAI TOTAL CUS , TOTAL PRO , TOTAL ORDER , TOTAL PROFIT
-                request.setAttribute("totalCus", udao.getTotalUser());
-                request.setAttribute("totalPro", pdao.getTotalProduct());
-                request.setAttribute("totalOrders", odao.getTotalOrders());
+                olist = odao.getOdByListProduct(plist);
+                int total = odao.geTotalUserIDByListP(plist);
+                int profit = odao.getProfitByOrder(olist);
+                request.setAttribute("totalCus", total);
+                request.setAttribute("totalPro", plist.size());
+                request.setAttribute("totalOrders", olist.size());
+                request.setAttribute("totalProfit", profit);
                 request.setAttribute("listOrder", olist);
                 request.getRequestDispatcher("OrderDashBoard.jsp").forward(request, response);
             } else {
