@@ -5,7 +5,9 @@
  */
 package controller;
 
+import DBContext.CBannerDAO;
 import DBContext.ProductDAO;
+import entity.CBanner;
 import entity.Product;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -53,6 +55,9 @@ public class HomeServlet extends HttpServlet {
        ProductDAO dao = new ProductDAO(); 
        ArrayList<Product> listProduct = dao.getAllProduct();
        request.setAttribute("listProduct", listProduct);
+        CBannerDAO cbdao = new CBannerDAO();
+       ArrayList<CBanner> cbanners =  cbdao.getAllCBanner();
+       request.setAttribute("cbanners",cbanners);
        request.getRequestDispatcher("Homepage.jsp").forward(request, response);
     }
 

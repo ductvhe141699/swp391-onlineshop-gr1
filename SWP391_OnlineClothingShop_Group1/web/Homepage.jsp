@@ -44,48 +44,22 @@
         <section class="slider">
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Nike"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 3"></button>
+                    <c:forEach items="${cbanners}" var="cbanner" varStatus="i">
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="${i.index}" <c:if test="${i.index==0}"> class="active" aria-current="true"</c:if> aria-label="${cbanner.getTitle()}"></button>
+                    </c:forEach>
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="./resources/img/banner/nike.png" class="d-block w-100" alt="..." />
-                        <div class="carousel-caption d-none d-md-block text-center slider-text ">
-                            <h3 class="black-font" >NIKE</h3>
-                            <p class="black-font">
-                               Just Do It !
-                            </p>
+                    <c:forEach items="${cbanners}" var="cbanner" varStatus="i">
+                        <div class="carousel-item ${i.index==0?'active':''}">
+                            <img src="./resources/img/banner/${cbanner.getImg()}" class="d-block w-100" alt="..." />
+                            <div class="carousel-caption d-none d-md-block text-center slider-text ">
+                                <h3 style="color:white;">${cbanner.getTitle()}</h3>
+                                <p style="color:white;">
+                                   ${cbanner.getDesc()}
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="./resources/img/banner/gucci.png" class="d-block w-100" alt="..." />
-                        <div class="carousel-caption d-none d-md-block text-center slider-text">
-                            <h3>GUCCI</h3>
-                            <p>
-                              We go beyond just great !
-                            </p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="./resources/img/banner/chanel.jpg" class="d-block w-100" alt="..." />
-                        <div class="carousel-caption d-none d-md-block text-center slider-text">
-                            <h3>Chanel</h3>
-                            <p>
-                               I don’t do fashion. I am fashion 
-                            </p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="./resources/img/banner/chanel.jpg" class="d-block w-100" alt="..." />
-                        <div class="carousel-caption d-none d-md-block text-center slider-text">
-                            <h3>Chanel</h3>
-                            <p>
-                               I don’t do fashion. I am fashion 
-                            </p>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
                         data-bs-slide="prev">

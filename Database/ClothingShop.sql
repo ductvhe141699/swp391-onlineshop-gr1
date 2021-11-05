@@ -802,7 +802,7 @@ CREATE TABLE CBanner
 )
 INSERT INTO dbo.CBanner(Img,Title,[desc])VALUES('nike.png',  N'NIKE',  N'Just Do It !'  )
 INSERT INTO dbo.CBanner(Img,Title,[desc])VALUES('gucci.png',  N'GUCCI',  N'We go beyond just great !'  )
-INSERT INTO dbo.CBanner(Img,Title,[desc])VALUES('chanel.png',  N'CHANEL',  N'I don’t do fashion. I am fashion'  )
+INSERT INTO dbo.CBanner(Img,Title,[desc])VALUES('chanel.jpg',  N'CHANEL',  N'I don’t do fashion. I am fashion'  )
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE Banner
 (
