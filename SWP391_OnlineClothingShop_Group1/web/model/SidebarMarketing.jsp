@@ -9,7 +9,7 @@
 
  <nav id="sidebar">
     <div id="dismiss">
-        <i class="bi bi-arrow-left"></i>
+        <i class="fas fa-arrow-left"></i>
     </div>
 
     <div class="sidebar-header">
@@ -38,7 +38,7 @@
         <div class="navbar-header">
             <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                 <i class="glyphicon glyphicon-align-left"></i>
-                <span>Open Sidebar</span>
+                <span>Navbar</span>
             </button>
         </div>
     </div>
