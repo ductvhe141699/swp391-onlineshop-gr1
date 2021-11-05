@@ -79,8 +79,8 @@ public class BannerDAO {
             query = "UPDATE dbo.Banner SET Img = ? WHERE ID = ?";
             conn = DBcontext.open();
             ps = conn.prepareStatement(query);
-            ps.setString(2, banner.getImg());
-            ps.setInt(1, banner.getId());
+            ps.setString(1, banner.getImg());
+            ps.setInt(2, banner.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             Logger.getLogger(Banner.class.getName()).log(Level.SEVERE, null, e);

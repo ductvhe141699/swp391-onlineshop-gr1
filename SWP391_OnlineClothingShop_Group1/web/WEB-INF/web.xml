@@ -211,15 +211,22 @@
     <servlet>
         <servlet-name>AddBanner</servlet-name>
         <servlet-class>controller.AddBanner</servlet-class>
-        <multipart-config>
-            <max-file-size>20848820</max-file-size>
-            <max-request-size>418018841</max-request-size>
-            <file-size-threshold>1048576</file-size-threshold>
-        </multipart-config>
     </servlet>
     <servlet>
         <servlet-name>DeleteBanner</servlet-name>
         <servlet-class>controller.DeleteBanner</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddCBanner</servlet-name>
+        <servlet-class>controller.AddCBanner</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteCBanner</servlet-name>
+        <servlet-class>controller.DeleteCBanner</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditCBanner</servlet-name>
+        <servlet-class>controller.EditCBanner</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
@@ -399,6 +406,18 @@
     <servlet-mapping>
         <servlet-name>DeleteBanner</servlet-name>
         <url-pattern>/mkt/deletebanner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCBanner</servlet-name>
+        <url-pattern>/mkt/addcbanner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCBanner</servlet-name>
+        <url-pattern>/mkt/deletecbanner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditCBanner</servlet-name>
+        <url-pattern>/mkt/editcbanner</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

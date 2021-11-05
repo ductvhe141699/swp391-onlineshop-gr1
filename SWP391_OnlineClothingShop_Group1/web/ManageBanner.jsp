@@ -96,7 +96,7 @@
                                   </button>
                                 </div>
                                 <%-- EDIT CBANNER --%>
-                                <form method="post" action="EditBrandServlet">
+                                <form method="post" action="${pageContext.request.contextPath}/mkt/editcbanner" enctype="multipart/form-data">
                                     <div class="modal fade" id="edit${i.count}cbanner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="edit${i.count}cbanner" aria-hidden="true">
                                       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                         <div class="modal-content">
@@ -166,14 +166,14 @@
                                                 <div class="modal-body">
                                                     <div class="mb-3 w-100">
                                                         <label for="formFile" class="form-label" style="display: none;">Banner Image</label>
-                                                        <input class="form-control" type="file" id="formFile" required="">
+                                                        <input class="form-control" name="newcbannerimage" type="file" id="formFile" required>
                                                       </div>
                                                     <div class="form-floating mb-3 w-100">
-                                                        <input type="text" class="form-control" id="newcbannertitle" style="font-weight: normal ;color:black;" placeholder="Icon"  name="newcategoryicon" required>
+                                                        <input type="text" name="newcbannertitle" class="form-control" id="newcbannertitle" style="font-weight: normal ;color:black;" placeholder="Icon"  name="newcategoryicon" required>
                                                         <label for="newcbannertitle" style="color:black;">Title</label>
                                                     </div>
                                                     <div class="form-floating mb-3 w-100">
-                                                      <input type="text" class="form-control" id="newcbannerdesc" style=" font-weight: normal ;color:black;" placeholder="Name" name="newcategoryname" required>
+                                                      <input type="text" name="newcbannerdesc" class="form-control" id="newcbannerdesc" style=" font-weight: normal ;color:black;" placeholder="Name" name="newcategoryname" required>
                                                       <label for="newcbannerdesc" style="color:black;">Description</label>
                                                     </div>
                                                 </div>
@@ -240,7 +240,7 @@
                                     </div>
                                   </div>
                                 </div>
-                                <%-- DELETE CBANNER --%>
+                                <%-- DELETE BANNER --%>
                             </td>
                           </tr>
                         </c:forEach>

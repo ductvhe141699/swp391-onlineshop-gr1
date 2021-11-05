@@ -5,8 +5,8 @@
  */
 package controller;
 
-import DBContext.BannerDAO;
-import entity.Banner;
+import DBContext.CBannerDAO;
+import entity.CBanner;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -23,8 +23,9 @@ import javax.servlet.http.Part;
  *
  * @author SAKURA
  */
-@MultipartConfig(location="/mkt/addbanner", fileSizeThreshold=1024*1024, maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5*5)
-public class AddBanner extends HttpServlet {
+@MultipartConfig(location="/mkt/addcbanner", fileSizeThreshold=1024*1024, maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5*5)
+
+public class AddCBanner extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,18 +39,16 @@ public class AddBanner extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Banner banner = new Banner();
         String imgpath= "resources\\img\\banner\\";
-        
-        Part filePart = request.getPart("newbannerimage");
-        String fileName = 
-        Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); 
+        CBanner cbanner=new CBanner();
+        Part filePart = request.getPart("newcbannerimage");
+        String fileName =  Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); 
         InputStream inputStream = filePart.getInputStream();
         String uploadPath = getServletContext().getRealPath("") + File.separator + imgpath;
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
-                    uploadDir.mkdir();
-                }
+            uploadDir.mkdir();
+        }
         FileOutputStream outputStream = new FileOutputStream(uploadPath + 
         File.separator + fileName);
         int read = 0;
@@ -59,9 +58,11 @@ public class AddBanner extends HttpServlet {
         }
         inputStream.close();
         outputStream.close();
-        banner.setImg(filePart.getSubmittedFileName());
-        BannerDAO bdao= new BannerDAO();
-        bdao.addBanner(banner);
+        cbanner.setImg(filePart.getSubmittedFileName());
+        cbanner.setTitle(request.getParameter("newcbannertitle"));
+        cbanner.setDesc(request.getParameter("newcbannerdesc"));
+        CBannerDAO cbdao=new CBannerDAO();
+        cbdao.addCBanner(cbanner);
         response.sendRedirect(request.getHeader("referer"));
     }
 
