@@ -11,9 +11,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.nio.file.Paths;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +23,7 @@ import javax.servlet.http.Part;
  *
  * @author SAKURA
  */
+@MultipartConfig(location="/mkt/addcbanner", fileSizeThreshold=1024*1024, maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5*5)
 public class EditCBanner extends HttpServlet {
 
     /**
@@ -40,7 +41,7 @@ public class EditCBanner extends HttpServlet {
         int id=Integer.parseInt(request.getParameter("editcbannerid"));
         CBannerDAO cbdao= new CBannerDAO();
         CBanner cbanner = cbdao.getCBanner(id);
-        Part filePart = request.getPart("newcbannerimage");
+        Part filePart = request.getPart("editcbannerimage");
         if(!"".equals(filePart.getSubmittedFileName()))
         {
             String imgpath= "resources\\img\\banner\\";
