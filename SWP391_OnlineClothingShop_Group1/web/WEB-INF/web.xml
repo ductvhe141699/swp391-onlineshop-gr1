@@ -196,6 +196,10 @@
         <servlet-name>DeletePostControl</servlet-name>
         <servlet-class>controller.DeletePostControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManageBanner</servlet-name>
+        <servlet-class>controller.ManageBanner</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -362,6 +366,10 @@
     <servlet-mapping>
         <servlet-name>DeletePostControl</servlet-name>
         <url-pattern>/DeletePost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageBanner</servlet-name>
+        <url-pattern>/mkt/banner</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -792,3 +792,17 @@ INSERT [dbo].[Post] ([ID], [Description], [UserID], [date], [CategoryID], [PostI
 INSERT [dbo].[Post] ([ID], [Description], [UserID], [date], [CategoryID], [PostImgURL]) VALUES (9, N' QUẦN JEAN MỚI VỀ ĐẸP KHÔNG THỂ CƯỠNG LẠI ĐƯỢC!” Bạn sẽ có khả năng sở hữu mẫu quần jean siêu đẹp này chỉ với giá 1xxk/ hàng hóa. Chất liệu co dãn, thấm hút mồ hôi, tôn dáng, giúp người mặc trông thon gọn hơn.Đặc biệt khuyến mãi ưu đãi vào những dịp lễ lớn', 1, N'11/03/2021', 1, N'poster9.jpg')
 SET IDENTITY_INSERT Post OFF
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CREATE TABLE CBanner
+{
+	ID int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+	Image VARCHAR(2500),
+	Title NVARCHAR(2500),
+	[desc] NVARCHAR(2500)
+}
+
+CREATE TABLE Banner
+{
+	ID int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+	Image VARCHAR(2500),
+}
