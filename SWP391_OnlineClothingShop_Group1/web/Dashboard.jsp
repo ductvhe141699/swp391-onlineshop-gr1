@@ -22,23 +22,12 @@
 
         <div class="wrapper">
             <!-- Sidebar Holder -->
-            <%@include file="model/Sidebar.jsp" %>
+           
 
             <!-- Page Content Holder -->
             <div id="content">
-
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-
-                        <div class="navbar-header">
-                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                                <i class="glyphicon glyphicon-align-left"></i>
-                                <span>Open Sidebar</span>
-                            </button>
-                        </div>
-                    </div>
-                </nav>
-
+                 <%@include file="model/Sidebar.jsp" %>
+                
 
                 <div class="container-fluid">
                     <div class="row">

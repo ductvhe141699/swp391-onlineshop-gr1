@@ -25,11 +25,11 @@
 
                 </li>
                 <li>
-                    <a href="ManagerBanner">Manager Banner <i class="fab fa-adversal"></i></a>
+                    <a href="${pageContext.request.contextPath}/mtk/ManagerBanner">Manager Banner <i class="fab fa-adversal"></i></a>
                 </li>
             </ul>
 
             <ul class="list-unstyled CTAs">
-                <li><a href="logout" class="download">Log out</a></li>
+                <li><a href="${pageContext.request.contextPath}/logout" class="download">Log out</a></li>
             </ul>
         </nav>

@@ -39,6 +39,17 @@
             </ul>
 
             <ul class="list-unstyled CTAs">
-                <li><a href="home" class="download">Log out</a></li>
+                <li><a href="logout" class="download">Log out</a></li>
             </ul>
         </nav>
+        <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span>Open Sidebar</span>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
