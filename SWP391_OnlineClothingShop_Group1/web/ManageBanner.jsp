@@ -218,38 +218,10 @@
                             <td>
                                 
                                  <div class="btn-group flex-warp" style="flex-wrap: wrap;">
-                                  <button type="button" class="btn btn-warning white-text" data-bs-toggle="modal" data-bs-target="#edit${i.count}banner">
-                                    <i class="fas fa-edit"></i>
-                                  </button>
                                   <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete${i.count}banner">
                                     <i class="fas fa-trash-alt"></i>
                                   </button>
                                 </div>
-                                <%-- EDIT BANNER --%>
-                                <form method="post" action="EditBrandServlet">
-                                    <div class="modal fade" id="edit${i.count}banner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="edit${i.count}banner" aria-hidden="true">
-                                      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                        <div class="modal-content">
-                                          <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Edit Banner</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                          </div>
-                                          <div class="modal-body">
-                                            <input type="hidden" value="${banner.getId()}" name="editcbannerid">
-                                            <div class="mb-3 w-100">
-                                                <input type="file" class="form-control" id="edit${i.count}cbannerimg" name="editbannerimage" >
-                                                <label for="edit${i.count}bannerimg" style="display: none;">Image</label>
-                                            </div>
-                                          </div>
-                                          <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <input type="submit" class="btn btn-warning white-text" value="Edit">
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                </form>
-                                <%-- EDIT BANNER --%>
                                 <%-- DELETE BANNER --%>
                                 <div class="modal fade" id="delete${i.count}banner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
                                   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -288,7 +260,7 @@
                                                 <div class="modal-body">
                                                     <div class="mb-3 w-100">
                                                         <label for="formFile" class="form-label" style="display: none;">Banner Image</label>
-                                                        <input class="form-control" type="file" id="formFile" required="">
+                                                        <input class="form-control" type="file" id="formFile" name="newbannerimage" required>
                                                       </div>
                                                 </div>
                                                 <div class="modal-footer">

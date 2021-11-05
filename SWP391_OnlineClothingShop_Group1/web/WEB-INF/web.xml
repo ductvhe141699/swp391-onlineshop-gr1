@@ -16,6 +16,14 @@
         <filter-name>LoginFilter</filter-name>
         <filter-class>filter.LoginFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>MarketingFilter</filter-name>
+        <filter-class>filter.MarketingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>MarketingFilter</filter-name>
+        <url-pattern>/mkt/*</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
         <url-pattern>/login</url-pattern>
@@ -200,6 +208,19 @@
         <servlet-name>ManageBanner</servlet-name>
         <servlet-class>controller.ManageBanner</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddBanner</servlet-name>
+        <servlet-class>controller.AddBanner</servlet-class>
+        <multipart-config>
+            <max-file-size>20848820</max-file-size>
+            <max-request-size>418018841</max-request-size>
+            <file-size-threshold>1048576</file-size-threshold>
+        </multipart-config>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteBanner</servlet-name>
+        <servlet-class>controller.DeleteBanner</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -370,6 +391,14 @@
     <servlet-mapping>
         <servlet-name>ManageBanner</servlet-name>
         <url-pattern>/mkt/banner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddBanner</servlet-name>
+        <url-pattern>/mkt/addbanner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteBanner</servlet-name>
+        <url-pattern>/mkt/deletebanner</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

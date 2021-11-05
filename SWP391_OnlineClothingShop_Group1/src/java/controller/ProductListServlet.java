@@ -57,7 +57,9 @@ public class ProductListServlet extends HttpServlet {
         BannerDAO bdao= new BannerDAO();
         List<Banner> banners= bdao.getAllBanner();
         Random rand = new Random();
-        request.setAttribute("banner",banners.get(rand.nextInt(banners.size())) );
+        int size=banners.size();
+        if(size>0)
+            request.setAttribute("banner",banners.get(rand.nextInt(banners.size())) );
         
         // Product Counter
         ProductDAO pdao=new ProductDAO();

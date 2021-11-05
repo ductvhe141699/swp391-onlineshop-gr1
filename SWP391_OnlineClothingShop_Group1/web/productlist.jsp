@@ -37,7 +37,9 @@
     <%@include file="model/header.jsp" %>
     <div class="container-fluid bg-transparent p-3 content-width mh-1000" style="position: relative;">
         <div class="row">
+            <c:if test="${banner!=null}">
             <img class="img-fluid img-thumbnail m-3 p-1"  src="${pageContext.request.contextPath}/resources/img/banner/${banner.getImg()}"/>
+            </c:if>
           <!-- FILTER -->
             <div class="col-12 col-lg-3 float-start">
                 <form method="GET" action="${pageContext.request.contextPath}/product">

@@ -29,9 +29,9 @@
             referrerpolicy="no-referrer"
             />
         <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="./css/style.css" />
-        <link rel="stylesheet" type="text/css" href="./css/queries.css" />
-        <link rel="stylesheet" type="text/css" href="./css/homepage.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/queries.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/homepage.css" />
         <!-- Sakura -->
         <link href="${pageContext.request.contextPath}/css/jquery-sakura.css" rel="stylesheet" type="text/css">
         <title>Shope</title>
@@ -51,7 +51,7 @@
                 <div class="carousel-inner">
                     <c:forEach items="${cbanners}" var="cbanner" varStatus="i">
                         <div class="carousel-item ${i.index==0?'active':''}">
-                            <img src="./resources/img/banner/${cbanner.getImg()}" class="d-block w-100" alt="..." />
+                            <img src="${pageContext.request.contextPath}/resources/img/banner/${cbanner.getImg()}" class="d-block w-100" alt="..." />
                             <div class="carousel-caption d-none d-md-block text-center slider-text ">
                                 <h3 style="color:white;">${cbanner.getTitle()}</h3>
                                 <p style="color:white;">

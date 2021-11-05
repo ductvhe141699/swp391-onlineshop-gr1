@@ -16,13 +16,32 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author SAKURA
+ * @author ChauBNMHE153019
  */
 public class BannerDAO {
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
     private String query;
+    public Banner getBanner(int id){
+        Banner banner = null;
+        try {
+            query = "SELECT * FROM dbo.Banner WHERE ID = ?";
+            conn = DBcontext.open();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                banner = new Banner(rs.getInt("ID"),rs.getString("Img"));
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(Banner.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
+        return banner;
+    }
     public ArrayList<Banner> getAllBanner() {
         ArrayList<Banner> list = new ArrayList<>();
         try {
@@ -40,5 +59,48 @@ public class BannerDAO {
             DBcontext.close(conn, ps, rs);
         }
         return list;
+    }
+    public void addBanner(Banner banner) {
+        try {
+            query = "INSERT INTO dbo.Banner VALUES ( ? )"   ;
+            conn = DBcontext.open();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, banner.getImg());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(Banner.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
+    }
+    public void editBanner(Banner banner) {
+        try {
+            query = "UPDATE dbo.Banner SET Img = ? WHERE ID = ?";
+            conn = DBcontext.open();
+            ps = conn.prepareStatement(query);
+            ps.setString(2, banner.getImg());
+            ps.setInt(1, banner.getId());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(Banner.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
+    }
+    public void deleteBanner(int id) {
+        try {
+            query = "DELETE FROM dbo.Banner WHERE ID = ?";
+            conn = DBcontext.open();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(Banner.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
     }
 }
