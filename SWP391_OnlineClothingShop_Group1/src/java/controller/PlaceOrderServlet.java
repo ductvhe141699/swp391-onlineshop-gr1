@@ -110,16 +110,16 @@ public class PlaceOrderServlet extends HttpServlet {
         cdao.removeCart(user.getUserID());
 //        GMAIL 
         String subject = "Order placed";
-        String message = ("Order #"+Integer.toString(orderId)+" has been placed!");
-        String gmailFrom = "duclee028@gmail.com";
-        String passfrom = "duc25092000";
-        try {
-            //(String toEmail, String subject, String msg, String fromEmail, String password
+//        String message = ("Order #"+Integer.toString(orderId)+" has been placed!");
+//        String gmailFrom = "duclee028@gmail.com";
+//        String passfrom = "duc25092000";
+//        try {
+//            //(String toEmail, String subject, String msg, String fromEmail, String password
 //            GmailAPI.send(user.getEmail(), subject, message, gmailFrom, passfrom);
-        } catch (MessagingException ex) {
-            Logger.getLogger(PlaceOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-//        GMAIL
+//        } catch (MessagingException ex) {
+//            Logger.getLogger(PlaceOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+////        GMAIL
         request.getRequestDispatcher("/finishedorder.jsp").forward(request, response);
     }
 
