@@ -5,7 +5,9 @@
  */
 package controller;
 
+import DBContext.BannerDAO;
 import DBContext.CBannerDAO;
+import entity.Banner;
 import entity.CBanner;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -36,6 +38,9 @@ public class ManageBanner extends HttpServlet {
         CBannerDAO cbdao = new CBannerDAO();
         ArrayList<CBanner> cbanners =  cbdao.getAllCBanner();
         request.setAttribute("cbanners",cbanners);
+        BannerDAO bdao = new BannerDAO();
+        ArrayList<Banner> banners =  bdao.getAllBanner();
+        request.setAttribute("banners",banners);
         request.getRequestDispatcher("/ManageBanner.jsp").forward(request, response);
     }
 

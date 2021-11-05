@@ -5,7 +5,9 @@
  */
 package controller;
 
+import DBContext.BannerDAO;
 import DBContext.ProductDAO;
+import entity.Banner;
 import entity.Product;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 import util.StringDecode;
 /**
  *
@@ -50,6 +53,12 @@ public class ProductListServlet extends HttpServlet {
         request.setAttribute("price", price);
         request.setAttribute("sortType", sortType);
         request.setAttribute("sortMode", sortMode);
+        // Random Banner
+        BannerDAO bdao= new BannerDAO();
+        List<Banner> banners= bdao.getAllBanner();
+        Random rand = new Random();
+        request.setAttribute("banner",banners.get(rand.nextInt(banners.size())) );
+        
         // Product Counter
         ProductDAO pdao=new ProductDAO();
         List<Product> products=pdao.getProductQuery("",0,0,0,0,0); 

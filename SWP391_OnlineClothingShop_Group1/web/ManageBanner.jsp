@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1">
         <title>Manage Banner</title>
         <!-- Icon -->
-            <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
+            <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/favicon.ico" type="image/x-icon">
             <!-- Google Fonts -->
             <link
               href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
@@ -95,7 +95,7 @@
                                     <i class="fas fa-trash-alt"></i>
                                   </button>
                                 </div>
-                                <%-- EDIT BRAND --%>
+                                <%-- EDIT CBANNER --%>
                                 <form method="post" action="EditBrandServlet">
                                     <div class="modal fade" id="edit${i.count}cbanner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="edit${i.count}cbanner" aria-hidden="true">
                                       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -127,8 +127,8 @@
                                       </div>
                                     </div>
                                 </form>
-                                <%-- EDIT BRAND --%>
-                                <%-- DELETE BRAND --%>
+                                <%-- EDIT CBANNER --%>
+                                <%-- DELETE CBANNER --%>
                                 <div class="modal fade" id="delete${i.count}cbanner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="delete1brand" aria-hidden="true">
                                   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                     <div class="modal-content">
@@ -146,7 +146,7 @@
                                     </div>
                                   </div>
                                 </div>
-                                <%-- DELETE BRAND --%>
+                                <%-- DELETE CBANNER --%>
                             </td>
                           </tr>
                         </c:forEach>
@@ -154,9 +154,9 @@
                         <tfoot>
                             <tr class="clickable-row">
                                 <th colspan="5" style="font-weight: normal;"> 
-                                  <i class="fas fa-plus d-block text-center addmore" style="font-size: 25px;" data-bs-toggle="modal" data-bs-target="#addcategory"></i>
+                                  <i class="fas fa-plus d-block text-center addmore" style="font-size: 25px;" data-bs-toggle="modal" data-bs-target="#addcbanner"></i>
                                     <form method="post" action="${pageContext.request.contextPath}/mkt/addcbanner" enctype="multipart/form-data">
-                                        <div class="modal fade" id="addcategory" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addcbanner" aria-hidden="true">
+                                        <div class="modal fade" id="addcbanner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addcbanner" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                               <div class="modal-content">
                                                 <div class="modal-header">
@@ -190,9 +190,119 @@
                         </tfoot>
                       </table>
 
-                    <!-- Other Banner -->
+                    <!-- Banner -->
                     <div class="row">
-                        
+                        <div class="col-md-12">
+                            <h4>Banner</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <table class="table table-striped table-light table-hover">
+                        <colgroup>
+                            <col span="1" style="width: 5%;"/>
+                            <col span="1" style="width: 85%;"/>
+                            <col span="1" style="width: 10%;"/>
+                        </colgroup>
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                         <c:forEach items="${banners}" var="banner" varStatus="i">
+                           <tr>
+                            <th scope="row">${i.count}</th>
+                            <td><img class="img-fluid img-thumbnail" style="width:100%" src="${pageContext.request.contextPath}/resources/img/banner/${banner.getImg()}"></td>
+                            <td>
+                                
+                                 <div class="btn-group flex-warp" style="flex-wrap: wrap;">
+                                  <button type="button" class="btn btn-warning white-text" data-bs-toggle="modal" data-bs-target="#edit${i.count}banner">
+                                    <i class="fas fa-edit"></i>
+                                  </button>
+                                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete${i.count}banner">
+                                    <i class="fas fa-trash-alt"></i>
+                                  </button>
+                                </div>
+                                <%-- EDIT BANNER --%>
+                                <form method="post" action="EditBrandServlet">
+                                    <div class="modal fade" id="edit${i.count}banner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="edit${i.count}banner" aria-hidden="true">
+                                      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Edit Banner</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <input type="hidden" value="${banner.getId()}" name="editcbannerid">
+                                            <div class="mb-3 w-100">
+                                                <input type="file" class="form-control" id="edit${i.count}cbannerimg" name="editbannerimage" >
+                                                <label for="edit${i.count}bannerimg" style="display: none;">Image</label>
+                                            </div>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <input type="submit" class="btn btn-warning white-text" value="Edit">
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </form>
+                                <%-- EDIT BANNER --%>
+                                <%-- DELETE BANNER --%>
+                                <div class="modal fade" id="delete${i.count}banner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Delete Banner</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        Are you sure about this?
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-danger"><a class="text-decoration-none text-white" href="${pageContext.request.contextPath}/mkt/deletebanner?id=${banner.getId()}">Delete</a></button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <%-- DELETE CBANNER --%>
+                            </td>
+                          </tr>
+                        </c:forEach>
+                        </tbody>
+                        <tfoot>
+                            <tr class="clickable-row">
+                                <th colspan="5" style="font-weight: normal;"> 
+                                  <i class="fas fa-plus d-block text-center addmore" style="font-size: 25px;" data-bs-toggle="modal" data-bs-target="#addbanner"></i>
+                                    <form method="post" action="${pageContext.request.contextPath}/mkt/addbanner" enctype="multipart/form-data">
+                                        <div class="modal fade" id="addbanner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addcbanner" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel" style="color:black;">Add Banner</h5>
+                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="mb-3 w-100">
+                                                        <label for="formFile" class="form-label" style="display: none;">Banner Image</label>
+                                                        <input class="form-control" type="file" id="formFile" required="">
+                                                      </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                  <input type="submit" class="btn btn-success" value="Add"/>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                              </th>
+                            </tr>
+                        </tfoot>
+                      </table>
                     </div>
                 </div>
             </div>
