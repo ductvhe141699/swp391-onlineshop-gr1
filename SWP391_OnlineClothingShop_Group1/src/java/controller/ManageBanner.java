@@ -5,8 +5,11 @@
  */
 package controller;
 
+import DBContext.CBannerDAO;
+import entity.CBanner;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +33,9 @@ public class ManageBanner extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        CBannerDAO cbdao = new CBannerDAO();
+        ArrayList<CBanner> cbanners =  cbdao.getAllCBanner();
+        request.setAttribute("cbanners",cbanners);
         request.getRequestDispatcher("/ManageBanner.jsp").forward(request, response);
     }
 

@@ -809,3 +809,9 @@ CREATE TABLE Banner
 	ID int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
 	Img VARCHAR(2500),
 )
+INSERT INTO dbo.Banner VALUE('banner10.png')
+INSERT INTO dbo.Banner VALUE('banner35.png')
+INSERT INTO dbo.Banner VALUE('banner40.png')
+INSERT INTO dbo.Banner VALUE('banner60.png')
+INSERT INTO dbo.Banner VALUE('banner80.png')
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------

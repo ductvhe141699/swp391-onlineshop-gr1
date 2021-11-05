@@ -114,7 +114,7 @@
                             </c:if>
                             <!-- Marketing -->
                             <c:if test="${sessionScope.user.roleID ==  4}">
-                                <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/mkt/banner">Manage Banner</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/mkt/banner">Manage Banner</a></li>
                             </c:if>
                             <!-- Default Logout -->
                             <li><hr class="dropdown-divider"></li>

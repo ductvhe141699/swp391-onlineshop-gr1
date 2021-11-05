@@ -25,7 +25,7 @@
 
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/mtk/ManagerBanner">Manager Banner <i class="fab fa-adversal"></i></a>
+            <a href="${pageContext.request.contextPath}/mtk/banner">Manage Banner <i class="fab fa-adversal"></i></a>
         </li>
     </ul>
 
