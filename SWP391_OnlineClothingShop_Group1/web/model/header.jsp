@@ -112,6 +112,10 @@
                             <c:if test="${sessionScope.user.roleID ==  2}">
                                 <li><a class="dropdown-item" href="${pageContext.request.contextPath}/Dashboard">DashBoard</a></li>
                             </c:if>
+                            <!-- Marketing -->
+                            <c:if test="${sessionScope.user.roleID ==  4}">
+                                <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/Dashboard">DashBoard</a></li>
+                            </c:if>
                             <!-- Default Logout -->
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a></li>
@@ -196,6 +200,10 @@
                     </c:if>
                     <!-- Seller -->
                     <c:if test="${sessionScope.user.roleID ==  2}">
+                        <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/Dashboard">DashBoard</a></li>
+                    </c:if>
+                    <!-- Marketing -->
+                    <c:if test="${sessionScope.user.roleID ==  4}">
                         <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/Dashboard">DashBoard</a></li>
                     </c:if>
                     <li class="nav-item d-block d-lg-none">
