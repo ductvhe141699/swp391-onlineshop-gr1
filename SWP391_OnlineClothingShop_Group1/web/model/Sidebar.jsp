@@ -17,7 +17,7 @@
             </div>
 
             <ul class="list-unstyled components">
-                <p>Dummy Heading</p>
+                <p>Seller Manager</p>
                 <li>
                     <a href="home">Home
                         <i class="bi bi-house float-end"></i>
