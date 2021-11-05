@@ -114,7 +114,8 @@ public class PlaceOrderServlet extends HttpServlet {
         String gmailFrom = "duclee028@gmail.com";
         String passfrom = "duc25092000";
         try {
-            GmailAPI.send(user.getEmail(), subject, message, gmailFrom, passfrom);
+            //(String toEmail, String subject, String msg, String fromEmail, String password
+//            GmailAPI.send(user.getEmail(), subject, message, gmailFrom, passfrom);
         } catch (MessagingException ex) {
             Logger.getLogger(PlaceOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
