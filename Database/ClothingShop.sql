@@ -794,15 +794,18 @@ SET IDENTITY_INSERT Post OFF
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE CBanner
-{
+(
 	ID int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
 	Img VARCHAR(2500),
 	Title NVARCHAR(2500),
 	[desc] NVARCHAR(2500)
-}
-
+)
+INSERT INTO dbo.CBanner(Img,Title,[desc])VALUES('nike.png',  N'NIKE',  N'Just Do It !'  )
+INSERT INTO dbo.CBanner(Img,Title,[desc])VALUES('gucci.png',  N'GUCCI',  N'We go beyond just great !'  )
+INSERT INTO dbo.CBanner(Img,Title,[desc])VALUES('chanel.png',  N'CHANEL',  N'I don’t do fashion. I am fashion'  )
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE Banner
-{
+(
 	ID int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
 	Img VARCHAR(2500),
-}
+)
