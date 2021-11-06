@@ -70,8 +70,12 @@
                                 <div>date: ${o.date}</div>
                                 <div class="btngroup" >
                                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                       <a href="DeletePost?postid=${o.ID}" onclick="return confirm('Are you sure you want to delete these Post?');"><button type="button" class="btn btn-danger">Delete</button></a>
-                                        <button type="button" class="btn btn-warning" ><a href="PostDetail?postid=${o.ID}">Detail</a></button>
+                                     
+                                        <c:if test="${user.roleID == 1}">
+                                             <a href="DeletePost?postid=${o.ID}" onclick="return confirm('Are you sure you want to delete these Post?');"><button type="button" class="btn btn-danger">Delete</button></a>
+                                        </c:if>
+                                     
+                                             <button type="button" class="btn btn-warning" ><a href="PostDetail?postid=${o.ID}">Detail</a></button>
                                         <button type="button" class="btn btn-success" onclick="myFunction()">Hide</button>
                                     </div>
                                 </div>
