@@ -228,6 +228,10 @@
         <servlet-name>EditCBanner</servlet-name>
         <servlet-class>controller.EditCBanner</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoadProductControl</servlet-name>
+        <servlet-class>controller.LoadProductControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -418,6 +422,10 @@
     <servlet-mapping>
         <servlet-name>EditCBanner</servlet-name>
         <url-pattern>/mkt/editcbanner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadProductControl</servlet-name>
+        <url-pattern>/LoadProductControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
