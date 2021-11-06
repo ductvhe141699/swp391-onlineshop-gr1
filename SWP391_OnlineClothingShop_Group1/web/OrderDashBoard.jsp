@@ -44,7 +44,7 @@
                         <a href="ManagerOrder">Manager Order <i class="bi bi-cart-check float-end"></i></i></a>
                     </li>
                     <li>
-                        <a href="manager">Manager Product <i class="bi bi-bag-fill float-end"></i></a>
+                        <a href="ManagerProduct">Manager Product <i class="bi bi-bag-fill float-end"></i></a>
                     </li>
                     <li>
                         <a href="ManagerBlog">Manager Blog <i class="bi bi-bootstrap float-end"></i></a>
