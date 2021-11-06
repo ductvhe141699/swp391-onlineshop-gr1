@@ -302,5 +302,15 @@ public class ProductDAO {
         }
     }
 
-   
+    public void AddProductImg(String pname, String url) {
+        String query = "insert into ProductImg values (((select ProductID from Product where ProductName= ? )), ? )";
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, pname);
+            ps.setString(2, url);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
 }
