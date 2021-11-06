@@ -232,6 +232,14 @@
         <servlet-name>LoadProductControl</servlet-name>
         <servlet-class>controller.LoadProductControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddProduct</servlet-name>
+        <servlet-class>controller.AddProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManagerProduct</servlet-name>
+        <servlet-class>controller.ManagerProduct</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -426,6 +434,14 @@
     <servlet-mapping>
         <servlet-name>LoadProductControl</servlet-name>
         <url-pattern>/LoadProductControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProduct</servlet-name>
+        <url-pattern>/add</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerProduct</servlet-name>
+        <url-pattern>/ManagerProduct</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
