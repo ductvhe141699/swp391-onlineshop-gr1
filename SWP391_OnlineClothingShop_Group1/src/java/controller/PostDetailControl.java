@@ -5,8 +5,13 @@
  */
 package controller;
 
+import DBContext.PostDAO;
+import DBContext.UserDAO;
+import entity.Post;
+import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +35,17 @@ public class PostDetailControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         response.sendRedirect("PostDetail.jsp");
+         String postid = request.getParameter("postid");
+        PostDAO pdao = new PostDAO();
+        UserDAO udao = new UserDAO();
+        
+        Post post = pdao.getPostByID(postid);
+        List<Users> luser = udao.getAllUsers();
+        
+        
+        request.setAttribute("luser", luser);
+        request.setAttribute("detailpost", post);
+        request.getRequestDispatcher("PostDetail.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
