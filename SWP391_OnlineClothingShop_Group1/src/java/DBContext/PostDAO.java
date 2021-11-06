@@ -52,4 +52,26 @@ public class PostDAO {
         } catch (Exception e) {
         }
     }
+     public Post getPostByID(String postid) {
+        String query = "select *from Post where ID  = ?";
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, postid);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return (new Post(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getInt(5),
+                        rs.getString(6)));
+
+            }
+        } catch (SQLException e) {
+        }
+        DBcontext.close(conn, ps, rs);
+        return null;
+    }
 }
