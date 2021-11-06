@@ -43,12 +43,7 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="selectAll">
-                                    <label for="selectAll"></label>
-                                </span>
-                            </th>
+                            
                             <th>ID</th>
                             <th>Name</th>
                             <th>Image</th>
@@ -61,12 +56,7 @@
                     <tbody>
                         <c:forEach var="o" items="${list}">
                             <tr>
-                                <td>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                        <label for="checkbox1"></label>
-                                    </span>
-                                </td>
+                                
                                 <td>${o.productID}</td>
                                 <td>${o.productName}</td>>
                                 <td>
