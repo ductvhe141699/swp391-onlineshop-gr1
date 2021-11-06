@@ -274,4 +274,33 @@ public class ProductDAO {
         }
         return list;
     }
+     public void AddProduct(String pname, String Description, String OriginalPrice,
+            String SellPrice, String SalePercent, String Amount, String sttID,
+            String brandID, String height, String width, String weight, String Category,
+            int sid) {
+        String query = "INSERT INTO Product VALUES (?,?,?,?,?,?,?,?,?, ?,?,?,?)";
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, pname);
+            ps.setString(2, Description);
+            ps.setString(3, OriginalPrice);
+            ps.setString(4, SellPrice);
+            ps.setString(5, SalePercent);
+            ps.setString(6, Amount);
+            ps.setString(7, sttID);
+            ps.setString(8, brandID);
+            ps.setString(9, height);
+            ps.setString(10, width);
+            ps.setString(11, weight);
+            ps.setString(12, Category);
+            ps.setInt(13, sid);
+
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+        }
+    }
+
+   
 }
