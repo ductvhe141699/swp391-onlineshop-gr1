@@ -16,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,13 +38,15 @@ public class PostControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PostDAO pdao = new PostDAO();
         UserDAO udao = new UserDAO();
-           List<Post> postList = pdao.getAllPost();
-           List<Users> luser = udao.getAllUsers();
-           
-           request.setAttribute("luser", luser);
-           request.setAttribute("postList", postList);
-           request.getRequestDispatcher("PostList.jsp").forward(request, response);
-           
+        List<Post> postList = pdao.getAllPost();
+        List<Users> luser = udao.getAllUsers();
+        HttpSession session = request.getSession();
+            Users u = (Users) session.getAttribute("user");
+        request.setAttribute("user", u);
+        request.setAttribute("luser", luser);
+        request.setAttribute("postList", postList);
+        request.getRequestDispatcher("PostList.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
