@@ -1,7 +1,7 @@
 <%-- 
     Document   : ManagerProduct
     Created on : Dec 28, 2020, 5:19:02 PM
-    Author     : admin
+    Author     : phunghe150108
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -68,6 +68,7 @@
 
 
                                 <td>
+                                    <!---Edit---->
                                     <a href="LoadProductControl?pid=${o.productID}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                     <!----Delete----> 
                                     <a href="delete?pid=${o.productID}" onclick="return confirm('Are you sure you want to delete these Product?');" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
@@ -149,16 +150,16 @@
                             </div>
                             <div class="form-group">
                                 <label>Image</label>
-                                <textarea name="url" class="form-control" required></textarea>
+                                <input type="file" name="ProductImgURL" class="form-control" required></input>
                             </div>
-                            <div class="form-group">
-                                <label>Category</label>
-                                <select name="Category" class="form-select" >
-                                    <c:forEach items="${listCate}" var="o">
-                                        <option value="${o.categoryID}">${o.categoryName}</option>
-                                    </c:forEach>
-                                </select>
-                            </div>
+                           <div class="form-group">
+                                    <label>Category</label>
+                                    <select name="Category" class="form-select" aria-label="Default select example">
+                                        <c:forEach items="${listCate}" var="o">
+                                            <option  value="${o.subCateID}">${o.subCateName}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
 
                         </div>
                         <div class="modal-footer">
@@ -169,78 +170,7 @@
                 </div>
             </div>
         </div>
-        <!-- Edit  -->
-        <div id="editEmployeeModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">						
-                            <h4 class="modal-title">Edit Product</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">					
-                            <div class="form-group">
-                                <label>Product Name</label>
-                                <input name="pname" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea name="Description" class="form-control" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>OriginalPrice</label>
-                                <textarea name="OriginalPrice" class="form-control" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>SellPrice</label>
-                                <textarea name="SellPrice" class="form-control" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>SalePercent</label>
-                                <input name="SalePercent" type="text" class="form-control" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Amount</label>
-                                <textarea name="Amount" class="form-control" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>StatusID</label>
-                                <textarea name="sttID" class="form-control" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>BrandID</label>
-                                <textarea name="brandID" class="form-control" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>height</label>
-                                <textarea name="height" class="form-control" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>width</label>
-                                <textarea name="width" class="form-control" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>weight</label>
-                                <textarea name="weight" class="form-control" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Category</label>
-                                <select name="Category" class="form-select" >
-                                    <c:forEach items="${listCate}" var="o">
-                                        <option value="${o.categoryID}">${o.categoryName}</option>
-                                    </c:forEach>
-                                </select>
-                            </div>					
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-info" value="Save">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+        
         <!-- Delete -->
         <div id="deleteEmployeeModal" class="modal fade">
             <div class="modal-dialog">

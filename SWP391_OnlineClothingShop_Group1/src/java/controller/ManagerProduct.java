@@ -7,11 +7,14 @@ package controller;
 
 import DBContext.CategoryDAO;
 import DBContext.ProductDAO;
+import DBContext.SubCategoryDAO;
 import entity.Category;
 import entity.Product;
+import entity.SubCategory;
 import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -43,11 +46,11 @@ public class ManagerProduct extends HttpServlet {
         Users u = (Users) session.getAttribute("user");
         int id = u.getUserID();
         ProductDAO dao = new ProductDAO();
-        CategoryDAO cdao = new  CategoryDAO();
-       
+       // CategoryDAO cdao = new  CategoryDAO();
+        SubCategoryDAO subdao = new SubCategoryDAO();
         List<Product> list = dao.getProductBySellerName(u.getUserName());
-        List<Category> listCate = cdao.getAllCategory();
-        
+        //List<Category> listCate = cdao.getAllCategory();
+        ArrayList<SubCategory> listCate = subdao.getAllSubCategory();
         request.setAttribute("listCate", listCate);
         request.setAttribute("list", list);
         request.getRequestDispatcher("ManagerProduct.jsp").forward(request, response);
