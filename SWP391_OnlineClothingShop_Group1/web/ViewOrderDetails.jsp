@@ -115,9 +115,7 @@
                             </table>
                             <br>
                             <br>
-                            <h3 style="color:black;">Total:                                        
-                                <fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${Total}"/> 
-                                VNĐ</h3>
+                            <h3 style="color:black;">Total: ${Total} VNĐ</h3>
                             <br>
                         </div>
                     </div>

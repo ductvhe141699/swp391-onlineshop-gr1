@@ -22,11 +22,15 @@ import javax.mail.MessagingException;
 public class test {
 
     public static void main(String[] args) {
-        OrderDAO orderDAO = new OrderDAO();
-        Order orders = orderDAO.getAnOrderByUserID(4);
-        System.out.println(orders.getId());
-    }
-}
+        OrderDetailDAO od = new OrderDetailDAO();
+        List<OrderDetail> orderList = od.getOdByOrderId(1);
+
+        int total = 0;
+        for (OrderDetail o : orderList) {
+            total += (o.getProductPrice() * o.getQuantity());
+        }
+        System.out.println(total);
+    }}
 
 //    public static void main(String[] args) throws MessagingException {
 //<<<<<<< HEAD

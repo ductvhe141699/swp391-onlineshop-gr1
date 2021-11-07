@@ -189,6 +189,9 @@
                     <li class="nav-item d-block d-lg-none">
                         <a class="nav-link" href="${pageContext.request.contextPath}/login">Login/Register</a>
                     </li>
+                    <li class="nav-item d-block d-lg-none">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/AboutShope.jsp">About SHOPE</a>
+                    </li>
                 </c:if>
             </ul>
         </div>
