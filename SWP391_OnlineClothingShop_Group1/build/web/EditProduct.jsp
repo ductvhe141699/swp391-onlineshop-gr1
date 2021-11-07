@@ -1,7 +1,7 @@
 <%-- 
     Document   : ManagerProduct
     Created on : Dec 28, 2020, 5:19:02 PM
-    Author     : trinh
+    Author     : phunghe150108
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -43,7 +43,7 @@
             <div id="editEmployeeModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="edit" method="post">
+                        <form action="EditProductControl" method="post">
                             <div class="modal-header">						
                                 <h4 class="modal-title">Edit Product</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -51,23 +51,23 @@
                             <div class="modal-body">					
                                 <div class="form-group">
                                     <label>Product ID</label>
-                                    <input value="${detail.productID}" name="id" type="text" class="form-control" readonly required>
+                                    <input  value="${detail.productID}" name="id" type="text" class="form-control" readonly required>
                                 </div>
                                 <div class="form-group">
                                     <label>Product Name</label>
-                                    <input value= ${detail.productName}"" name="name" type="text" class="form-control" required>
+                                    <input value= "${detail.productName}" name="pname" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea name="Description" type="text" class="form-control" required> ${detail.desc}</textarea>
+                                <textarea name="Description" type="text" class="form-control" required> ${detail.desc}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>OriginalPrice</label>
-                                    <input value=" ${detail.originPrice}" name="OriginalPrice" type="text" class="form-control" required>
+                                    <input value="${detail.originPrice}" name="OriginalPrice" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>SellPrice</label>
-                                    <input value=" ${detail.sellPrice}" name="SellPrice" type="text" class="form-control" required>
+                                    <input value="${detail.sellPrice}" name="SellPrice" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>SalePercent</label>
@@ -76,27 +76,27 @@
 
                                 <div class="form-group">
                                     <label>Amount</label>
-                                    <input value=" ${detail.amount}" name="Amount" type="text" class="form-control" required>
+                                    <input value="${detail.amount}" name="Amount" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>StatusID</label>
-                                    <input value=" ${detail.statusID}" name="sttID" type="text" class="form-control" required>
+                                    <input value="${detail.statusID}" name="sttID" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>BrandID</label>
-                                    <input value=" ${detail.brandID}" name="BrandID" type="text" class="form-control" required>
+                                    <input value="${detail.brandID}" name="brandID" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>height</label>
-                                    <input value=" ${detail.height}" name="height" type="text" class="form-control" required>
+                                    <input value="${detail.height}" name="height" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>width</label>
-                                    <input value=" ${detail.width}" name="width" type="text" class="form-control" required>
+                                    <input value= "${detail.width}" name="width" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>weight</label>
-                                    <input value=" ${detail.weight}" name="weight" type="text" class="form-control" required>
+                                    <input value="${detail.weight}" name="weight" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Category</label>
