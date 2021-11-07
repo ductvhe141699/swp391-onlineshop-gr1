@@ -244,6 +244,18 @@
         <servlet-name>EditProductControl</servlet-name>
         <servlet-class>controller.EditProductControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoadProduct</servlet-name>
+        <servlet-class>controller.LoadProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoadPost</servlet-name>
+        <servlet-class>controller.LoadPost</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditPostControl</servlet-name>
+        <servlet-class>controller.EditPostControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -450,6 +462,18 @@
     <servlet-mapping>
         <servlet-name>EditProductControl</servlet-name>
         <url-pattern>/EditProductControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadProduct</servlet-name>
+        <url-pattern>/LoadProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadPost</servlet-name>
+        <url-pattern>/LoadPost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditPostControl</servlet-name>
+        <url-pattern>/EditPost</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

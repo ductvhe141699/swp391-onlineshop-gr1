@@ -5,10 +5,17 @@
  */
 package controller;
 
+import DBContext.CategoryDAO;
+import DBContext.ProductDAO;
+import DBContext.SubCategoryDAO;
+import entity.Category;
+import entity.Product;
+import entity.SubCategory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,8 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "LoadControl", urlPatterns = {"/LoadProduct"})
-public class LoadControl extends HttpServlet {
+public class LoadProduct extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,8 +38,17 @@ public class LoadControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       response.sendRedirect("EditProduct.jsp");
-        
+        String id = request.getParameter("pid");
+        ProductDAO pdao = new ProductDAO();
+        SubCategoryDAO subdao = new SubCategoryDAO();
+
+        Product p = pdao.getProductByID(id);
+        ArrayList<SubCategory> listCate = subdao.getAllSubCategory();
+
+        request.setAttribute("listCate", listCate);
+        request.setAttribute("detail", p);
+        request.getRequestDispatcher("EditProduct.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

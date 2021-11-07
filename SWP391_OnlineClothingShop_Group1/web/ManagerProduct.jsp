@@ -69,7 +69,7 @@
 
                                 <td>
                                     <!---Edit---->
-                                    <a href="LoadProductControl?pid=${o.productID}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="LoadProduct?pid=${o.productID}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                     <!----Delete----> 
                                     <a href="delete?pid=${o.productID}" onclick="return confirm('Are you sure you want to delete these Product?');" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
