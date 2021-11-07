@@ -240,6 +240,10 @@
         <servlet-name>ManagerProduct</servlet-name>
         <servlet-class>controller.ManagerProduct</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditProductControl</servlet-name>
+        <servlet-class>controller.EditProductControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -442,6 +446,10 @@
     <servlet-mapping>
         <servlet-name>ManagerProduct</servlet-name>
         <url-pattern>/ManagerProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditProductControl</servlet-name>
+        <url-pattern>/EditProductControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
