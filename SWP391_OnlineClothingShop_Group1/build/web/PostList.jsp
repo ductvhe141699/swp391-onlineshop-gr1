@@ -52,7 +52,7 @@
 
                 <c:forEach var="o" items="${postList}">
                     <div class="col-md-4 p-3">
-                        <div class="single-blog-item1" id="myDIV">
+                        <div class="single-blog-item1" >
                             <div class="blog-thumnail">
                                 <img src="./resources/${o.postImgURL}" alt="blog-img">
                             </div>
@@ -70,13 +70,15 @@
                                 <div>date: ${o.date}</div>
                                 <div class="btngroup" >
                                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                     
+
                                         <c:if test="${user.roleID == 1}">
-                                             <a href="DeletePost?postid=${o.ID}" onclick="return confirm('Are you sure you want to delete these Post?');"><button type="button" class="btn btn-danger">Delete</button></a>
+                                            <a href="DeletePost?postid=${o.ID}" onclick="return confirm('Are you sure you want to delete these Post?');"><button type="button" class="btn btn-danger">Delete</button></a>
                                         </c:if>
-                                     
-                                             <button type="button" class="btn btn-warning" ><a href="PostDetail?postid=${o.ID}">Detail</a></button>
-                                        <button type="button" class="btn btn-success" onclick="myFunction()">Hide</button>
+
+                                        <button type="button" class="btn btn-warning" ><a href="PostDetail?postid=${o.ID}">Detail</a></button>
+                                        <c:if test="${user.roleID == 1}">
+                                            <button type="button" class="btn btn-light""><a href="LoadPost?postid=${o.ID}">Update</a></button>
+                                        </c:if>
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +101,8 @@
                 }
             }
         </script>
-        
-        
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>
 </html>
