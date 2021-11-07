@@ -47,8 +47,9 @@
 
         <%@include file="model/header.jsp" %>
         <div class="container">
+            <button type="button" class="btn btn-warning"><a href="AddPost.jsp">Add new post</a></button>
             <div class="col-md-12 d-flex flex-wrap justify-content-between">
-
+  
 
                 <c:forEach var="o" items="${postList}">
                     <div class="col-md-4 p-3">

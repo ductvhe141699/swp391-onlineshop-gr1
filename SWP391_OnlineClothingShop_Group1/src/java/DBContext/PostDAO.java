@@ -87,4 +87,18 @@ public class PostDAO {
         } catch (SQLException e) {
         }
     }
+     public void AddPost(String Description ,int UserID, String date, int CategoryID, String PostImgURL) {
+       String   query = " INSERT INTO Post VALUES (?,?,?,?,?)";
+        try { conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, Description);
+            ps.setInt(2, UserID);
+            ps.setString(3, date);
+            ps.setInt(4, CategoryID);
+            ps.setString(5, PostImgURL);
+            
+            ps.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
 }
