@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-sm-6">
                             <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
-                           						
+                           <button type="button" class="btn btn-light"><a href="Dashboard">Back to DashBoard</a></button>						
                         </div>
                     </div>
                 </div>

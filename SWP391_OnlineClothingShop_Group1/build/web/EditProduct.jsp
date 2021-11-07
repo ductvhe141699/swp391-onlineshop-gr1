@@ -110,6 +110,7 @@
                             </div>
                             <div class="modal-footer">
                                 <input type="submit" class="btn btn-success" value="Edit">
+                                <button type="button" class="btn btn-light"><a href="ManagerProduct">Back</a></button>
                             </div>
                         </form>
                     </div>
