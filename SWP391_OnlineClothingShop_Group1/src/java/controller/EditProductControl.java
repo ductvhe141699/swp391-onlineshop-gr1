@@ -22,7 +22,7 @@ import static javax.swing.Spring.width;
 
 /**
  *
- * @author Admin
+ * @author phunghe150108
  */
 public class EditProductControl extends HttpServlet {
 

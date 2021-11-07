@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author phunghe150108
  */
 public class EditPostControl extends HttpServlet {
 

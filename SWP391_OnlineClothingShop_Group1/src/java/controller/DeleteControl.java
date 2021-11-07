@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author phunghe150108
  */
 @WebServlet(name = "DeleteControl", urlPatterns = {"/delete"})
 public class DeleteControl extends HttpServlet {

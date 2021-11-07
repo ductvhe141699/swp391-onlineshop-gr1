@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Admin
+ * @author phunghe150108
  */
 public class PostDAO {
 

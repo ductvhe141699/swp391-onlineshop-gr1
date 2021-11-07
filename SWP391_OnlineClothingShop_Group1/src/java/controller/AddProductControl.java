@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author phunghe150108
  */
 public class AddProductControl extends HttpServlet {
 
