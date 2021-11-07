@@ -27,9 +27,11 @@
                         Product</a></li>
                 <li><a href="Recruitment.jsp">Recruitment</a></li>
             </ul>
+                        <div class="clearfix"></div>
             <div class="row">
-                <h1 class="heading-main-text">Vietnamese people use Vietnamese goods.<br>So join with us</h1>
-
+                <div class="heading-main-box">
+                    <h1>Vietnamese people<br>use Vietnamese goods.<br>So join with us</h1>
+                </div>
             </div>
         </header>
         <!-- Copyright -->
