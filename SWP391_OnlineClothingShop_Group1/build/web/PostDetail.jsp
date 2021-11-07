@@ -28,7 +28,7 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">date created: ${detailpost.date}</li>
                     <li class="list-group-item">postID: ${detailpost.ID}</li>
-                    <li class="list-group-item">Author:
+                    <li class="list-group-item">Author: Admin
                     <c:forEach var="u" items="${luser}">
                         <c:if test="${u.userID==detailpost.ID}">
                             ${u.userName}
