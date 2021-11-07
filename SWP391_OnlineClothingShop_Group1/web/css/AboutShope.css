@@ -97,5 +97,23 @@ header{
     margin-left: auto; 
     margin-right: auto;
 }
+.form{
+    height: auto;
+}
+.post-time{
+    float: left;
+    margin-left: 200px;
+}
+.social{
+    float: right;
+    margin-right: 200px;
+}
+.text-center{
+    clear: both;
+}
+.long{
+    margin-left: 200px;
+    font-size: 15px;
+}
 
 

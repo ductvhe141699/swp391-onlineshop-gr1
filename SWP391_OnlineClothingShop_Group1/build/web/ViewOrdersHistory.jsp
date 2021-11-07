@@ -88,7 +88,6 @@
                                     <tr>
                                         <th>Order #</th>
                                         <th>status</th>
-                                        <th>Total</th>
                                         <th>Created</th>
                                         <th>Order Information</th>
                                     </tr>
@@ -100,7 +99,6 @@
                                             <td>
                                                 <span class="badge badge-pill badge-info">${o.status}</span>
                                             </td>
-                                            <td>${o.totalPrice} VNĐ</td>
                                             <td>${o.date}</td>
                                             <td><a href="ViewOrderDetails?id=${o.id}" style="cursor: pointer ">View</a></td>
                                         </tr>
@@ -109,10 +107,6 @@
                                 </tbody>
                             </table>
                             <br><br>
-                            <h3 style="color:black;">Total:                                        
-                                <fmt:formatNumber type = "number" maxFractionDigits = "1" value = "${total}"/> 
-                                VNĐ</h3>
-                            <br>
                         </div>
                     </div>
                 </div>

@@ -98,8 +98,6 @@
                         <i class="fas fa-user-circle"></i>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <!--LAMDTHE153097-Thêm 'profile' & 'manager' vào dropdown-->
-                        <!-- Neu co User trong session -->
                         <c:if test ="${sessionScope.user !=  null}">
                             <!-- Default -->
                             <li><span class="dropdown-item-text">Hello ${user.getUserName()}</span></li>
@@ -123,6 +121,7 @@
                         <!-- Neu khong co user -->
                         <c:if test ="${sessionScope.user ==  null}">
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Login/Register</a></li>
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/AboutShope.jsp">About SHOPE</a></li>
                         </c:if>
                     </ul>
                 </li>
@@ -213,9 +212,6 @@
                 <c:if test ="${sessionScope.user ==  null}">
                     <li class="nav-item d-block d-lg-none">
                         <a class="nav-link" href="${pageContext.request.contextPath}/login">Login/Register</a>
-                    </li>
-                    <li class="nav-item d-block d-lg-none">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/AboutShope.jsp">About SHOPE</a>
                     </li>
                 </c:if>
             </ul>
