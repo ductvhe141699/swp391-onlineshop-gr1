@@ -12,6 +12,22 @@
         <filter-name>SellerFilter</filter-name>
         <filter-class>filter.SellerFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>filter.LoginFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>MarketingFilter</filter-name>
+        <filter-class>filter.MarketingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>MarketingFilter</filter-name>
+        <url-pattern>/mkt/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/login</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>SellerFilter</filter-name>
         <url-pattern>/seller/*</url-pattern>
@@ -141,6 +157,10 @@
         <servlet-class>controller.ManagerOrderControler</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>LoginControl</servlet-name>
+        <servlet-class>controller.LoginControl</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ViewOrderDetails</servlet-name>
         <servlet-class>controller.ViewOrderDetails</servlet-class>
     </servlet>
@@ -161,12 +181,76 @@
         <servlet-class>controller.ManageFeedbackBySeller</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>OrderDetailsController</servlet-name>
+        <servlet-class>controller.OrderDetailsController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ViewFeedback</servlet-name>
         <servlet-class>controller.ViewFeedback</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PostControl</servlet-name>
+        <servlet-class>controller.PostControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PostDetailControl</servlet-name>
+        <servlet-class>controller.PostDetailControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReplyFeedback</servlet-name>
+        <servlet-class>controller.ReplyFeedback</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletePostControl</servlet-name>
+        <servlet-class>controller.DeletePostControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageBanner</servlet-name>
+        <servlet-class>controller.ManageBanner</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddBanner</servlet-name>
+        <servlet-class>controller.AddBanner</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteBanner</servlet-name>
+        <servlet-class>controller.DeleteBanner</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddCBanner</servlet-name>
+        <servlet-class>controller.AddCBanner</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteCBanner</servlet-name>
+        <servlet-class>controller.DeleteCBanner</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditCBanner</servlet-name>
+        <servlet-class>controller.EditCBanner</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoadProductControl</servlet-name>
+        <servlet-class>controller.LoadProductControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddProduct</servlet-name>
+        <servlet-class>controller.AddProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManagerProduct</servlet-name>
+        <servlet-class>controller.ManagerProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditProductControl</servlet-name>
+        <servlet-class>controller.EditProductControl</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginControl</servlet-name>
+        <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -304,8 +388,68 @@
         <url-pattern>/ManageFeedbackBySeller</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>OrderDetailsController</servlet-name>
+        <url-pattern>/OrderDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ViewFeedback</servlet-name>
         <url-pattern>/ViewFeedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostControl</servlet-name>
+        <url-pattern>/PostControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostDetailControl</servlet-name>
+        <url-pattern>/PostDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReplyFeedback</servlet-name>
+        <url-pattern>/ReplyFeedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletePostControl</servlet-name>
+        <url-pattern>/DeletePost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageBanner</servlet-name>
+        <url-pattern>/mkt/banner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddBanner</servlet-name>
+        <url-pattern>/mkt/addbanner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteBanner</servlet-name>
+        <url-pattern>/mkt/deletebanner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCBanner</servlet-name>
+        <url-pattern>/mkt/addcbanner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCBanner</servlet-name>
+        <url-pattern>/mkt/deletecbanner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditCBanner</servlet-name>
+        <url-pattern>/mkt/editcbanner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadProductControl</servlet-name>
+        <url-pattern>/LoadProductControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProduct</servlet-name>
+        <url-pattern>/add</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerProduct</servlet-name>
+        <url-pattern>/ManagerProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditProductControl</servlet-name>
+        <url-pattern>/EditProductControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

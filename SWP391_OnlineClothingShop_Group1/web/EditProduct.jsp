@@ -26,7 +26,7 @@
                 height: 120px;
             }
         </style>
-        
+
     <body>
         <div class="container">
             <div class="table-wrapper">
@@ -50,60 +50,60 @@
                             </div>
                             <div class="modal-body">					
                                 <div class="form-group">
-                                    <label>ProductID</label>
-                                    <input value="" name="id" type="text" class="form-control" readonly required>
+                                    <label>Product ID</label>
+                                    <input value="${detail.productID}" name="id" type="text" class="form-control" readonly required>
                                 </div>
                                 <div class="form-group">
                                     <label>Product Name</label>
-                                    <input value="" name="name" type="text" class="form-control" required>
+                                    <input value= ${detail.productName}"" name="name" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <input value="" name="Description" type="text" class="form-control" required>
+                                    <textarea name="Description" type="text" class="form-control" required> ${detail.desc}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>OriginalPrice</label>
-                                    <input value="" name="OriginalPrice" type="text" class="form-control" required>
+                                    <input value=" ${detail.originPrice}" name="OriginalPrice" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>SellPrice</label>
-                                    <input value="" name="SellPrice" type="text" class="form-control" required>
+                                    <input value=" ${detail.sellPrice}" name="SellPrice" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>SalePercent</label>
-                                    <input value="" name="SalePercent" type="text" class="form-control" required>
+                                    <input value="${detail.salePercent}" name="SalePercent" type="text" class="form-control" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Amount</label>
-                                    <input value="" name="Amount" type="text" class="form-control" required>
+                                    <input value=" ${detail.amount}" name="Amount" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>StatusID</label>
-                                    <input value="" name="sttID" type="text" class="form-control" required>
+                                    <input value=" ${detail.statusID}" name="sttID" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>BrandID</label>
-                                    <input value="" name="BrandID" type="text" class="form-control" required>
+                                    <input value=" ${detail.brandID}" name="BrandID" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>height</label>
-                                    <input value="" name="height" type="text" class="form-control" required>
+                                    <input value=" ${detail.height}" name="height" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>width</label>
-                                    <input value="" name="width" type="text" class="form-control" required>
+                                    <input value=" ${detail.width}" name="width" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>weight</label>
-                                    <input value="" name="weight" type="text" class="form-control" required>
+                                    <input value=" ${detail.weight}" name="weight" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Category</label>
                                     <select name="Category" class="form-select" aria-label="Default select example">
                                         <c:forEach items="${listCate}" var="o">
-                                        <option value="${o.categoryID}">${o.categoryName}</option>
-                                    </c:forEach>
+                                            <option  value="${o.subCateID}">${o.subCateName}</option>
+                                        </c:forEach>
                                     </select>
                                 </div>
 

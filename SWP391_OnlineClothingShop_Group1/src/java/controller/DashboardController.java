@@ -69,24 +69,32 @@ public class DashboardController extends HttpServlet {
         ProductDAO pdao = new ProductDAO();
         OrderDAO odao = new OrderDAO();
         ArrayList<Order> olist = new ArrayList<>();
+          ArrayList<Product> plist = new ArrayList<>();
+        int totalCus = 0;
+        int totalProduct = 0;
+        int totalOrder = 0;
         try {
             Users u = (Users) ss.getAttribute("user");
             String role = udao.getRoleByUserName(u.getUserName());
             if (role.equals("Admin")) {
                 olist = odao.getAllOrders();
+                totalCus = udao.getTotalUser();
+                totalProduct = pdao.getTotalProduct();
+                plist = pdao.getAllProduct();
+                totalOrder = odao.geTotalOrderByListP(plist);
             } else if (role.equals("Seller")) {
-                ArrayList<Product> plist = pdao.getProductBySellerName(u.getUserName());
+               plist = pdao.getProductBySellerName(u.getUserName());
                 olist = odao.getOdByListProduct(plist);
-
+                totalCus = odao.geTotalUserIDByListP(plist);
+                totalProduct = plist.size();
+                totalOrder = odao.geTotalOrderByListP(plist);
             } else {
                 response.sendRedirect("error.jsp");
-
             }
-            
-            
-            request.setAttribute("totalCus", udao.getTotalUser());
-            request.setAttribute("totalPro", pdao.getTotalProduct());
-            request.setAttribute("totalOrders", odao.getTotalOrders());
+
+            request.setAttribute("totalCus", totalCus);
+            request.setAttribute("totalPro", totalProduct);
+            request.setAttribute("totalOrders", totalOrder);
             request.setAttribute("listOrder", olist);
             request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
 

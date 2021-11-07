@@ -13,7 +13,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <!-- icon -->
+        <!-- icon -->
         <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
         <!-- link Fonts -->
         <link
@@ -67,11 +67,10 @@
                                 <label>Title</label>
                                 <input type="text" class="form-control" required name="title" value="${title}">
                             </div>
+
                             <div class="form-group">
-                                <table>
                                 <label>Content</label>
-                                <td><input type="text" class="form-control" required name="content" value="${content}"></td>
-                                </table>
+                                <textarea name="blog-text" class="form-control" id="blog-text" rows="7">${content}</textarea>
                             </div>
                             <div class="form-group">
                                 <label>Image Link</label>

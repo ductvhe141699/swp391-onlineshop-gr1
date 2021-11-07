@@ -36,19 +36,14 @@
                         </div>
                         <div class="col-sm-6">
                             <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
-                            <a href="" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+                           						
                         </div>
                     </div>
                 </div>
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="selectAll">
-                                    <label for="selectAll"></label>
-                                </span>
-                            </th>
+                            
                             <th>ID</th>
                             <th>Name</th>
                             <th>Image</th>
@@ -61,12 +56,7 @@
                     <tbody>
                         <c:forEach var="o" items="${list}">
                             <tr>
-                                <td>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                        <label for="checkbox1"></label>
-                                    </span>
-                                </td>
+                                
                                 <td>${o.productID}</td>
                                 <td>${o.productName}</td>>
                                 <td>
@@ -78,7 +68,7 @@
 
 
                                 <td>
-                                    <a href="LoadProduct?pid=${o.productID}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="LoadProductControl?pid=${o.productID}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                     <!----Delete----> 
                                     <a href="delete?pid=${o.productID}" onclick="return confirm('Are you sure you want to delete these Product?');" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
@@ -156,6 +146,10 @@
                             <div class="form-group">
                                 <label>weight</label>
                                 <textarea name="weight" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Image</label>
+                                <textarea name="url" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Category</label>

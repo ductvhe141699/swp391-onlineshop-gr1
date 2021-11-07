@@ -22,58 +22,12 @@
 
         <div class="wrapper">
             <!-- Sidebar Holder -->
-            <nav id="sidebar">
-                <div id="dismiss">
-                    <i class="bi bi-arrow-left"></i>
-                </div>
-
-                <div class="sidebar-header">
-
-                    <h3>Shope</h3>
-                </div>
-
-                <ul class="list-unstyled components">
-                    <p>Dummy Heading</p>
-                    <li>
-                        <a href="home">Home
-                            <i class="bi bi-house float-end"></i>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="ManagerOrder">Manager Order <i class="bi bi-cart-check float-end"></i></i></a>
-                    </li>
-                    <li>
-                        <a href="manager">Manager Product <i class="bi bi-bag-fill float-end"></i></a>
-                    </li>
-                    <li>
-                        <a href="ManagerBlog">Manager Blog <i class="bi bi-bootstrap float-end"></i></a>
-                    </li>
-                    <li>
-                        <a href="ManagerAccount">Manager Account<i class="bi bi-person float-end"></i></a>
-                    </li>
-                </ul>
-
-                <ul class="list-unstyled CTAs">
-                    <li><a href="home" class="download">Logout</a></li>
-                </ul>
-            </nav>
+           
 
             <!-- Page Content Holder -->
             <div id="content">
-
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-
-                        <div class="navbar-header">
-                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                                <i class="glyphicon glyphicon-align-left"></i>
-                                <span>Open Sidebar</span>
-                            </button>
-                        </div>
-                    </div>
-                </nav>
-
+                 <%@include file="model/Sidebar.jsp" %>
+                
 
                 <div class="container-fluid">
                     <div class="row">

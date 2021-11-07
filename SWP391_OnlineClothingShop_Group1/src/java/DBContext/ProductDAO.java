@@ -5,6 +5,7 @@
  */
 package DBContext;
 
+import entity.Order;
 import entity.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -65,12 +66,12 @@ public class ProductDAO {
         ArrayList<Product> list = new ArrayList<>();
         try {
             int count = 1;
-            query = " SELECT* FROM (SELECT p.ProductID,MIN(p.ProductName) AS ProductName,MIN(p.Description) AS Description,MIN(p.OriginalPrice) AS OriginalPrice,MIN(p.SellPrice) AS SellPrice,MIN(p.SalePercent) AS SalePercent,MIN(p.SubCategoryID) AS SubCategoryID,MIN(p.SellerID) AS SellerID,MIN(p.Amount) AS Amount,MIN(p.StatusID) AS StatusID,MIN(p.BrandID) AS BrandID,MIN(p.height) AS height,MIN(p.width) AS width,MIN(p.weight) AS weight,MIN(ProI.ProductImgURL) AS ProductImgURL FROM \n" +
-                    " dbo.Product p \n" +
-                    " JOIN \n" +
-                    " dbo.ProductImg ProI \n" +
-                    " ON ProI.ProductID = p.ProductID " +
-                    " WHERE p.ProductName LIKE ? AND p.StatusID!= 2 AND p.Amount>0 ";
+            query = " SELECT* FROM (SELECT p.ProductID,MIN(p.ProductName) AS ProductName,MIN(p.Description) AS Description,MIN(p.OriginalPrice) AS OriginalPrice,MIN(p.SellPrice) AS SellPrice,MIN(p.SalePercent) AS SalePercent,MIN(p.SubCategoryID) AS SubCategoryID,MIN(p.SellerID) AS SellerID,MIN(p.Amount) AS Amount,MIN(p.StatusID) AS StatusID,MIN(p.BrandID) AS BrandID,MIN(p.height) AS height,MIN(p.width) AS width,MIN(p.weight) AS weight,MIN(ProI.ProductImgURL) AS ProductImgURL FROM \n"
+                    + " dbo.Product p \n"
+                    + " JOIN \n"
+                    + " dbo.ProductImg ProI \n"
+                    + " ON ProI.ProductID = p.ProductID "
+                    + " WHERE p.ProductName LIKE ? AND p.StatusID!= 2 AND p.Amount>0 ";
             if (subcategory != 0) {
                 query += " AND SubCategoryID = ? ";
             }
@@ -96,7 +97,7 @@ public class ProductDAO {
                     query += " AND p.SellPrice>=5000000 ";
                     break;
             }
-            query+=" GROUP BY p.ProductID ) t";
+            query += " GROUP BY p.ProductID ) t";
             switch (sortType) {
                 case 0:
                     break;
@@ -153,23 +154,26 @@ public class ProductDAO {
         return list;
     }
 
-   
-
-    
-     public ArrayList<Product> getProductBySellerName(String username) {
+    public ArrayList<Product> getProductBySellerName(String username) {
         ArrayList<Product> list = new ArrayList<>();
         try {
 
-            query = "select p.ProductID , ProductName , Description , OriginalPrice , \n"
-                    + "SellPrice  , SalePercent , SubCategoryID , SellerID , \n"
-                    + "Amount , StatusID , StatusID ,BrandID , height  , width ,weight , s.ProductImgURL from  Product p \n"
-                    + "join ProductImg s \n"
-                    + "on p.ProductID = s.ProductID where p.SellerID = (select UserID from Users where Username =  ? ) ";
+            query = "SELECT  * FROM (SELECT p.ProductID,MIN(p.ProductName) AS ProductName,MIN(p.Description) AS Description,\n"
+                    + "                                        MIN(p.OriginalPrice) AS OriginalPrice,MIN(p.SellPrice) AS SellPrice,MIN(p.SalePercent) AS SalePercent,\n"
+                    + "                                       MIN(p.SubCategoryID) AS SubCategoryID,MIN(p.SellerID) AS SellerID,MIN(p.Amount) AS Amount,\n"
+                    + "                                       MIN(p.StatusID) AS StatusID,MIN(p.BrandID) AS BrandID,MIN(p.height) AS height,MIN(p.width) AS width,\n"
+                    + "                                       MIN(p.weight) AS weight,MIN(ProI.ProductImgURL) AS ProductImgURL FROM \n"
+                    + "                                                        dbo.Product p \n"
+                    + "                                                        JOIN  dbo.ProductImg ProI \n"
+                    + "                                                          ON ProI.ProductID = p.ProductID \n"
+                    + "														   where p.SellerID = (select UserID from Users where Username =  ? )\n"
+                    + "                                       					  GROUP BY p.ProductID ) t";
+
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             ps.setString(1, username);
             rs = ps.executeQuery();
-            
+
             while (rs.next()) {
                 list.add(new Product(
                         rs.getInt("ProductID"),
@@ -194,13 +198,14 @@ public class ProductDAO {
 
         return list;
     }
-     public int getTotalProduct(){
+
+    public int getTotalProduct() {
         String query = "select count (*)from Product";
         int total = 0;
         try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
-            
+
             rs = ps.executeQuery();
             while (rs.next()) {
                 return total = rs.getInt(1);
@@ -209,8 +214,8 @@ public class ProductDAO {
         }
         return 0;
     }
-     
-     public void deleteProduct(String pid) {
+
+    public void deleteProduct(String pid) {
         String query = "delete from ProductImg where ProductID = ? "
                 + "delete from Product where ProductID = ?";
 
@@ -226,16 +231,16 @@ public class ProductDAO {
     }
 
     public Product getProductByID(String productId) {
-           String query = "select top 1 p.ProductID , ProductName , Description , OriginalPrice , SellPrice  , SalePercent , SubCategoryID , SellerID ,\n" +
-"                    Amount , StatusID , StatusID ,BrandID , height  , width ,weight , s.ProductImgURL from  Product p \n" +
-"                   join ProductImg s on p.ProductID = s.ProductID where p.ProductID = ?";
+        String query = "select top 1 p.ProductID , ProductName , Description , OriginalPrice , SellPrice  , SalePercent , SubCategoryID , SellerID ,\n"
+                + "                    Amount , StatusID , StatusID ,BrandID , height  , width ,weight , s.ProductImgURL from  Product p \n"
+                + "                   join ProductImg s on p.ProductID = s.ProductID where p.ProductID = ?";
         try {
             conn = new DBcontext().open();
             ps = conn.prepareStatement(query);
             ps.setString(1, productId);
             rs = ps.executeQuery();
             while (rs.next()) {
-            return (new Product(
+                return (new Product(
                         rs.getInt("ProductID"),
                         rs.getString("ProductName"),
                         rs.getString("Description"),
@@ -257,5 +262,55 @@ public class ProductDAO {
         DBcontext.close(conn, ps, rs);
         return null;
     }
+
+    public List<Product> getProductByListOd(ArrayList<Product> listProduct, ArrayList<Order> listOrder) {
+        List<Product> list = new ArrayList<>();
+        for (Product p : listProduct) {
+            for (Order o : listOrder) {
+                if (p.getProductID() == o.getProductID()) {
+                    list.add(p);
+                }
+            }
+        }
+        return list;
+    }
+     public void AddProduct(String pname, String Description, String OriginalPrice,
+            String SellPrice, String SalePercent, String Amount, String sttID,
+            String brandID, String height, String width, String weight, String Category,
+            int sid) {
+        String query = "INSERT INTO Product VALUES (?,?,?,?,?,?,?,?,?, ?,?,?,?)";
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, pname);
+            ps.setString(2, Description);
+            ps.setString(3, OriginalPrice);
+            ps.setString(4, SellPrice);
+            ps.setString(5, SalePercent);
+            ps.setString(6, Amount);
+            ps.setString(7, sttID);
+            ps.setString(8, brandID);
+            ps.setString(9, height);
+            ps.setString(10, width);
+            ps.setString(11, weight);
+            ps.setString(12, Category);
+            ps.setInt(13, sid);
+
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+        }
     }
 
+    public void AddProductImg(String pname, String url) {
+        String query = "insert into ProductImg values (((select ProductID from Product where ProductName= ? )), ? )";
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, pname);
+            ps.setString(2, url);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+}

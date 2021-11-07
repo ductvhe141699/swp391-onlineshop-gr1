@@ -99,8 +99,7 @@
 
                         <img src="./resources/img/products/${requestScope.feedback.product.url}" style="width: 400px;  margin: auto; box-shadow: 10px 10px 5px #ddd; border-color: #000">
                         <div class="card-body p-5">
-                            <h3 class="title mb-3">${requestScope.feedback.product.productName}</h3>
-
+                            <h3 class="card-title mb-3">${requestScope.feedback.product.productName}</h3>
                             <p class="price-detail-wrap"> 
                                 <span class="price h4 text-warning"> 
                                     <span class="currency"> đ</span><span class="num">${requestScope.feedback.product.sellPrice}</span>

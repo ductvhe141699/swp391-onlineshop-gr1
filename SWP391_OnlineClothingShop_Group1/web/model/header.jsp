@@ -99,22 +99,31 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <!--LAMDTHE153097-Thêm 'profile' & 'manager' vào dropdown-->
+                        <!-- Neu co User trong session -->
                         <c:if test ="${sessionScope.user !=  null}">
+                            <!-- Default -->
                             <li><span class="dropdown-item-text">Hello ${user.getUserName()}</span></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/Dashboard">DashBoard</a></li>
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ProfileControl">View profile</a></li>  
+                            <!-- Admin -->
+                            <c:if test="${sessionScope.user.roleID ==  1}">
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/AccountManagerControl">Manage Users</a></li>
+                            </c:if>
+                            <!-- Seller -->
+                            <c:if test="${sessionScope.user.roleID ==  2}">
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/Dashboard">DashBoard</a></li>
+                            </c:if>
+                            <!-- Marketing -->
+                            <c:if test="${sessionScope.user.roleID ==  4}">
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/mkt/banner">Manage Banner</a></li>
+                            </c:if>
+                            <!-- Default Logout -->
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/ProfileControl">View profile</a></li>   
-                            </c:if>
-                            <c:if test="${sessionScope.user.roleID ==  1}">
-                            <li><hr class="dropdown-divider"></li> 
-                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/AccountManagerControl">Manage Users</a></li>
-                            </c:if>
-                            <c:if test ="${sessionScope.user ==  null}">
+                        </c:if>
+                        <!-- Neu khong co user -->
+                        <c:if test ="${sessionScope.user ==  null}">
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Login/Register</a></li>
-                            </c:if>
+                        </c:if>
                     </ul>
                 </li>
                 <!-- COLLAPSED -->
@@ -144,6 +153,9 @@
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=${ibrand.getBrandID()}&price=0&sortType=0&sortMode=0">${ibrand.getBrandName()}</a></li>
                             </c:forEach>
                     </ul>
+                </li>
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/PostControl">Post</a>
                 </li>
                 <li class="nav-item dropdown d-block d-lg-none">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -181,6 +193,19 @@
                 </li>
                 <c:if test ="${sessionScope.user !=  null}">
                     <li class="nav-item d-block d-lg-none">Hello ${user.getUserName()}</li>
+                    <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/ProfileControl">View profile</a></li>  
+                    <!-- Admin -->
+                    <c:if test="${sessionScope.user.roleID ==  1}">
+                        <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/AccountManagerControl">Manage Users</a></li>
+                    </c:if>
+                    <!-- Seller -->
+                    <c:if test="${sessionScope.user.roleID ==  2}">
+                        <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/Dashboard">DashBoard</a></li>
+                    </c:if>
+                    <!-- Marketing -->
+                    <c:if test="${sessionScope.user.roleID ==  4}">
+                        <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/mkt/banner">ManageBanner</a></li>
+                    </c:if>
                     <li class="nav-item d-block d-lg-none">
                         <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
                     </li>
@@ -204,6 +229,7 @@
             <li class="nav-item me-4">
                 <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/home">Home</a>
             </li>
+             
             <li class="nav-item me-4">
                 <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Product</a>
             </li>
@@ -231,6 +257,9 @@
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=${ibrand.getBrandID()}&price=0&sortType=0&sortMode=0">${ibrand.getBrandName()}</a></li>
                         </c:forEach>
                 </ul>
+            </li>
+            <li class="nav-item me-4">
+              <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/PostControl">Post</a>
             </li>
             <li class="nav-item dropdown me-4">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
