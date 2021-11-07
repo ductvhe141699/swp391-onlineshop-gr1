@@ -70,7 +70,7 @@ header{
     transform: translate(-45%,-55%);
     width: 1140px;
 }
-h1{
+.titles{
     text-transform: uppercase;
     font-size: 300%;
     font-weight: 400;
@@ -85,6 +85,12 @@ h1{
     padding: 20px; 
     color: white;
     line-height: 135%;
+}
+.container{
+    margin: 0 auto;
+    width: 50%;
+    font-size: 15px;
+    font-style: italic;
 }
 
 
