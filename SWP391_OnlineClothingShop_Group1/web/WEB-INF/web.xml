@@ -256,6 +256,10 @@
         <servlet-name>EditPostControl</servlet-name>
         <servlet-class>controller.EditPostControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddProductControl</servlet-name>
+        <servlet-class>controller.AddProductControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -474,6 +478,10 @@
     <servlet-mapping>
         <servlet-name>EditPostControl</servlet-name>
         <url-pattern>/EditPost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProductControl</servlet-name>
+        <url-pattern>/AddProduct</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
