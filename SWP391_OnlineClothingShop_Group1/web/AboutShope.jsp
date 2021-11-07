@@ -110,9 +110,9 @@
                          style="display: block; margin-left: auto; margin-right: auto;">
                 </p>
                 <br>
-                    <h3 style="font-weight: 500; text-align: center;"><strong>Hãy đến thăm chúng tôi</strong></h3>
-                    <br>
-                    <p class="map">
+                <h3 style="font-weight: 500; text-align: center;"><strong>Hãy đến thăm chúng tôi</strong></h3>
+                <br>
+                <p class="map">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.4855345740657!2d105.52487561413173!3d21.013249986006784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31345b465a4e65fb%3A0xaae6040cfabe8fe!2sFPT%20University!5e0!3m2!1sen!2s!4v1636287484694!5m2!1sen!2s" 
                             width="700" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </p>
@@ -125,6 +125,5 @@
             <a class="text-white" href="#">SWP391 - GRP1</a>
         </div>
         <!-- Copyright -->
-    </footer>
-</body>
+    </body>
 </html>
