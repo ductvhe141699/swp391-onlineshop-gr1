@@ -275,9 +275,8 @@ public class ProductDAO {
         return list;
     }
      public void AddProduct(String pname, String Description, String OriginalPrice,
-            String SellPrice, String SalePercent, String Amount, String sttID,
-            String brandID, String height, String width, String weight, String Category,
-            int sid) {
+            String SellPrice, String SalePercent, String SubCategory, int sid, String Amount, String sttID,
+            String brandID, String height, String width, String weight) {
         String query = "INSERT INTO Product VALUES (?,?,?,?,?,?,?,?,?, ?,?,?,?)";
         try {
             conn = new DBcontext().open();
@@ -287,14 +286,14 @@ public class ProductDAO {
             ps.setString(3, OriginalPrice);
             ps.setString(4, SellPrice);
             ps.setString(5, SalePercent);
-            ps.setString(6, Amount);
-            ps.setString(7, sttID);
-            ps.setString(8, brandID);
-            ps.setString(9, height);
-            ps.setString(10, width);
-            ps.setString(11, weight);
-            ps.setString(12, Category);
-            ps.setInt(13, sid);
+            ps.setString(6, SubCategory);
+            ps.setInt(7, sid);
+            ps.setString(8, Amount);
+            ps.setString(9, sttID);
+            ps.setString(10, brandID);
+            ps.setString(11, height);
+            ps.setString(12, width);
+            ps.setString(13, weight);
 
             ps.executeUpdate();
 
@@ -310,6 +309,46 @@ public class ProductDAO {
             ps.setString(1, pname);
             ps.setString(2, url);
             ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void EditProduct(String pname, String Description, double OriginalPrice,
+            double SellPrice, double SalePercent, int pCategory, int Amount, int sttID,
+            int brandID, double height, double width, double weight, int pid) {
+        String query = "Update Product \n"
+                + "  set ProductName = ? ,\n"
+                + "  Description = ? ,\n"
+                + "  OriginalPrice = ? ,\n"
+                + "  SellPrice = ? ,\n"
+                + "  SalePercent = ? ,\n"
+                + "  SubCategoryID = ? ,\n"
+                + " \n"
+                + "  Amount = ? ,\n"
+                + "  StatusID = ? ,\n"
+                + "  BrandID = ? ,\n"
+                + "  height = ? ,\n"
+                + "  width = ? ,\n"
+                + "  [weight] = ? \n"
+                + "  where ProductID = ? ";
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, pname);
+            ps.setString(2, Description);
+            ps.setDouble(3, OriginalPrice);
+            ps.setDouble(4, SellPrice);
+            ps.setDouble(5, SalePercent);
+            ps.setInt(6, pCategory);
+            ps.setInt(7, Amount);
+            ps.setInt(8, sttID);
+            ps.setInt(9, brandID);
+            ps.setDouble(10, height);
+            ps.setDouble(11, width);
+            ps.setDouble(12, weight);
+            ps.setInt(13, pid);           
+            ps.executeUpdate();
+
         } catch (Exception e) {
         }
     }

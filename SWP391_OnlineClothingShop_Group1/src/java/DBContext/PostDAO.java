@@ -74,4 +74,17 @@ public class PostDAO {
         DBcontext.close(conn, ps, rs);
         return null;
     }
+     public void update(String Description , String date, int CategoryID, String PostImgURL, int id) {
+       String   query = "update Post set Description= ? , date= ?, CategoryID= ?, PostImgURL = ?  where ID =?";
+        try { conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, Description);
+            ps.setString(2, date);
+            ps.setInt(3, CategoryID);
+            ps.setString(4, PostImgURL);
+            ps.setInt(5, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
 }
