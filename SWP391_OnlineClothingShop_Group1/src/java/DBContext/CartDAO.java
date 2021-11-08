@@ -138,4 +138,27 @@ public class CartDAO {
         }
         return;
     }
+    public void addtoCart(int id,int productId) {
+        try {
+            query = "Update dbo.Cart Set Amount = Amount+1 Where UserID = ? And ProductID = ?";
+            conn = DBcontext.open(); 
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.setInt(2, productId);
+            long Updatedline = ps.executeUpdate();
+            if (Updatedline == 0){
+                query = "INSERT INTO dbo.Cart VALUES( ? , ? , 1 )";           
+                ps = conn.prepareStatement(query);
+                ps.setInt(1, id);
+                ps.setInt(2, productId);
+                ps.executeUpdate();
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(CartDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
+        return;
+    }
 }
