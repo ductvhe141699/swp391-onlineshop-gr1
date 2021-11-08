@@ -40,7 +40,6 @@
     <body>
         <%@include file="model/header.jsp" %>
 
-        <a href="DeliveryDashboard">BEAN</a>
         <!-- SLIDER -->
         <section class="slider">
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">

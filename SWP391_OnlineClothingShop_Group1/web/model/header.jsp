@@ -114,6 +114,9 @@
                             <c:if test="${sessionScope.user.roleID ==  4}">
                                 <li><a class="dropdown-item" href="${pageContext.request.contextPath}/mkt/banner">Manage Banner</a></li>
                             </c:if>
+                            <c:if test="${sessionScope.user.roleID ==  5}">
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/DeliveryDashboard">Delivery Dashboard</a></li>
+                            </c:if>
                             <!-- Default Logout -->
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a></li>
@@ -203,7 +206,10 @@
                     </c:if>
                     <!-- Marketing -->
                     <c:if test="${sessionScope.user.roleID ==  4}">
-                        <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/mkt/banner">ManageBanner</a></li>
+                        <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/mkt/banner">Manage Banner</a></li>
+                    </c:if>
+                    <c:if test="${sessionScope.user.roleID ==  5}">
+                        <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/DeliveryDashboard">Delivery Dashboard</a></li>
                     </c:if>
                     <li class="nav-item d-block d-lg-none">
                         <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>

@@ -17,7 +17,7 @@
     </div>
 
     <ul class="list-unstyled components">
-        <p>Seller Manager</p>
+        <p class="fw-bold">Dashboard Manager</p>
         <li>
             <a href="home">Home
                 <i class="bi bi-house float-end"></i>
@@ -48,7 +48,7 @@
         <div class="navbar-header">
             <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                 <i class="glyphicon glyphicon-align-left"></i>
-                <span>Open Sidebar</span>
+                <span>Dashboard</span>
             </button>
         </div>
     </div>

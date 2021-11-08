@@ -16,7 +16,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" href="css/dataTables.bootstrap5.min.css" />
         <link rel="stylesheet" href="css/Delivery.css" />
-        <title>Dashboard</title>
+        <title>Delivering</title>
     </head>
     <body>
 
@@ -30,7 +30,7 @@
                 </div>
 
                 <ul class="list-unstyled components">
-                    <p>Dummy Heading</p>
+                    <p>Shipping Manager</p>
                     <li>
                         <a href="home">Home
                             <i class="bi bi-house float-end"></i>
@@ -44,7 +44,7 @@
                 </ul>
 
                 <ul class="list-unstyled CTAs">
-                    <li><a href="home" class="download">Logout</a></li>
+                  <li><a href="${pageContext.request.contextPath}/logout" class="download">Log out</a></li>
                 </ul>
             </nav>
 
@@ -57,7 +57,7 @@
                         <div class="navbar-header">
                             <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                                 <i class="glyphicon glyphicon-align-left"></i>
-                                <span>Open Sidebar</span>
+                                <span>Delivering</span>
                             </button>
                         </div>
                     </div>

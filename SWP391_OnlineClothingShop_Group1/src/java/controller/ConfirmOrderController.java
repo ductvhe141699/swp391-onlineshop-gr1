@@ -83,7 +83,7 @@ public class ConfirmOrderController extends HttpServlet {
             boolean check = odao.CheckOrderExist(oid, olist);
             if ((check && action.equals("accept")) || (check && action.equals("reject"))) {
                 odao.OrderAction(oid, action);
-
+                
                 olist = odao.getOdByListProduct(plist);
 
                 //UPDATE LAI TOTAL CUS , TOTAL PRO , TOTAL ORDER , TOTAL PROFIT
