@@ -37,12 +37,12 @@
                     </li>
                 </ul>
                 <div class="card-body">
-                    <button type="button" class="btn btn-success">Update</button>
+                    
 
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
 
 
-                        <button type="button" class="btn btn-secondary">hide</button>
+                        
 
                     </div>
                     <a href="PostControl"> <button type="button" class="btn btn-primary">back to post list</button></a>
