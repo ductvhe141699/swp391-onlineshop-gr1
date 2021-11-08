@@ -26,7 +26,7 @@ public class CartDAO {
     public ArrayList<Cart> getCart(int id) {
         ArrayList<Cart> list = new ArrayList<>();
         try {
-            query = "SELECT Cart.ProductID,pro.ProductName,Cart.Amount,pro.SellPrice,pro.ProductImgURL FROM dbo.Cart JOIN (select p.ProductID , ProductName , Description , OriginalPrice , SellPrice  , SalePercent , SubCategoryID , SellerID ,Amount , p.StatusID ,BrandID , height  , width ,weight , s.ProductImgURL FROM  Product p join ProductImg s on p.ProductID = s.ProductID ) pro ON pro.ProductID = Cart.ProductID WHERE Cart.UserID = ?";
+            query = "SELECT Cart.ProductID,pro.ProductName,Cart.Amount,pro.SellPrice,pro.ProductImgURL FROM dbo.Cart JOIN (SELECT p.ProductID,MIN(p.ProductName) AS ProductName,MIN(p.Description) AS Description,MIN(p.OriginalPrice) AS OriginalPrice,MIN(p.SellPrice) AS SellPrice,MIN(p.SalePercent) AS SalePercent,MIN(p.SubCategoryID) AS SubCategoryID,MIN(p.SellerID) AS SellerID,MIN(p.Amount) AS Amount,MIN(p.StatusID) AS StatusID,MIN(p.BrandID) AS BrandID,MIN(p.height) AS height,MIN(p.width) AS width,MIN(p.weight) AS weight,MIN(ProI.ProductImgURL) AS ProductImgURL FROM dbo.Product p JOIN  dbo.ProductImg ProI ON ProI.ProductID = p.ProductID GROUP BY p.ProductID ) pro ON pro.ProductID = Cart.ProductID WHERE Cart.UserID = ?";
             conn = DBcontext.open(); 
             ps = conn.prepareStatement(query);
             ps.setInt(1, id);
