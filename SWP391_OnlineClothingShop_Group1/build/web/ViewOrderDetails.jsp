@@ -86,13 +86,12 @@
                     <div class="card">
                         <div class="card-body text-center">
                             <h5 class="card-title m-b-0"><i class="fa fa-shopping-cart green-color" ></i>
-                                Products in ${orders.id} (${orders.status})</h5>
+                                Products</h5>
                         </div>
                         <div class="table-responsive p-5">
                             <table class="table table-striped table-hover">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th scope="col">Product ID</th>
                                         <th scope="col">Product Name</th>
                                         <th scope="col">Image</th>
                                         <th scope="col">Price</th>
@@ -102,7 +101,6 @@
                                 <tbody class="customtable">
                                     <c:forEach var="od" items="${listO}">
                                         <tr>
-                                            <td>#PD0${od.productID}</td>
                                             <td>${od.productName}</td>
                                             <td><img onmouseover="bigImg(this)" onmouseout="normalImg(this)"  
                                                      src="resources/img/products//${od.productImgURL}" alt="" 
