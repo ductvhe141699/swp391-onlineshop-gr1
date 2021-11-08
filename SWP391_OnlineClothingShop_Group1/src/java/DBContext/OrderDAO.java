@@ -272,7 +272,7 @@ public class OrderDAO {
                 total++;
             }
         } catch (Exception e) {
-        }
+        }   
 
         return total;
     }
@@ -281,7 +281,7 @@ public class OrderDAO {
 
         int profit = 0;
         for (Order o : olist) {
-            profit += (o.getTotalPrice() - o.getQuantity() * o.getProductPrice());
+            profit += (o.getTotalPrice() - (o.getQuantity() * o.getProductPrice()) );
         }
         return profit;
     }
