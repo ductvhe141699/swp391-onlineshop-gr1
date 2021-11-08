@@ -6,7 +6,6 @@
 package controller;
 
 import DBContext.ProductDAO;
-import com.sun.org.glassfish.gmbal.Description;
 import entity.SubCategory;
 import entity.Users;
 import java.io.IOException;
