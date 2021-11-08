@@ -85,7 +85,7 @@
                             <div class="card bg-primary text-white h-100"> 
                                 <div class="card-body py-3">
                                     <h3 class="text-white text-center fs-5">Total Custom</h3>
-                                    <p class="text-center text-white mt-3 mb-0 fs-3 "> ${totalCus} <i class="bi bi-bag-check"></i></p>
+                                    <p class="text-center text-white mt-3 mb-0 fs-3 "> ${totalCus} <i class="bi bi-person"></i></p>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                             <div class="card bg-primary text-white h-100"> 
                                 <div class="card-body py-3">
                                     <h3 class="text-white text-center fs-5">Total Profit</h3>
-                                    <p class="text-center text-white mt-3 mb-0 fs-3 "> ${totalProfit} <i class="bi bi-bag-check"></i></p>
+                                    <p class="text-center text-white mt-3 mb-0 fs-3 "> ${totalProfit} <i class="bi bi-currency-exchange"></i></p>
                                 </div>
                             </div>
                         </div>        

@@ -78,7 +78,13 @@ public final class Dashboard_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <body>\r\n");
       out.write("\r\n");
       out.write("        <div class=\"wrapper\">\r\n");
-      out.write("            <!-- Sidebar Holder -->  ");
+      out.write("            <!-- Sidebar Holder -->  \r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("            <!-- Page Content Holder -->\r\n");
+      out.write("            <div id=\"content\">\r\n");
+      out.write("\r\n");
+      out.write("                ");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -134,12 +140,6 @@ public final class Dashboard_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</nav>\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("\r\n");
-      out.write("            <!-- Page Content Holder -->\r\n");
-      out.write("            <div id=\"content\">\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
       out.write("                <div class=\"container-fluid\">\r\n");
       out.write("                    <div class=\"row\">\r\n");
       out.write("                        <div class=\"col-md-12\">\r\n");
@@ -153,7 +153,7 @@ public final class Dashboard_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                    <h3 class=\"text-white text-center fs-5\">Total Custom</h3>\r\n");
       out.write("                                    <p class=\"text-center text-white mt-3 mb-0 fs-3 \"> ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${totalCus}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write(" <i class=\"bi bi-bag-check\"></i></p>\r\n");
+      out.write(" <i class=\"bi bi-person\"></i></p>\r\n");
       out.write("                                </div>\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
