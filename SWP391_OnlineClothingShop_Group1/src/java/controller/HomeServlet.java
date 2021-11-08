@@ -53,7 +53,7 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        ProductDAO dao = new ProductDAO(); 
-       ArrayList<Product> listProduct = dao.getAllProduct();
+             ArrayList<Product> listProduct = dao.getTop8Product();
        request.setAttribute("listProduct", listProduct);
         CBannerDAO cbdao = new CBannerDAO();
        ArrayList<CBanner> cbanners =  cbdao.getAllCBanner();

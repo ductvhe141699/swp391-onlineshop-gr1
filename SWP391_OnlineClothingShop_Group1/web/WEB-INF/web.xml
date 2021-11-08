@@ -264,6 +264,18 @@
         <servlet-name>AddPost</servlet-name>
         <servlet-class>controller.AddPost</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeliveryDashboard</servlet-name>
+        <servlet-class>controller.DeliveryDashboard</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeliveryDetail</servlet-name>
+        <servlet-class>controller.DeliveryDetail</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeliverConfirm</servlet-name>
+        <servlet-class>controller.DeliverConfirm</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -490,6 +502,18 @@
     <servlet-mapping>
         <servlet-name>AddPost</servlet-name>
         <url-pattern>/AddPost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeliveryDashboard</servlet-name>
+        <url-pattern>/DeliveryDashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeliveryDetail</servlet-name>
+        <url-pattern>/DeliveryDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeliverConfirm</servlet-name>
+        <url-pattern>/DeliverConfirm</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

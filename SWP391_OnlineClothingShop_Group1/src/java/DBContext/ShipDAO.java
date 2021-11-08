@@ -5,6 +5,7 @@
  */
 package DBContext;
 
+import entity.Order;
 import entity.Ship;
 import entity.ShipInfo;
 import entity.Users;
@@ -21,52 +22,51 @@ import java.util.logging.Logger;
  * @author SAKURA
  */
 public class ShipDAO {
+
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
     private String query;
-    
-    
+
     public ArrayList<Ship> getShip() {
         ArrayList<Ship> list = new ArrayList<>();
         try {
             query = "SELECT * from dbo.Ship";
-            conn = DBcontext.open(); 
+            conn = DBcontext.open();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new Ship(rs.getInt("id"),rs.getString("CityName"),rs.getInt("ShipPrice")));
+                list.add(new Ship(rs.getInt("id"), rs.getString("CityName"), rs.getInt("ShipPrice")));
             }
         } catch (SQLException e) {
             Logger.getLogger(ShipDAO.class.getName()).log(Level.SEVERE, null, e);
-        }
-        finally{
+        } finally {
             DBcontext.close(conn, ps, rs);
         }
         return list;
     }
+
     public Ship getShip(int id) {
         Ship ship = null;
         try {
             query = "SELECT * from dbo.Ship where id=?";
-            conn = DBcontext.open(); 
+            conn = DBcontext.open();
             ps = conn.prepareStatement(query);
             ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
-                ship = new Ship(rs.getInt("id"),rs.getString("CityName"),rs.getInt("ShipPrice"));
+                ship = new Ship(rs.getInt("id"), rs.getString("CityName"), rs.getInt("ShipPrice"));
             }
         } catch (SQLException e) {
             Logger.getLogger(ShipDAO.class.getName()).log(Level.SEVERE, null, e);
-        }
-        finally{
+        } finally {
             DBcontext.close(conn, ps, rs);
         }
         return ship;
     }
-    
-    public ShipInfo getShipInfoByOdID(int orderID){
-        String query =" select * from ShipInfo where Order_ID = ? ";
+
+    public ShipInfo getShipInfoByOdID(int orderID) {
+        String query = " select * from ShipInfo where Order_ID = ? ";
         try {
 
             conn = new DBcontext().open();
@@ -74,11 +74,35 @@ public class ShipDAO {
             ps.setInt(1, orderID);
             rs = ps.executeQuery();
             while (rs.next()) {
-                return new ShipInfo(rs.getInt(2),rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7));
+                return new ShipInfo(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7));
             }
         } catch (Exception e) {
         }
         DBcontext.close(conn, ps, rs);
         return null;
+    }
+
+    public ArrayList<ShipInfo> getShipInfoByOrder(ArrayList<Order> listOrder) {
+        String query = " select * from ShipInfo  ";
+        ArrayList<ShipInfo> list = new ArrayList<>();
+
+        try {
+            conn = new DBcontext().open();
+
+            for (int i = 0; i < listOrder.size(); i++) {
+                if (i == 0) {
+                    query += "where Order_ID = " + listOrder.get(i).getId();
+                } else {
+                    query += " or Order_ID = " + listOrder.get(i).getId();
+                }
+            }
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new ShipInfo(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
     }
 }

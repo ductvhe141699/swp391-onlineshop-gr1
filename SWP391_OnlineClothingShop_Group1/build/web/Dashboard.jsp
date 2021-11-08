@@ -21,13 +21,13 @@
     <body>
 
         <div class="wrapper">
-            <!-- Sidebar Holder -->
-           
+            <!-- Sidebar Holder -->  
+
 
             <!-- Page Content Holder -->
             <div id="content">
-                 <%@include file="model/Sidebar.jsp" %>
-                
+
+                <%@include file="model/Sidebar.jsp" %>
 
                 <div class="container-fluid">
                     <div class="row">
@@ -146,7 +146,7 @@
                 });
             });
         </script>
-      
+
         <script src="./js/jquery.dataTables.min.js"></script>
         <script src="./js/dataTables.bootstrap5.min.js"></script>
         <script src="./js/script1.js"></script>

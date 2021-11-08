@@ -21,6 +21,7 @@
             crossorigin="anonymous"
             />
         <!--FONTAWESOME-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -38,8 +39,8 @@
     </head>
     <body>
         <%@include file="model/header.jsp" %>
-        
-         
+
+        <a href="DeliveryDashboard">BEAN</a>
         <!-- SLIDER -->
         <section class="slider">
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -55,7 +56,7 @@
                             <div class="carousel-caption d-none d-md-block text-center slider-text ">
                                 <h3 style="color:white;">${cbanner.getTitle()}</h3>
                                 <p style="color:white;">
-                                   ${cbanner.getDesc()}
+                                    ${cbanner.getDesc()}
                                 </p>
                             </div>
                         </div>
@@ -126,7 +127,7 @@
                                     <img src="./resources/img/Categories/categories-5.png" alt="" class="img-fluid">
                                     <div class="categories_text">
                                         <h4> Fashion</h4>
-                                      
+
                                         <a href="#">Buy now</a>
                                     </div>
                                 </div>
@@ -145,29 +146,18 @@
                                     <h4>New Product</h4>
                                 </div>
                             </div>
-                            <div class="row property_gallery">
+                            <div class="row " style="width: 100%">
 
                                 <c:forEach var="o" items="${listProduct}">
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                        <div class="product_item">
-                                            <div class="product_item_pic text-center">
-                                                <img src="./resources/img/products/${o.url}" alt="" class="product-img">
-                                                <ul class="product_hover">
-                                                    <li><a href="#"><i class="fa fa-arrows-alt"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="product_item_text">
-                                                <h6><a href="detail?pid=${o.productID}">${o.productName}</a></h6>
-                                                <div class="rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
+                                    <div class="col-md-3 mt-4" >
+                                        <div class="card card-custom h-100 shadow-sm"> <a href="detail?pid=${o.getProductID()}"><img src="${pageContext.request.contextPath}/resources/img/products/${o.getUrl()}" class="card-img-top" alt="..."></a>
+                                            <div class="card-body">
+                                                <div class="clearfix mb-3 text-center"> 
+                                                    <p class="currency  price-hp ">${o.getSellPrice()} VND</p> 
                                                 </div>
-                                                <div class="product_price">$ ${o.sellPrice}</div>
+                                                <h5 class="card-title text-center">${o.getProductName()}</h5>
+                                                <div class="text-center my-4"> <a href="detail?pid=${o.getProductID()}" class="btn btn-primary">Check offer</a> </div>
+                                                <!-- <div class="clearfix mb-1"> <span class="float-start"><i class="far fa-question-circle"></i></span> <span class="float-end"><i class="fas fa-plus"></i></span> </div> -->
                                             </div>
                                         </div>
                                     </div>

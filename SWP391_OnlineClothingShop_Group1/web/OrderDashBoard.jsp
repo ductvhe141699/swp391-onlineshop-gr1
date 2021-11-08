@@ -33,7 +33,6 @@
                 </div>
 
                 <ul class="list-unstyled components">
-                    <p>Dummy Heading</p>
                     <li>
                         <a href="home">Home
                             <i class="bi bi-house float-end"></i>
@@ -146,22 +145,23 @@
                                                         <td>${o.productName}</td>
                                                         <td>${o.productPrice}</td>
                                                         <c:if test="${o.status == 1}">
-                                                            <td><span class="badge bg-dark">Waiting for Confirmation</span></td>
-                                                        </c:if> 
+                                                            <td><span class="badge rounded-pill bg-secondary">Waiting for Confirmation</span></td>
+                                                        </c:if>
                                                         <c:if test="${o.status == 2}">
-                                                            <td><span class="label label-success">completed</span></td>
-                                                        </c:if> 
+                                                            <td><span class="badge rounded-pill bg-warning text-dark">Packing</span></td>
+                                                        </c:if>
                                                         <c:if test="${o.status == 3}">
-                                                            <td><span class="badge bg-info text-dark">Delivering</span></td>
-                                                        </c:if> 
+                                                            <td><span class="badge rounded-pill bg-primary">Delivering</span></td>
+                                                        </c:if>
                                                         <c:if test="${o.status == 4}">
                                                             <td><span class="badge bg-danger">Canceled</span></td>
-                                                        </c:if> 
+                                                        </c:if>
                                                         <c:if test="${o.status == 5}">
                                                             <td><span class="badge bg-success">completed</span></td>
-                                                        </c:if> 
+                                                        </c:if>
+
                                                         <td>${o.date}</td>
-                                                        <td><a href="${pageContext.request.contextPath}/OrderDetails?oid=${o.id}" class="btn btn-sm btn-primary">See details</a> </td>
+                                                        <td><a href="OrderDetails?oid=${o.id}" class="btn btn-sm btn-primary">See details</a> </td>
 
                                                         <c:if test="${o.status == 1}">
                                                             <td><a href="ConfirmOrder?action=accept&oid=${o.id}"><span class="btn btn-sm btn-success rounded-pill">Accept</span></a>
@@ -172,6 +172,7 @@
                                                             <td>
                                                             </td>
                                                         </c:if>
+
 
                                                     </tr>
                                                 </c:forEach>

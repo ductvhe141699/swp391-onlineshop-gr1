@@ -97,9 +97,11 @@
                                             <p class="text-black fw-bold">Phone :</p>
                                         </div>
                                         <div class="" style="width: 50%;">
-                                            <p class="text-black">${order.id}</p>
-                                            <p class="text-black">${order.date}</p>
-                                            <p class="text-black">${order.status}</p>
+                                            <c:forEach var="o" items="${order}" begin="1" end="2" step="1">
+                                                <p class="text-black">${o.id}</p>
+                                                <p class="text-black">${o.date}</p>
+                                                <p class="text-black">${o.status}</p>
+                                            </c:forEach>
                                             <p class="text-black">${ship.shippingAddress}</p>
                                             <p class="text-black">${ship.customerName}</p>
                                             <p class="text-black">${ship.phoneNum}</p>
@@ -111,13 +113,13 @@
                                     <h3 class="text-center text-primary">Product</h3>
                                     <div class="d-flex mt-2">
                                         <div class="" style="width: 50%;">
-                                            <c:forEach var="o" items="${listProduct}">
+                                            <c:forEach var="o" items="${order}">
                                                 <p class="text-black fw-bold">Product ID: </p>
                                                 <p class="text-black fw-bold">Product Name: </p>
                                             </c:forEach>
                                         </div>
                                         <div class="" style="width: 50%;">
-                                            <c:forEach var="o" items="${listProduct}">
+                                            <c:forEach var="o" items="${order}">
                                                 <p class="text-black">${o.productID}</p>
                                                 <p class="text-black">${o.productName}</p>
                                             </c:forEach>
@@ -146,7 +148,7 @@
                                                 <td>${o.productPrice}</td>
                                                 <td>${o.quantity}</td>
                                                 <c:forEach var="p" items="${listProduct}">
-                                                    <c:if test="${o.productID = p.productID}">
+                                                    <c:if test="${o.productID == p.productID}">
                                                         <td><img src="./resources/img/${p.url}" alt="" width="120px"></td>
                                                         </c:if>
 
@@ -155,27 +157,25 @@
                                             </tr>
 
                                         </c:forEach>
-                                        <c:forEach var="o" items="${order}" begin="0" end="1" step="1">
-                                            <tr>
-                                                <th scope="row"></th>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>
-                                                    <p class="fs-4 fw-bold m-0 p-0 text-black">Total</p>
-                                                </td>
-                                                <td>
-                                                    <p class="fs-3 fw-normal m-0 p-0 text-success">${o.totalPrice}</p>
-                                                </td>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <p class="fs-4 fw-bold m-0 p-0 text-black">Total</p>
+                                            </td>
+                                            <td>
+                                                <p class="fs-3 fw-normal m-0 p-0 text-success">${o.totalPrice}</p>
+                                            </td>
 
-                                            </tr>
-                                        </c:forEach>
+                                        </tr>
 
                                     </tbody>
                                 </table>
                             </div>
 
-                            <a class="btn btn-primary px-3" href="OrderDashBoard" role="button" style="margin:50px;">Back </a>
+                            <a class="btn btn-primary px-3" href="ManagerOrder" role="button" style="margin:50px;">Back </a>
                         </div>
                     </div>
                 </div>

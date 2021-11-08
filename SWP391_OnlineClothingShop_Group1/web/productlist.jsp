@@ -227,7 +227,7 @@
                                 </c:if>
                                 <div class="card-body">
                                     <div class="clearfix mb-3"> 
-                                        <c:forEach items="${brands}" var="ibrand"><c:if test="${ibrand.getBrandID()==iproduct.getBrandID()}"><span class="float-start badge rounded-pill bg-primary">${ibrand.getBrandName()}</span></c:if></c:forEach>
+                                       
                                         <span class="currency float-end price-hp">${iproduct.getSellPrice()}</span> </div>
                                     <h5 class="card-title">${iproduct.getProductName()}</h5>
                                     <p class="card-text overflow-auto" style="height: 100px;text-overflow: ellipsis;">${iproduct.getDesc()}</p>

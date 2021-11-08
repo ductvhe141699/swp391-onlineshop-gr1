@@ -142,7 +142,7 @@ public class OrderDAO {
     public boolean CheckOrderExist(int orderID, ArrayList<Order> olist) {
         boolean flag = false;
         for (Order o : olist) {
-            if (orderID == o.getOrderID()) {
+            if (orderID == o.getId()) {
                 flag = true;
             }
         }
@@ -249,8 +249,6 @@ public class OrderDAO {
         return total;
     }
 
-    
-   
     public int geTotalOrderByListP(ArrayList<Product> listP) {
         int total = 0;
         String query = "select o.ID from Orders o\n"
@@ -278,8 +276,8 @@ public class OrderDAO {
 
         return total;
     }
-    
-     public int getProfitByOrder(ArrayList<Order> olist) {
+
+    public int getProfitByOrder(ArrayList<Order> olist) {
 
         int profit = 0;
         for (Order o : olist) {
@@ -287,5 +285,56 @@ public class OrderDAO {
         }
         return profit;
     }
-    
+
+    public ArrayList<Order> getOrderPackaging() {
+        String query = "select * from Orders where Status = 2 ";
+        ArrayList<Order> list = new ArrayList<>();
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Order(
+                        rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getDate(6))
+                );
+            }
+        } catch (Exception e) {
+        }
+        return list;
+
+    }
+
+    public Order getOrderByOrderID(int orderID) {
+        String query = "select o.ID , o.UserID , o.TotalPrice , o.Note , o.Status , o.Date , d.Order_ID , d.ProductID , d.ProductName  ,d.ProductPrice , d.Quantity from Orders o\n"
+                + "join Order_Detail d on d.Order_ID = o.ID\n"
+                + "where o.ID = ?  "; // 
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, orderID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new Order(
+                        rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getDate(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getString(9),
+                        rs.getInt(10),
+                        rs.getInt(11));
+
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
 }
