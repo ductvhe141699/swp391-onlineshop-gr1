@@ -83,7 +83,7 @@
                     <div class="row mt-5">
                         <!-- Sub Category Trend-->
                         <div class="col-md-3 mb-3 justify-content-center">
-                            <h4>Sub Category Trend</h4>
+                            <h4 class="mb-3">Sub Category Trend</h4>
                             <center>
                                 <div class="false-For-Bottom-Text">
                                      <div class="mypiechart">	
@@ -98,7 +98,7 @@
                               </ul>
                         </div>
                         <div class="col-md-3 mb-3 justify-content-center">
-                            <h4>Brand Trend</h4>
+                            <h4 class="mb-3">Brand Trend</h4>
                             <center>
                                 <div class="false-For-Bottom-Text">
                                      <div class="mypiechart">	
@@ -114,8 +114,8 @@
                         </div>
                         <!-- Brand Trend-->
                         <div class="col-md-6 mb-3">
-                            <h4>Top Product Sold</h4>
-                            <table class="table">
+                            <h4 class="mb-3">Top Product Ordered</h4>
+                            <table class="table table-striped table-hover">
                                 <thead>
                                   <tr>
                                     <th scope="col">#</th>

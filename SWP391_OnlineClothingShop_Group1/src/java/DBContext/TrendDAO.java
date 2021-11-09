@@ -38,8 +38,6 @@ public class TrendDAO {
             ps = conn.prepareStatement(query);
             ps.setString(1,SDF.format(start) );
             ps.setString(2, SDF.format(end));
-            System.out.println(SDF.format(start));
-            System.out.println(SDF.format(end));
             rs = ps.executeQuery();
             while (rs.next()) {
                 if(count>3)
@@ -93,8 +91,6 @@ public class TrendDAO {
             ps = conn.prepareStatement(query);
             ps.setString(1,SDF.format(start) );
             ps.setString(2, SDF.format(end));
-            System.out.println(SDF.format(start));
-            System.out.println(SDF.format(end));
             rs = ps.executeQuery();
             while (rs.next()) {
                 if(count>3)

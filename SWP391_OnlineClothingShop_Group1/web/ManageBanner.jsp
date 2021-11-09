@@ -282,8 +282,6 @@
         </div>
          </div>                               
         <div class="overlay"></div>
-        <%-- Top Btn --%>
-        <button onclick="topFunction()" id="myTBTN" title="Go to top"><i class="fas fa-arrow-up"></i></button>
         <!-- BOOTSTRAP5-->
         <script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -320,7 +318,6 @@
         <script src="daterangepicker.js"></script>
 <!--        <script src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/dataTables.bootstrap5.min.js"></script>-->
-        <script src="${pageContext.request.contextPath}/js/script.js"></script>
         <script src="${pageContext.request.contextPath}/js/script1.js"></script>
         
     </body>
