@@ -626,7 +626,7 @@ INSERT INTO Orders VALUES (9, 1240000, null, 1, '2021/04/09 09:30');
 INSERT INTO Orders VALUES (10, 1230000, null, 1, '2021/10/11 11:30');
 INSERT INTO Orders VALUES (11,1470000, null, 1, '2021/09/11 03:30');
 INSERT INTO Orders VALUES (12,1470000, null, 1, '2021/11/09 00:00');
-
+INSERT INTO Orders VALUES (15,1470000, null, 1, '2021/10/09 00:00');
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE [dbo].[Order_Detail](
@@ -683,7 +683,10 @@ INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [Prod
 GO
 INSERT [dbo].[Order_Detail] ([Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 12, 10, N'Bailey Hanson Shantung Hat', 163000, 1)
 GO
-
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 13, 1, N'Borsalino Bogart Fur Felt Fedora', 15, 1)
+GO
+INSERT [dbo].[Order_Detail] ([Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 13, 10, N'Bailey Hanson Shantung Hat', 163000, 1)
+GO
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE ShipInfo (
