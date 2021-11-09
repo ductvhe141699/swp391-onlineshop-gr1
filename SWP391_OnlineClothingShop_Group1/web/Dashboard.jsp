@@ -50,7 +50,6 @@
                                     <h3 class="text-white text-center fs-5">Total Product </h3>
                                     <p class="text-center text-white mt-4 mb-0 fs-3 ">${totalPro} <i class="bi bi-archive"></i></p>
                                 </div>
-
                             </div>
                         </div>
 

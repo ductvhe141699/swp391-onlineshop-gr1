@@ -5,6 +5,9 @@
  */
 package controller;
 
+import DBContext.OrderDAO;
+import DBContext.ProductDAO;
+import DBContext.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,6 +33,12 @@ public class MarketingDashboard extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        UserDAO udao=new UserDAO();
+        ProductDAO pdao=new ProductDAO();
+        OrderDAO odao= new OrderDAO();
+        request.setAttribute("customercount", udao.countCustomer());
+        request.setAttribute("productcount", pdao.countProduct() );
+        request.setAttribute("ordercount", odao.getTotalOrders());
         request.getRequestDispatcher("/mktdashboard.jsp").forward(request, response);
     }
 

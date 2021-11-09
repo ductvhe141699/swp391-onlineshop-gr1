@@ -48,16 +48,54 @@
                             <h4>Dashboard</h4>
                         </div>
                     </div>
-                    <!-- Dashboard -->
-                    <form>
-                    <input type="text" name="basic" id="data" value="07/01/2021 - 07/27/2021" />
-                    <input class=" btn btn-sm btn-secondary" type="submit" value="Go" >
-                    </form>
-                    <div class="false-For-Bottom-Text">
-                        <div class="mypiechart">	
-                                <canvas id="myCanvas" width="300" height="300"></canvas>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="card bg-primary text-white h-100"> 
+                                <div class="card-body py-3">
+                                    <h3 class="text-white text-center fs-5">Total Custommer</h3>
+                                    <p class="text-center text-white mt-3 mb-0 fs-3 ">${customercount} <i class="fas fa-users"></i></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card bg-warning text-dark h-100">
+                                <div class="card-body py-3">
+                                    <h3 class="text-white text-center fs-5">Total Product </h3>
+                                    <p class="text-center text-white mt-4 mb-0 fs-3 ">${productcount} <i class="fas fa-archive"></i></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <div class="card bg-danger text-white h-100">
+                                <div class="card-body py-3">
+                                    <h3 class="text-white text-center fs-5">Total Order</h3>
+                                    <p class="text-center text-white mt-3 mb-0 fs-3 ">${ordercount} <i class="fas fa-file-invoice-dollar"></i></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <!-- Dashboard -->
+                    <form>
+                        <input type="text" name="basic" id="data" value="07/01/2021 - 07/27/2021" />
+                        <input class=" btn btn-sm btn-secondary" type="submit" value="Go" >
+                    </form>
+                    <div class="row mt-5">
+                        <div class="col-md-4 mb-3 justify-content-center">
+                            <h4>Sub Category Trend</h4>
+                            <center>
+                                <div class="false-For-Bottom-Text">
+                                     <div class="mypiechart">	
+                                         <canvas id="myCanvas" width="400" height="400"></canvas>
+                                     </div>
+                                 </div>
+                            </center>
+                        </div>
+                        <div class="col-md-8 mb-3">
+                            <h4>Top Product Sold</h4>
+                        </div>
+                    </div>
+                    
             </div>
 
         </div>
@@ -99,7 +137,7 @@
             });
             $(function(){
                 $('#data').daterangepicker({
-                    "timePicker": true,
+                    "timePicker": false,
                     ranges: {
                         'Today': [moment(), moment()],
                         'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -108,8 +146,8 @@
                         'This Month': [moment().startOf('month'), moment().endOf('month')],
                         'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
                      },
-                    "startDate": "11/03/2021",
-                    "endDate": "11/09/2021"
+                    "startDate": moment().subtract(6, 'days'),
+                    "endDate": moment()
                 }, function(start, end, label) {
                   console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
                 });

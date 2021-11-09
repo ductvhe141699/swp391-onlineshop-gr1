@@ -116,6 +116,9 @@ public class OrderDAO {
             }
         } catch (Exception e) {
         }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
         return 0;
     }
 
