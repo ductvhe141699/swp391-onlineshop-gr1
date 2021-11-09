@@ -29,6 +29,7 @@ INSERT INTO [Role] VALUES (N'Admin');
 INSERT INTO Role VALUES (N'Seller');
 INSERT INTO Role VALUES (N'Customer');
 INSERT INTO Role VALUES (N'Marketing');
+INSERT INTO Role VALUES (N'Shipper');
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE [Users] (
 	UserID int PRIMARY KEY identity(1,1),
@@ -48,6 +49,7 @@ INSERT INTO Users VALUES(N'	Ngô Thị Ngọc Mai','ngothingocmai','MaiNTNHE1514
 INSERT INTO Users VALUES(N'bnmc','bnmc','ChauBNMHE153019@fpt.edu.vn',3,1);
 INSERT INTO Users VALUES(N'	Đinh Tiến Lâm','dinhtienlam','LamDTHE153097@fpt.edu.vn',3,1);
 INSERT INTO Users VALUES(N'mkt','mkt','mkt@fpt.edu.vn',4,1);
+INSERT INTO Users VALUES(N'shipper','shipper','shipper@fpt.edu.vn',5,1);
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('jjellico0', 'Jellico', 'wjellico0@npr.org', 3, 1);
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('dimpson1', 'Impson', 'simpson1@wiley.com', 3, 1);
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('cdahlen2', 'Dahlen', 'adahlen2@unblog.fr', 3, 1);
