@@ -280,9 +280,10 @@
             </div>
 
         </div>
-
+         </div>                               
         <div class="overlay"></div>
-
+        <%-- Top Btn --%>
+        <button onclick="topFunction()" id="myTBTN" title="Go to top"><i class="fas fa-arrow-up"></i></button>
         <!-- BOOTSTRAP5-->
         <script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -292,7 +293,7 @@
         <!-- jQuery CDN -->
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <!-- Bootstrap Js CDN -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
         <!-- jQuery Custom Scroller CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
@@ -315,9 +316,12 @@
                 });
             });
         </script>
-      
-        <script src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/dataTables.bootstrap5.min.js"></script>
+
+        <script src="daterangepicker.js"></script>
+<!--        <script src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/dataTables.bootstrap5.min.js"></script>-->
+        <script src="${pageContext.request.contextPath}/js/script.js"></script>
         <script src="${pageContext.request.contextPath}/js/script1.js"></script>
+        
     </body>
 </html>

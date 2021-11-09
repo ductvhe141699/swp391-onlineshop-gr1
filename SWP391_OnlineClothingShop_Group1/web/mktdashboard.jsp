@@ -29,18 +29,8 @@
         <!--CSS-->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/queries.css">
-        <style>
-            .addmore{
-                color:silver;
-            }
-            .addmore:hover
-            {
-                color:black;
-                transform: scale(1.3101);
-                transition: all .2s;
-            }
-            
-        </style>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/daterangepicker.css" />
+        
     </head>
     <body>
         <div class="wrapper">
@@ -55,11 +45,19 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <h4>Carousel Banner</h4>
+                            <h4>Dashboard</h4>
                         </div>
                     </div>
-                    <!-- CBanner -->
-                    
+                    <!-- Dashboard -->
+                    <form>
+                    <input type="text" name="basic" id="data" value="07/01/2021 - 07/27/2021" />
+                    <input class=" btn btn-sm btn-secondary" type="submit" value="Go" >
+                    </form>
+                    <div class="false-For-Bottom-Text">
+                        <div class="mypiechart">	
+                                <canvas id="myCanvas" width="300" height="300"></canvas>
+                        </div>
+                    </div>
             </div>
 
         </div>
@@ -72,13 +70,15 @@
           integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
           crossorigin="anonymous"
         ></script>
+        <!-- From A CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/moment@latest/moment.min.js"></script>
         <!-- jQuery CDN -->
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <!-- Bootstrap Js CDN -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
         <!-- jQuery Custom Scroller CDN -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-
+        
         <script type="text/javascript">
             $(document).ready(function () {
                 $("#sidebar").mCustomScrollbar({
@@ -97,10 +97,58 @@
                     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
                 });
             });
+            $(function(){
+                $('#data').daterangepicker({
+                    "timePicker": true,
+                    ranges: {
+                        'Today': [moment(), moment()],
+                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                        'This Month': [moment().startOf('month'), moment().endOf('month')],
+                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                     },
+                    "startDate": "11/03/2021",
+                    "endDate": "11/09/2021"
+                }, function(start, end, label) {
+                  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+                });
+              });
+            
         </script>
-      
+        <script src="${pageContext.request.contextPath}/js/daterangepicker.js"></script>
+        <script src="${pageContext.request.contextPath}/js/rpie.js"></script>
         <script src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/dataTables.bootstrap5.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/script1.js"></script>
+        <script type="text/javascript">	
+            var obj = {
+                values: [1,1,1,1,1],
+                colors: ['#4CAF50', '#00BCD4', '#E91E63', '#FFC107', '#9E9E9E'],
+                animation: true, // Takes boolean value & default behavious is false
+                animationSpeed: 0, // Time in miliisecond & default animation speed is 20ms
+                fillTextData: true, // Takes boolean value & text is not generate by default 
+                fillTextColor: '#fff', // For Text colour & default colour is #fff (White)
+                fillTextAlign: 1.30, // for alignment of inner text position i.e. higher values gives closer view to center & default text alignment is 1.85 i.e closer to center
+                fillTextPosition: 'inner', // 'horizontal' or 'vertical' or 'inner' & default text position is 'horizontal' position i.e. outside the canvas
+                doughnutHoleSize: 50, // Percentage of doughnut size within the canvas & default doughnut size is null
+                doughnutHoleColor: '#fff', // For doughnut colour & default colour is #fff (White)
+                offset: 1, // Offeset between two segments & default value is null
+                pie: 'normal', // if the pie graph is single stroke then we will add the object key as "stroke" & default is normal as simple as pie graph
+                isStrokePie: { 
+                        stroke: 20, // Define the stroke of pie graph. It takes number value & default value is 20
+                        overlayStroke: true, // Define the background stroke within pie graph. It takes boolean value & default value is false
+                        overlayStrokeColor: '#eee', // Define the background stroke colour within pie graph & default value is #eee (Grey)
+                        strokeStartEndPoints: 'Yes', // Define the start and end point of pie graph & default value is No
+                        strokeAnimation: true, // Used for animation. It takes boolean value & default value is true
+                        strokeAnimationSpeed: 20, // Used for animation speed in miliisecond. It takes number & default value is 20ms
+                        fontSize: '60px', // Used to define text font size & default value is 60px
+                        textAlignement: 'center', // Used for position of text within the pie graph & default value is 'center'
+                        fontFamily: 'Arial', // Define the text font family & the default value is 'Arial'
+                        fontWeight: 'bold' //  Define the font weight of the text & the default value is 'bold'
+                    }
+              };
+           generatePieGraph('myCanvas', obj);
+        </script>
     </body>
 </html>
