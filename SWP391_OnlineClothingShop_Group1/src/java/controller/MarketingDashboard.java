@@ -71,9 +71,10 @@ public class MarketingDashboard extends HttpServlet {
         System.out.println(end);
         List<Trend> catetrend=tdao.getCategoryTrend(start, end);
         request.setAttribute("catetrends", catetrend);
-        
-        
-        
+        List<Trend> producttrend=tdao.getProductTrend(start, end);
+        request.setAttribute("producttrends", producttrend);
+        List<Trend> brandtrend=tdao.getBrandTrend(start, end);
+        request.setAttribute("brandtrends", brandtrend);
         request.getRequestDispatcher("/mktdashboard.jsp").forward(request, response);
     }
 

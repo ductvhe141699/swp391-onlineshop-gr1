@@ -81,24 +81,58 @@
                         <input class=" btn btn-sm btn-secondary" type="submit" value="Go" >
                     </form>
                     <div class="row mt-5">
-                        <div class="col-md-4 mb-3 justify-content-center">
+                        <!-- Sub Category Trend-->
+                        <div class="col-md-3 mb-3 justify-content-center">
                             <h4>Sub Category Trend</h4>
                             <center>
                                 <div class="false-For-Bottom-Text">
                                      <div class="mypiechart">	
-                                         <canvas id="myCanvas" width="400" height="400"></canvas>
+                                         <canvas id="catetrend" width="400" height="400"></canvas>
                                      </div>
                                  </div>
                             </center>
                             <ul class="list-group list-group-flush">
                                 <c:forEach items="${catetrends}" var="catetrend">
-                                    <li class="list-group-item"><i class="fas fa-square graph"></i> ${catetrend.getName()}</li>
+                                    <li class="list-group-item"><i class="fas fa-square graphcate"></i> ${catetrend.getName()}</li>
                                 </c:forEach>
                               </ul>
                         </div>
-                        <div class="col-md-8 mb-3">
+                        <div class="col-md-3 mb-3 justify-content-center">
+                            <h4>Brand Trend</h4>
+                            <center>
+                                <div class="false-For-Bottom-Text">
+                                     <div class="mypiechart">	
+                                         <canvas id="brandtrend" width="400" height="400"></canvas>
+                                     </div>
+                                 </div>
+                            </center>
+                            <ul class="list-group list-group-flush">
+                                <c:forEach items="${brandtrends}" var="brandtrend">
+                                    <li class="list-group-item"><i class="fas fa-square graphbrand"></i> ${brandtrend.getName()}</li>
+                                </c:forEach>
+                              </ul>
+                        </div>
+                        <!-- Brand Trend-->
+                        <div class="col-md-6 mb-3">
                             <h4>Top Product Sold</h4>
-                            
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Product Name</th>
+                                    <th scope="col">Count</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <c:forEach items="${producttrends}" var="producttrend" varStatus="i">
+                                    <tr>
+                                      <th scope="row">${i.count}</th>
+                                      <td>${producttrend.getName()}</td>
+                                      <td>${producttrend.getCount()}</td>
+                                    </tr>
+                                  </c:forEach>
+                                </tbody>
+                              </table>
                         </div>
                     </div>
                     
@@ -191,12 +225,44 @@
                         fontWeight: 'bold' //  Define the font weight of the text & the default value is 'bold'
                     }
               };
-           generatePieGraph('myCanvas', obj);
-           var colors= ['#4CAF50', '#00BCD4', '#E91E63', '#FFC107', '#9E9E9E'];
-           var graphs= document.getElementsByClassName("graph");
-           for (let i = 0; i < graphs.length; i++) {
-               graphs[i].setAttribute("style", "color:"+colors[i]);
-          }
+           generatePieGraph('catetrend', obj);
+           var colorcates= ['#4CAF50', '#00BCD4', '#E91E63', '#FFC107', '#9E9E9E'];
+           var graphcates= document.getElementsByClassName("graphcate");
+           for (let i = 0; i < graphcates.length; i++) {
+               graphcates[i].setAttribute("style", "color:"+colorcates[i]);
+            }
+          var obj2 = {
+                values: [<c:forEach items="${brandtrends}" var="brandtrend">${brandtrend.getCount()},</c:forEach>],
+                colors: ['#4CAF50', '#00BCD4', '#E91E63', '#FFC107', '#9E9E9E'],
+                animation: true, // Takes boolean value & default behavious is false
+                animationSpeed: 0, // Time in miliisecond & default animation speed is 20ms
+                fillTextData: true, // Takes boolean value & text is not generate by default 
+                fillTextColor: '#fff', // For Text colour & default colour is #fff (White)
+                fillTextAlign: 1.30, // for alignment of inner text position i.e. higher values gives closer view to center & default text alignment is 1.85 i.e closer to center
+                fillTextPosition: 'inner', // 'horizontal' or 'vertical' or 'inner' & default text position is 'horizontal' position i.e. outside the canvas
+                doughnutHoleSize: 50, // Percentage of doughnut size within the canvas & default doughnut size is null
+                doughnutHoleColor: '#fff', // For doughnut colour & default colour is #fff (White)
+                offset: 1, // Offeset between two segments & default value is null
+                pie: 'normal', // if the pie graph is single stroke then we will add the object key as "stroke" & default is normal as simple as pie graph
+                isStrokePie: { 
+                        stroke: 20, // Define the stroke of pie graph. It takes number value & default value is 20
+                        overlayStroke: true, // Define the background stroke within pie graph. It takes boolean value & default value is false
+                        overlayStrokeColor: '#eee', // Define the background stroke colour within pie graph & default value is #eee (Grey)
+                        strokeStartEndPoints: 'Yes', // Define the start and end point of pie graph & default value is No
+                        strokeAnimation: true, // Used for animation. It takes boolean value & default value is true
+                        strokeAnimationSpeed: 20, // Used for animation speed in miliisecond. It takes number & default value is 20ms
+                        fontSize: '60px', // Used to define text font size & default value is 60px
+                        textAlignement: 'center', // Used for position of text within the pie graph & default value is 'center'
+                        fontFamily: 'Arial', // Define the text font family & the default value is 'Arial'
+                        fontWeight: 'bold' //  Define the font weight of the text & the default value is 'bold'
+                    }
+              };
+            generatePieGraph('brandtrend', obj2);
+            var colorbrands= ['#4CAF50', '#00BCD4', '#E91E63', '#FFC107', '#9E9E9E'];
+           var graphbrands= document.getElementsByClassName("graphbrand");
+           for (let i = 0; i < graphbrands.length; i++) {
+               graphbrands[i].setAttribute("style", "color:"+colorbrands[i]);
+            }
         </script>
     </body>
 </html>
