@@ -280,6 +280,14 @@
         <servlet-name>MarketingDashboard</servlet-name>
         <servlet-class>controller.MarketingDashboard</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoadMessage</servlet-name>
+        <servlet-class>controller.LoadMessage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Chat</servlet-name>
+        <servlet-class>controller.Chat</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -522,6 +530,14 @@
     <servlet-mapping>
         <servlet-name>MarketingDashboard</servlet-name>
         <url-pattern>/mkt/dashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadMessage</servlet-name>
+        <url-pattern>/LoadMessage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Chat</servlet-name>
+        <url-pattern>/Chat</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

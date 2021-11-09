@@ -817,3 +817,61 @@ INSERT INTO dbo.Banner VALUES('banner40.png')
 INSERT INTO dbo.Banner VALUES('banner60.png')
 INSERT INTO dbo.Banner VALUES('banner80.png')
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE dbo.[ChatFriend](
+	[uId] [int] NOT NULL,
+	[friendId] [int] NOT NULL,
+	FOREIGN KEY ([uId]) REFERENCES dbo.[Users](UserID),
+	FOREIGN KEY (friendId) REFERENCES dbo.[Users](UserID),
+)
+go
+INSERT [dbo].[ChatFriend] ([uId], [friendId]) VALUES (6, 1);
+INSERT [dbo].[ChatFriend] ([uId], [friendId]) VALUES (6, 2);
+INSERT [dbo].[ChatFriend] ([uId], [friendId]) VALUES (6, 3);
+INSERT [dbo].[ChatFriend] ([uId], [friendId]) VALUES (1, 6);
+INSERT [dbo].[ChatFriend] ([uId], [friendId]) VALUES (2, 6);
+INSERT [dbo].[ChatFriend] ([uId], [friendId]) VALUES (3, 6);
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+CREATE TABLE dbo.[ChatMessage](
+	[mId] [int] IDENTITY(1,1) NOT NULL,
+	[fromId] [int] NOT NULL,
+	[toId] [int] NOT NULL,
+	[content] [nvarchar](200) NOT NULL,
+	[dateCreated] [datetime] DEFAULT GETDATE() NOT NULL,
+	[status] [int] DEFAULT 1 NULL,
+	FOREIGN KEY ([fromId]) REFERENCES dbo.[Users](UserID),
+	FOREIGN KEY ([toId]) REFERENCES dbo.[Users](UserID),
+)
+go
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'Hello', CAST(N'2021-10-26 22:38:21.373' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'How are you', CAST(N'2021-10-26 22:38:30.103' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (1, 6, N'Im fine', CAST(N'2021-10-26 22:38:36.727' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (1, 6, N'Thanks', CAST(N'2021-10-26 22:38:43.073' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 2, N'Hey what uo', CAST(N'2021-10-27 10:39:30.800' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 2, N'How u doing', CAST(N'2021-10-27 10:39:42.200' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (2, 6, N'Im fine thanks', CAST(N'2021-10-27 10:39:47.860' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (2, 6, N'See you around', CAST(N'2021-10-27 10:39:56.893' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'hello', CAST(N'2021-10-28 08:51:27.353' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'oh yeah', CAST(N'2021-10-29 13:48:07.780' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'great', CAST(N'2021-10-29 13:53:25.967' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 3, N'what up brother', CAST(N'2021-10-29 14:00:21.740' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 3, N'how u doing man', CAST(N'2021-10-29 14:00:36.213' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (3, 6, N'Hello', CAST(N'2021-10-29 14:00:56.170' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (3, 6, N'im still fine', CAST(N'2021-10-29 14:01:33.273' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'message new', CAST(N'2021-10-29 14:15:11.593' AS DateTime), 1);
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE ShipStatus(
+ID INT IDENTITY(1,1) NOT NULL,
+[Name] NVARCHAR(100),
+);
+go
+CREATE TABLE Delivery(
+ID INT IDENTITY(1,1) NOT NULL,
+ShipInfoID INT,
+UserID INT,
+[Status] INT,
+FOREIGN KEY (ShipInfoID) REFERENCES dbo.ShipInfo(ID),
+FOREIGN KEY (UserID) REFERENCES dbo.Users(UserID),
+);
+go

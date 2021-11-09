@@ -5,6 +5,7 @@
  */
 package DBContext;
 
+import entity.Delivery;
 import entity.Order;
 import entity.Ship;
 import entity.ShipInfo;
@@ -74,7 +75,7 @@ public class ShipDAO {
             ps.setInt(1, orderID);
             rs = ps.executeQuery();
             while (rs.next()) {
-                return new ShipInfo(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7));
+                return new ShipInfo(rs.getInt(1),rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7));
             }
         } catch (Exception e) {
         }
@@ -83,7 +84,7 @@ public class ShipDAO {
     }
 
     public ArrayList<ShipInfo> getShipInfoByOrder(ArrayList<Order> listOrder) {
-        String query = " select * from ShipInfo  ";
+        String query = "";
         ArrayList<ShipInfo> list = new ArrayList<>();
 
         try {
@@ -91,7 +92,7 @@ public class ShipDAO {
 
             for (int i = 0; i < listOrder.size(); i++) {
                 if (i == 0) {
-                    query += "where Order_ID = " + listOrder.get(i).getId();
+                    query += "select * from ShipInfo where Order_ID = " + listOrder.get(i).getId();
                 } else {
                     query += " or Order_ID = " + listOrder.get(i).getId();
                 }
@@ -99,10 +100,123 @@ public class ShipDAO {
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new ShipInfo(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7)));
+                list.add(new ShipInfo(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7)));
             }
         } catch (Exception e) {
         }
         return list;
     }
+
+    public void addJob(int jid, int userID) {
+        String query = "insert Delivery values ( ? , ? , 2 )";
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, jid);
+            ps.setInt(2, userID);
+            ps.executeQuery();
+        } catch (Exception e) {
+        }
+
+    }
+
+    public ArrayList<Delivery> getDeliveryJobByShipper(int userID) {
+        ArrayList<Delivery> list = new ArrayList<>();
+        String query = "select * from Delivery \n"
+                + "where UserID =  ? ";
+
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, userID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Delivery(
+                        rs.getInt(2),
+                        rs.getInt(3),
+                        rs.getInt(4)
+                ));
+            }
+        } catch (Exception e) {
+        }
+
+        return list;
+    }
+
+    public boolean CheckJobExist(int jid, ArrayList<Delivery> list) {
+        boolean flag = false;
+        for (Delivery delivery : list) {
+            if (jid == delivery.getShipInfo()) {
+                flag = true;
+            }
+
+        }
+        return flag;
+    }
+
+    public void confirmJob(int jid, String action) {
+        String query = "";
+        switch (action) {
+            case "Accomplished":
+                query = "update Delivery set Status = 1 where ShipInfoID = ? ";
+                break;
+            case "Delivery failed":
+                query = "update Delivery set Status = 3 where ShipInfoID =  ? ";
+                break;
+        }
+
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, jid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public ArrayList<Delivery> getJobByShipper(int userID) {
+        String query = "select * From delivery \n"
+                + "                where UserID = ? ";
+        ArrayList<Delivery> list = new ArrayList<>();
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, userID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Delivery(
+                        rs.getInt(2),
+                        rs.getInt(3),
+                        rs.getInt(4)
+                ));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public ArrayList<ShipInfo> getShipInfoByJob(ArrayList<Delivery> listJob) {
+        String query = "";
+        ArrayList<ShipInfo> list = new ArrayList<>();
+        for (int i = 0; i < listJob.size(); i++) {
+            if (i == 0) {
+                query = "select * from ShipInfo \n"
+                        + "where  ID = " + listJob.get(i).getShipInfo();
+            } else {
+                query += " or  ID = " + listJob.get(i).getShipInfo();;
+            }
+        }
+        try {
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new ShipInfo(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+
+    }
+
 }
