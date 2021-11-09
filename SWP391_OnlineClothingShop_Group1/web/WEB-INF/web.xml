@@ -276,6 +276,10 @@
         <servlet-name>DeliverConfirm</servlet-name>
         <servlet-class>controller.DeliverConfirm</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MarketingDashboard</servlet-name>
+        <servlet-class>controller.MarketingDashboard</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -514,6 +518,10 @@
     <servlet-mapping>
         <servlet-name>DeliverConfirm</servlet-name>
         <url-pattern>/DeliverConfirm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MarketingDashboard</servlet-name>
+        <url-pattern>/mkt/dashboard</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

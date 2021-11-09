@@ -5,12 +5,8 @@
  */
 package controller;
 
-import DBContext.BannerDAO;
-import DBContext.CBannerDAO;
-import entity.Banner;
-import entity.CBanner;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author SAKURA
  */
-public class ManageBanner extends HttpServlet {
+public class MarketingDashboard extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,13 +30,7 @@ public class ManageBanner extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        CBannerDAO cbdao = new CBannerDAO();
-        ArrayList<CBanner> cbanners =  cbdao.getAllCBanner();
-        request.setAttribute("cbanners",cbanners);
-        BannerDAO bdao = new BannerDAO();
-        ArrayList<Banner> banners =  bdao.getAllBanner();
-        request.setAttribute("banners",banners);
-        request.getRequestDispatcher("/ManageBanner.jsp").forward(request, response);
+        request.getRequestDispatcher("/mktdashboard.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
