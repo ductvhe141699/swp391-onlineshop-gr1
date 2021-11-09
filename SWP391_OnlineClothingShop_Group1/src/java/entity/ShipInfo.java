@@ -10,6 +10,8 @@ package entity;
  * @author BEAN
  */
 public class ShipInfo {
+
+    private int id;
     private int orderID;
     private String customerName;
     private String shippingAddress;
@@ -20,13 +22,22 @@ public class ShipInfo {
     public ShipInfo() {
     }
 
-    public ShipInfo(int orderID, String customerName, String shippingAddress, int shipCityID, String phoneNum, String note) {
+    public ShipInfo(int id, int orderID, String customerName, String shippingAddress, int shipCityID, String phoneNum, String note) {
+        this.id = id;
         this.orderID = orderID;
         this.customerName = customerName;
         this.shippingAddress = shippingAddress;
         this.shipCityID = shipCityID;
         this.phoneNum = phoneNum;
         this.note = note;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getOrderID() {
@@ -77,5 +88,4 @@ public class ShipInfo {
         this.note = note;
     }
 
-    
 }
