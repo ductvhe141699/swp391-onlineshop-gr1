@@ -21,7 +21,14 @@ public class ShipInfo {
 
     public ShipInfo() {
     }
-
+    public ShipInfo(int orderID, String customerName, String shippingAddress, int shipCityID, String phoneNum, String note) {
+        this.orderID = orderID;
+        this.customerName = customerName;
+        this.shippingAddress = shippingAddress;
+        this.shipCityID = shipCityID;
+        this.phoneNum = phoneNum;
+        this.note = note;
+    }
     public ShipInfo(int id, int orderID, String customerName, String shippingAddress, int shipCityID, String phoneNum, String note) {
         this.id = id;
         this.orderID = orderID;
