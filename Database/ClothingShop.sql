@@ -625,6 +625,7 @@ INSERT INTO Orders VALUES (9, 900000, null, 1, '2021/07/23 05:30');
 INSERT INTO Orders VALUES (9, 1240000, null, 1, '2021/04/09 09:30');
 INSERT INTO Orders VALUES (10, 1230000, null, 1, '2021/10/11 11:30');
 INSERT INTO Orders VALUES (11,1470000, null, 1, '2021/09/11 03:30');
+INSERT INTO Orders VALUES (12,1470000, null, 1, '2021/11/09 00:00');
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -660,6 +661,27 @@ GO
 INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 8, 9, N'Bailey Rockett Endura Telescope Crown Hat', 163000, 2)
 GO
 INSERT [dbo].[Order_Detail] ([Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 9, 10, N'Bailey Hanson Shantung Hat', 163000, 1)
+GO
+
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 11, 1, N'Borsalino Bogart Fur Felt Fedora', 15, 1)
+GO
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 11, 2, N'Borsalino Seta Bicolore Fedora', 2, 3)
+GO
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 1, 3, N'Bailey Tate Braided Fedora', 5, 2)
+GO
+INSERT [dbo].[Order_Detail] ([Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 11, 4, N'Bailey Archer Braid Fedora', 6, 3)
+GO
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 11, 5, N'Bailey Craig Braided Fedora', 150, 1)
+GO
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 11, 6, N'Mayser Calas Panama Straw Hat', 270000, 1)
+GO
+INSERT [dbo].[Order_Detail] ([Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 11, 7, N'Mayser Piero Panama Straw Hat', 90000, 2)
+GO
+INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES (11, 8, N'Mayser Nizza Panama Straw Hat', 1270000, 1)
+GO
+INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 11, 9, N'Bailey Rockett Endura Telescope Crown Hat', 163000, 2)
+GO
+INSERT [dbo].[Order_Detail] ([Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 11, 10, N'Bailey Hanson Shantung Hat', 163000, 1)
 GO
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------

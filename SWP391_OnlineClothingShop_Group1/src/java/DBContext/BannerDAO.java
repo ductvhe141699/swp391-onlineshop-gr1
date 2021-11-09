@@ -35,7 +35,7 @@ public class BannerDAO {
                 banner = new Banner(rs.getInt("ID"),rs.getString("Img"));
             }
         } catch (SQLException e) {
-            Logger.getLogger(Banner.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(BannerDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         finally{
             DBcontext.close(conn, ps, rs);
@@ -53,7 +53,7 @@ public class BannerDAO {
                 list.add(new Banner(rs.getInt("ID"),rs.getString("Img")));
             }
         } catch (SQLException e) {
-            Logger.getLogger(Banner.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(BannerDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         finally{
             DBcontext.close(conn, ps, rs);
@@ -68,7 +68,7 @@ public class BannerDAO {
             ps.setString(1, banner.getImg());
             ps.executeUpdate();
         } catch (SQLException e) {
-            Logger.getLogger(Banner.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(BannerDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         finally{
             DBcontext.close(conn, ps, rs);
@@ -83,7 +83,7 @@ public class BannerDAO {
             ps.setInt(2, banner.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
-            Logger.getLogger(Banner.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(BannerDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         finally{
             DBcontext.close(conn, ps, rs);
@@ -97,7 +97,7 @@ public class BannerDAO {
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
-            Logger.getLogger(Banner.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(BannerDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         finally{
             DBcontext.close(conn, ps, rs);

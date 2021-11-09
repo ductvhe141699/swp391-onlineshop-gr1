@@ -77,7 +77,7 @@
                     </div>
                     <!-- Dashboard -->
                     <form>
-                        <input type="text" name="basic" id="data" value="07/01/2021 - 07/27/2021" />
+                        <input type="text" name="daterange" id="data" value="07/01/2021 - 07/27/2021" />
                         <input class=" btn btn-sm btn-secondary" type="submit" value="Go" >
                     </form>
                     <div class="row mt-5">
@@ -90,9 +90,15 @@
                                      </div>
                                  </div>
                             </center>
+                            <ul class="list-group list-group-flush">
+                                <c:forEach items="${catetrends}" var="catetrend">
+                                    <li class="list-group-item"><i class="fas fa-square graph"></i> ${catetrend.getName()}</li>
+                                </c:forEach>
+                              </ul>
                         </div>
                         <div class="col-md-8 mb-3">
                             <h4>Top Product Sold</h4>
+                            
                         </div>
                     </div>
                     
@@ -101,7 +107,7 @@
         </div>
 
         <div class="overlay"></div>
-
+        
         <!-- BOOTSTRAP5-->
         <script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -115,8 +121,12 @@
         <!-- Bootstrap Js CDN -->
         <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
         <!-- jQuery Custom Scroller CDN -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script> 
+        <script src="${pageContext.request.contextPath}/js/daterangepicker.js"></script>
+        <script src="${pageContext.request.contextPath}/js/rpie.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/dataTables.bootstrap5.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/script1.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $("#sidebar").mCustomScrollbar({
@@ -154,14 +164,9 @@
               });
             
         </script>
-        <script src="${pageContext.request.contextPath}/js/daterangepicker.js"></script>
-        <script src="${pageContext.request.contextPath}/js/rpie.js"></script>
-        <script src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/dataTables.bootstrap5.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/script1.js"></script>
         <script type="text/javascript">	
             var obj = {
-                values: [1,1,1,1,1],
+                values: [<c:forEach items="${catetrends}" var="catetrend">${catetrend.getCount()},</c:forEach>],
                 colors: ['#4CAF50', '#00BCD4', '#E91E63', '#FFC107', '#9E9E9E'],
                 animation: true, // Takes boolean value & default behavious is false
                 animationSpeed: 0, // Time in miliisecond & default animation speed is 20ms
@@ -187,6 +192,11 @@
                     }
               };
            generatePieGraph('myCanvas', obj);
+           var colors= ['#4CAF50', '#00BCD4', '#E91E63', '#FFC107', '#9E9E9E'];
+           var graphs= document.getElementsByClassName("graph");
+           for (let i = 0; i < graphs.length; i++) {
+               graphs[i].setAttribute("style", "color:"+colors[i]);
+          }
         </script>
     </body>
 </html>

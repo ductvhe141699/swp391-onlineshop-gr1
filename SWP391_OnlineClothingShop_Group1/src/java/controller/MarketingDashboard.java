@@ -7,13 +7,22 @@ package controller;
 
 import DBContext.OrderDAO;
 import DBContext.ProductDAO;
+import DBContext.TrendDAO;
 import DBContext.UserDAO;
+import entity.Trend;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 /**
  *
@@ -34,11 +43,37 @@ public class MarketingDashboard extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         UserDAO udao=new UserDAO();
-        ProductDAO pdao=new ProductDAO();
-        OrderDAO odao= new OrderDAO();
         request.setAttribute("customercount", udao.countCustomer());
+        ProductDAO pdao=new ProductDAO();
         request.setAttribute("productcount", pdao.countProduct() );
+        OrderDAO odao= new OrderDAO();
         request.setAttribute("ordercount", odao.getTotalOrders());
+        String daterange = request.getParameter("daterange");
+        Date start=null,end=null;
+        if(daterange==null){
+            long DAY_IN_MS = 1000 * 60 * 60 * 24;
+            start = new Date(System.currentTimeMillis() - (7 * DAY_IN_MS));
+            end= new Date(System.currentTimeMillis());
+        }
+        else{
+            SimpleDateFormat SDF = new SimpleDateFormat("MM/dd/yyyy");
+            String[] startend = daterange.split(" - ");
+            
+            try {
+                start = SDF.parse(startend[0]);
+                end = SDF.parse(startend[1]);
+            } catch (ParseException ex) {
+                Logger.getLogger(MarketingDashboard.class.getName()).log(Level.SEVERE, null, ex);
+            }  
+        }
+        TrendDAO tdao = new TrendDAO();
+        System.out.println(start);
+        System.out.println(end);
+        List<Trend> catetrend=tdao.getCategoryTrend(start, end);
+        request.setAttribute("catetrends", catetrend);
+        
+        
+        
         request.getRequestDispatcher("/mktdashboard.jsp").forward(request, response);
     }
 
