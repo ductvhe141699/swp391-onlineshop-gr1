@@ -1,10 +1,12 @@
-
+import DBContext.GuestDAO;
 import DBContext.OrderDAO;
 import DBContext.ShipDAO;
 import entity.Order;
+import entity.Recruitment;
 import entity.Ship;
 import entity.ShipInfo;
 import java.util.ArrayList;
+import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,10 +20,11 @@ import java.util.ArrayList;
 public class test {
 
     public static void main(String[] args) {
-        OrderDAO odao = new OrderDAO();
-        ShipDAO sdao = new ShipDAO();
-        Order o  =odao.getOrderByOrderID(1);
-        System.out.println(o.getProductName());
+        GuestDAO gd=new GuestDAO();
+        List<Recruitment> l= gd.getAll();
+        for (Recruitment recruitment : l) {
+            System.out.println(recruitment);
+        }
     }
 
 }
