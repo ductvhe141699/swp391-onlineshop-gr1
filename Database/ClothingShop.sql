@@ -29,6 +29,7 @@ INSERT INTO [Role] VALUES (N'Admin');
 INSERT INTO Role VALUES (N'Seller');
 INSERT INTO Role VALUES (N'Customer');
 INSERT INTO Role VALUES (N'Marketing');
+INSERT INTO Role VALUES (N'Shipper');
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE [Users] (
 	UserID int PRIMARY KEY identity(1,1),
@@ -48,6 +49,7 @@ INSERT INTO Users VALUES(N'	Ngô Thị Ngọc Mai','ngothingocmai','MaiNTNHE1514
 INSERT INTO Users VALUES(N'bnmc','bnmc','ChauBNMHE153019@fpt.edu.vn',3,1);
 INSERT INTO Users VALUES(N'	Đinh Tiến Lâm','dinhtienlam','LamDTHE153097@fpt.edu.vn',3,1);
 INSERT INTO Users VALUES(N'mkt','mkt','mkt@fpt.edu.vn',4,1);
+INSERT INTO Users VALUES(N'shipper','shipper','shipper@fpt.edu.vn',5,1);
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('jjellico0', 'Jellico', 'wjellico0@npr.org', 3, 1);
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('dimpson1', 'Impson', 'simpson1@wiley.com', 3, 1);
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('cdahlen2', 'Dahlen', 'adahlen2@unblog.fr', 3, 1);
@@ -623,7 +625,8 @@ INSERT INTO Orders VALUES (9, 900000, null, 1, '2021/07/23 05:30');
 INSERT INTO Orders VALUES (9, 1240000, null, 1, '2021/04/09 09:30');
 INSERT INTO Orders VALUES (10, 1230000, null, 1, '2021/10/11 11:30');
 INSERT INTO Orders VALUES (11,1470000, null, 1, '2021/09/11 03:30');
-
+INSERT INTO Orders VALUES (12,1470000, null, 1, '2021/11/09 00:00');
+INSERT INTO Orders VALUES (15,1470000, null, 1, '2021/10/09 00:00');
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE [dbo].[Order_Detail](
@@ -653,13 +656,39 @@ INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPr
 GO
 INSERT [dbo].[Order_Detail] ([Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 6, 7, N'Mayser Piero Panama Straw Hat', 90000, 2)
 GO
-INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES (7, 8, N'Mayser Nizza Panama Straw Hat', 1270000, 1)
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES (7, 8, N'Mayser Nizza Panama Straw Hat', 1270000, 1)
 GO
-INSERT [dbo].[Order_Detail] ([ID], [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 8, 9, N'Bailey Rockett Endura Telescope Crown Hat', 163000, 2)
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 8, 9, N'Bailey Rockett Endura Telescope Crown Hat', 163000, 2)
 GO
 INSERT [dbo].[Order_Detail] ([Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 9, 10, N'Bailey Hanson Shantung Hat', 163000, 1)
 GO
 
+-- This month
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 12, 11, N'Male T-Shirt I7TSH545I', 15, 5)
+GO
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 12, 50, N'FLAANS 925 NewMoon N', 2, 1)
+GO
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 12, 49, N'FLAANS ChainBZ_N', 5, 1)
+GO
+INSERT [dbo].[Order_Detail] ([Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 12, 25, N'Black Gao Zipper Jean', 6, 3)
+GO
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 12, 35, N'Vans Sk8-Hi', 150, 1)
+GO
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 12, 15, N'Female T-Shirt I9TSH545I', 270000, 4)
+GO
+INSERT [dbo].[Order_Detail] ([Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 12, 40, N'Female Sock I9SOK222E', 90000, 3)
+GO
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES (12, 8, N'Mayser Nizza Panama Straw Hat', 1270000, 1)
+GO
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 12, 16, N'BLUE STRIPES SWEATER - WHITE', 163000, 2)
+GO
+INSERT [dbo].[Order_Detail] ([Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 12, 10, N'Bailey Hanson Shantung Hat', 163000, 1)
+GO
+-- Last month
+INSERT [dbo].[Order_Detail] ( [Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 13, 1, N'Borsalino Bogart Fur Felt Fedora', 15, 1)
+GO
+INSERT [dbo].[Order_Detail] ([Order_ID], [ProductID], [ProductName], [ProductPrice], [Quantity]) VALUES ( 13, 10, N'Bailey Hanson Shantung Hat', 163000, 1)
+GO
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE ShipInfo (
@@ -815,3 +844,61 @@ INSERT INTO dbo.Banner VALUES('banner40.png')
 INSERT INTO dbo.Banner VALUES('banner60.png')
 INSERT INTO dbo.Banner VALUES('banner80.png')
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE dbo.[ChatFriend](
+	[uId] [int] NOT NULL,
+	[friendId] [int] NOT NULL,
+	FOREIGN KEY ([uId]) REFERENCES dbo.[Users](UserID),
+	FOREIGN KEY (friendId) REFERENCES dbo.[Users](UserID),
+)
+go
+INSERT [dbo].[ChatFriend] ([uId], [friendId]) VALUES (6, 1);
+INSERT [dbo].[ChatFriend] ([uId], [friendId]) VALUES (6, 2);
+INSERT [dbo].[ChatFriend] ([uId], [friendId]) VALUES (6, 3);
+INSERT [dbo].[ChatFriend] ([uId], [friendId]) VALUES (1, 6);
+INSERT [dbo].[ChatFriend] ([uId], [friendId]) VALUES (2, 6);
+INSERT [dbo].[ChatFriend] ([uId], [friendId]) VALUES (3, 6);
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+CREATE TABLE dbo.[ChatMessage](
+	[mId] [int] IDENTITY(1,1) NOT NULL,
+	[fromId] [int] NOT NULL,
+	[toId] [int] NOT NULL,
+	[content] [nvarchar](200) NOT NULL,
+	[dateCreated] [datetime] DEFAULT GETDATE() NOT NULL,
+	[status] [int] DEFAULT 1 NULL,
+	FOREIGN KEY ([fromId]) REFERENCES dbo.[Users](UserID),
+	FOREIGN KEY ([toId]) REFERENCES dbo.[Users](UserID),
+)
+go
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'Hello', CAST(N'2021-10-26 22:38:21.373' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'How are you', CAST(N'2021-10-26 22:38:30.103' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (1, 6, N'Im fine', CAST(N'2021-10-26 22:38:36.727' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (1, 6, N'Thanks', CAST(N'2021-10-26 22:38:43.073' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 2, N'Hey what uo', CAST(N'2021-10-27 10:39:30.800' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 2, N'How u doing', CAST(N'2021-10-27 10:39:42.200' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (2, 6, N'Im fine thanks', CAST(N'2021-10-27 10:39:47.860' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (2, 6, N'See you around', CAST(N'2021-10-27 10:39:56.893' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'hello', CAST(N'2021-10-28 08:51:27.353' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'oh yeah', CAST(N'2021-10-29 13:48:07.780' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'great', CAST(N'2021-10-29 13:53:25.967' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 3, N'what up brother', CAST(N'2021-10-29 14:00:21.740' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 3, N'how u doing man', CAST(N'2021-10-29 14:00:36.213' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (3, 6, N'Hello', CAST(N'2021-10-29 14:00:56.170' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (3, 6, N'im still fine', CAST(N'2021-10-29 14:01:33.273' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'message new', CAST(N'2021-10-29 14:15:11.593' AS DateTime), 1);
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE ShipStatus(
+ID INT IDENTITY(1,1) NOT NULL,
+[Name] NVARCHAR(100),
+);
+go
+CREATE TABLE Delivery(
+ID INT IDENTITY(1,1) NOT NULL,
+ShipInfoID INT,
+UserID INT,
+[Status] INT,
+FOREIGN KEY (ShipInfoID) REFERENCES dbo.ShipInfo(ID),
+FOREIGN KEY (UserID) REFERENCES dbo.Users(UserID),
+);
+go

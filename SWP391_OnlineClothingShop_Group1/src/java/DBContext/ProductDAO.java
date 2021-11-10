@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -392,5 +394,22 @@ public class ProductDAO {
 
         } catch (Exception e) {
         }
+    }
+    public int countProduct() {
+        try {
+            query = "SELECT COUNT(ProductID) AS Count FROM dbo.Product";
+            conn = DBcontext.open();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt("Count");
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
+        return 0;
     }
 }

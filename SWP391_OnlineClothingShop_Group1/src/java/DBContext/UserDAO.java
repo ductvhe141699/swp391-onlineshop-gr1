@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -283,5 +285,22 @@ public class UserDAO {
         } catch (Exception e) {
         }
         return list;
+    }
+     public int countCustomer() {
+        try {
+            String query = "SELECT COUNT(UserID) AS Count,RoleID FROM dbo.Users WHERE RoleID=3 GROUP BY RoleID ";
+            conn = DBcontext.open();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt("Count");
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
+        return 0;
     }
 }

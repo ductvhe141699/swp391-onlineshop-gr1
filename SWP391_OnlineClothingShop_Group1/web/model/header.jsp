@@ -73,6 +73,11 @@
             <ul class="navbar-nav me-auto ms-auto">                
                 <!-- EXPANDED -->
                 <li class="nav-item d-none d-lg-block">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/Chat">
+                        <i class="fas fa-comment"></i>                    
+                    </a>
+                </li>
+                <li class="nav-item d-none d-lg-block">
                     <a class="nav-link" role="button" data-bs-toggle="offcanvas" data-bs-target="#notification" aria-controls="offcanvasRight"><i class="fas fa-bell"></i>
                         <c:if test="${sessionScope.user !=null}">
                             <span class="position-relative translate-middle badge rounded-pill bg-danger">
@@ -105,27 +110,27 @@
                             <!-- Admin -->
                             <c:if test="${sessionScope.user.roleID ==  1}">
                                 <li><a class="dropdown-item" href="${pageContext.request.contextPath}/AccountManagerControl">Manage Users</a></li>
-                            </c:if>
+                                </c:if>
                             <!-- Seller -->
                             <c:if test="${sessionScope.user.roleID ==  2}">
                                 <li><a class="dropdown-item" href="${pageContext.request.contextPath}/Dashboard">DashBoard</a></li>
-                            </c:if>
+                                </c:if>
                             <!-- Marketing -->
                             <c:if test="${sessionScope.user.roleID ==  4}">
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/mkt/banner">Manage Banner</a></li>
-                            </c:if>
-                            <c:if test="${sessionScope.user.roleID ==  5}">
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/mkt/dashboard">Dashboard</a></li>
+                                </c:if>
+                                <c:if test="${sessionScope.user.roleID ==  5}">
                                 <li><a class="dropdown-item" href="${pageContext.request.contextPath}/DeliveryDashboard">Delivery Dashboard</a></li>
-                            </c:if>
+                                </c:if>
                             <!-- Default Logout -->
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a></li>
-                        </c:if>
+                            </c:if>
                         <!-- Neu khong co user -->
                         <c:if test ="${sessionScope.user ==  null}">
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Login/Register</a></li>
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/AboutShope.jsp">About SHOPE</a></li>
-                        </c:if>
+                            </c:if>
                     </ul>
                 </li>
                 <!-- COLLAPSED -->
@@ -199,18 +204,18 @@
                     <!-- Admin -->
                     <c:if test="${sessionScope.user.roleID ==  1}">
                         <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/AccountManagerControl">Manage Users</a></li>
-                    </c:if>
+                        </c:if>
                     <!-- Seller -->
                     <c:if test="${sessionScope.user.roleID ==  2}">
                         <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/Dashboard">DashBoard</a></li>
-                    </c:if>
+                        </c:if>
                     <!-- Marketing -->
                     <c:if test="${sessionScope.user.roleID ==  4}">
-                        <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/mkt/banner">Manage Banner</a></li>
-                    </c:if>
-                    <c:if test="${sessionScope.user.roleID ==  5}">
+                        <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/mkt/dashboard">Manage Banner</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.user.roleID ==  5}">
                         <li class="nav-item d-block d-lg-none"><a class="nav-link" href="${pageContext.request.contextPath}/DeliveryDashboard">Delivery Dashboard</a></li>
-                    </c:if>
+                        </c:if>
                     <li class="nav-item d-block d-lg-none">
                         <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
                     </li>
@@ -231,7 +236,7 @@
             <li class="nav-item me-4">
                 <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/home">Home</a>
             </li>
-             
+
             <li class="nav-item me-4">
                 <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">Product</a>
             </li>
@@ -261,7 +266,7 @@
                 </ul>
             </li>
             <li class="nav-item me-4">
-              <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/PostControl">Post</a>
+                <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/PostControl">Post</a>
             </li>
             <li class="nav-item dropdown me-4">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
