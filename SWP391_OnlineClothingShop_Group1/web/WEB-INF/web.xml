@@ -320,6 +320,10 @@
         <servlet-name>ManageDiscount</servlet-name>
         <servlet-class>controller.Marketing_Discount</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Marketing_EditSale</servlet-name>
+        <servlet-class>controller.Marketing_EditSale</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -574,6 +578,10 @@
     <servlet-mapping>
         <servlet-name>ManageDiscount</servlet-name>
         <url-pattern>/mkt/discount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Marketing_EditSale</servlet-name>
+        <url-pattern>/mkt/editsale</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

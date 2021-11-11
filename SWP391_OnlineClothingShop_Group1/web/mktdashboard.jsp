@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1">
-        <title>Manage Banner</title>
+        <title>Dashboard</title>
         <!-- Icon -->
             <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/favicon.ico" type="image/x-icon">
             <!-- Google Fonts -->
@@ -52,7 +52,7 @@
                         <div class="col-md-4 mb-3">
                             <div class="card bg-primary text-white h-100"> 
                                 <div class="card-body py-3">
-                                    <h3 class="text-white text-center fs-5">Total Custommer</h3>
+                                    <h3 class="text-white text-center fs-5">Total Customer</h3>
                                     <p class="text-center text-white mt-3 mb-0 fs-3 ">${customercount} <i class="fas fa-users"></i></p>
                                 </div>
                             </div>

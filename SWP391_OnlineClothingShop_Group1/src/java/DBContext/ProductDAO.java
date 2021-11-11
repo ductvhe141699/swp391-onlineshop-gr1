@@ -412,4 +412,21 @@ public class ProductDAO {
         }
         return 0;
     }
+    public void updateSale(int id,float sale)
+    {
+        try {
+            query = "UPDATE dbo.Product SET SellPrice = OriginalPrice * (1 - ? /100.0) , SalePercent = ? WHERE ProductID = ?";
+            conn = DBcontext.open();
+            ps = conn.prepareStatement(query);
+            ps.setFloat(1, sale);
+            ps.setFloat(2, sale);
+            ps.setInt(3, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally{
+            DBcontext.close(conn, ps, rs);
+        }
+    }
 }
