@@ -25,7 +25,7 @@
                 <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
                 <li><a href="${pageContext.request.contextPath}/product?page=1&query=&subcategory=0&brand=0&price=0&sortType=0&sortMode=0">
                         Product</a></li>
-                <li><a href="Recruitment.jsp">Recruitment</a></li>
+                <li><a href="MainRecruitment.jsp">Recruitment</a></li>
             </ul>
             <div class="clearfix"></div>
             <div class="row">
