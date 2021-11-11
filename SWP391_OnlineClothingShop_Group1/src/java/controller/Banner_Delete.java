@@ -5,21 +5,20 @@
  */
 package controller;
 
-import DBContext.CartDAO;
-import entity.Users;
+import DBContext.BannerDAO;
+import entity.Banner;
+import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Bach Ngoc Minh Chau HE153019
+ * @author SAKURA
  */
-public class MinusCart extends HttpServlet {
+public class Banner_Delete extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,11 +32,16 @@ public class MinusCart extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        CartDAO cdao=new CartDAO();
-        Users user = (Users) session.getAttribute("user");
-        cdao.minusCart(user.getUserID(), Integer.parseInt(request.getParameter("productID")));
-        cdao.validCart();
+        int id=Integer.parseInt(request.getParameter("id"));
+        BannerDAO bdao= new BannerDAO();
+        Banner banner = bdao.getBanner(id);
+        String imgpath= "resources\\img\\banner\\";
+        String filePath = getServletContext().getRealPath("") + File.separator + imgpath + banner.getImg();
+        File file = new File(filePath); 
+        if (file.exists() && !file.isDirectory()) { 
+           file.delete();
+        } 
+        bdao.deleteBanner(id);
         response.sendRedirect(request.getHeader("referer"));
     }
 

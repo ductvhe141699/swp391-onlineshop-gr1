@@ -5,21 +5,27 @@
  */
 package controller;
 
-import DBContext.CartDAO;
-import entity.Users;
+import DBContext.CBannerDAO;
+import entity.CBanner;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.InputStream;
+import java.nio.file.Paths;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
- * @author Bach Ngoc Minh Chau HE153019
+ * @author SAKURA
  */
-public class PlusCart extends HttpServlet {
+@MultipartConfig(location="/mkt/addcbanner", fileSizeThreshold=1024*1024, maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5*5)
+
+public class CBanner_Add extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,10 +39,30 @@ public class PlusCart extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        CartDAO cdao=new CartDAO();
-        Users user = (Users) session.getAttribute("user");
-        cdao.plusCart(user.getUserID(), Integer.parseInt(request.getParameter("productID")));
+        String imgpath= "resources\\img\\banner\\";
+        CBanner cbanner=new CBanner();
+        Part filePart = request.getPart("newcbannerimage");
+        String fileName =  Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); 
+        InputStream inputStream = filePart.getInputStream();
+        String uploadPath = getServletContext().getRealPath("") + File.separator + imgpath;
+        File uploadDir = new File(uploadPath);
+        if (!uploadDir.exists()) {
+            uploadDir.mkdir();
+        }
+        FileOutputStream outputStream = new FileOutputStream(uploadPath + 
+        File.separator + fileName);
+        int read = 0;
+        final byte[] bytes = new byte[1024];
+        while ((read = inputStream.read(bytes)) != -1) {
+            outputStream.write(bytes, 0, read);
+        }
+        inputStream.close();
+        outputStream.close();
+        cbanner.setImg(filePart.getSubmittedFileName());
+        cbanner.setTitle(request.getParameter("newcbannertitle"));
+        cbanner.setDesc(request.getParameter("newcbannerdesc"));
+        CBannerDAO cbdao=new CBannerDAO();
+        cbdao.addCBanner(cbanner);
         response.sendRedirect(request.getHeader("referer"));
     }
 

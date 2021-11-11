@@ -5,22 +5,21 @@
  */
 package controller;
 
-import DBContext.BannerDAO;
-import DBContext.CBannerDAO;
-import entity.Banner;
-import entity.CBanner;
+import DBContext.CartDAO;
+import entity.Users;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author SAKURA
+ * @author Bach Ngoc Minh Chau HE153019
  */
-public class ManageBanner extends HttpServlet {
+public class Cart_Delete extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,13 +33,11 @@ public class ManageBanner extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        CBannerDAO cbdao = new CBannerDAO();
-        ArrayList<CBanner> cbanners =  cbdao.getAllCBanner();
-        request.setAttribute("cbanners",cbanners);
-        BannerDAO bdao = new BannerDAO();
-        ArrayList<Banner> banners =  bdao.getAllBanner();
-        request.setAttribute("banners",banners);
-        request.getRequestDispatcher("/ManageBanner.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        CartDAO cdao=new CartDAO();
+        Users user = (Users) session.getAttribute("user");
+        cdao.deleteCart(user.getUserID(), Integer.parseInt(request.getParameter("productID")));
+        response.sendRedirect(request.getHeader("referer"));
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

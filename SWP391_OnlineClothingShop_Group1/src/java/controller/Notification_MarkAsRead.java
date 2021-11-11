@@ -5,30 +5,20 @@
  */
 package controller;
 
-import DBContext.OrderDAO;
-import DBContext.ProductDAO;
-import DBContext.TrendDAO;
-import DBContext.UserDAO;
-import entity.Trend;
+import DBContext.NotificationDAO;
+import entity.Users;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author SAKURA
+ * @author Bach Ngoc Minh Chau HE153019
  */
-public class MarketingDashboard extends HttpServlet {
+public class Notification_MarkAsRead extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,40 +32,11 @@ public class MarketingDashboard extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        UserDAO udao=new UserDAO();
-        request.setAttribute("customercount", udao.countCustomer());
-        ProductDAO pdao=new ProductDAO();
-        request.setAttribute("productcount", pdao.countProduct() );
-        OrderDAO odao= new OrderDAO();
-        request.setAttribute("ordercount", odao.getTotalOrders());
-        String daterange = request.getParameter("daterange");
-        Date start=null,end=null;
-        if(daterange==null){
-            long DAY_IN_MS = 1000 * 60 * 60 * 24;
-            start = new Date(System.currentTimeMillis() - (7 * DAY_IN_MS));
-            end= new Date(System.currentTimeMillis());
-        }
-        else{
-            SimpleDateFormat SDF = new SimpleDateFormat("MM/dd/yyyy");
-            String[] startend = daterange.split(" - ");
-            
-            try {
-                start = SDF.parse(startend[0]);
-                end = SDF.parse(startend[1]);
-            } catch (ParseException ex) {
-                Logger.getLogger(MarketingDashboard.class.getName()).log(Level.SEVERE, null, ex);
-            }  
-        }
-        TrendDAO tdao = new TrendDAO();
-        System.out.println(start);
-        System.out.println(end);
-        List<Trend> catetrend=tdao.getCategoryTrend(start, end);
-        request.setAttribute("catetrends", catetrend);
-        List<Trend> producttrend=tdao.getProductTrend(start, end);
-        request.setAttribute("producttrends", producttrend);
-        List<Trend> brandtrend=tdao.getBrandTrend(start, end);
-        request.setAttribute("brandtrends", brandtrend);
-        request.getRequestDispatcher("/mktdashboard.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        Users user = (Users) session.getAttribute("user");
+        NotificationDAO ndao = new NotificationDAO();
+        ndao.markAsRead(user.getUserID(), Integer.parseInt(request.getParameter("notiID")));
+        response.sendRedirect(request.getHeader("referer"));
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

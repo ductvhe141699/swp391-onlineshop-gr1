@@ -23,7 +23,7 @@ import util.StringDecode;
  *
  * @author Bach Ngoc Minh Chau HE153019
  */
-public class ProductListServlet extends HttpServlet {
+public class Customer_ProductList extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

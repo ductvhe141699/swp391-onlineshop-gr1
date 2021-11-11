@@ -36,7 +36,7 @@ import util.StringDecode;
  *
  * @author Bach Ngoc Minh Chau HE153019
  */
-public class PlaceOrderServlet extends HttpServlet {
+public class Cart_PlaceOrder extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -117,7 +117,7 @@ public class PlaceOrderServlet extends HttpServlet {
 //            //(String toEmail, String subject, String msg, String fromEmail, String password
 //            GmailAPI.send(user.getEmail(), subject, message, gmailFrom, passfrom);
 //        } catch (MessagingException ex) {
-//            Logger.getLogger(PlaceOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(Cart_PlaceOrder.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 ////        GMAIL
         request.getRequestDispatcher("/finishedorder.jsp").forward(request, response);

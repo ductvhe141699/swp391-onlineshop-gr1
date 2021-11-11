@@ -102,7 +102,7 @@
     </servlet>
     <servlet>
         <servlet-name>error</servlet-name>
-        <servlet-class>controller.error</servlet-class>
+        <servlet-class>controller.Error</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AccountManagerControl</servlet-name>
@@ -114,7 +114,7 @@
     </servlet>
     <servlet>
         <servlet-name>ProductListServlet</servlet-name>
-        <servlet-class>controller.ProductListServlet</servlet-class>
+        <servlet-class>controller.Customer_ProductList</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>editAccount</servlet-name>
@@ -134,39 +134,39 @@
     </servlet>
     <servlet>
         <servlet-name>CartServlet</servlet-name>
-        <servlet-class>controller.CartServlet</servlet-class>
+        <servlet-class>controller.User_Cart</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PlusCart</servlet-name>
-        <servlet-class>controller.PlusCart</servlet-class>
+        <servlet-class>controller.Cart_Plus</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MinusCart</servlet-name>
-        <servlet-class>controller.MinusCart</servlet-class>
+        <servlet-class>controller.Cart_Minus</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteCart</servlet-name>
-        <servlet-class>controller.DeleteCart</servlet-class>
+        <servlet-class>controller.Cart_Delete</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RemoveCart</servlet-name>
-        <servlet-class>controller.RemoveCart</servlet-class>
+        <servlet-class>controller.Cart_Remove</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CheckOutServlet</servlet-name>
-        <servlet-class>controller.CheckOutServlet</servlet-class>
+        <servlet-class>controller.Cart_Checkout</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PlaceOrderServlet</servlet-name>
-        <servlet-class>controller.PlaceOrderServlet</servlet-class>
+        <servlet-class>controller.Cart_PlaceOrder</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MarkAsReadServlet</servlet-name>
-        <servlet-class>controller.MarkAsReadServlet</servlet-class>
+        <servlet-class>controller.Notification_MarkAsRead</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ReadAllServlet</servlet-name>
-        <servlet-class>controller.ReadAllServlet</servlet-class>
+        <servlet-class>controller.Notification_ReadAll</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>searchAccount</servlet-name>
@@ -234,19 +234,19 @@
     </servlet>
     <servlet>
         <servlet-name>ManageBanner</servlet-name>
-        <servlet-class>controller.ManageBanner</servlet-class>
+        <servlet-class>controller.Marketing_Banner</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddBanner</servlet-name>
-        <servlet-class>controller.AddBanner</servlet-class>
+        <servlet-class>controller.Banner_Add</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteBanner</servlet-name>
-        <servlet-class>controller.DeleteBanner</servlet-class>
+        <servlet-class>controller.Banner_Delete</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddCBanner</servlet-name>
-        <servlet-class>controller.AddCBanner</servlet-class>
+        <servlet-class>controller.CBanner_Add</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteCBanner</servlet-name>
@@ -254,7 +254,7 @@
     </servlet>
     <servlet>
         <servlet-name>EditCBanner</servlet-name>
-        <servlet-class>controller.EditCBanner</servlet-class>
+        <servlet-class>controller.CBanner_Edit</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoadProductControl</servlet-name>
@@ -306,7 +306,7 @@
     </servlet>
     <servlet>
         <servlet-name>MarketingDashboard</servlet-name>
-        <servlet-class>controller.MarketingDashboard</servlet-class>
+        <servlet-class>controller.Marketing_Dashboard</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoadMessage</servlet-name>
@@ -315,6 +315,10 @@
     <servlet>
         <servlet-name>Chat</servlet-name>
         <servlet-class>controller.Chat</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageDiscount</servlet-name>
+        <servlet-class>controller.Marketing_Discount</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
@@ -566,6 +570,10 @@
     <servlet-mapping>
         <servlet-name>Chat</servlet-name>
         <url-pattern>/Chat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageDiscount</servlet-name>
+        <url-pattern>/mkt/discount</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -5,25 +5,22 @@
  */
 package controller;
 
-import DBContext.CartDAO;
-import DBContext.ShipDAO;
-import entity.Cart;
-import entity.Ship;
-import entity.Users;
+import DBContext.BannerDAO;
+import DBContext.CBannerDAO;
+import entity.Banner;
+import entity.CBanner;
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import util.StringDecode;
 
 /**
  *
- * @author Bach Ngoc Minh Chau HE153019
+ * @author SAKURA
  */
-public class CheckOutServlet extends HttpServlet {
+public class Marketing_Banner extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,7 +34,13 @@ public class CheckOutServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        CBannerDAO cbdao = new CBannerDAO();
+        ArrayList<CBanner> cbanners =  cbdao.getAllCBanner();
+        request.setAttribute("cbanners",cbanners);
+        BannerDAO bdao = new BannerDAO();
+        ArrayList<Banner> banners =  bdao.getAllBanner();
+        request.setAttribute("banners",banners);
+        request.getRequestDispatcher("/ManageBanner.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -52,7 +55,7 @@ public class CheckOutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect(request.getContextPath()+"/user/cart");
+        processRequest(request, response);
     }
 
     /**
@@ -66,26 +69,7 @@ public class CheckOutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Users user=(Users) session.getAttribute("user");
-        CartDAO cdao=new CartDAO();
-        List<Cart> carts = cdao.getCart(user.getUserID());
-        int totalPrice=0;
-        for(Cart cart:carts){
-            totalPrice+=cart.getSellPrice()*cart.getAmount();
-        }
-        request.setAttribute("totalPrice", totalPrice);
-        request.setAttribute("carts", carts);
-        request.setAttribute("shipName", StringDecode.decode(request.getParameter("inputName")));
-        request.setAttribute("shipAddress", StringDecode.decode(request.getParameter("inputAddress")));
-        request.setAttribute("shipPhone", request.getParameter("inputPhone"));
-        String note=request.getParameter("inputNote");
-        note= (note==null?"":note);
-        request.setAttribute("shipNote", StringDecode.decode(note) );
-        ShipDAO sdao=new ShipDAO();
-        Ship ship=sdao.getShip(Integer.parseInt(request.getParameter("inputCity")));
-        request.setAttribute("shipCity", ship);
-        request.getRequestDispatcher("/checkout.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

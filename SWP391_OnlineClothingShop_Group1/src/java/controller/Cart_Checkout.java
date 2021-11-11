@@ -5,26 +5,25 @@
  */
 package controller;
 
-import DBContext.BannerDAO;
-import entity.Banner;
-import java.io.File;
-import java.io.FileOutputStream;
+import DBContext.CartDAO;
+import DBContext.ShipDAO;
+import entity.Cart;
+import entity.Ship;
+import entity.Users;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Paths;
+import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.HttpSession;
+import util.StringDecode;
 
 /**
  *
- * @author SAKURA
+ * @author Bach Ngoc Minh Chau HE153019
  */
-@MultipartConfig(location="/mkt/addbanner", fileSizeThreshold=1024*1024, maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5*5)
-public class AddBanner extends HttpServlet {
+public class Cart_Checkout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,31 +37,7 @@ public class AddBanner extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Banner banner = new Banner();
-        String imgpath= "resources\\img\\banner\\";
         
-        Part filePart = request.getPart("newbannerimage");
-        String fileName = 
-        Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); 
-        InputStream inputStream = filePart.getInputStream();
-        String uploadPath = getServletContext().getRealPath("") + File.separator + imgpath;
-        File uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) {
-                    uploadDir.mkdir();
-                }
-        FileOutputStream outputStream = new FileOutputStream(uploadPath + 
-        File.separator + fileName);
-        int read = 0;
-        final byte[] bytes = new byte[1024];
-        while ((read = inputStream.read(bytes)) != -1) {
-            outputStream.write(bytes, 0, read);
-        }
-        inputStream.close();
-        outputStream.close();
-        banner.setImg(filePart.getSubmittedFileName());
-        BannerDAO bdao= new BannerDAO();
-        bdao.addBanner(banner);
-        response.sendRedirect(request.getHeader("referer"));
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -77,7 +52,7 @@ public class AddBanner extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.sendRedirect(request.getContextPath()+"/user/cart");
     }
 
     /**
@@ -91,7 +66,26 @@ public class AddBanner extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        Users user=(Users) session.getAttribute("user");
+        CartDAO cdao=new CartDAO();
+        List<Cart> carts = cdao.getCart(user.getUserID());
+        int totalPrice=0;
+        for(Cart cart:carts){
+            totalPrice+=cart.getSellPrice()*cart.getAmount();
+        }
+        request.setAttribute("totalPrice", totalPrice);
+        request.setAttribute("carts", carts);
+        request.setAttribute("shipName", StringDecode.decode(request.getParameter("inputName")));
+        request.setAttribute("shipAddress", StringDecode.decode(request.getParameter("inputAddress")));
+        request.setAttribute("shipPhone", request.getParameter("inputPhone"));
+        String note=request.getParameter("inputNote");
+        note= (note==null?"":note);
+        request.setAttribute("shipNote", StringDecode.decode(note) );
+        ShipDAO sdao=new ShipDAO();
+        Ship ship=sdao.getShip(Integer.parseInt(request.getParameter("inputCity")));
+        request.setAttribute("shipCity", ship);
+        request.getRequestDispatcher("/checkout.jsp").forward(request, response);
     }
 
     /**

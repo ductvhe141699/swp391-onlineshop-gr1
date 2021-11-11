@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Bach Ngoc Minh Chau HE153019
  */
-public class RemoveCart extends HttpServlet {
+public class Cart_Minus extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +36,8 @@ public class RemoveCart extends HttpServlet {
         HttpSession session = request.getSession();
         CartDAO cdao=new CartDAO();
         Users user = (Users) session.getAttribute("user");
-        cdao.removeCart(user.getUserID());
+        cdao.minusCart(user.getUserID(), Integer.parseInt(request.getParameter("productID")));
+        cdao.validCart();
         response.sendRedirect(request.getHeader("referer"));
     }
 

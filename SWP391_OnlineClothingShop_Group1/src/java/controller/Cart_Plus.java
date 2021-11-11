@@ -6,14 +6,9 @@
 package controller;
 
 import DBContext.CartDAO;
-import DBContext.ShipDAO;
-import DBContext.UserAddressDAO;
-import entity.Cart;
-import entity.Ship;
-import entity.UserAddress;
 import entity.Users;
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Bach Ngoc Minh Chau HE153019
  */
-public class CartServlet extends HttpServlet {
+public class Cart_Plus extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,22 +34,10 @@ public class CartServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        Users user=(Users) session.getAttribute("user");
         CartDAO cdao=new CartDAO();
-        List<Cart> carts = cdao.getCart(user.getUserID());
-        int totalPrice=0;
-        for(Cart cart:carts){
-            totalPrice+=cart.getSellPrice()*cart.getAmount();
-        }
-        request.setAttribute("totalPrice", totalPrice);
-        request.setAttribute("carts", carts);
-        UserAddressDAO uadao= new UserAddressDAO();
-        UserAddress ua= uadao.getUserAddress(user.getUserID());
-        request.setAttribute("ua", ua);
-        ShipDAO sdao=new ShipDAO();
-        List<Ship> ships= sdao.getShip();
-        request.setAttribute("ships",ships);
-        request.getRequestDispatcher("/cart.jsp").forward(request, response);
+        Users user = (Users) session.getAttribute("user");
+        cdao.plusCart(user.getUserID(), Integer.parseInt(request.getParameter("productID")));
+        response.sendRedirect(request.getHeader("referer"));
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

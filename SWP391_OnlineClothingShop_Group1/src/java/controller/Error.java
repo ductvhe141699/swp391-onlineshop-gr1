@@ -5,21 +5,18 @@
  */
 package controller;
 
-import DBContext.CartDAO;
-import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Bach Ngoc Minh Chau HE153019
  */
-public class DeleteCart extends HttpServlet {
+public class Error extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -27,17 +24,15 @@ public class DeleteCart extends HttpServlet {
      *
      * @param request servlet request
      * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws ServletException if a servlet-specific Error occurs
+     * @throws IOException if an I/O Error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        CartDAO cdao=new CartDAO();
-        Users user = (Users) session.getAttribute("user");
-        cdao.deleteCart(user.getUserID(), Integer.parseInt(request.getParameter("productID")));
-        response.sendRedirect(request.getHeader("referer"));
+        try (PrintWriter out = response.getWriter()) {
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -46,8 +41,8 @@ public class DeleteCart extends HttpServlet {
      *
      * @param request servlet request
      * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws ServletException if a servlet-specific Error occurs
+     * @throws IOException if an I/O Error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -60,8 +55,8 @@ public class DeleteCart extends HttpServlet {
      *
      * @param request servlet request
      * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws ServletException if a servlet-specific Error occurs
+     * @throws IOException if an I/O Error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

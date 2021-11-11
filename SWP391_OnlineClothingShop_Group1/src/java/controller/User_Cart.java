@@ -5,26 +5,26 @@
  */
 package controller;
 
-import DBContext.CBannerDAO;
-import entity.CBanner;
-import java.io.File;
-import java.io.FileOutputStream;
+import DBContext.CartDAO;
+import DBContext.ShipDAO;
+import DBContext.UserAddressDAO;
+import entity.Cart;
+import entity.Ship;
+import entity.UserAddress;
+import entity.Users;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Paths;
+import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author SAKURA
+ * @author Bach Ngoc Minh Chau HE153019
  */
-@MultipartConfig(location="/mkt/addcbanner", fileSizeThreshold=1024*1024, maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5*5)
-public class EditCBanner extends HttpServlet {
+public class User_Cart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,40 +38,23 @@ public class EditCBanner extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        int id=Integer.parseInt(request.getParameter("editcbannerid"));
-        CBannerDAO cbdao= new CBannerDAO();
-        CBanner cbanner = cbdao.getCBanner(id);
-        Part filePart = request.getPart("editcbannerimage");
-        if(!"".equals(filePart.getSubmittedFileName()))
-        {
-            String imgpath= "resources\\img\\banner\\";
-            String filePath = getServletContext().getRealPath("") + File.separator + imgpath + cbanner.getImg();
-            File file = new File(filePath); 
-            if (file.exists() && !file.isDirectory()) { 
-               file.delete();
-            } 
-            String fileName =  Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); 
-            InputStream inputStream = filePart.getInputStream();
-            String uploadPath = getServletContext().getRealPath("") + File.separator + imgpath;
-            File uploadDir = new File(uploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
-            FileOutputStream outputStream = new FileOutputStream(uploadPath + 
-            File.separator + fileName);
-            int read = 0;
-            final byte[] bytes = new byte[1024];
-            while ((read = inputStream.read(bytes)) != -1) {
-                outputStream.write(bytes, 0, read);
-            }
-            inputStream.close();
-            outputStream.close();
-            cbanner.setImg(filePart.getSubmittedFileName());
+        HttpSession session = request.getSession();
+        Users user=(Users) session.getAttribute("user");
+        CartDAO cdao=new CartDAO();
+        List<Cart> carts = cdao.getCart(user.getUserID());
+        int totalPrice=0;
+        for(Cart cart:carts){
+            totalPrice+=cart.getSellPrice()*cart.getAmount();
         }
-        cbanner.setTitle(request.getParameter("editcbannertitle"));
-        cbanner.setDesc(request.getParameter("editcbannerdesc"));
-        cbdao.editCBanner(cbanner);
-        response.sendRedirect(request.getHeader("referer"));
+        request.setAttribute("totalPrice", totalPrice);
+        request.setAttribute("carts", carts);
+        UserAddressDAO uadao= new UserAddressDAO();
+        UserAddress ua= uadao.getUserAddress(user.getUserID());
+        request.setAttribute("ua", ua);
+        ShipDAO sdao=new ShipDAO();
+        List<Ship> ships= sdao.getShip();
+        request.setAttribute("ships",ships);
+        request.getRequestDispatcher("/cart.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
