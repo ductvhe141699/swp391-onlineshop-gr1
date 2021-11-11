@@ -31,14 +31,42 @@
     <filter-mapping>
         <filter-name>SellerFilter</filter-name>
         <url-pattern>/seller/*</url-pattern>
+        <url-pattern>/ManageFeedbackBySeller</url-pattern>
+        <url-pattern>/ReplyFeedback</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>UserFilter</filter-name>
         <url-pattern>/user/*</url-pattern>
+        <url-pattern>/ViewFeedback</url-pattern>
+        <url-pattern>/viewOrder</url-pattern>
+        <url-pattern>/changepass</url-pattern>
+        <url-pattern>/ViewOrderDetails</url-pattern>
+        <url-pattern>/ProfileControl</url-pattern>
+        <url-pattern>/GetFeedback</url-pattern>
+        <url-pattern>/ManageFeedbackByCustomer</url-pattern>
+        <url-pattern>/Chat</url-pattern>
+        <url-pattern>/LoadMessage</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AdminFilter</filter-name>
         <url-pattern>/admin/*</url-pattern>
+        <url-pattern>/AccountManagerControl</url-pattern>
+        <url-pattern>/searchAccount</url-pattern>
+        <url-pattern>/editAccount</url-pattern>
+        <url-pattern>/deleteAccount</url-pattern>
+        <url-pattern>/AddPost</url-pattern>
+        <url-pattern>/AddProduct</url-pattern>
+        <url-pattern>/delete</url-pattern>
+        <url-pattern>/DeletePost</url-pattern>
+        <url-pattern>/EditPost</url-pattern>
+        <url-pattern>/EditProductControl</url-pattern>
+        <url-pattern>/LoadProduct</url-pattern>
+        <url-pattern>/LoadPost</url-pattern>
+        <url-pattern>/PostControl</url-pattern>
+        <url-pattern>/PostDetail</url-pattern>
+        <url-pattern>/AddBlog</url-pattern>
+        <url-pattern>/UpdateBlog</url-pattern>
+        <url-pattern>/DeleteBlog</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
