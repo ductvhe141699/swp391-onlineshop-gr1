@@ -31,10 +31,13 @@
             <a href="ManagerProduct">Manager Product <i class="bi bi-bag-fill float-end"></i></a>
         </li>
         <li>
-            <a href="ManagerBlog">Manager Blog <i class="bi bi-bootstrap float-end"></i></a>
+            <a href="ManageBlog">Manager Blog <i class="bi bi-bootstrap float-end"></i></a>
         </li>
         <li>
             <a href="ManagerAccount">Manager Account<i class="bi bi-person float-end"></i></a>
+        </li>
+         <li>
+            <a href="ManageFeedbackBySeller">Manager Feedback<i class="bi bi-archive float-end"></i></a>
         </li>
     </ul>
 

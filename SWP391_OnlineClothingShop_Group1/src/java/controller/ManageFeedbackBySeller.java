@@ -72,10 +72,8 @@ public class ManageFeedbackBySeller extends HttpServlet {
                                 String.valueOf(feedback.getProductID())
                         );
                 feedback.setProduct(productWithFeedback);
-
             }
-
-            // allow sort by name, product, star
+            // sort section
             if (request.getParameter("sort-flag") != null) {
                 int sortOption = Integer.parseInt(request.getParameter("sort-order"));
                 int sortOrder = Integer.parseInt(request.getParameter("sort-by-order"));
@@ -125,6 +123,7 @@ public class ManageFeedbackBySeller extends HttpServlet {
                         }
                         break;
                     }
+                    
 
                 }
 

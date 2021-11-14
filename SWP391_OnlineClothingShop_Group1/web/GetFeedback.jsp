@@ -140,20 +140,19 @@
             <div class="container">
 
                 <div class="row mt-3">
-                    <div class="col-md-12">
+                    <div class="col-md-5">
                         <img src="./resources/img/products/${product.url}" style="width: 200px; margin: 40px 0 0 40px;">
                         <div class="card-body p-5">
                             <h3 class="title mb-3">${product.productName}</h3>
-
                             <p class="price-detail-wrap"> 
                                 <span class="price h3 text-warning"> 
-                                    <span class="num">${product.sellPrice}</span><span class="currency">VND </span>
+                                    <span  class="currency" >${product.sellPrice}</span>
                                 </span> 
                             </p> 
                             <hr>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-7">
                         <div class="card">
                             <div class="feedback-form mt-5 mb-5 ml-5 mr-5">
 
@@ -213,6 +212,26 @@
                 </div>
 
             </div>
+                                            <script>
+        window.onload= function() {formatCurrency();};
+        var formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'VND',
+
+            // These options are needed to round to whole numbers if that's what you want.
+            //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+            //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+          });
+        function formatCurrency() {
+            
+            var listCurrency = document.getElementsByClassName("currency");
+            for(let i = 0; i < listCurrency.length; i++){
+                listCurrency[i].innerHTML=formatter.format(listCurrency[i].innerHTML);
+            }
+            
+        }
+         
+    </script>
         </body>
     </html>
 

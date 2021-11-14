@@ -89,7 +89,7 @@
                                 <div class="form-group">
                                     <label>Content</label>
                                    
-                                    <textarea name="blog-text" class="form-control" id="blog-text" rows="7" placeholder="Write your content here"></textarea>
+                                    <textarea name="content" class="form-control" id="blog-text" rows="7" placeholder="Write your content here"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Image Link</label>

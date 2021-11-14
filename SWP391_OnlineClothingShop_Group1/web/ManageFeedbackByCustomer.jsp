@@ -150,7 +150,8 @@
                                     <thead >
                                         <tr>
                                             <th style="text-align: center;">FeedbackID</th>
-                                           <th style="text-align: center;">OrderID</th>
+                                            <th style="text-align: center;">OrderID</th>
+                                            <th style="text-align: center;"></th>
                                             <th style="text-align: center;">Product</th>
                                             <th style="text-align: center;">Star</th>
                                             <th style="text-align: center;">View</th>
@@ -161,6 +162,9 @@
                                             <tr style="padding:2px; border: 1px solid">
                                                 <td>${item.id}</td>
                                                 <td>${item.orderID}</td>
+                                                <td>
+                                                        <img style="width: 100px" src="./resources/img/products/${item.product.url}">
+                                                    </td>
                                                 <td>
                                                     ${item.product.productName}
                                                 </td>

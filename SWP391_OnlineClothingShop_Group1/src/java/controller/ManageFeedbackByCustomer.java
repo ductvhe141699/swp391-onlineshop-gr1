@@ -51,13 +51,13 @@ public class ManageFeedbackByCustomer extends HttpServlet {
             FeedbackDAO feedbackDao = new FeedbackDAO();
             UserDAO userDao = new UserDAO();
 
-            // get all feedback of product of this customer
             List<Feedback> lsFeedback = feedbackDao.getFeedbacksByUserId(a.getUserID());
-            for (Feedback feedback : lsFeedback) {
-                Product product
-                        = productDao.getProductByID(String.valueOf(feedback.getProductID()));
-                feedback.setProduct(product);
-                
+
+            for (Feedback feedback : lsFeedback) {            
+                // get all product of feedback
+                Product productWithFeedback
+                        = productDao.getProductByID(String.valueOf(feedback.getProductID())                       );
+                feedback.setProduct(productWithFeedback);
             }
 
             // allow sort by name, product, star
@@ -100,6 +100,7 @@ public class ManageFeedbackByCustomer extends HttpServlet {
                         }
                         break;
                     }
+                    //sort by time
                     case 4: {
                         if (sortOrder == 1) {
                             // sort ascending
@@ -110,6 +111,7 @@ public class ManageFeedbackByCustomer extends HttpServlet {
                         }
                         break;
                     }
+                    
 
                 }
 

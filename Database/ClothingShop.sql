@@ -44,10 +44,10 @@ CREATE TABLE [Users] (
 GO
 INSERT INTO Users VALUES(N'admin','123456','admin@fpt.edu.vn',1,1);
 INSERT INTO Users VALUES(N'bean','bean','DucTVHE141699@fpt.edu.vn',2,1);
-INSERT INTO Users VALUES(N'Nguyễn Gia Phú','nguyengiaphu','PhuNGHE150108@fpt.edu.vn',2,1);
-INSERT INTO Users VALUES(N'	Ngô Thị Ngọc Mai','ngothingocmai','MaiNTNHE151402@fpt.edu.vn',3,1);
+INSERT INTO Users VALUES(N'ngp','ngp','PhuNGHE150108@fpt.edu.vn',2,1);
+INSERT INTO Users VALUES(N'mai','mai','MaiNTNHE151402@fpt.edu.vn',3,1);
 INSERT INTO Users VALUES(N'bnmc','bnmc','ChauBNMHE153019@fpt.edu.vn',3,1);
-INSERT INTO Users VALUES(N'	Đinh Tiến Lâm','dinhtienlam','LamDTHE153097@fpt.edu.vn',3,1);
+INSERT INTO Users VALUES(N'dtl','dtl','LamDTHE153097@fpt.edu.vn',3,1);
 INSERT INTO Users VALUES(N'mkt','mkt','mkt@fpt.edu.vn',4,1);
 INSERT INTO Users VALUES(N'shipper','shipper','shipper@fpt.edu.vn',5,1);
 insert into dbo.[Users] ([Username], [Password], [email], [RoleID], StatusID) values ('jjellico0', 'Jellico', 'wjellico0@npr.org', 3, 1);
@@ -618,7 +618,7 @@ INSERT INTO Orders VALUES (4, 270000, null, 3, '2021/06/06 04:17');
 INSERT INTO Orders VALUES (5, 90000, null, 3, '2021/06/16 12:36');
 INSERT INTO Orders VALUES (5, 1270000, null, 3, '2021/06/12 10:18');
 INSERT INTO Orders VALUES (6, 1270000, null, 1, '2021/09/11 01:30');
-INSERT INTO Orders VALUES (6, 143000, null, 1, '2021/09/11 01:30');
+INSERT INTO Orders VALUES (6, 143000, null, 5, '2021/09/11 01:30');
 INSERT INTO Orders VALUES (7, 2580000, null, 1, '2021/05/14 02:30');
 INSERT INTO Orders VALUES (8, 4560000, null, 1, '2021/05/18 04:30');
 INSERT INTO Orders VALUES (9, 900000, null, 1, '2021/07/23 05:30');
@@ -775,17 +775,13 @@ imageLink nvarchar(1000),
 GO
 INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'maintn',   N'Áo phông xám nữ, item mix đồ thời thượng',N'Áo phông xám là một item được nhiều bạn trẻ yêu thích. Khi xu hướng thời trang thế giới đang hướng đến những thứ đơn giản, tinh tế thì gam màu xám được đánh giá rất hiện đại, trẻ trung và là một trong những gam màu hot trend thời gian gần đây. 
 
-Với áo phông xám, chị em có thể biến tấu linh hoạt trong cách phối đồ, lên đồ ấn tượng mà không lo nhạt nhòa, kém nổi bật. ',N'aophongxam.jpg')
+Với áo phông xám, chị em có thể biến tấu linh hoạt trong cách phối đồ, lên đồ ấn tượng mà không lo nhạt nhòa, kém nổi bật. ',N'1.jpg')
 INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'ngoc12',   N'Áo thun oversize chuẩn phong cách, ấn tượng',N'Áo phông oversize đang là một hot item dẫn đầu xu hướng thời trang giới trẻ hiện nay. Ngày càng nhiều các bạn trẻ yêu thích, ưa chuộng và đánh giá cao kiểu áo này. 
 
-Một item đầy mới mẻ, phá cách và tính ứng dụng thực tiễn cao như áo phông oversize quả thực sẽ thu hút sự quan tâm của rất nhiều bạn trẻ. ',N'aophongoversize.png')
-INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'minh123',  N'Kết hợp quần short và sơ mi nam phá cách',N'Quần short là một món đồ thời trang chắc chắn không thể thiếu trong mùa hè này. Thời tiết nóng bức ngày hè không khỏi khiến mọi người cảm thấy khó chịu và gặp nhiều khó khăn trong quá trình lựa chọn và mix match đồ. Và quần short có thể nói là cứu tinh hữu ích nhất lúc này khi vừa có thể “chặt đẹp” thời tiết vừa có thể đem đến cho người mặc sự phong cách, thời trang. Những cách phối quần short cũng vì thế nhận được rất nhiều sự quan tâm, trong đó không thể thiếu cặp đôi quần short nam và áo sơ mi. ',N'pasted image 0.png')
-INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'author_1',   N'Quần Jogger kaki co chàng phong cách',N'Quần jogger là một trong những item “ngon-bổ-rẻ” được giới trẻ yêu thích hiện nay. Quần jogger-áo phông là một cách mix thông dụng giới trẻ ngày nay ưa chuộng. Đều là hai item của giới trẻ, không khó để hai món đồ thời trang này mix match cực ăn ý với nhau.
-
-Điểm nhấn của của quần jogger và áo phông form rộng đều là sự rộng rãi, phóng khoáng và sự thoải mái nó mang lại cho người dùng.
-
-Đa dạng nhiều mẫu mã, kích cỡ và kiểu dáng cũng là điểm cộng cho set đồ này. Với quần jogger, bạn có thể chọn những gam màu sáng như trắng, cam, be,.. để tạo sự trẻ trung, tươi mới hoặc những gam màu trầm tối như đen, nâu, xanh rêu,... vừa đem đến sự tinh tế vừa phong cách, thời trang.',N'Joggerkaki.png')
-INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'author_2',  N'Áo sơ mi trắng cho nàng cực trẻ trung và cá tính',N'Áo sơ mi trắng vốn là một item must-have trong tủ đồ của phái nữ bởi sự đơn giản, tinh tế; dễ phối đồ và có thể mặc trong hầu hết mọi tình huống như đi học, đi làm,đi chơi, đi phỏng vấn,...Thông dụng - dễ phối - chưa bao giờ lỗi mốt là những từ có thể dùng để miêu tả về áo sơ mi trắng. Là một item quốc dân luôn có sẵn trong tủ đồ của tất cả mọi người, những chiếc áo sơ mi trắng luôn khiến người mặc ngây ngất bởi hiệu quả thời trang mà nó mang lại: sự trẻ trung, lịch thiệp và phong cách. ',N'somitrang.png')
+Một item đầy mới mẻ, phá cách và tính ứng dụng thực tiễn cao như áo phông oversize quả thực sẽ thu hút sự quan tâm của rất nhiều bạn trẻ. ',N'2.jpg')
+INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'minh123',  N'Blazzer, xu thế thời trang 2021',N'Với sự thay đổi liên tục, xu hướng thời trang luôn được cập nhật mới mẻ hơn, độc đáo, hiện đại và thu hút hơn. Những phong cách mới, xu thế thời trang hot luôn được mọi người quan tâm, đặc biệt là giới trẻ. Không thể phủ nhận ngành công nghiệp thời trang đang phát triển rất mạnh mẽ. Không chỉ đơn giản là cách ăn mặc, cách mix&match đồ hay diện đồ theo phong cách yêu thích, thời trang còn là sự đổi mới, phá cách và tràn đầy sức sáng tạo ấn tượng. Vậy bạn đã có ý tưởng gì cho mình chưa? Cùng Shope khám phá ngay nhé.',N'3.jpg')
+INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'author_1',   N'Mix đồ cho nàng ngày hè',N'Bạn có thể chọn những gam màu sáng như trắng, cam, be,.. để tạo sự trẻ trung, tươi mới hoặc những gam màu trầm tối như đen, nâu, xanh rêu,... vừa đem đến sự tinh tế vừa phong cách, thời trang.',N'4.jpg')
+INSERT INTO dbo.Blog(Author,Title,Content,imageLink)VALUES(N'author_2',  N'Áo sơ mi cho nàng cực trẻ trung và cá tính',N'Áo sơ mi vốn là một item must-have trong tủ đồ của phái nữ bởi sự đơn giản, tinh tế; dễ phối đồ và có thể mặc trong hầu hết mọi tình huống như đi học, đi làm,đi chơi, đi phỏng vấn,...Thông dụng - dễ phối - chưa bao giờ lỗi mốt là những từ có thể dùng để miêu tả về áo sơ mi trắng. Là một item quốc dân luôn có sẵn trong tủ đồ của tất cả mọi người, những chiếc áo sơ mi trắng luôn khiến người mặc ngây ngất bởi hiệu quả thời trang mà nó mang lại: sự trẻ trung, lịch thiệp và phong cách. ',N'5.jpg')
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Create table PostCategory(
 ID int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
@@ -870,22 +866,22 @@ CREATE TABLE dbo.[ChatMessage](
 	FOREIGN KEY ([toId]) REFERENCES dbo.[Users](UserID),
 )
 go
-INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'Hello', CAST(N'2021-10-26 22:38:21.373' AS DateTime), 1);
-INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'How are you', CAST(N'2021-10-26 22:38:30.103' AS DateTime), 1);
-INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (1, 6, N'Im fine', CAST(N'2021-10-26 22:38:36.727' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'Hi', CAST(N'2021-10-26 22:38:21.373' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'Nice to meet you', CAST(N'2021-10-26 22:38:30.103' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (1, 6, N'Thanks', CAST(N'2021-10-26 22:38:36.727' AS DateTime), 1);
 INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (1, 6, N'Thanks', CAST(N'2021-10-26 22:38:43.073' AS DateTime), 1);
-INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 2, N'Hey what uo', CAST(N'2021-10-27 10:39:30.800' AS DateTime), 1);
-INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 2, N'How u doing', CAST(N'2021-10-27 10:39:42.200' AS DateTime), 1);
-INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (2, 6, N'Im fine thanks', CAST(N'2021-10-27 10:39:47.860' AS DateTime), 1);
-INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (2, 6, N'See you around', CAST(N'2021-10-27 10:39:56.893' AS DateTime), 1);
-INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'hello', CAST(N'2021-10-28 08:51:27.353' AS DateTime), 1);
-INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'oh yeah', CAST(N'2021-10-29 13:48:07.780' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 2, N'Hello', CAST(N'2021-10-27 10:39:30.800' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 2, N'How do you do', CAST(N'2021-10-27 10:39:42.200' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (2, 6, N'How do you do', CAST(N'2021-10-27 10:39:47.860' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (2, 6, N'See you later', CAST(N'2021-10-27 10:39:56.893' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'how are you', CAST(N'2021-10-28 08:51:27.353' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'good, thanks', CAST(N'2021-10-29 13:48:07.780' AS DateTime), 1);
 INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'great', CAST(N'2021-10-29 13:53:25.967' AS DateTime), 1);
-INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 3, N'what up brother', CAST(N'2021-10-29 14:00:21.740' AS DateTime), 1);
-INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 3, N'how u doing man', CAST(N'2021-10-29 14:00:36.213' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 3, N'how are you', CAST(N'2021-10-29 14:00:21.740' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 3, N'fine, thanks', CAST(N'2021-10-29 14:00:36.213' AS DateTime), 1);
 INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (3, 6, N'Hello', CAST(N'2021-10-29 14:00:56.170' AS DateTime), 1);
-INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (3, 6, N'im still fine', CAST(N'2021-10-29 14:01:33.273' AS DateTime), 1);
-INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'message new', CAST(N'2021-10-29 14:15:11.593' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (3, 6, N'hi', CAST(N'2021-10-29 14:01:33.273' AS DateTime), 1);
+INSERT [dbo].[ChatMessage] ([fromId], [toId], [content], [dateCreated], [status]) VALUES (6, 1, N'Hey', CAST(N'2021-10-29 14:15:11.593' AS DateTime), 1);
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE ShipStatus(

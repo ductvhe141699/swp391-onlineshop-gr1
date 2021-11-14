@@ -12,7 +12,6 @@ package entity;
 public class OrderDetail extends ProductDetailImg {
 
     int orderID;
-    int productID;
     String productName;
     int productPrice;
     int quantity;
@@ -29,7 +28,7 @@ public class OrderDetail extends ProductDetailImg {
     }
 
     public OrderDetail(int productId, String productName, String productImgURL, int ProductPrice, int quantity) {
-        this.productID = productID;
+        this.productID=productId;
         this.productName = productName;
         this.productImgURL=productImgURL;
         this.productPrice=ProductPrice;
@@ -42,14 +41,6 @@ public class OrderDetail extends ProductDetailImg {
 
     public void setOrderID(int orderID) {
         this.orderID = orderID;
-    }
-
-    public int getProductID() {
-        return productID;
-    }
-
-    public void setProductID(int productID) {
-        this.productID = productID;
     }
 
     public String getProductName() {

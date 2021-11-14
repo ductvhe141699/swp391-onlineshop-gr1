@@ -44,12 +44,14 @@
         <title>${blog.title}</title>
         <style>
             .gallery-wrap .img-big-wrap img {
-                height: 450px;
+                height: 500px;
                 width: auto;
                 display: inline-block;
                 cursor: zoom-in;
             }
             .img-big-wrap img{
+                margin-top: 60px;
+                margin-left: 40px;
                 width: 100% !important;
                 height: auto !important;
             }     
@@ -140,10 +142,12 @@
                             </article>
                         </div>
                     </div>
+                            <p style="font-family: 'Noto Serif Display', serif; ">Nếu bạn muốn đóng góp bài viết cho chúng tôi, vui lòng gửi qua hòm thư: shope@gmail.com</p>
                 </div>
             </div>
         </div>
     </center>
+    
     <%@include file="model/footer.jsp" %>
     <!-- BOOTSTRAP5-->
     <script

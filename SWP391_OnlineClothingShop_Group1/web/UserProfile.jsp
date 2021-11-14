@@ -127,6 +127,9 @@
                         <a href="viewOrder?id=${user.userID}" style="width: 300px"
                            class="mt-5 text-center btn btn-primary profile-button" type="button">View your orders
                         </a>
+                           <a href="ManageFeedbackByCustomer" style="width: 300px"
+                           class="mt-5 text-center btn btn-primary profile-button" type="button">View your feedbacks
+                        </a>
                     </div>
                 </div>
 

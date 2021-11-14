@@ -89,28 +89,63 @@
                                 Products</h5>
                         </div>
                         <div class="table-responsive p-5">
-                            <table class="table table-striped table-hover">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">Product Name</th>
-                                        <th scope="col">Image</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Quantity</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="customtable">
-                                    <c:forEach var="od" items="${listO}">
-                                        <tr>
-                                            <td>${od.productName}</td>
-                                            <td><img onmouseover="bigImg(this)" onmouseout="normalImg(this)"  
-                                                     src="resources/img/products//${od.productImgURL}" alt="" 
-                                                     style="width: 100px; height: 100px"></td>
-                                            <td>${od.productPrice} VNĐ</td>
-                                            <td>${od.quantity}</td>
-                                        </tr>
-                                    </c:forEach>
-                                </tbody>
-                            </table>
+                            <c:choose>
+                                <c:when test="${order.status==5}">
+                                    <table class="table table-striped table-hover">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Product Name</th>
+                                                <th scope="col">Image</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Quantity</th>
+                                                <th scope="col">Feedback</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="customtable">
+                                            <c:forEach var="od" items="${listO}">
+                                                <tr>
+                                                    <td>${od.productName}</td>
+                                                    <td><img onmouseover="bigImg(this)" onmouseout="normalImg(this)"  
+                                                             src="resources/img/products//${od.productImgURL}" alt="" 
+                                                             style="width: 100px; height: 100px"></td>
+                                                    <td>${od.productPrice} VNĐ</td>
+                                                    <td>${od.quantity}</td>                        
+                                                             <td> <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/GetFeedback?orderId=${order.id}&productId=${od.productID}">Send</a></td>                                                  
+                                                </tr>
+                                            </c:forEach>
+                                        </tbody>                                      
+                                    </table>
+                                </c:when>
+                                <c:otherwise>
+                                    <table class="table table-striped table-hover">
+
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Product Name</th>
+                                                <th scope="col">Image</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Quantity</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="customtable">
+                                            <c:forEach var="od" items="${listO}">
+                                                <tr>
+
+                                                    <td>${od.productName}</td>
+                                                    <td><img onmouseover="bigImg(this)" onmouseout="normalImg(this)"  
+                                                             src="resources/img/products//${od.productImgURL}" alt="" 
+                                                             style="width: 100px; height: 100px"></td>
+                                                    <td>${od.productPrice} VNĐ</td>
+                                                    <td>${od.quantity}</td>
+
+                                                </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </c:otherwise>
+                            </c:choose>
+
                             <br>
                             <br>
                             <h3 style="color:black;">Total: ${Total} VNĐ</h3>

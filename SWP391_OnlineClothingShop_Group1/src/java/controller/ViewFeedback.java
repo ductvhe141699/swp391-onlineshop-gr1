@@ -64,17 +64,16 @@ public class ViewFeedback extends HttpServlet {
                     userDao.getUsersByID(feedback.getUserID())
             );
             
-            // send to jsp page
             request.setAttribute("feedback", feedback);
             FeedbackRepliesDAO replyDAO= new FeedbackRepliesDAO();
             List<FeedbackReplies> replist= replyDAO.getFeedbacksRepliesByFeedbackId(feedbackId);
             String rep=null;
+            // get reply
             if (!replist.isEmpty()){
             rep= replyDAO.getFeedbacksRepliesByFeedbackId(feedbackId).get(0).getRepliesText();}
             request.setAttribute("rep", rep);
             request.getRequestDispatcher("ViewFeedback.jsp").forward(request, response);
         } catch (Exception e) {
-            e.printStackTrace();
             response.sendRedirect("error.jsp");
         }
     }

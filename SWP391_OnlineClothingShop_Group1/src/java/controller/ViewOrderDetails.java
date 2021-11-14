@@ -65,7 +65,7 @@ public class ViewOrderDetails extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             
             OrderDAO orderDAO = new OrderDAO();
-            Order orders = orderDAO.getAnOrderByUserID(id);
+            Order orders = orderDAO.getOrderByOrderID(id);
             
             OrderDetailDAO od = new OrderDetailDAO();
             List<OrderDetail> orderList = od.getOdByOrderId(id);

@@ -17,7 +17,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ *
+ * @author Ottelia
+ */
 public class LoadMessage extends HttpServlet {
 
     /**
@@ -84,10 +87,7 @@ public class LoadMessage extends HttpServlet {
     }
 
     /**
-     * This post method will get message which user post and insert it into
-     * database
-     *
-     *
+     
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -100,21 +100,14 @@ public class LoadMessage extends HttpServlet {
         try {
 
             HttpSession session = request.getSession();
-
             ChatMessageDAO messdao = new ChatMessageDAO();
-
             String message = request.getParameter("message");
             //System.out.println(message);
-
             Users user = (Users) session.getAttribute("user");
             int uId = user.getUserID();
-
             int friendId = Integer.parseInt(request.getParameter("friendId"));
-
             ChatMessage mess = new ChatMessage(uId, friendId, message);
-
             messdao.insertMessage(mess);
-
         } catch (Exception e) {
             response.sendRedirect("error.jsp");
         }

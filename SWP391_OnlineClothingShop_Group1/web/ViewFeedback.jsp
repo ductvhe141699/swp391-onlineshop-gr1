@@ -90,74 +90,93 @@
 
         <div class="container-fuild">
             <div class="row">
+                <hr>
+                <div class="row">
 
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <hr>
-                    <div class="row">
-
-
-                        <img src="./resources/img/products/${requestScope.feedback.product.url}" style="width: 400px;  margin: auto; box-shadow: 10px 10px 5px #ddd; border-color: #000">
+                    <div class="col-md-4">
+                        <img src="./resources/img/products/${requestScope.feedback.product.url}" style="width: 50%;  margin-left: 40px; ">
                         <div class="card-body p-5">
                             <h3 class="card-title mb-3">${requestScope.feedback.product.productName}</h3>
                             <p class="price-detail-wrap"> 
                                 <span class="price h4 text-warning"> 
-                                    <span class="currency"> đ</span><span class="num">${requestScope.feedback.product.sellPrice}</span>
+                                    <span class="currency">${requestScope.feedback.product.sellPrice}</span>
                                 </span> 
                             </p> 
 
                         </div>
-
                     </div>
-                        <div class="col-md-2"></div>
-                        <div class="col-md-10">
-                            <div class="card-body">
-                                <h5 class="card-title">Feedback about product</h5>
-                                <table class="table border">
 
-                                    <tr class="form-group">
-                                        <td class="col-md-3"><b>Order ID</b></td>
-                                        <td class="col-md-9">${requestScope.feedback.orderID}</td>
-                                    </tr>
-                                    <tr class="form-group">
-                                        <td class="col-md-3"><b>User</b></td>
-                                        <td class="col-md-9">${requestScope.feedback.user.userName}</td>
-                                    </tr>
-                                    <tr class="form-group" >
-                                        <td class="col-md-3"><b>Rating</b></td>
-                                        <td class="col-md-9">
-                                            <c:forEach begin="1" end="${requestScope.feedback.star}">
-                                                <span>
-                                                    <i class="fa fa-star checked" style="font-size: 10px"></i>
-                                                </span>  
-                                            </c:forEach>
-                                        </td>
-                                    </tr>
-                                    <tr  class="form-group">
-                                        <td class="col-md-3"><b>Feedback Detail</b></td>
-                                        <td class="col-md-9">${requestScope.feedback.feedbackDetail}</td>
-                                    </tr>
-                                    <tr  class="form-group">
-                                        <td class="col-md-3"><b>Reply</b></td>
-                                        <td class="col-md-9">${requestScope.rep}</td>
-                                    </tr>
-                                </table>
-                            </div>
+
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Feedback about product</h5>
+                            <table class="table border">
+
+                                <tr class="form-group">
+                                    <td class="col-md-3"><b>Order ID</b></td>
+                                    <td class="col-md-9">${requestScope.feedback.orderID}</td>
+                                </tr>
+                                <tr class="form-group">
+                                    <td class="col-md-3"><b>User</b></td>
+                                    <td class="col-md-9">${requestScope.feedback.user.userName}</td>
+                                </tr>
+                                <tr class="form-group" >
+                                    <td class="col-md-3"><b>Rating</b></td>
+                                    <td class="col-md-9">
+                                        <c:forEach begin="1" end="${requestScope.feedback.star}">
+                                            <span>
+                                                <i class="fa fa-star checked" style="font-size: 10px"></i>
+                                            </span>  
+                                        </c:forEach>
+                                    </td>
+                                </tr>
+                                <tr  class="form-group">
+                                    <td class="col-md-3"><b>Feedback Detail</b></td>
+                                    <td class="col-md-9">${requestScope.feedback.feedbackDetail}</td>
+                                </tr>
+                                <tr  class="form-group">
+                                    <td class="col-md-3"><b>Reply</b></td>
+                                    <td class="col-md-9">${requestScope.rep}</td>
+                                </tr>
+                            </table>
                         </div>
-                        <div class="col-md-2"></div>                       
                     </div>
-
 
                 </div>
+
+
             </div>
-            <%@include file="model/footer.jsp" %>
-            <!-- BOOTSTRAP5-->
-            <script
-                src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-                crossorigin="anonymous"
-            ></script>
-            <!-- SCRIPT -->
-            <script src="${pageContext.request.contextPath}/js/script.js"></script>
+        </div>
+        <%@include file="model/footer.jsp" %>
+        <!-- BOOTSTRAP5-->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"
+        ></script>
+        <!-- SCRIPT -->
+        <script src="${pageContext.request.contextPath}/js/script.js"></script>
+        <script>
+            window.onload = function () {
+                formatCurrency();
+            };
+            var formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'VND',
+
+                // These options are needed to round to whole numbers if that's what you want.
+                //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+                //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+            });
+            function formatCurrency() {
+
+                var listCurrency = document.getElementsByClassName("currency");
+                for (let i = 0; i < listCurrency.length; i++) {
+                    listCurrency[i].innerHTML = formatter.format(listCurrency[i].innerHTML);
+                }
+
+            }
+
+        </script>
     </body>
 </html>

@@ -152,6 +152,7 @@
                                                 <th style="text-align: center;">FeedbackID</th>
                                                 <th style="text-align: center;">User</th>
                                                 <th style="text-align: center;">Star</th>
+                                                <th style="text-align: center;"></th>
                                                 <th style="text-align: center;">Product</th>
                                                 <th style="text-align: center;">Detail</th>
                                                 <th style="text-align: center;">Action</th>
@@ -166,6 +167,9 @@
                                                         <c:forEach begin="1" end="${item.star}">
                                                             <span><i class="fa fa-star checked" style="font-size: 10px"></i></span>  
                                                             </c:forEach>
+                                                    </td>
+                                                    <td>
+                                                        <img style="width: 100px" src="./resources/img/products/${item.product.url}">
                                                     </td>
                                                     <td>
                                                         ${item.product.productName}

@@ -96,8 +96,8 @@ public class GetFeedback extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         try {
-//            HttpSession session = request.getSession();
-//            Users user = (Users) session.getAttribute("user");
+            HttpSession session = request.getSession();
+            Users user = (Users) session.getAttribute("user");
  
             // get FeedbackDAO
             FeedbackDAO feedbackDAO = new FeedbackDAO();
@@ -115,7 +115,7 @@ public class GetFeedback extends HttpServlet {
             // create feedback
             Feedback userFeedback = new Feedback();
             userFeedback.setProductID(productId);
-            userFeedback.setUserID(1);
+            userFeedback.setUserID(user.getUserID());
             userFeedback.setStar(star);
             userFeedback.setOrderID(orderId);
             userFeedback.setFeedbackDetail(feedback);

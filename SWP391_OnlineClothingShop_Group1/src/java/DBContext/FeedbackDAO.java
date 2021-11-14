@@ -261,6 +261,32 @@ public ArrayList<Feedback> getFeedbacksBySellerId(int sellerId) {
         }
        
     }
+    public Feedback getFeedbackByOrderIdAndProductId(int orderId, int ProductId){
+        String query = "select * from Feedback where OrderID =? and ProductID =?";
+        try {
+            Feedback f;
+            conn = new DBcontext().open();
+            ps = conn.prepareStatement(query);           
+            ps.setInt(1, orderId);
+            ps.setInt(1, ProductId);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                f = new Feedback(
+                        rs.getInt("ID"),
+                        rs.getInt("UserID"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("OrderID"),
+                        rs.getInt("Star"),
+                        rs.getString("FeedbackDetail")
+                );
+                return f;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     /**
      * Get total count of all feedback
