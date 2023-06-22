@@ -5,7 +5,7 @@ Project : Clothing Online Shop
 ****************
 @CONTRIBUTE:
 - Đinh Tiến Lâm 
-- Trần Văn Đức
+- Trần Văn Đức - LEADER
 - Ngô Thị Ngọc Mai
 - Nguyễn Gia Phú
 - Nguyễn Duy Mạnh 
